@@ -11,7 +11,6 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  name = 'Angular';
-  public isCollapsed = true;
+
 
 }

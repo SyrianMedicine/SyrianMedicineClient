@@ -18,6 +18,7 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NavbarComponent } from './Common/navbar/navbar.component';
 
 
 
@@ -25,6 +26,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   declarations: [
     AppComponent,
     MainComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
