@@ -19,6 +19,7 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavbarComponent } from './Common/navbar/navbar.component';
+import { FooterComponent } from './Common/footer/footer.component';
 
 
 
@@ -26,7 +27,8 @@ import { NavbarComponent } from './Common/navbar/navbar.component';
   declarations: [
     AppComponent,
     MainComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
