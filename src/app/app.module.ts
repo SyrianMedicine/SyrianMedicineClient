@@ -23,6 +23,8 @@ import { FooterComponent } from './Common/footer/footer.component';
 import { RegisterComponent } from './main/register/register.component';
 import { PostsComponent } from './main/posts/posts.component';
 import { MedicinesComponent } from './main/medicines/medicines.component';
+import { HospitalsComponent } from './main/hospitals/hospitals.component';
+import { NursesComponent } from './main/nurses/nurses.component';
 
 
 
@@ -34,7 +36,9 @@ import { MedicinesComponent } from './main/medicines/medicines.component';
     FooterComponent,
     RegisterComponent,
     PostsComponent,
-    MedicinesComponent
+    MedicinesComponent,
+    HospitalsComponent,
+    NursesComponent
   ],
   imports: [
     BrowserModule,
