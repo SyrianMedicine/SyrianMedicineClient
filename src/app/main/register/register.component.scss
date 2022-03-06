@@ -1,0 +1,224 @@
+
+// start bgColor
+.register .container
+{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.register .bgColor
+{
+position: relative;
+min-width: 100%;
+height: auto;
+background: #305A72;
+border-radius: 0px 50px 50px 0px;
+margin-bottom:10px;
+}
+
+.register .bgColor .bgColor-title
+{
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+  letter-spacing: 1px;
+  line-height: 48px;
+}
+
+.register .bgColor .bgColor-title #iconImage
+{
+  width: 40px;
+  height: 40px;
+}
+
+.register .bgColor .bgColor-title h2
+{
+  font-size: 50px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.register .bgColor > i
+{
+  color: #ffffff;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  font-size:300px;
+  margin-top: 20px;
+  padding-bottom:20px;
+}
+
+.register .bgColor  span
+{
+  font-size: 30px;
+  font-weight: 600;
+  font-style: normal;
+  color: #ffffff;
+  letter-spacing:1px;
+  display: block;
+  text-align: center;
+  padding-bottom: 100px;
+}
+@media (min-width:786px) and (max-width:992px)
+{
+  .register .bgColor .bgColor-title h2
+  {
+    font-size: 40px;
+  }
+  .register .bgColor > i
+  {
+    font-size:200px;
+  }
+  .register .bgColor  span
+  {
+    font-size: 30px;
+  }
+}
+
+@media (min-width:992px) and (max-width:1200px)
+{
+  .register .bgColor .bgColor-title h2
+  {
+    font-size: 30px;
+  }
+  .register .bgColor  span
+  {
+    font-size: 30px;
+  }
+  .register .bgColor > i
+  {
+    font-size:200px;
+  }
+  .register .bgColor  span
+  {
+    padding-bottom: 120px;
+  }
+}
+@media  (max-width:576px)
+{
+  .register .bgColor .bgColor-title h2
+  {
+    font-size: 30px;
+  }
+  .register .bgColor  span
+  {
+    font-size: 30px;
+  }
+  .register .bgColor > i
+  {
+    font-size:200px;
+  }
+  .register .bgColor  span
+  {
+    padding-bottom: 120px;
+  }
+}
+// start  card Register
+
+.register .form-card
+{
+  width: 100%;
+}
+
+.register .form-card .card
+{
+  margin-top:50px;
+  box-shadow: 1px 1px 0px 2px rgba(0, 0, 0, 0.25);
+  background:#E5E5E5;
+  border-radius: 50px;
+}
+@media (min-width:992px) and (max-width:1200px)
+{
+  .register .form-card .card
+  {
+    margin-top:10px;
+    margin-bottom: 20px;
+  }
+}
+
+@media  (max-width:992px)
+{
+  .register .form-card .card
+  {
+    margin-top:10px;
+    margin-bottom: 20px;
+  }
+}
+
+
+.register .form-card .card .card-header
+{
+  padding: 30px;
+  margin-bottom:10px;
+  text-align: center;
+  background: #E5E5E5;;
+  box-shadow: 1px 1px 0px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+}
+
+.register .form-card .card .card-header > a
+{
+  padding: 0 20px;
+  font-style: normal;
+  font-weight: 600;
+  font-size:30px;
+  color: #305A72;
+  opacity: .8;
+  cursor: pointer;
+}
+
+.register .form-card .card .card-header > a:hover,
+.register .form-card .card .card-header > a:focus
+{
+  color: #305A72;
+  opacity: 1;
+}
+
+.register .form-card .card-body
+{
+  padding:20px 60px;
+  background: #FFFFFF;
+  border-radius: 50px;
+}
+@media  (max-width:1200px)
+{
+  .register .form-card .card .card-header > a
+  {
+    font-size: 25px;
+  }
+}
+.register .form-card .card-body .input_group
+{
+  background: #FFFFFF;
+  border: 0.5px solid #4D43BA;
+  box-sizing: border-box;
+  border-radius: 50px;
+  padding: 25px;
+  margin: 5px 0;
+}
+
+.register .form-card .card-body .input_group:hover
+{
+  border: 1.5px solid #305A72;
+}
+.register .form-card .card-body .Reg_btn
+{
+  background: #305A72;
+  border-radius: 50px;
+  font-style: 25px;
+  font-weight: 600;
+  font-style: normal;
+  color: #FFFFFF;
+  letter-spacing: 1px;
+  border:none;
+  padding: 10px 40px;
+  margin-top: 30px;
+
+}
+
+.register .form-card .card-body .Reg_btn:hover,
+.register .form-card .card-body .Reg_btn:focus
+{
+  background: rgba(48, 90, 114, 0.64);
+}

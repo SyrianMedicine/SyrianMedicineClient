@@ -1,0 +1,192 @@
+// start search section
+.search
+{
+  margin: 40px 0;
+  padding: 40px 0;
+}
+
+.search-form
+{
+  background: #FFFFFF;
+  border: 1.5px solid #305A72;
+  box-sizing: border-box;
+  border-radius:50px;
+  padding:25px;
+  margin: 5px 10px 0 30px;
+  width: 80%;
+}
+
+.search-form:hover,
+.search-form:focus
+{
+border: 1.5px solid #42B0EF;
+}
+
+.search-filter
+{
+  background: rgba(48, 90, 114, 0.87);
+  border-radius: 50px;
+  padding: 15px 30px;
+  border: none;
+  color: #FFFFFF;
+  letter-spacing: 1.5px;
+}
+
+.search-filter:hover,
+.search-filter:focus
+{
+  background: rgba(92, 138, 165, 0.87);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  font-size:20px;
+}
+.hidden
+{
+  margin: 0;
+  padding: 0;
+}
+
+// end search section
+
+// start search section
+
+.posts
+{
+  margin: 40px 0;
+}
+
+.posts .post-deploy
+{
+  font-weight: 600;
+  font-style: normal;
+}
+.posts .post-deploy > h2
+{
+    font-size:40px;
+    color: #000;
+}
+
+.posts .post-deploy > hr
+{
+  display: inline-block;
+  width: 15%;
+  height:2px;
+  background-color:#68A9CD ;
+  opacity: 1;
+  margin-top: 0;
+}
+
+.posts .post-content
+{
+  display: flex;
+  margin:auto;
+  padding:20px;
+}
+
+.posts .post-content >img
+{
+  width:80px;
+  height:80px;
+  border:1px solid rgba(181, 162, 235, 0.71);
+  box-sizing: border-box;
+}
+
+.posts .post-content  .post-content-info
+{
+  margin-left:20px;
+  margin-top:5px;
+  line-height:24px;
+  padding:10px;
+}
+
+.posts .post-content .post-content-info > h4
+{
+  font-size: 20px;
+  font-weight: 600;
+  font-style: normal;
+  color: #000;
+}
+.posts .post-content .post-content-info > span
+{
+  font-size: 18px;
+  color:rgba(0, 0, 0, 0.46);
+  letter-spacing:.5px;
+  font-weight: 600;
+}
+
+.posts .post-content .post-content-info > p
+{
+  margin:5px 0;
+  line-height:1.6;
+  font-size:15px;
+  word-break: break-all;
+  word-spacing: normal;
+}
+.posts .post-content .post-content-info > i
+{
+  padding-top: 5px;
+  transition:.3s;
+  margin-left: 10px;
+}
+.posts .post-content .post-content-info > i:hover
+{
+  margin-left: 2px;
+  cursor: pointer;
+}
+.posts .post-content .post-content-info > label
+{
+  padding-top: 5px;
+  margin-left: 4px;
+}
+.posts .post-content .post-content-info > a
+{
+  padding-top: 10px;
+  letter-spacing: 1px;
+  color: #000;
+  margin-left: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.posts .post-content .post-content-info > a:hover,
+.posts .post-content .post-content-info > a:visited
+{
+  padding-top: 5px;
+  text-decoration: none;
+}
+
+.posts .post-content .post-content-info >img
+{
+  display: block;
+  max-width: 80%;
+  border-radius: 100px;
+  border: solid 2px rgba(0,0,0,.46);
+  box-shadow:2px 2px rgba(0, 0, 0,.2);
+}
+// end search section
+
+
+// start pageination
+
+.pagination .page-item .page-link
+{
+  color: rgb(2, 0, 94);
+  font-size: 15px;
+  font-weight: 600;
+  margin:3px;
+}
+.pagination .page-item.active .page-link
+{
+  border-radius: 50px;
+  color: #ffffff;
+  background-color: rgb(2, 0, 94);
+  font-size: 18px;
+}
+
+.pagination .page-item .page-link:hover
+{
+  background-color: #42B0EF;
+  color: #FFFFFF;
+  border-radius: 20px;
+}
+
+// end pageniation
+

@@ -20,6 +20,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavbarComponent } from './Common/navbar/navbar.component';
 import { FooterComponent } from './Common/footer/footer.component';
+import { RegisterComponent } from './main/register/register.component';
+import { PostsComponent } from './main/posts/posts.component';
+import { MedicinesComponent } from './main/medicines/medicines.component';
 
 
 
@@ -28,7 +31,10 @@ import { FooterComponent } from './Common/footer/footer.component';
     AppComponent,
     MainComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    RegisterComponent,
+    PostsComponent,
+    MedicinesComponent
   ],
   imports: [
     BrowserModule,
