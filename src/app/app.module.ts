@@ -20,11 +20,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavbarComponent } from './Common/navbar/navbar.component';
 import { FooterComponent } from './Common/footer/footer.component';
-import { RegisterComponent } from './main/register/register.component';
 import { PostsComponent } from './main/posts/posts.component';
 import { MedicinesComponent } from './main/medicines/medicines.component';
 import { HospitalsComponent } from './main/hospitals/hospitals.component';
 import { NursesComponent } from './main/nurses/nurses.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { RouterModule } from '@angular/router';
+import { routes } from './routes';
 
 
 
@@ -34,11 +37,12 @@ import { NursesComponent } from './main/nurses/nurses.component';
     MainComponent,
     NavbarComponent,
     FooterComponent,
-    RegisterComponent,
     PostsComponent,
     MedicinesComponent,
     HospitalsComponent,
-    NursesComponent
+    NursesComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +61,7 @@ import { NursesComponent } from './main/nurses/nurses.component';
     MdbValidationModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

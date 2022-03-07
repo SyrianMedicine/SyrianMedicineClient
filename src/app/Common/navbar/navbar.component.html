@@ -1,6 +1,6 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand navbarItem" href="#">SYRIAN MEDICINE</a>
+      <a class="navbar-brand navbarItem" routerLink="/Main">SYRIAN MEDICINE</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#navbarColor03" aria-controls="navbarColor03"
         aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed=
@@ -12,34 +12,21 @@
         [ngbCollapse]="isCollapsed">
         <ul class="navbar-nav my-2 my-lg-0 navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#">HOSPITALS <span class="sr-only">(current)</span></a>
+            <a class="nav-link" routerLink="/Hospitals">HOSPITALS <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">DOCTORS</a>
+            <a class="nav-link" routerLink="/Doctors">DOCTORS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">NURSES</a>
+            <a class="nav-link" routerLink="/Nurses">NURSES</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">POSTS</a>
+            <a class="nav-link" routerLink="/Posts">POSTS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">LOGIN</a>
+            <a class="nav-link" routerLink="/Login">LOGIN</a>
           </li>
         </ul>
       </div>
     </nav>
-    <div
-      id="intro-example"
-      class="mainImage p-5 text-center bg-image"
-      style="background-image: url('assets/images/doctorCover.jpg');">
-      <div class="mask" style="background-color: rgba(0, 0, 0, 0.301);">
-        <div class="d-flex justify-content-left align-items-center h-100">
-          <div class="px-5 text-white">
-            <h1 class="mb-3">Syrian Medicine</h1>
-            <h1 class="mb-4">in your hands</h1>
-          </div>
-        </div>
-      </div>
-    </div>
   </header>
