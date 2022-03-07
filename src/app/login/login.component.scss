@@ -1,10 +1,162 @@
-body{
-    background-color: lightskyblue;
+section {
+    background-color: #f1f6fe;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .leftSide {
-    background-color: darkslategray;
-    // height: 100%;
-    // width: 50%;
-    border-radius: 0px 10px 10px 0px;
+    background-color: #305a72;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    border-radius: 0px 30px 30px 0px;
+}
+
+.loginImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}
+
+.logoLink {
+    color: rgb(243, 231, 231);
+    font-size: 2em;
+    text-align: center;
+}
+
+.leftSide a:hover {
+    color: #d9d9d9;
+}
+.login .form-card .card .card-header a.focus:link,
+.login .form-card .card .card-header a.focus:visited {
+    color: #5c4444;
+}
+.login .form-card .card .card-header a:hover {
+    color: #5c4444;
+}
+
+.login {
+    padding-left: auto;
+    padding-right: auto;
+}
+.headerForm {
+    text-align: center;
+}
+
+.login .container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.login .bgColor {
+    position: relative;
+    min-width: 100%;
+    height: auto;
+    border-radius: 0px 50px 50px 0px;
+    margin-bottom: 10px;
+}
+
+.login .bgColor .bgColor-title {
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    letter-spacing: 1px;
+    line-height: 48px;
+}
+
+.login .bgColor .bgColor-title #iconImage {
+    width: 40px;
+    height: 40px;
+}
+
+.login .bgColor .bgColor-title h2 {
+    font-size: 50px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.login .bgColor > i {
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 300px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.login .bgColor span {
+    font-size: 30px;
+    font-weight: 600;
+    font-style: normal;
+    color: #ffffff;
+    letter-spacing: 1px;
+    display: block;
+    text-align: center;
+    padding-bottom: 100px;
+}
+
+.login .form-card {
+    width: 100%;
+}
+
+.login .form-card .card {
+    top: 50%;
+    margin-left: 10%;
+    margin-right: 15%;
+    border-radius: 10%;
+}
+
+.login .form-card .card .card-header {
+    padding: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.login .form-card .card .card-header > a {
+    padding: 0 20px;
+    font-size: 25px;
+    color: #305a72;
+}
+
+.login .form-card .card-body {
+    padding: 20px 60px;
+    background: #ffffff;
+    border-radius: 50px;
+}
+
+.login .form-card .card-body .input_group {
+    background: #ffffff;
+    border: 0.5px solid #305a72;
+    box-sizing: border-box;
+    border-radius: 50px;
+    padding: 25px;
+    margin: 8px 0;
+}
+
+.login .form-card .card-body .login_btn {
+    background: #305a72;
+    border-radius: 50px;
+    font-style: 25px;
+    font-weight: 600;
+    font-style: normal;
+    color: #ffffff;
+    border: none;
+    padding: 10px 40px;
+    margin-top: 30px;
+    float: right;
+}
+
+.login .form-card .card-body .login_btn:hover,
+.login .form-card .card-body .login_btn:focus {
+    background: rgba(48, 90, 114, 0.64);
 }

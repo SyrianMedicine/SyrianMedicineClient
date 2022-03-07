@@ -1,8 +1,44 @@
-<body >
-    <section>
-        <div class="leftSide">
-            sas
-        </div>
-    </section>
 
-</body>
+<section class="login">
+    <div class="row p-0 m-0">
+        <div class="d-flex container">
+            <div class="col-lg-6">
+                <div class="leftSide">
+                    <div class="mt-5" style="text-align: center;">
+                        <a class="logoLink" routerLink="/Main">SYRIAN MEDICINE</a>
+                    </div>
+                    <div>
+                        <img class="loginImage"
+                            src="assets/images/doctorLogin.png"
+                            alt="doctor login image">
+                    </div>
+                    <div class="mt-2" style="text-align: center;">
+                        <p style="color:#FFCC8F ;">© 2022 Syrian Medicine. All
+                            Rights
+                            Reserved.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 form-card">
+                <div class="card">
+                    <div class="card-header">
+                        <a routerLink="/Login" class="focus">LOGIN</a>
+                        <a routerLink="/Register">REGISTER</a>
+                    </div>
+                    <div class="card-body text-center">
+                        <form action="#">
+                            <input type="text" placeholder="Username or Email"
+                                name="UserNameOrEmail" class="input_group" />
+                            <input type="password" placeholder="Password"
+                                name="password" class="input_group" />
+                            <button type="submit" class="login_btn"> LOGIN
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

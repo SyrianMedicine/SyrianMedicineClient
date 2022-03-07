@@ -1,1 +1,58 @@
-<p>register works!</p>
+
+<section class="register">
+    <div class="row p-0 m-0">
+        <div class="d-flex container">
+            <div class="col-lg-6">
+                <div class="leftSide">
+                    <div class="mt-5" style="text-align: center;">
+                        <a class="logoLink" routerLink="/Main">SYRIAN MEDICINE</a>
+                    </div>
+                    <div>
+                        <img class="registerImage"
+                            src="assets/images/nurseRegister.png"
+                            alt="doctor register image">
+                    </div>
+                    <div class="mt-2" style="text-align: center;">
+                        <p style="color:#FFCC8F ;">© 2022 Syrian Medicine. All
+                            Rights
+                            Reserved.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 form-card">
+                <div class="card">
+                    <div class="card-header">
+                        <a routerLink="/Login">LOGIN</a>
+                        <a routerLink="/Register" class="focus">REGISTER</a>
+                    </div>
+                    <div class="card-body text-center">
+                        <form action="#">
+                            <select class="select_group">
+                                <option id="1">Sick</option>
+                                <option id="2">Doctor</option>
+                                <option id="3">Nurse</option>
+                                <option id="4">Hospital</option>
+                            </select>
+                            <input type="text" placeholder="Username"
+                                name="UserName" class="input_group" />
+                            <input type="text" placeholder="Email"
+                                name="Email" class="input_group" />
+                            <input type="password" placeholder="Password"
+                                name="password" class="input_group" />
+                            <input type="text" placeholder="First Name"
+                                name="FirstName" class="input_group" />
+                            <input type="text" placeholder="Last Name"
+                                name="FirstName" class="input_group" />
+                            <input type="text" placeholder="PhoneNumber"
+                                name="PhoneNumber" class="input_group" />
+                            <button type="submit" class="register_btn"> REGISTER
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
