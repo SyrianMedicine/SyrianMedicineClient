@@ -37,7 +37,6 @@ border: 1.5px solid #42B0EF;
 {
   background: rgba(92, 138, 165, 0.87);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  font-size:20px;
 }
 .hidden
 {
@@ -65,14 +64,61 @@ border: 1.5px solid #42B0EF;
     color: #000;
 }
 
+@media (max-width:992px)
+{
+  .nurses .nurses-deploy > h2
+  {
+    font-size: 30px;
+  }
+}
+
+@media (max-width:768px)
+{
+  .nurses .nurses-deploy > h2
+  {
+    font-size: 25px;
+  }
+}
+
 .nurses .nurses-deploy > hr
 {
   display: inline-block;
-  width: 15%;
+  width:9%;
   height:2px;
   background-color:#68A9CD ;
   opacity: 1;
   margin-top: 0;
+}
+
+@media (max-width:768px)
+{
+    .nurses .nurses-deploy > hr
+  {
+    width:80px;
+  }
+}
+@media (min-width:768px) and (max-width:992px)
+{
+  .nurses .nurses-deploy > hr
+  {
+    width: 100px;
+  }
+}
+
+@media (min-width:992px) and (max-width:1200px)
+{
+  .nurses .nurses-deploy > hr
+  {
+    width: 130px;
+  }
+}
+
+@media (min-width:1200px)
+{
+  .nurses .nurses-deploy > hr
+  {
+    width: 132px;
+  }
 }
 
 .nurses .nurses-content

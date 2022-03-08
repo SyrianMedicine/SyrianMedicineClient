@@ -37,7 +37,6 @@ border: 1.5px solid #42B0EF;
 {
   background: rgba(92, 138, 165, 0.87);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  font-size:20px;
 }
 .hidden
 {
@@ -64,16 +63,55 @@ border: 1.5px solid #42B0EF;
     font-size:40px;
     color: #000;
 }
+@media (max-width:992px)
+{
+  .posts .post-deploy > h2
+  {
+    font-size: 30px;
+  }
+}
+
+@media (max-width:768px)
+{
+  .posts .post-deploy > h2
+  {
+    font-size: 25px;
+  }
+}
 
 .posts .post-deploy > hr
 {
   display: inline-block;
-  width: 15%;
+  width: 7.5%;
   height:2px;
-  background-color:#68A9CD ;
+  background-color:#68A9CD;
   opacity: 1;
   margin-top: 0;
 }
+
+@media (max-width:768px)
+{
+    .posts .post-deploy > hr
+  {
+    width:65px;
+  }
+}
+@media (min-width:768px) and (max-width:992px)
+{
+  .posts .post-deploy > hr
+  {
+    width: 80px;
+  }
+}
+
+@media (min-width:992px) and (max-width:1200px)
+{
+  .posts .post-deploy > hr
+  {
+    width: 100px;
+  }
+}
+
 
 .posts .post-content
 {
@@ -129,13 +167,15 @@ border: 1.5px solid #42B0EF;
 }
 .posts .post-content .post-content-info > i:hover
 {
-  margin-left: 2px;
+  color: rgb(252, 0, 0);
   cursor: pointer;
 }
 .posts .post-content .post-content-info > label
 {
   padding-top: 5px;
   margin-left: 4px;
+  color: #000;
+  font-weight: 500;
 }
 .posts .post-content .post-content-info > a
 {
@@ -146,8 +186,7 @@ border: 1.5px solid #42B0EF;
   text-decoration: none;
   cursor: pointer;
 }
-.posts .post-content .post-content-info > a:hover,
-.posts .post-content .post-content-info > a:visited
+.posts .post-content .post-content-info  a:hover
 {
   padding-top: 5px;
   text-decoration: none;
@@ -160,6 +199,7 @@ border: 1.5px solid #42B0EF;
   border-radius: 100px;
   border: solid 2px rgba(0,0,0,.46);
   box-shadow:2px 2px rgba(0, 0, 0,.2);
+  margin: 15px auto auto auto;
 }
 // end search section
 
