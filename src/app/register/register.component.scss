@@ -22,15 +22,23 @@ section {
 
 .registerImage {
     display: block;
+    position: relative;
     margin-left: auto;
     margin-right: auto;
-    width: 95%;
+    height: 550px;
+    width: 250px;
 }
 
 .logoLink {
     color: rgb(243, 231, 231);
     font-size: 2em;
     text-align: center;
+}
+.logoLink2 {
+    color: #305a72;
+    font-size: 2em;
+    text-align: center;
+    display: none;
 }
 
 .leftSide a:hover {
@@ -107,10 +115,11 @@ section {
 
 .register .form-card {
     width: 100%;
+    top: 20%;
 }
 
 .register .form-card .card {
-    top: 2%;
+    top: 20%;
     margin-left: 10%;
     margin-right: 15%;
     border-radius: 10%;
@@ -162,11 +171,88 @@ section {
     color: #ffffff;
     border: none;
     padding: 10px 40px;
-    margin-top: 30px;
+    margin-top: 44px;
     float: right;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    background: #305a72;
+    color: #ffffff;
+    border: 1px solid #ccc;
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 40px;
+    text-align: left;
+    float: left;
+    border-radius: 50px;
+}
+.custom-file-upload:hover {
+    background: rgba(48, 90, 114, 0.64);
 }
 
 .register .form-card .card-body .register_btn:hover,
 .register .form-card .card-body .register_btn:focus {
     background: rgba(48, 90, 114, 0.64);
+}
+
+@media screen and (max-width: 992px) {
+    .leftSide {
+        display: none;
+    }
+    .logoLink2 {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .register .form-card {
+        margin-top: auto;
+        // top: 5%;
+    }
+}
+
+@media screen and (max-height: 710px) {
+    .register .form-card {
+        margin-top: 1px;
+        top: 0;
+    }
+}
+@media screen and (max-height: 620px) {
+    .register .form-card {
+        margin-top: 0px;
+        top: 0;
+    }
+    .register .form-card .card-body .register_btn {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-height: 670px) {
+    .leftSide {
+        position: fixed;
+        align-items: center;
+        text-align: center;
+    }
+    .bottomText {
+        bottom: 0;
+        position: absolute;
+        align-items: center;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+    }
+    .registerImage {
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        width: 300px;
+        height: 70%;
+        left: 0;
+        right: 0;
+    }
 }

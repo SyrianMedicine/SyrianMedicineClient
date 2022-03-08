@@ -22,15 +22,23 @@ section {
 
 .loginImage {
     display: block;
+    position: relative;
     margin-left: auto;
     margin-right: auto;
-    width: 95%;
+    height: 550px;
+    width: 250px;
 }
 
 .logoLink {
     color: rgb(243, 231, 231);
     font-size: 2em;
     text-align: center;
+}
+.logoLink2 {
+    color: #305a72;
+    font-size: 2em;
+    text-align: center;
+    display: none;
 }
 
 .leftSide a:hover {
@@ -107,10 +115,11 @@ section {
 
 .login .form-card {
     width: 100%;
+    top: 30%;
 }
 
 .login .form-card .card {
-    top: 50%;
+    top: 40%;
     margin-left: 10%;
     margin-right: 15%;
     border-radius: 10%;
@@ -143,6 +152,16 @@ section {
     margin: 8px 0;
 }
 
+.login .form-card .card-body .select_group {
+    background: #ffffff;
+    border: 0.5px solid #305a72;
+    box-sizing: border-box;
+    border-radius: 50px;
+    width: 100%;
+    padding: 17px;
+    margin: 8px 0;
+}
+
 .login .form-card .card-body .login_btn {
     background: #305a72;
     border-radius: 50px;
@@ -152,11 +171,91 @@ section {
     color: #ffffff;
     border: none;
     padding: 10px 40px;
-    margin-top: 30px;
+    margin-top: 44px;
     float: right;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    background: #305a72;
+    color: #ffffff;
+    border: 1px solid #ccc;
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 40px;
+    text-align: left;
+    float: left;
+    border-radius: 50px;
+}
+.custom-file-upload:hover {
+    background: rgba(48, 90, 114, 0.64);
 }
 
 .login .form-card .card-body .login_btn:hover,
 .login .form-card .card-body .login_btn:focus {
     background: rgba(48, 90, 114, 0.64);
+}
+
+@media screen and (max-width: 992px) {
+    .leftSide {
+        display: none;
+    }
+    .logoLink2 {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .login .form-card {
+        margin-top: auto;
+        // top: 5%;
+    }
+}
+
+@media screen and (max-height: 710px) {
+    .login .form-card {
+        margin-top: 1px;
+        top: 0;
+    }
+}
+@media screen and (max-height: 620px) {
+    .login .form-card {
+        margin-top: 0px;
+        top: 0;
+    }
+    .login .form-card .card-body .login_btn {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-height: 670px) {
+    .login .form-card .card {
+        top:10%;
+    }
+    .leftSide {
+        position: fixed;
+        align-items: center;
+        text-align: center;
+    }
+    .bottomText {
+        bottom: 0;
+        position: absolute;
+        align-items: center;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+    }
+    .loginImage {
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        width: 300px;
+        height: 70%;
+        left: 0;
+        right: 0;
+    }
 }

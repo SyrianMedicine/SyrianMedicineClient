@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
+  typeAccount = 1;
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  selectOption(id: any) {
+    this.typeAccount = id;
+    console.log(id);
+  }
 }
