@@ -210,7 +210,7 @@ input[type="file"] {
 @media screen and (max-width: 1200px) {
     .login .form-card {
         margin-top: auto;
-        // top: 5%;
+        top: 5%;
     }
 }
 
@@ -219,6 +219,7 @@ input[type="file"] {
         margin-top: 1px;
         top: 0;
     }
+    
 }
 @media screen and (max-height: 620px) {
     .login .form-card {
@@ -228,9 +229,14 @@ input[type="file"] {
     .login .form-card .card-body .login_btn {
         margin-top: 10px;
     }
+    .form-card {
+        margin: auto;
+        top:1%;
+    }
 }
 
 @media screen and (max-height: 670px) {
+   
     .login .form-card .card {
         top:10%;
     }

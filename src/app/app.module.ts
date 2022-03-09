@@ -28,6 +28,10 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './routes';
+import { SickProfileComponent } from './profiles/sick-profile/sick-profile.component';
+import { HospitalProfileComponent } from './profiles/hospital-profile/hospital-profile.component';
+import { DoctorProfileComponent } from './profiles/doctor-profile/doctor-profile.component';
+import { NurseProfileComponent } from './profiles/nurse-profile/nurse-profile.component';
 
 
 
@@ -42,7 +46,11 @@ import { routes } from './routes';
     HospitalsComponent,
     NursesComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SickProfileComponent,
+    HospitalProfileComponent,
+    DoctorProfileComponent,
+    NurseProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,250 @@
+section {
+    overflow: hidden; /* Hide scrollbars */
+}
+
+.panel-body {
+    background: #fff;
+}
+
+.cover-photo {
+    position: relative;
+}
+
+.fb-timeline-img img {
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;
+}
+
+.profile-thumb img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    margin-top: -90px;
+    border: 3px solid #fff;
+}
+
+.profile-info .panel-footer ul li {
+    color: #7a7a7a;
+}
+
+.profile-thumb {
+    float: left;
+    position: relative;
+}
+
+.p-text-area,
+.p-text-area:focus {
+    border: none;
+    font-weight: 300;
+    box-shadow: none;
+    color: #c3c3c3;
+    font-size: 16px;
+}
+
+.user-info {
+    margin-top: 6px;
+    display: inline-block;
+    color: block;
+}
+
+.user-info2 {
+    display: flex;
+    margin-left: 150px;
+    color: block;
+}
+
+.rightItems {
+    float: right;
+    margin-top: 6px;
+    display: inline-block;
+}
+.clearFloat {
+    clear: both;
+}
+.followBtn {
+    background: rgba(48, 90, 114, 0.87);
+    border-radius: 50px;
+    padding: 10px;
+    border: none;
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-size: 0.8em;
+}
+
+.centerBtn {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.ShowMore {
+    background: rgba(48, 90, 114, 0.548);
+    border-radius: 50px;
+    padding: 10px;
+    border: none;
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-size: 0.8em;
+}
+
+.fa-cog:hover {
+    color: rgba(61, 67, 71, 0.87);
+}
+
+@media screen and(max-width:700px) {
+    .user-info2 {
+        margin-bottom: 15px;
+        margin-left: auto;
+        padding-left: auto;
+        margin-right: auto;
+        display: block;
+        float: left;
+    }
+}
+
+@media screen and(max-width:332px) {
+    .user-info,
+    .user-info2 {
+        margin-bottom: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        // text-align: center;
+        display: block;
+        float: left;
+    }
+}
+
+.posts .secondHr hr {
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 2px;
+    color: blue;
+}
+
+.followBtn:hover,
+.followBtn:focus {
+    background: rgba(92, 138, 165, 0.87);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.ShowMore:hover,
+.ShowMore:focus {
+    background: rgba(92, 138, 165, 0.918);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+body {
+    background-image: linear-gradient(#4a148c, #e53935);
+    background-repeat: no-repeat;
+    color: #000;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+a:hover {
+    color: #455a64;
+}
+
+.card {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+//////
+
+.posts {
+    margin: 0px;
+}
+
+.posts .post-deploy {
+    font-weight: 600;
+    font-style: normal;
+}
+
+.posts .post-content {
+    display: flex;
+    margin: auto;
+    padding: 8px;
+}
+
+.posts .post-content > img {
+    width: 80px;
+    height: 80px;
+    border: 1px solid rgba(181, 162, 235, 0.71);
+    box-sizing: border-box;
+}
+
+.posts .post-content .post-content-info {
+    margin-left: 20px;
+    margin-top: 5px;
+    line-height: 24px;
+}
+
+.posts .post-content .post-content-info > h4 {
+    font-size: 15px;
+    font-weight: 600;
+    font-style: normal;
+    color: #000;
+}
+.posts .post-content .post-content-info > span {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.46);
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.posts .post-content .post-content-info > p {
+    margin: 5px 0;
+    line-height: 1.6;
+    font-size: 13px;
+    word-break: break-all;
+    word-spacing: normal;
+}
+.posts .post-content .post-content-info > i {
+    padding-top: 5px;
+    transition: 0.3s;
+}
+.posts .post-content .post-content-info > i:hover {
+    color: rgb(252, 0, 0);
+    cursor: pointer;
+}
+.posts .post-content .post-content-info > label {
+    padding-top: 5px;
+    margin-left: 1px;
+    color: #000;
+    font-weight: 500;
+}
+.posts .post-content .post-content-info > a {
+    padding-top: 10px;
+    color: #000;
+    margin-left: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.79em;
+}
+.posts .post-content .post-content-info a:hover {
+    padding-top: 5px;
+    text-decoration: none;
+}
+
+.posts .post-content .post-content-info > img {
+    display: block;
+    max-width: 100%;
+    border-radius: 100px;
+    border: solid 2px rgba(0, 0, 0, 0.46);
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+    margin: 15px auto auto auto;
+}

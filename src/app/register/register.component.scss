@@ -156,6 +156,7 @@ section {
     background: #ffffff;
     border: 0.5px solid #305a72;
     box-sizing: border-box;
+    outline:0px;
     border-radius: 50px;
     width: 100%;
     padding: 17px;
@@ -210,27 +211,36 @@ input[type="file"] {
 @media screen and (max-width: 1200px) {
     .register .form-card {
         margin-top: auto;
-        // top: 5%;
+        top: 5%;
     }
 }
 
 @media screen and (max-height: 710px) {
     .register .form-card {
         margin-top: 1px;
-        top: 0;
+        top: 3%;
     }
+    
 }
 @media screen and (max-height: 620px) {
     .register .form-card {
         margin-top: 0px;
-        top: 0;
+        top: 2%;
     }
     .register .form-card .card-body .register_btn {
         margin-top: 10px;
     }
+    .form-card {
+        margin: auto;
+        top:1%;
+    }
 }
 
 @media screen and (max-height: 670px) {
+   
+    .register .form-card .card {
+        top:10%;
+    }
     .leftSide {
         position: fixed;
         align-items: center;

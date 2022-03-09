@@ -11,6 +11,5 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  name = 'Angular';
   public isCollapsed = true;
 }
