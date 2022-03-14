@@ -15,7 +15,7 @@
                             src="assets/images/doctorRegister.png"
                             alt="doctor register image">
                         <img class="registerImage" *ngIf="this.typeAccount ==3"
-                            src="assets/images/nurseRegister.png" 
+                            src="assets/images/nurseRegister.png"
                             alt="doctor register image">
                         <img class="registerImage" *ngIf="this.typeAccount ==4"
                             src="assets/images/hospitalRegister.png"
@@ -32,7 +32,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-6 form-card">
+            <div class="mt-0 col-lg-6 form-card">
                 <div class="mb-0" style="text-align: center;">
                     <a class="logoLink2" routerLink="/Main">SYRIAN MEDICINE</a>
                 </div>
@@ -42,34 +42,291 @@
                         <a routerLink="/Login">LOGIN</a>
                         <a routerLink="/Register" class="focus">REGISTER</a>
                     </div>
-                    <div class="card-body text-center">
-                        <form action="#">
-                            <select class="select_group"
-                                (change)="selectOption($any($event.target).value)">
-                                <option [value]="1">Sick</option>
-                                <option [value]="2">Doctor</option>
-                                <option [value]="3">Nurse</option>
-                                <option [value]="4">Hospital</option>
-                            </select>
-                            <input type="text" placeholder="Username"
-                                name="UserName" class="input_group" />
-                            <input type="text" placeholder="Email"
-                                name="Email" class="input_group" />
-                            <input type="password" placeholder="Password"
-                                name="password" class="input_group" />
+
+                    <!-- phase 1 -->
+                    <div class="card-body text-center mt-0"
+                        *ngIf="this.registerPhase1">
+                        <form [formGroup]="registerFormPhase1"
+                            (ngSubmit)="onSubmitPhase1($event)">
+                            <div class="row">
+                                <select class="select_group"
+                                    (change)="selectOption($any($event.target).value)">
+                                    <option [value]="1">Sick</option>
+                                    <option [value]="2">Doctor</option>
+                                    <option [value]="3">Nurse</option>
+                                    <option [value]="4">Hospital</option>
+                                </select>
+                                <input type="text" placeholder="Username"
+                                    class="input_group"
+                                    name="userNameInput" id="userNameInput"
+                                    required
+                                    formControlName="userNameInput" />
+                                <input type="email" placeholder="Email"
+                                    class="input_group"
+                                    required
+                                    formControlName="emailInput"
+                                    name="emailInput" id="emailInput"
+                                    />
+                                <div class="div-password">
+                                    <input [type]="showPassword? 'text'
+                                        :'password'"
+                                        placeholder="Password"
+                                        class="input_groupPassword"
+                                        required
+                                        formControlName="passwordInput"
+                                        name="passwordInput" id="passwordInput"
+                                        />
+                                    <button type="button"
+                                        [class]="showPassword ? 'fa fa-eye
+                                        show-hide-password no-select' : 'fa
+                                        fa-eye-slash show-hide-password
+                                        no-select'"
+                                        (click)="toggleShow()" tabindex="-1">
+                                    </button>
+                                </div>
+                            </div>
+
                             <div class="mt-2 mb-4"
                                 *ngIf="this.typeAccount !=1">
-                                <label for="docs"
+                                <label for="filesInput"
                                     class="custom-file-upload">
                                     Upload your Documents
                                 </label>
-                                <input id="docs" type="file" multiple/>
+                                <input type="file" multiple
+                                    name="filesInput" id="filesInput"
+                                    (change)="handleFileInput($event)" />
                             </div>
-                            <button type="submit" class="register_btn">
+                            <button class="register_btn mt-2"
+                                [disabled]="!registerFormPhase1.valid"
+                                type="submit">
                                 REGISTER
                             </button>
                         </form>
                     </div>
+
+                    <!-- phase 2 -->
+                    <div class="card-body text-center mt-0"
+                        *ngIf="this.registerPhase2">
+                        <form [formGroup]="registerFormPhase2"
+                            (ngSubmit)="onSubmitPhase2($event)">
+                            <div class="row">
+                                <input type="text" placeholder="FirstName"
+                                    class="input_group"
+                                    name="firstNameInput" id="firstNameInput"
+                                    required
+                                    style="width:45%"
+                                    formControlName="firstNameInput" />
+                                <input type="text" placeholder="LastName"
+                                    class="input_group"
+                                    name="lastNameInput" id="lastNameInput"
+                                    required
+                                    style="width:45%"
+                                    formControlName="lastNameInput" />
+                                <input type="text" placeholder="PhoneNumber"
+                                    class="input_group"
+                                    name="phoneNumberInput"
+                                    id="phoneNumberInput"
+                                    required
+                                    formControlName="phoneNumberInput" />
+                                <input type="text" placeholder="HomeNumber"
+                                    class="input_group"
+                                    name="homeNumberInput"
+                                    id="homeNumberInput"
+                                    required
+                                    formControlName="homeNumberInput" />
+                                <select class="select_group"
+                                    style="width:45%"
+                                    name="selectCityInput"
+                                    >
+                                    <option *ngFor="let item of cities"
+                                        [value]="item.name">
+                                        {{ item.name }}
+                                    </option> </select>
+                                <select class="select_group"
+                                    style="width:45%"
+                                    name="selectStateInput"
+                                    >
+                                    <option *ngFor="let item of personStates"
+                                        [value]="item.id">
+                                        {{ item.name }}
+                                    </option> </select>
+                                <input type="text" placeholder="Your location"
+                                    class="input_group"
+                                    name="locationInput"
+                                    id="locationInput"
+                                    required
+                                    formControlName="locationInput" />
+                                <mat-radio-group aria-label="Select an option"
+                                    name="genderInput">
+                                    <mat-radio-button class="mr-2" value="1">Male</mat-radio-button>
+                                    <mat-radio-button value="2">Female</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+
+                            <button class="register_btn mt-3"
+                                *ngIf="this.typeAccount==2 ||
+                                this.typeAccount==3"
+                                [disabled]="!registerFormPhase2.valid"
+                                type="submit">
+                                COMPLETE REGISTER
+                            </button>
+
+                            <button class="register_btn mt-3"
+                                *ngIf="this.typeAccount==1"
+                                [disabled]="!registerFormPhase2.valid"
+                                type="submit">
+                                Done
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- hospital phase -->
+                    <div class="card-body text-center mt-0"
+                        *ngIf="this.hospitalRegisterPhase">
+                        <form [formGroup]="hospitalRegisterFormPhase"
+                            (ngSubmit)="onSubmitPhase2($event)">
+                            <div class="row mt-0">
+                                <input type="text" placeholder="Name"
+                                    class="input_group mt-0"
+                                    name="nameInput" id="nameInput"
+                                    required
+                                    style="width:45%"
+                                    formControlName="nameInput" />
+                                <input type="text" placeholder="Website"
+                                    class="input_group mt-0"
+                                    name="websiteInput" id="websiteInput"
+                                    required
+                                    style="width:45%"
+                                    formControlName="websiteInput" />
+                                <input type="text" placeholder="PhoneNumber"
+                                    class="input_group"
+                                    name="phoneNumberInput"
+                                    id="phoneNumberInput"
+                                    required
+                                    formControlName="phoneNumberInput" />
+                                <input type="text" placeholder="HomeNumber"
+                                    class="input_group"
+                                    name="homeNumberInput"
+                                    id="homeNumberInput"
+                                    required
+                                    formControlName="homeNumberInput" />
+                                <select class="select_group"
+                                    style="width:45%"
+                                    name="selectCityInput"
+                                    >
+                                    <option *ngFor="let item of cities"
+                                        [value]="item.name">
+                                        {{ item.name }}
+                                    </option> </select>
+                                <input type="text" placeholder="Your location"
+                                    class="input_group"
+                                    name="locationInput"
+                                    id="locationInput"
+                                    required
+                                    formControlName="locationInput" />
+                                <mat-form-field appearance="fill">
+                                    <mat-label>About Me</mat-label>
+                                    <textarea matInput
+                                        name="AboutMeInput"
+                                        style="resize: none; width:90%;"
+                                        id="AboutMeInput"
+                                        required
+                                        formControlName="AboutMeInput"></textarea>
+                                </mat-form-field>
+                            </div>
+                            <button class="register_btn mt-3"
+                                [disabled]="!hospitalRegisterFormPhase.valid"
+                                type="submit">
+                                Done
+                            </button>
+                        </form>
+                    </div>
+
+
+                    <!-- phase 3 -->
+                    <div class="card-body mt-0"
+                        *ngIf="this.registerPhase3">
+                        <form [formGroup]="registerFormPhase3"
+                            (ngSubmit)="onSubmitPhase3($event)">
+                            <div class="mt-0 row">
+                                <label style="float:left;">Choose time you will
+                                    start working </label>
+                                <input type="number" placeholder="hours"
+                                    class="input_group mt-0"
+                                    name="fromHoursInput" id="fromHoursInput"
+                                    required
+                                    min="0"
+                                    max="23"
+                                    style="width:45%"
+                                    formControlName="fromHoursInput" />
+                                <input type="number" placeholder="Minutes"
+                                    class="input_group mt-0"
+                                    name="fromMinutesInput"
+                                    id="fromMinutesInput"
+                                    required
+                                    min="0"
+                                    max="59"
+                                    style="width:45%"
+                                    formControlName="fromMinutesInput" />
+                                <label style="float:left;" class="mr-2">Choose
+                                    time you will end working </label>
+                                <input type="number" placeholder="Hours"
+                                    class="input_group"
+                                    name="toHoursInput" id="toHoursInput"
+                                    required
+                                    min="0"
+                                    max="23"
+                                    style="width:45%"
+                                    formControlName="toHoursInput" />
+                                <input type="number" placeholder="Minutes"
+                                    class="input_group"
+                                    name="toMinutesInput"
+                                    id="toMinutesInput"
+                                    required
+                                    min="0"
+                                    max="59"
+                                    style="width:45%"
+                                    formControlName="toMinutesInput" />
+                                <div style="display: flexbox;">
+
+                                    <input type="text"
+                                        placeholder="Specialization"
+                                        class="input_group ml-0 mr-1"
+                                        name="specializationInput"
+                                        id="specializationInput"
+                                        style="width:100%;" required
+                                        formControlName="specializationInput" />
+                                    <mat-radio-group name="workForHomeInput"
+                                        formControlName="workForHomeInput"
+                                        id="workForHomeInput">
+                                        <mat-label>Do you work for home?</mat-label>
+                                        <mat-radio-button class="mr-2"
+                                            value="1">YES</mat-radio-button>
+                                        <mat-radio-button value="2">NO</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                                <div>
+                                </div>
+
+                                <mat-form-field appearance="fill">
+                                    <mat-label>About Me</mat-label>
+                                    <textarea matInput
+                                        name="AboutMeInput"
+                                        style="resize: none; width:90%;"
+                                        id="AboutMeInput"
+                                        required
+                                        formControlName="AboutMeInput"></textarea>
+                                </mat-form-field>
+                            </div>
+
+                            <button class="register_btn mt-2"
+                                [disabled]="!registerFormPhase3.valid"
+                                type="submit">
+                                DONE
+                            </button>
+                        </form>
+                    </div>
+
                 </div>
             </div>
 

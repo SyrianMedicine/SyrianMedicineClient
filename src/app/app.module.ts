@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main/main.component';
@@ -25,14 +24,36 @@ import { MedicinesComponent } from './main/medicines/medicines.component';
 import { HospitalsComponent } from './main/hospitals/hospitals.component';
 import { NursesComponent } from './main/nurses/nurses.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './routes';
 import { SickProfileComponent } from './profiles/sick-profile/sick-profile.component';
 import { HospitalProfileComponent } from './profiles/hospital-profile/hospital-profile.component';
 import { DoctorProfileComponent } from './profiles/doctor-profile/doctor-profile.component';
 import { NurseProfileComponent } from './profiles/nurse-profile/nurse-profile.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './register/register.component';
+import { RegisterDialogComponent } from './register/dialogs/registerDialog/register-dialog/register-dialog.component';
+import { MatButtonModule } from '@angular/material/button'
+import { MatButtonToggleModule } from '@angular/material/button-toggle'
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { MatCardModule } from '@angular/material/card'
+import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatChipsModule } from '@angular/material/chips'
+import { MatStepperModule } from '@angular/material/stepper'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatExpansionModule } from '@angular/material/expansion'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatGridListModule } from '@angular/material/grid-list'
+import { MatIconModule } from '@angular/material/icon'
+import { MatInputModule } from '@angular/material/input'
+import { MatListModule } from '@angular/material/list'
+import { MatMenuModule } from '@angular/material/menu'
+import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatRadioModule } from '@angular/material/radio'
+import { MatSelectModule } from '@angular/material/select'
 
 
 @NgModule({
@@ -44,13 +65,14 @@ import { NurseProfileComponent } from './profiles/nurse-profile/nurse-profile.co
     PostsComponent,
     MedicinesComponent,
     HospitalsComponent,
+    RegisterComponent,
     NursesComponent,
     LoginComponent,
-    RegisterComponent,
     SickProfileComponent,
     HospitalProfileComponent,
     DoctorProfileComponent,
-    NurseProfileComponent
+    NurseProfileComponent,
+    RegisterDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +84,7 @@ import { NurseProfileComponent } from './profiles/nurse-profile/nurse-profile.co
     MdbPopoverModule,
     MdbRadioModule,
     MdbRangeModule,
+    HttpClientModule,
     MdbRippleModule,
     MdbScrollspyModule,
     MdbTabsModule,
@@ -69,7 +92,40 @@ import { NurseProfileComponent } from './profiles/nurse-profile/nurse-profile.co
     MdbValidationModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatSelectModule
+
+    // MatRippleModule,
+    // MatSidenavModule,
+    // MatSliderModule,
+    // MatSlideToggleModule,
+    // MatSnackBarModule,
+    // MatSortModule,
+    // MatTableModule,
+    // MatTabsModule,
+    // MatToolbarModule,
+    // MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

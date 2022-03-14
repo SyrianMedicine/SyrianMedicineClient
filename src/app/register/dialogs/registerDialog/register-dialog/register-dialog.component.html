@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>Alert!</h2>
+<mat-dialog-content>
+  <mat-card-subtitle>
+    <p>The data you are input not valid beacuse:</p>
+  </mat-card-subtitle>
+  <mat-action-list>
+    <p *ngIf="this.data.usernameExist">- Username is Exist.</p>
+    <p *ngIf="this.data.emailExist">- Email is Exist.</p>
+
+    <p *ngIf="this.data.filesExist">- please add your documents.</p>
+
+    <p *ngIf="this.data.passwordNotHaveUpperCaseCharachter">- Password must
+      have
+      at least one uppercase character.</p>
+
+    <p *ngIf="this.data.passwordNotHaveLoweCaseCharachter">- Password must
+      have
+      at least one lowecase character.</p>
+
+    <p *ngIf="this.data.passwordNotHaveAtLeastOneNumber">- Password must have
+      at least one digit.</p>
+
+    <p *ngIf="this.data.passwordNotHaveValidLength">- Password must
+      have
+      at least 8 characters.</p>
+
+    <p *ngIf="this.data.passwordNotHaveAtLeastOneSpeical">- Password must
+      have
+      at least one special character.</p>
+
+    <p *ngIf="this.data.emailNotValid">- please add valid email.</p>
+  </mat-action-list>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Okay</button>
+</mat-dialog-actions>

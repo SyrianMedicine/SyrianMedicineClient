@@ -1,32 +1,57 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand navbarItem" routerLink="/Main" style="font-weight: semi-bold;">SYRIAN MEDICINE</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse"
-        data-target="#navbarColor03" aria-controls="navbarColor03"
-        aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed=
-        !isCollapsed">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-  
-      <div class="collapse navbar-collapse navbarItem" id="navbarColor03"
-        [ngbCollapse]="isCollapsed">
-        <ul class="navbar-nav my-2 my-lg-0 navbar-nav" style="font-size:0.83em">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/Hospitals">HOSPITALS <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/Doctors">DOCTORS</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/Nurses">NURSES</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/Posts">POSTS</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/Login">LOGIN</a>
-          </li>
-        </ul>
-      </div>
+        <a class="navbar-brand navbarItem" routerLink="/Main"
+            style="font-weight: semi-bold;">SYRIAN MEDICINE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarColor03" aria-controls="navbarColor03"
+            aria-expanded="false" aria-label="Toggle navigation"
+            (click)="isCollapsed=
+            !isCollapsed">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse navbarItem" id="navbarColor03"
+            [ngbCollapse]="isCollapsed">
+            <ul class="navbar-nav my-2 my-lg-0 navbar-nav"
+                style="font-size:1em">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/Hospitals">HOSPITALS <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/Doctors">DOCTORS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/Nurses">NURSES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/Posts">POSTS</a>
+                </li>
+                <li class="nav-item">
+                    <a *ngIf="!this.userLogin" class="nav-link"
+                        routerLink="/Login">LOGIN</a>
+                    <div *ngIf="this.userLogin">
+                        <button mat-icon-button [matMenuTriggerFor]="menu"
+                            aria-label="Example icon-button with a menu">
+                            <mat-icon>face</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item>
+                                <mat-icon>account_box</mat-icon>
+                                <span>Profile</span>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon>settings</mat-icon>
+                                <span>Settings</span>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon>power_settings_new</mat-icon>
+                                <span>Logout</span>
+                            </button>
+                        </mat-menu>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </nav>
-  </header>
+</header>
