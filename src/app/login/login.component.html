@@ -30,12 +30,39 @@
                         <a routerLink="/Register">REGISTER</a>
                     </div>
                     <div class="card-body text-center">
-                        <form action="#">
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit($event)">
+                            <select class="select_group"
+                                (change)="selectOption($any($event.target).value)">
+                                <option [value]="1">Admin</option>
+                                <option [value]="2">Sick</option>
+                                <option [value]="3">Doctor</option>
+                                <option [value]="4">Nurse</option>
+                                <option [value]="5">Hospital</option>
+                            </select>
                             <input type="text" placeholder="Username or Email"
-                                name="UserNameOrEmail" class="input_group" />
-                            <input type="password" placeholder="Password"
-                                name="password" class="input_group" />
-                            <button type="submit" class="login_btn"> LOGIN
+                                name="userNameOrEmailInput"
+                                id="userNameOrEmailInput"
+                                class="input_group"
+                                formControlName="userNameOrEmailInput" />
+                                <div class="div-password">
+                                    <input [type]="showPassword? 'text'
+                                        :'password'"
+                                        placeholder="Password"
+                                        class="input_groupPassword"
+                                        required
+                                        formControlName="passwordInput"
+                                        name="passwordInput" id="passwordInput"
+                                        />
+                                    <button type="button"
+                                        [class]="showPassword ? 'fa fa-eye
+                                        show-hide-password no-select' : 'fa
+                                        fa-eye-slash show-hide-password
+                                        no-select'"
+                                        (click)="toggleShow()" tabindex="-1">
+                                    </button>
+                                </div>
+                            <button type="submit" class="login_btn"
+                                [disabled]="!loginForm.valid"> LOGIN
                             </button>
                         </form>
                     </div>

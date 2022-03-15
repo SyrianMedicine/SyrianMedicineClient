@@ -149,7 +149,11 @@ section {
     box-sizing: border-box;
     border-radius: 50px;
     padding: 25px;
-    margin: 8px 0;
+    margin: 6px 0;
+    margin-left: 0px;
+    width:92%;
+
+
 }
 
 .login .form-card .card-body .select_group {
@@ -157,9 +161,11 @@ section {
     border: 0.5px solid #305a72;
     box-sizing: border-box;
     border-radius: 50px;
-    width: 100%;
     padding: 17px;
-    margin: 8px 0;
+    margin: 6px 0;
+    margin-left: 0px;
+    width:92%;
+
 }
 
 .login .form-card .card-body .login_btn {
@@ -173,6 +179,7 @@ section {
     padding: 10px 40px;
     margin-top: 44px;
     float: right;
+    
 }
 
 input[type="file"] {
@@ -264,4 +271,32 @@ input[type="file"] {
         left: 0;
         right: 0;
     }
+}
+
+
+.login .form-card .card-body .input_groupPassword {
+    background: #ffffff;
+    border: 0.5px solid #305a72;
+    box-sizing: border-box;
+    border-radius: 50px;
+    padding: 25px;
+    margin: 8px 0;
+    margin-left: 10px;
+}
+.div-password {
+    display: flex;
+    flex-wrap: nowrap;
+    width:100%;
+}
+
+.show-hide-password {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 50px;
+    position: relative;
+    right: 40px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
 }
