@@ -72,14 +72,10 @@ export class RegisterComponent implements OnInit {
 
     this.registerService.getCities().subscribe(data => {
       this.cities = data;
-    }, err => {
-      console.log("error when get cities because: " + err);
     });
 
     this.registerService.getStates().subscribe(data => {
       this.personStates = data;
-    }, err => {
-      console.log("error when get person states because: " + err);
     });
   }
 
@@ -181,7 +177,7 @@ export class RegisterComponent implements OnInit {
         localStorage.setItem('token', data.data.token);
         this.router.navigateByUrl("/");
       }, err => {
-        this.snackBar.open(err.message, 'close', {
+        this.snackBar.open(err, 'close', {
           duration: 3000,
           horizontalPosition: 'start',
           verticalPosition: 'bottom',
@@ -218,14 +214,13 @@ export class RegisterComponent implements OnInit {
         localStorage.setItem('token', data.data.token);
         this.router.navigateByUrl("/");
       }, err => {
-        this.snackBar.open(err.message, 'close', {
+        this.snackBar.open(err, 'close', {
           duration: 3000,
           horizontalPosition: 'start',
           verticalPosition: 'bottom',
         });
       });
     }
-
   }
 
   async openDialog(userNameExist: boolean, emailExist: boolean, filesEmptyExist: boolean,
@@ -272,7 +267,7 @@ export class RegisterComponent implements OnInit {
         localStorage.setItem('token', data.data.token);
         this.router.navigateByUrl("/");
       }, err => {
-        this.snackBar.open(err.message, 'close', {
+        this.snackBar.open(err, 'close', {
           duration: 3000,
           horizontalPosition: 'start',
           verticalPosition: 'bottom',

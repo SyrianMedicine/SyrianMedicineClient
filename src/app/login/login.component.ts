@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
       });
       this.router.navigateByUrl("/");
     }, err => {
-      this.snackBar.open(err.message, 'close', {
+      this.snackBar.open(err, 'close', {
         duration: 3000,
         horizontalPosition: 'start',
         verticalPosition: 'bottom',
