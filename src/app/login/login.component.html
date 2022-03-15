@@ -32,6 +32,8 @@
                     <div class="card-body text-center">
                         <form [formGroup]="loginForm" (ngSubmit)="onSubmit($event)">
                             <select class="select_group"
+                                name="selectType"
+                                id="selectType"
                                 (change)="selectOption($any($event.target).value)">
                                 <option [value]="1">Admin</option>
                                 <option [value]="2">Sick</option>

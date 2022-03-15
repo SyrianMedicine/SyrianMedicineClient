@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { city } from '../Models/city';
 import { doctorOrNurseRegister } from '../Models/Register/doctorOrNurseRegister';
@@ -60,7 +61,7 @@ export class RegisterComponent implements OnInit {
     websiteInput: ['', Validators.required],
   });
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar,
     private router: Router, private registerService: RegisterServiceService, private dialog: MatDialog) {
     this.doctorOrNurseRegisterData = new doctorOrNurseRegister();
     this.sickRegisterData = new sickRegister();
@@ -104,6 +105,7 @@ export class RegisterComponent implements OnInit {
   }
 
   async onSubmitPhase1(event: any) {
+    this.typeAccount = parseInt(event.target.selectType.value);
 
     let userNameExist = false;
     let emailExist = false;
@@ -171,12 +173,19 @@ export class RegisterComponent implements OnInit {
       this.sickRegisterData.gender = parseInt(event.target.genderInput.value);
       this.sickRegisterData.state = parseInt(event.target.selectStateInput.value);
       this.registerService.registerUser(this.sickRegisterData, this.typeAccount).subscribe(data => {
-        console.log("welcome" + data.data.displayName);
-        localStorage.setItem('username', data.data.userName);
+        this.snackBar.open(data.message, 'close', {
+          duration: 3000,
+          horizontalPosition: 'start',
+          verticalPosition: 'bottom',
+        }); localStorage.setItem('username', data.data.userName);
         localStorage.setItem('token', data.data.token);
         this.router.navigateByUrl("/");
       }, err => {
-        console.log(err);
+        this.snackBar.open(err.message, 'close', {
+          duration: 3000,
+          horizontalPosition: 'start',
+          verticalPosition: 'bottom',
+        });
       });
     }
     else if (this.typeAccount == 2 || this.typeAccount == 3) { // doctor or nurse
@@ -200,13 +209,20 @@ export class RegisterComponent implements OnInit {
       this.hospitalRegisterData.city = (event.target.selectCityInput.value);
       this.hospitalRegisterData.aboutHospital = event.target.AboutMeInput.value;
       this.registerService.registerUser(this.hospitalRegisterData, this.typeAccount).subscribe(data => {
-        console.log(data.data.message);
-        localStorage.setItem('username', data.data.userName);
+        this.snackBar.open(data.message, 'close', {
+          duration: 3000,
+          horizontalPosition: 'start',
+          verticalPosition: 'bottom',
+        }); localStorage.setItem('username', data.data.userName);
         localStorage.setItem('id', data.data.id);
         localStorage.setItem('token', data.data.token);
         this.router.navigateByUrl("/");
       }, err => {
-        console.log(err);
+        this.snackBar.open(err.message, 'close', {
+          duration: 3000,
+          horizontalPosition: 'start',
+          verticalPosition: 'bottom',
+        });
       });
     }
 
@@ -247,13 +263,20 @@ export class RegisterComponent implements OnInit {
       this.doctorOrNurseRegisterData.endTimeWork = endTime.toLocaleString();
 
       this.registerService.registerUser(this.doctorOrNurseRegisterData, this.typeAccount).subscribe(data => {
-        console.log("welcome" + data.data.displayName);
-        localStorage.setItem('username', data.data.userName);
+        this.snackBar.open(data.message, 'close', {
+          duration: 3000,
+          horizontalPosition: 'start',
+          verticalPosition: 'bottom',
+        }); localStorage.setItem('username', data.data.userName);
         localStorage.setItem('id', data.data.id);
         localStorage.setItem('token', data.data.token);
         this.router.navigateByUrl("/");
       }, err => {
-        console.log(err);
+        this.snackBar.open(err.message, 'close', {
+          duration: 3000,
+          horizontalPosition: 'start',
+          verticalPosition: 'bottom',
+        });
       });
     }
   }

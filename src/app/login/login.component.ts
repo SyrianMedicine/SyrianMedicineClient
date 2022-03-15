@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { login } from '../Models/Login/login';
 import { LoginServiceService } from '../Services/login/login-service.service';
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
     passwordInput: ['', Validators.required]
   });
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginServiceService) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginServiceService,
+    private snackBar: MatSnackBar) {
     this.loginData = new login();
   }
 
@@ -31,7 +33,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(event: any) {
-
+    this.typeAccount = parseInt(event.target.selectType.value);
+    console.log(this.typeAccount);
     this.loginData.username = event.target.userNameOrEmailInput.value;
     this.loginData.email = event.target.userNameOrEmailInput.value;
     this.loginData.password = event.target.passwordInput.value;
@@ -41,9 +44,18 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', data.data.token);
       if (this.typeAccount > 2)
         localStorage.setItem('id', data.data.id);
+      this.snackBar.open(data.message, 'close', {
+        duration: 3000,
+        horizontalPosition: 'start',
+        verticalPosition: 'bottom',
+      });
       this.router.navigateByUrl("/");
     }, err => {
-      console.log(err);
+      this.snackBar.open(err.message, 'close', {
+        duration: 3000,
+        horizontalPosition: 'start',
+        verticalPosition: 'bottom',
+      });
     });
   }
 

@@ -50,6 +50,8 @@
                             (ngSubmit)="onSubmitPhase1($event)">
                             <div class="row">
                                 <select class="select_group"
+                                    name="selectType"
+                                    id="selectType"
                                     (change)="selectOption($any($event.target).value)">
                                     <option [value]="1">Sick</option>
                                     <option [value]="2">Doctor</option>
@@ -136,16 +138,14 @@
                                     formControlName="homeNumberInput" />
                                 <select class="select_group"
                                     style="width:45%"
-                                    name="selectCityInput"
-                                    >
+                                    name="selectCityInput">
                                     <option *ngFor="let item of cities"
                                         [value]="item.name">
                                         {{ item.name }}
                                     </option> </select>
                                 <select class="select_group"
                                     style="width:45%"
-                                    name="selectStateInput"
-                                    >
+                                    name="selectStateInput">
                                     <option *ngFor="let item of personStates"
                                         [value]="item.id">
                                         {{ item.name }}
@@ -212,8 +212,7 @@
                                     formControlName="homeNumberInput" />
                                 <select class="select_group"
                                     style="width:45%"
-                                    name="selectCityInput"
-                                    >
+                                    name="selectCityInput">
                                     <option *ngFor="let item of cities"
                                         [value]="item.name">
                                         {{ item.name }}

@@ -20,6 +20,6 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem("username");
     localStorage.removeItem("id");
     localStorage.removeItem("token");
-    this.router.navigateByUrl("/");
+    window.location.reload();
   }
 }
