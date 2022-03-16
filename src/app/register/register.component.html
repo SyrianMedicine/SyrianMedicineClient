@@ -32,8 +32,8 @@
                 </div>
             </div>
 
-            <div class="mt-0 col-lg-6 form-card">
-                <div class="mb-0" style="text-align: center;">
+            <div class="mt-0 col-lg-6 text-center form-card">
+                <div class="mb-0 ">
                     <a class="logoLink2" routerLink="/Main">SYRIAN MEDICINE</a>
                 </div>
 
@@ -49,6 +49,7 @@
                         <form [formGroup]="registerFormPhase1"
                             (ngSubmit)="onSubmitPhase1($event)">
                             <div class="row">
+                              <div class="one">
                                 <select class="select_group"
                                     name="selectType"
                                     id="selectType"
@@ -69,24 +70,26 @@
                                     formControlName="emailInput"
                                     name="emailInput" id="emailInput"
                                     />
-                                <div class="div-password">
-                                    <input [type]="showPassword? 'text'
-                                        :'password'"
-                                        placeholder="Password"
-                                        class="input_groupPassword"
-                                        required
-                                        formControlName="passwordInput"
-                                        name="passwordInput" id="passwordInput"
-                                        />
-                                    <button type="button"
-                                        [class]="showPassword ? 'fa fa-eye
-                                        show-hide-password no-select' : 'fa
-                                        fa-eye-slash show-hide-password
-                                        no-select'"
-                                        (click)="toggleShow()" tabindex="-1">
-                                    </button>
-                                </div>
-                            </div>
+                                  </div>
+
+                                  <div class="div-password">
+                                      <input [type]="showPassword? 'text'
+                                          :'password'"
+                                          placeholder="Password"
+                                          class="input_groupPassword"
+                                          required
+                                          formControlName="passwordInput"
+                                          name="passwordInput" id="passwordInput"
+                                          />
+                                      <button type="button"
+                                          [class]="showPassword ? 'fa fa-eye
+                                          show-hide-password no-select' : 'fa
+                                          fa-eye-slash show-hide-password
+                                          no-select'"
+                                          (click)="toggleShow()" tabindex="-1">
+                                      </button>
+                                  </div>
+                              </div>
 
                             <div class="mt-2 mb-4"
                                 *ngIf="this.typeAccount !=1">

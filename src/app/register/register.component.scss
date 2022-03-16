@@ -140,11 +140,29 @@ section {
     top: 5%;
 }
 
+
 .register .form-card .card {
-    top: 5%;
+    top: 30%;
     margin-left: 10%;
     margin-right: 15%;
     border-radius: 10%;
+}
+
+@media (max-width:576px) {
+  .register .form-card .card{
+      left: 15px;
+  }
+}
+
+@media (min-width:576px) and (max-width:768px) {
+  .register .form-card .card{
+      margin: auto;
+  }
+}
+@media (min-width:768px) and (max-width:992px) {
+  .register .form-card .card{
+      margin: auto;
+  }
 }
 
 .register .form-card .card .card-header {
@@ -175,13 +193,50 @@ section {
     margin-left: 6px;
     width: 90%;
 }
-.register .form-card .card-body .input_groupPassword {
+.register .form-card .card-body  .input_groupPassword {
     background: #ffffff;
     border: 0.5px solid #305a72;
     box-sizing: border-box;
     border-radius: 50px;
     padding: 25px;
     margin: 8px 0;
+    width: 90%;
+}
+@media (max-width:576px)
+{
+  .register .form-card .card-body .div-password {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 10px;
+  }
+
+}
+
+@media (min-width:576px) and (max-width:768px)
+{
+  .register .form-card .card-body .div-password {
+    display: flex;
+    justify-content:center;
+    margin-left:10px;
+  }
+}
+
+@media (min-width:768px) and (max-width:992px)
+{
+  .register .form-card .card-body .div-password {
+    display: flex;
+    justify-content: center;
+    margin-left:12px;
+  }
+}
+
+@media (min-width:992px)
+{
+  .register .form-card .card-body .div-password {
+    display: flex;
+    justify-content: center;
+    margin-left:12px;
+  }
 }
 
 .register .form-card .card-body .select_group {
