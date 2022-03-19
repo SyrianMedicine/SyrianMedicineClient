@@ -19,98 +19,28 @@
       <h2 class="section-title h3">Most Rated Hospitals</h2>
       <div class="row">
         <!-- Team member -->
-        <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="col-xs-12 col-sm-6 col-md-4"
+          *ngFor="let hospital of mostHospitalsRated">
           <div class="image-flip">
             <div class="mainflip flip-0">
               <div class="frontside">
                 <div class="card">
                   <div class="card-body text-center">
                     <p><img class="img-fluid"
-                        src="assets/images/hamaHospital.jpg"
+                        src="{{hospital.pictureUrl}}"
                         alt="card image"></p>
-                    <h4 class="card-title">Hama National Hospital</h4>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.</p>
+                    <h4 class="card-title">{{hospital.name}}</h4>
+                    <p class="card-text">{{hospital.shortAboutMeForHospital}}</p>
                     <i class="fa fa-map-marker-alt fa-1x" style="color:gray;">
-                    </i> Hamah
+                    </i> {{hospital.city}}
                   </div>
                 </div>
               </div>
               <div class="backside">
                 <div class="card">
                   <div class="card-body text-center mt-4">
-                    <a href="#"><h4 class="card-title">Hama National Hospital</h4></a>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.This is basic card with
-                      image
-                      on top, title, description and button.This is basic card
-                      with image on top, title, description and button.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="image-flip">
-            <div class="mainflip flip-0">
-              <div class="frontside">
-                <div class="card">
-                  <div class="card-body text-center">
-                    <p><img class="img-fluid"
-                        src="assets/images/hamaHospital.jpg"
-                        alt="card image"></p>
-                    <h4 class="card-title">Hama National Hospital</h4>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.</p>
-                    <i class="fa fa-map-marker-alt fa-1x" style="color:gray;">
-                    </i> Hamah
-                  </div>
-                </div>
-              </div>
-              <div class="backside">
-                <div class="card">
-                  <div class="card-body text-center mt-4">
-                    <a href="#"><h4 class="card-title">Hama National Hospital</h4></a>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.This is basic card with
-                      image
-                      on top, title, description and button.This is basic card
-                      with image on top, title, description and button.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="image-flip">
-            <div class="mainflip flip-0">
-              <div class="frontside">
-                <div class="card">
-                  <div class="card-body text-center">
-                    <p><img class="img-fluid"
-                        src="assets/images/hamaHospital.jpg"
-                        alt="card image"></p>
-                    <h4 class="card-title">Hama National Hospital</h4>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.</p>
-                    <i class="fa fa-map-marker-alt fa-1x" style="color:gray;">
-                    </i> Hamah
-                  </div>
-                </div>
-              </div>
-              <div class="backside">
-                <div class="card">
-                  <div class="card-body text-center mt-4">
-                    <a href="#"><h4 class="card-title">Hama National Hospital</h4></a>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.This is basic card with
-                      image
-                      on top, title, description and button.This is basic card
-                      with image on top, title, description and button.</p>
+                    <a href="#"><h4 class="card-title">{{hospital.name}}</h4></a>
+                    <p class="card-text">{{hospital.aboutHospital}}</p>
                   </div>
                 </div>
               </div>
@@ -120,22 +50,24 @@
 
         <h2 class="mt-3 section-title h3">Most Rated Doctors</h2>
 
-        <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="col-xs-12 col-sm-6 col-md-4"
+          *ngFor="let doctor of mostDoctorsRated">
           <div class="image-flip">
             <div class="mainflip flip-0">
               <div class="frontside">
                 <div class="card">
                   <div class="card-body text-center">
                     <p><img class="img-fluid"
-                        src="assets/images/doctorAhmadNour.jpg"
+                        src="{{doctor.pictureUrl}}"
                         alt="card image"></p>
-                    <h4 class="card-title">Dr. Ahmad Nour Al-Sabaggh</h4>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.</p>
+                    <h4 class="card-title">Dr.{{doctor.displayName}}</h4>
+                    <p class="card-text">{{doctor.shortAboutMeForDoctor}}</p>
                     <p>
                       <i class="fa fa-map-marker-alt fa-1x" style="color:gray;">
-                      </i> Hamah <img src="assets/images/specalist.png"
-                        style="width:23px; height:23px;" /> Nutrition
+                      </i> {{doctor.city}} <img
+                        src="assets/images/specalist.png"
+                        style="width:23px; height:23px;" />
+                      {{doctor.specialization}}
                     </p>
 
                   </div>
@@ -144,12 +76,8 @@
               <div class="backside">
                 <div class="card">
                   <div class="card-body text-center mt-4">
-                    <a href="#"><h4 class="card-title">Dr. Ahmad Nour Al-Sabaggh</h4></a>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.This is basic card with
-                      image
-                      on top, title, description and button.This is basic card
-                      with image on top, title, description and button.</p>
+                    <a href="#"><h4 class="card-title">Dr.{{doctor.displayName}}</h4></a>
+                    <p class="card-text">{{doctor.aboutMe}}</p>
                   </div>
                 </div>
               </div>
@@ -157,99 +85,28 @@
           </div>
         </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="image-flip">
-            <div class="mainflip flip-0">
-              <div class="frontside">
-                <div class="card">
-                  <div class="card-body text-center">
-                    <p><img class="img-fluid"
-                        src="assets/images/doctorAhmadNour.jpg"
-                        alt="card image"></p>
-                    <h4 class="card-title">Dr. Ahmad Nour Al-Sabaggh</h4>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.</p>
-                    <p>
-                      <i class="fa fa-map-marker-alt fa-1x" style="color:gray;">
-                      </i> Hamah <img src="assets/images/specalist.png"
-                        style="width:23px; height:23px;" /> Nutrition
-                    </p>
-
-                  </div>
-                </div>
-              </div>
-              <div class="backside">
-                <div class="card">
-                  <div class="card-body text-center mt-4">
-                    <a href="#"><h4 class="card-title">Dr. Ahmad Nour Al-Sabaggh</h4></a>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.This is basic card with
-                      image
-                      on top, title, description and button.This is basic card
-                      with image on top, title, description and button.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="image-flip">
-            <div class="mainflip flip-0">
-              <div class="frontside">
-                <div class="card">
-                  <div class="card-body text-center">
-                    <p><img class="img-fluid"
-                        src="assets/images/doctorAhmadNour.jpg"
-                        alt="card image"></p>
-                    <h4 class="card-title">Dr. Ahmad Nour Al-Sabaggh</h4>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.</p>
-                    <p>
-                      <i class="fa fa-map-marker-alt fa-1x" style="color:gray;">
-                      </i> Hamah <img src="assets/images/specalist.png"
-                        style="width:23px; height:23px;" /> Nutrition
-                    </p>
-
-                  </div>
-                </div>
-              </div>
-              <div class="backside">
-                <div class="card">
-                  <div class="card-body text-center mt-4">
-                    <a href="#"><h4 class="card-title">Dr. Ahmad Nour Al-Sabaggh</h4></a>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.This is basic card with
-                      image
-                      on top, title, description and button.This is basic card
-                      with image on top, title, description and button.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
 
         <h2 class="mt-3 section-title h3">Most Rated Nurses</h2>
 
-        <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="col-xs-12 col-sm-6 col-md-4"
+          *ngFor="let nurse of mostNursesRated">
+
           <div class="image-flip">
             <div class="mainflip flip-0">
               <div class="frontside">
                 <div class="card">
                   <div class="card-body text-center">
                     <p><img class="img-fluid"
-                        src="assets/images/nurseSaraSmith.jpg"
+                        src="{{nurse.pictureUrl}}"
                         alt="card image"></p>
-                    <h4 class="card-title">Sara Smith</h4>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.</p>
+                    <h4 class="card-title">{{nurse.displayName}}</h4>
+                    <p class="card-text">{{nurse.shortAboutMeForNurse}}</p>
                     <p>
                       <i class="fa fa-map-marker-alt fa-1x" style="color:gray;">
-                      </i> Homs <img src="assets/images/specalist.png"
-                        style="width:23px; height:23px;" /> Nutrition
+                      </i> {{nurse.city}} <img src="assets/images/specalist.png"
+                        style="width:23px; height:23px;" />
+                      {{nurse.specialization}}
                     </p>
 
                   </div>
@@ -258,183 +115,39 @@
               <div class="backside">
                 <div class="card">
                   <div class="card-body text-center mt-4">
-                    <a href="#"><h4 class="card-title">Sara Smith</h4></a>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.This is basic card with
-                      image
-                      on top, title, description and button.This is basic card
-                      with image on top, title, description and button.</p>
+                    <a href="#"><h4 class="card-title">{{nurse.displayName}}</h4></a>
+                    <p class="card-text">{{nurse.aboutMe}}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="image-flip">
-            <div class="mainflip flip-0">
-              <div class="frontside">
-                <div class="card">
-                  <div class="card-body text-center">
-                    <p><img class="img-fluid"
-                        src="assets/images/nurseSaraSmith.jpg"
-                        alt="card image"></p>
-                    <h4 class="card-title">Sara Smith</h4>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.</p>
-                    <p>
-                      <i class="fa fa-map-marker-alt fa-1x" style="color:gray;">
-                      </i> Homs <img src="assets/images/specalist.png"
-                        style="width:23px; height:23px;" /> Nutrition
-                    </p>
-
-                  </div>
-                </div>
-              </div>
-              <div class="backside">
-                <div class="card">
-                  <div class="card-body text-center mt-4">
-                    <a href="#"><h4 class="card-title">Sara Smith</h4></a>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.This is basic card with
-                      image
-                      on top, title, description and button.This is basic card
-                      with image on top, title, description and button.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="image-flip">
-            <div class="mainflip flip-0">
-              <div class="frontside">
-                <div class="card">
-                  <div class="card-body text-center">
-                    <p><img class="img-fluid"
-                        src="assets/images/nurseSaraSmith.jpg"
-                        alt="card image"></p>
-                    <h4 class="card-title">Sara Smith</h4>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.</p>
-                    <p>
-                      <i class="fa fa-map-marker-alt fa-1x" style="color:gray;">
-                      </i> Homs <img src="assets/images/specalist.png"
-                        style="width:23px; height:23px;" /> Nutrition
-                    </p>
-
-                  </div>
-                </div>
-              </div>
-              <div class="backside">
-                <div class="card">
-                  <div class="card-body text-center mt-4">
-                    <a href="#"><h4 class="card-title">Sara Smith</h4></a>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.This is basic card with
-                      image
-                      on top, title, description and button.This is basic card
-                      with image on top, title, description and button.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
 
         <h2 class="mt-3 section-title h3">Most Rated Posts</h2>
 
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="image-flip">
-            <div class="mainflip flip-0">
-              <div class="frontside">
-                <div class="card">
-                  <div class="card-body text-center">
-                    <p><img class="img-fluid"
-                        src="assets/images/coronaPost.jpeg"
-                        alt="card image"></p>
-                    <h4 class="card-title">Corona virus is crazy</h4>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="backside">
-                <div class="card">
-                  <div class="card-body text-center mt-4">
-                    <a href="#"><h4 class="card-title">Corona virus is crazy</h4></a>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.This is basic card with
-                      image
-                      on top, title, description and button.This is basic card
-                      with image on top, title, description and button.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4"
+          *ngFor="let post of mostPostsRated">
 
-        <div class="col-xs-12 col-sm-6 col-md-4">
           <div class="image-flip">
             <div class="mainflip flip-0">
               <div class="frontside">
                 <div class="card">
                   <div class="card-body text-center">
                     <p><img class="img-fluid"
-                        src="assets/images/coronaPost.jpeg"
+                        src={{post.medialUrl}}
                         alt="card image"></p>
-                    <h4 class="card-title">Corona virus is crazy</h4>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.</p>
+                    <h4 class="card-title">{{post.postTitle}}</h4>
+                    <p class="card-text">{{post.shortPostText}}</p>
+                    <i class='fas fa-user-edit'></i><span> {{post.userName}}</span>
                   </div>
                 </div>
               </div>
               <div class="backside">
                 <div class="card">
                   <div class="card-body text-center mt-4">
-                    <a href="#"><h4 class="card-title">Corona virus is crazy</h4></a>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.This is basic card with
-                      image
-                      on top, title, description and button.This is basic card
-                      with image on top, title, description and button.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="image-flip">
-            <div class="mainflip flip-0">
-              <div class="frontside">
-                <div class="card">
-                  <div class="card-body text-center">
-                    <p><img class="img-fluid"
-                        src="assets/images/coronaPost.jpeg"
-                        alt="card image"></p>
-                    <h4 class="card-title">Corona virus is crazy</h4>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="backside">
-                <div class="card">
-                  <div class="card-body text-center mt-4">
-                    <a href="#"><h4 class="card-title">Corona virus is crazy</h4></a>
-                    <p class="card-text">This is basic card with image on top,
-                      title, description and button.This is basic card with
-                      image
-                      on top, title, description and button.This is basic card
-                      with image on top, title, description and button.</p>
+                    <a href="#"><h4 class="card-title">{{post.postTitle}}</h4></a>
+                    <p class="card-text">{{post.postText}}</p>
                   </div>
                 </div>
               </div>

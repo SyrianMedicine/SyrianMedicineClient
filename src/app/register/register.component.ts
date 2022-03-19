@@ -72,6 +72,7 @@ export class RegisterComponent implements OnInit {
 
     this.registerService.getCities().subscribe(data => {
       this.cities = data;
+      console.log(this.cities);
     });
 
     this.registerService.getStates().subscribe(data => {
