@@ -249,15 +249,16 @@ export class RegisterComponent implements OnInit {
       startTime.setHours(parseInt(event.target.fromHoursInput.value));
       startTime.setMinutes(parseInt(event.target.fromMinutesInput.value));
       let endTime = new Date();
+      console.log("before :" + endTime)
       endTime.setHours(parseInt(event.target.toHoursInput.value));
       endTime.setMinutes(parseInt(event.target.toMinutesInput.value));
-
+      console.log("after :" + endTime)
       this.doctorOrNurseRegisterData.aboutMe = event.target.AboutMeInput.value;
       this.doctorOrNurseRegisterData.specialization = event.target.specializationInput.value;
       this.doctorOrNurseRegisterData.workAtHome = event.target.workForHomeInput.value == "1" ? true : false;
       this.doctorOrNurseRegisterData.startTimeWork = startTime.toLocaleString();
       this.doctorOrNurseRegisterData.endTimeWork = endTime.toLocaleString();
-
+      console.log("after2 :" + this.doctorOrNurseRegisterData.endTimeWork)
       this.registerService.registerUser(this.doctorOrNurseRegisterData, this.typeAccount).subscribe(data => {
         this.snackBar.open(data.message, 'close', {
           duration: 3000,

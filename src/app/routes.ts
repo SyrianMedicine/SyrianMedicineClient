@@ -1,5 +1,6 @@
 import { Routes } from "@angular/router";
 import { LoginComponent } from "./login/login.component";
+import { CommentsComponent } from "./main/comments/comments.component";
 import { HospitalsComponent } from "./main/hospitals/hospitals.component";
 import { MainComponent } from "./main/main/main.component";
 import { MedicinesComponent } from "./main/medicines/medicines.component";
@@ -14,6 +15,6 @@ export const routes: Routes = [
     { path: "Doctors", component: MedicinesComponent },
     { path: "Hospitals", component: HospitalsComponent },
     { path: "Nurses", component: NursesComponent },
-    { path: "Posts", component: PostsComponent },
-    { path: "**", component: MainComponent }
+    { path: "Posts", component: PostsComponent},
+    { path: "**", component: MainComponent },
 ];

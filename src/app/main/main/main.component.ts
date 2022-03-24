@@ -39,7 +39,6 @@ export class MainComponent implements OnInit {
         else {
           this.mostDoctorsRated[i].shortAboutMeForDoctor = this.mostDoctorsRated[i].aboutMe;
         }
-
       }
     });
 

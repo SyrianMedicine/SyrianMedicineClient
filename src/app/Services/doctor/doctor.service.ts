@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, ObservableNotification } from 'rxjs';
 import { MostDoctorsRatedData } from 'src/app/Models/Doctor/MostDoctorsRated';
 
 @Injectable({
@@ -14,4 +14,8 @@ export class DoctorService {
     return await this.http.post(this.baseUrl + "Doctor/MostDoctorsRated", { "pageNumber": pageNumber, "pageSize": pageSize });
   }
 
+    // return doctors Pagination ...
+    async getDoctorsPagination(pageNumber:Number , pageSize:Number):Promise <Observable<any>>{
+      return await this.http.post(this.baseUrl + "Doctor/PaginationDoctors",{'pageNummber':pageNumber,'pageSize':pageSize});
+    }
 }

@@ -55,7 +55,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatRadioModule } from '@angular/material/radio'
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { CommentsComponent } from './main/comments/comments.component';
+import { UserCommentComponent } from './main/user-comment/user-comment.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +76,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     DoctorProfileComponent,
     NurseProfileComponent,
     RegisterDialogComponent,
+    CommentsComponent,
+    UserCommentComponent,
   ],
   imports: [
     BrowserModule,
@@ -116,8 +120,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatProgressSpinnerModule,
     MatRadioModule,
     MatSelectModule,
-    MatSnackBarModule
-
+    MatSnackBarModule,
+    NgxPaginationModule
     // MatRippleModule,
     // MatSidenavModule,
     // MatSliderModule,
