@@ -1,0 +1,55 @@
+<!-- navbar  start  -->
+<app-navbar></app-navbar>
+<!-- navbar  end -->
+
+<!-- start search -->
+<div class="search">
+  <div class="row hidden">
+    <div class="col">
+      <div class="container">
+          <form class="d-flex">
+            <input class="search-form" type="search" placeholder="Search" aria-label="Search">
+            <button class="search-filter" type="submit" > Filter </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- end search -->
+
+<!-- start  posts -->
+<section class="posts">
+  <div class="post-deploy text-center">
+    <h2>POSTS</h2>
+    <hr/>
+    </div>
+    <!-- start  posts List -->
+    
+    <app-post *ngIf="post" [post]="post">
+
+    </app-post>
+
+
+
+    
+
+     <!-- end  posts List -->
+
+
+
+</section>
+<!-- end posts -->
+
+<!-- start pageination -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+  </ul>
+</nav>
+<!-- end pageination -->
+
+<!-- footer start  -->
+<app-footer></app-footer>
+<!-- footer end -->

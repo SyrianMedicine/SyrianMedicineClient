@@ -1,11 +1,10 @@
 import { Routes } from "@angular/router";
-import { LoginComponent } from "./login/login.component";
-import { CommentsComponent } from "./main/comments/comments.component";
+import { LoginComponent } from "./login/login.component"; 
 import { HospitalsComponent } from "./main/hospitals/hospitals.component";
 import { MainComponent } from "./main/main/main.component";
 import { MedicinesComponent } from "./main/medicines/medicines.component";
-import { NursesComponent } from "./main/nurses/nurses.component";
-import { PostsComponent } from "./main/posts/posts.component";
+import { NursesComponent } from "./main/nurses/nurses.component"; 
+import { PostsPageComponent } from "./main/posts-page/posts-page.component";
 import { RegisterComponent } from "./register/register.component";
 
 export const routes: Routes = [
@@ -15,6 +14,6 @@ export const routes: Routes = [
     { path: "Doctors", component: MedicinesComponent },
     { path: "Hospitals", component: HospitalsComponent },
     { path: "Nurses", component: NursesComponent },
-    { path: "Posts", component: PostsComponent},
+    { path: "Posts", component: PostsPageComponent},
     { path: "**", component: MainComponent },
 ];

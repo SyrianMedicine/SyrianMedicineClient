@@ -1,0 +1,22 @@
+<div class="comments overflow-hidden">
+    <div class="row hidden">
+        <div class="col">
+          <div class="container">
+            <div class="comments-conent">
+              <app-user-card [user]="Commnet.user" ></app-user-card>
+                  <div class="comments-content-info">
+                      <p>{{Commnet.text}}</p>
+                      <i class="fa fa-heart"></i>
+                      <label>19</label>
+                      <a>Reply</a>
+                 </div>
+               </div> 
+              </div> 
+                <ul  *ngIf="this.SubCommnets" > 
+                <app-comment *ngFor="let come of this.SubCommnets" [Commnet]="come"></app-comment>
+                </ul>
+            </div>
+          </div>
+        </div> 
+
+         

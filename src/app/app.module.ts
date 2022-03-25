@@ -18,8 +18,7 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavbarComponent } from './Common/navbar/navbar.component';
-import { FooterComponent } from './Common/footer/footer.component';
-import { PostsComponent } from './main/posts/posts.component';
+import { FooterComponent } from './Common/footer/footer.component'; 
 import { MedicinesComponent } from './main/medicines/medicines.component';
 import { HospitalsComponent } from './main/hospitals/hospitals.component';
 import { NursesComponent } from './main/nurses/nurses.component';
@@ -55,17 +54,18 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatRadioModule } from '@angular/material/radio'
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { CommentsComponent } from './main/comments/comments.component';
-import { UserCommentComponent } from './main/user-comment/user-comment.component';
+import { NgxPaginationModule } from 'ngx-pagination'; 
+import { CommentComponent } from './Component/comment/comment.component';
+import { UserCardComponent } from './Component/user-card/user-card.component';
+import { PostComponent } from './Component/post/post.component';
+import { PostsPageComponent } from './main/posts-page/posts-page.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     NavbarComponent,
-    FooterComponent,
-    PostsComponent,
+    FooterComponent, 
     MedicinesComponent,
     HospitalsComponent,
     RegisterComponent,
@@ -75,9 +75,11 @@ import { UserCommentComponent } from './main/user-comment/user-comment.component
     HospitalProfileComponent,
     DoctorProfileComponent,
     NurseProfileComponent,
-    RegisterDialogComponent,
-    CommentsComponent,
-    UserCommentComponent,
+    RegisterDialogComponent, 
+    CommentComponent,
+    UserCardComponent,
+    PostComponent,
+    PostsPageComponent, 
   ],
   imports: [
     BrowserModule,
