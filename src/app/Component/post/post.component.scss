@@ -209,8 +209,65 @@ border: 1.5px solid #42B0EF;
   box-shadow:2px 2px rgba(0, 0, 0,.2);
   margin: 15px auto auto auto;
 }
-// end search section
 
+.posts .addComment .form-content textarea{
+  width: 60%;
+  height: 60px;
+  outline: none;
+  border: 2px solid #68A9CD;
+  padding: 18px 36px;
+  color: #000;
+  font-style: normal;
+  font-size: 14px;
+  border-radius: 50px;
+  letter-spacing:1.6px;
+  word-spacing: 2px;
+  margin-right:15px;
+  box-shadow:1px 1px rgba(181, 162, 235, 0.71);
+  overflow-y: hidden;
+}
+.posts .addComment .form-content textarea:hover,
+.posts .addComment .form-content textarea:focus{
+  border: 2px solid #305A72;
+  background-color: #e3e3e3;
+}
+
+.posts .addComment .form-content button {
+  background-color: rgba(48, 90, 114, 0.87);
+  color: #FFFFFF;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  padding: 20px 40px;
+  font-size:13px;
+  font-style:normal;
+  letter-spacing:1px;
+  overflow:hidden;
+  text-transform:uppercase;
+  font-weight:bold;
+  margin-bottom: 20px;
+}
+.posts .addComment .form-content button:hover,
+.posts .addComment .form-content button:focus{
+  background-color: rgba(92, 138, 165, 0.87);
+}
+
+@media screen and (max-width:768px){
+  .posts .addComment .form-content {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -30px;
+  }
+  .posts .addComment .form-content textarea{
+    width: 100%;
+    padding:15px 30px;
+  }
+  .posts .addComment .form-content button {
+      margin-top:10px;
+      margin-left:5px;
+      padding:12px 24px;
+    }
+}
 
 // start pageination
 

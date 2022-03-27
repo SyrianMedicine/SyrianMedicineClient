@@ -2,20 +2,34 @@
 <div class="row hidden">
     <div class="col">
       <div class="container">
-        <app-user-card [user]="post.user"></app-user-card> 
+        <app-user-card [user]="post.user"></app-user-card>
           <div class="post-content">
              <div class="post-content-info">
               <span>Dec 16,2020</span>
               <p>{{post.postText}}</p>
-            <!--  <img src="../../../assets/images/US_22641_SOCIAL MEDIA IMAGE_Coronavirus Force Majeure_Masthead_1920x1080px.jpg" alt="img-post" class="rounded-3"/>
-            -->  <i class="fa fa-heart"></i>
-              <label>19</label>
-            </div>
+              <img src="../../../assets/images/US_22641_SOCIAL MEDIA IMAGE_Coronavirus Force Majeure_Masthead_1920x1080px.jpg" alt="img-post" class="rounded-3"/>
+                <i class="fa fa-heart"></i>
+                <label>19</label>
+             </div>
           </div>
-          <ul *ngIf="this.Commnets">
+
+          <!-- add comments -->
+          <div class="addComment">
+            <form>
+            <div class="form-content d-flex mx-5">
+              <textarea name="commentInput" id="comment"
+              placeholder="leave a comment here..." maxlength="1000"></textarea>
+              <button type="button">comment</button>
+            </div>
+           </form>
+          </div>
+          <!-- All comments-->
+
+            <ul *ngIf="this.Commnets">
             <app-comment  *ngFor="let com of this.Commnets" [Commnet]="com"></app-comment >
             </ul>
+
         </div>
       </div>
-    </div> 
+    </div>
   </section>
