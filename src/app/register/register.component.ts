@@ -174,8 +174,10 @@ export class RegisterComponent implements OnInit {
           duration: 3000,
           horizontalPosition: 'start',
           verticalPosition: 'bottom',
-        }); localStorage.setItem('username', data.data.userName);
+        });
+        localStorage.setItem('username', data.data.userName);
         localStorage.setItem('token', data.data.token);
+        localStorage.setItem('userType', "Sick");
         this.router.navigateByUrl("/");
       }, err => {
         this.snackBar.open(err, 'close', {
@@ -210,9 +212,12 @@ export class RegisterComponent implements OnInit {
           duration: 3000,
           horizontalPosition: 'start',
           verticalPosition: 'bottom',
-        }); localStorage.setItem('username', data.data.userName);
+        });
+        localStorage.setItem('username', data.data.userName);
         localStorage.setItem('id', data.data.id);
         localStorage.setItem('token', data.data.token);
+        localStorage.setItem('userType', "Hospital");
+
         this.router.navigateByUrl("/");
       }, err => {
         this.snackBar.open(err, 'close', {
@@ -264,9 +269,14 @@ export class RegisterComponent implements OnInit {
           duration: 3000,
           horizontalPosition: 'start',
           verticalPosition: 'bottom',
-        }); localStorage.setItem('username', data.data.userName);
+        });
+        localStorage.setItem('username', data.data.userName);
         localStorage.setItem('id', data.data.id);
         localStorage.setItem('token', data.data.token);
+        if (this.typeAccount == 2)
+          localStorage.setItem('userType', "Doctor");
+        else
+          localStorage.setItem('userType', "Nurse");
         this.router.navigateByUrl("/");
       }, err => {
         this.snackBar.open(err, 'close', {

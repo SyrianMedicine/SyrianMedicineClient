@@ -8,10 +8,15 @@ import { MostNursesRatedData } from 'src/app/Models/Nurse/MostNursesRated';
 })
 export class NurseService {
 
-  baseUrl = "https://localhost:7017/api/";
+  baseUrl = "https://localhost:7017/api/Nurse/";
   constructor(private http: HttpClient) { }
+
   async getMostNursesRated(pageNumber: number, pageSize: number): Promise<Observable<any>> {
-    return await this.http.post(this.baseUrl + "Nurse/MostNursesRated", { "pageNumber": pageNumber, "pageSize": pageSize });
+    return await this.http.post(this.baseUrl + "MostNursesRated", { "pageNumber": pageNumber, "pageSize": pageSize });
+  }
+
+  async getNurseInfo(userName: string): Promise<Observable<any>> {
+    return await this.http.get(this.baseUrl + userName);
   }
 
 }

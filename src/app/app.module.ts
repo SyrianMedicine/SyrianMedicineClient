@@ -58,7 +58,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CommentComponent } from './Component/comment/comment.component';
 import { UserCardComponent } from './Component/user-card/user-card.component';
 import { PostComponent } from './Component/post/post.component';
-import { PostsPageComponent } from './main/posts-page/posts-page.component'; 
+import { PostsPageComponent } from './main/posts-page/posts-page.component';
+import { RatingComponent } from './Common/rating/rating.component'; 
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { PostsPageComponent } from './main/posts-page/posts-page.component';
     CommentComponent,
     UserCardComponent,
     PostComponent,
-    PostsPageComponent, 
+    PostsPageComponent,
+    RatingComponent, 
   ],
   imports: [
     BrowserModule,

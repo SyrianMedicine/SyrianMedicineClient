@@ -42,6 +42,23 @@ export class LoginComponent implements OnInit {
     this.loginService.loginUser(this.loginData, this.typeAccount).subscribe(data => {
       localStorage.setItem('username', data.data.userName);
       localStorage.setItem('token', data.data.token);
+
+      if (this.typeAccount == 1) {
+        localStorage.setItem('userType', "Admin");
+      }
+      else if (this.typeAccount == 2) {
+        localStorage.setItem('userType', "Sick");
+      }
+      else if (this.typeAccount == 3) {
+        localStorage.setItem('userType', "Doctor");
+      }
+      else if (this.typeAccount == 4) {
+        localStorage.setItem('userType', "Nurse");
+      }
+      else if (this.typeAccount == 5) {
+        localStorage.setItem('userType', "Hospital");
+      }
+      
       if (this.typeAccount > 2)
         localStorage.setItem('id', data.data.id);
       this.snackBar.open(data.message, 'close', {

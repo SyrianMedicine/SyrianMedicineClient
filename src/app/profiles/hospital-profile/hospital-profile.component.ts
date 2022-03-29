@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
+import { HospitalInfo } from 'src/app/Models/Hospital/HospitalInfo';
+import { HospitalService } from 'src/app/Services/hospital/hospital.service';
 
 @Component({
   selector: 'app-hospital-profile',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HospitalProfileComponent implements OnInit {
 
-  constructor() { }
+  hospitalInfoData: HospitalInfo = new HospitalInfo();
+  userName: string | any;
 
-  ngOnInit(): void {
+
+  constructor(private hospitalService: HospitalService, private dialog: MatDialog, private route: ActivatedRoute) { }
+
+  async ngOnInit(): Promise<void> {
+    this.userName = this.route.snapshot.paramMap.get("userName");
+    (await this.hospitalService.getHospitalInfo(this.userName)).subscribe(data => {
+      this.hospitalInfoData = data;
+    })
+  }
+
+  openTemplete(templete: any) {
+    this.dialog.open(templete, {
+      width: '300px'
+    });
   }
 
 }

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
+import { SickInfo } from 'src/app/Models/Sick/SickInfo';
+import { SickService } from 'src/app/Services/sick.service';
 
 @Component({
   selector: 'app-sick-profile',
@@ -7,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SickProfileComponent implements OnInit {
 
-  constructor() { }
+  userName: string | any;
+  sickInfoData: SickInfo = new SickInfo();
 
-  ngOnInit(): void {
+
+  constructor(private sickService: SickService, private dialog: MatDialog, private route: ActivatedRoute) { }
+
+  async ngOnInit(): Promise<void> {
+    this.userName = this.route.snapshot.paramMap.get("userName");
+    (await this.sickService.getSickInfo(this.userName)).subscribe(data => {
+      this.sickInfoData = data;
+      console.log(data);
+    });
+  }
+
+  openTemplete(templete: any) {
+    this.dialog.open(templete, {
+      width: '300px'
+    });
   }
 
 }

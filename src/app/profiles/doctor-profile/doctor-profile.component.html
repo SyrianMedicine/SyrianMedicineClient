@@ -19,8 +19,8 @@
                     <p>
                         <img class="mr-1" style="width: 32px; height:32px;"
                             src="assets/images/doctorIcon.png">
-                        <a style="color: black;" href="#">Dr. Ahmad Nour
-                            Al-Sabaggh</a>
+                        <a style="color: black;" href="#">Dr.
+                            {{doctorInfoData.displayName}}</a>
                     </p>
                 </div>
                 <div class="rightItems">
@@ -31,25 +31,40 @@
                     <p>
                         <i class="fa fa-map-marker-alt fa-1x"
                             style="color:gray;">
-                        </i> Hamah <img src="assets/images/specalist.png"
-                            style="width:23px; height:23px;" /> Nutrition
-                        <i class="mx-1 fa fa-phone fa-1x"
-                            style="color:gray;">
+                        </i> {{doctorInfoData.city}} <img
+                            src="assets/images/specalist.png"
+                            style="width:23px; height:23px;" />
+                        {{doctorInfoData.specialization}}
+                        <i (click)="openTemplete(phoneNumberTemplete)"
+                            class="mx-1 fa fa-phone fa-1x"
+                            style="color:gray; cursor: pointer;">
                         </i>
                         <img class="mx-1"
+                            (click)="openTemplete(homeNumberTemplete)"
                             src="assets/images/rotaryPhone.png"
-                            style="width:23px; height:23px;" />
+                            style="width:23px; height:23px; cursor: pointer;" />
                         <img class="mx-1"
+                            (click)="openTemplete(timeReserveTemplete)"
                             src="assets/images/reverseDate.png"
-                            style="width:23px; height:23px;" />
+                            style="width:23px; height:23px; cursor: pointer;" />
                     </p>
                 </div>
                 <div class="user-info2">
-                    <p>
-                        <img style="width: 28px; height:28px;"
-                            src="assets/images/trueIcon.png"> Avilable for work
-                        at home
-                    </p>
+                    <div *ngIf="doctorInfoData.workAtHome">
+                        <p>
+                            <img style="width: 28px; height:28px;"
+                                src="assets/images/trueIcon.png">
+                            Avilable for work at home
+                        </p>
+                    </div>
+
+                    <div *ngIf="!doctorInfoData.workAtHome">
+                        <p>
+                            <img style="width: 28px; height:28px;"
+                                src="assets/images/falseIcon.jpg">
+                            Avilable for work at home
+                        </p>
+                    </div>
                 </div>
             </div>
             <div class="clearFloat"></div>
@@ -64,81 +79,13 @@
                 <h2>About Me</h2>
                 <hr />
                 <p>
-                    asdmkmkldkslmakldmaskdmklasdmlkasdmklsad
-                    asklmdklasmdklsamdklmsaldmsalkdmaskld
-                    samdklmsakdlmaskldmaskldmksadmklasmdaskld
-                    asmdklsamkdmaskldmaskdmksadmksald
+                    {{doctorInfoData.aboutMe}}
                 </p>
             </div>
-
             <div class="col-xl-7 col-lg-8 col-md-10 col-12 text-center mb-5">
-                <div class="row justify-content-left d-flex">
-                    <div class="col-md-4 d-flex flex-column">
-                        <div class="rating-box">
-                            <h1 class="pt-4">4.0</h1>
-                            <p class="">out of 5</p>
-                        </div>
-                        <div>
-                            <span class="fa fa-star star-active mx-1"></span>
-                            <span class="fa fa-star star-active mx-1"></span>
-                            <span class="fa fa-star star-active mx-1"></span>
-                            <span class="fa fa-star star-active mx-1"></span>
-                            <span class="fa fa-star star-inactive mx-1"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="rating-bar0 justify-content-center">
-                            <table class="text-left mx-auto">
-                                <tr>
-                                    <td class="rating-label">Excellent</td>
-                                    <td class="rating-bar">
-                                        <div class="bar-container">
-                                            <div class="bar-5"></div>
-                                        </div>
-                                    </td>
-                                    <td class="text-right">123</td>
-                                </tr>
-                                <tr>
-                                    <td class="rating-label">Good</td>
-                                    <td class="rating-bar">
-                                        <div class="bar-container">
-                                            <div class="bar-4"></div>
-                                        </div>
-                                    </td>
-                                    <td class="text-right">23</td>
-                                </tr>
-                                <tr>
-                                    <td class="rating-label">Average</td>
-                                    <td class="rating-bar">
-                                        <div class="bar-container">
-                                            <div class="bar-3"></div>
-                                        </div>
-                                    </td>
-                                    <td class="text-right">10</td>
-                                </tr>
-                                <tr>
-                                    <td class="rating-label">Poor</td>
-                                    <td class="rating-bar">
-                                        <div class="bar-container">
-                                            <div class="bar-2"></div>
-                                        </div>
-                                    </td>
-                                    <td class="text-right">3</td>
-                                </tr>
-                                <tr>
-                                    <td class="rating-label">Terrible</td>
-                                    <td class="rating-bar">
-                                        <div class="bar-container">
-                                            <div class="bar-1"></div>
-                                        </div>
-                                    </td>
-                                    <td class="text-right">0</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                <app-rating></app-rating>
             </div>
+
         </div>
     </div>
 
@@ -250,7 +197,8 @@
         <div class="col">
             <div class="container">
                 <div class="card">
-                    <i style="text-align: right; display:inline-block;font-size:1.2em;" class="  fa
+                    <i style="text-align: right;
+                        display:inline-block;font-size:1.2em;" class="fa
                         fa-cog"></i>
                     <div class="post-content">
                         <img src="../../../assets/images/person1.jpg"
@@ -275,7 +223,8 @@
                 </div>
 
                 <div class="card">
-                    <i style="text-align: right; display:inline-block;font-size:1.2em;" class="  fa
+                    <i style="text-align: right;
+                        display:inline-block;font-size:1.2em;" class="fa
                         fa-cog"></i>
                     <div class="post-content">
                         <img src="../../../assets/images/person1.jpg"
@@ -302,7 +251,8 @@
                 </div>
 
                 <div class="card">
-                    <i style="text-align: right; display:inline-block;font-size:1.2em;" class="  fa
+                    <i style="text-align: right;
+                        display:inline-block;font-size:1.2em;" class="fa
                         fa-cog"></i>
                     <div class="post-content">
                         <img src="../../../assets/images/person1.jpg"
@@ -338,3 +288,30 @@
 </section>
 
 <app-footer></app-footer>
+
+
+
+<ng-template #phoneNumberTemplete>
+    <div style="text-align: center;">
+        <i class="mx-1 fa fa-phone fa-1x"
+            style="color:gray;">
+        </i> {{doctorInfoData.phoneNumber}}
+    </div>
+</ng-template>
+
+<ng-template #homeNumberTemplete>
+    <div style="text-align: center;">
+        <img class="mx-1"
+            src="assets/images/rotaryPhone.png"
+            style="width:23px; height:23px;" />
+        {{doctorInfoData.homeNumber}}
+    </div>
+</ng-template>
+
+<ng-template #timeReserveTemplete>
+    <div style="text-align: center;">
+        <h1>Worktime</h1>
+        <p>From {{startWorkTime}}</p>
+        <p>To {{endWorkTime}}</p>
+    </div>
+</ng-template>
