@@ -59,7 +59,8 @@ import { CommentComponent } from './Component/comment/comment.component';
 import { UserCardComponent } from './Component/user-card/user-card.component';
 import { PostComponent } from './Component/post/post.component';
 import { PostsPageComponent } from './main/posts-page/posts-page.component';
-import { RatingComponent } from './Common/rating/rating.component'; 
+import { RatingComponent } from './Common/rating/rating.component';
+import { UserComentComponent } from './user-coment/user-coment.component'; 
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { RatingComponent } from './Common/rating/rating.component';
     UserCardComponent,
     PostComponent,
     PostsPageComponent,
-    RatingComponent, 
+    RatingComponent,
+    UserComentComponent, 
   ],
   imports: [
     BrowserModule,

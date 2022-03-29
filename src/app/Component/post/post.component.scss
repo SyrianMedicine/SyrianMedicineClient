@@ -138,18 +138,16 @@ border: 1.5px solid #42B0EF;
 
 .posts .post-content  .post-content-info
 {
-  margin-left:20px;
-  margin-top:5px;
+  margin-left:-15px;
+  margin-top:-50px;
   line-height:24px;
   padding:10px;
 }
 
-.posts .post-content .post-content-info > h4
-{
-  font-size: 20px;
-  font-weight: 600;
-  font-style: normal;
-  color: #000;
+@media screen and(max-width:768px){
+  .posts .post-content  .post-content-info{
+    margin-left:-33px;
+  }
 }
 .posts .post-content .post-content-info > span
 {
@@ -157,21 +155,24 @@ border: 1.5px solid #42B0EF;
   color:rgba(0, 0, 0, 0.46);
   letter-spacing:.5px;
   font-weight: 600;
+  margin-left:125px
 }
 
 .posts .post-content .post-content-info > p
 {
   margin:5px 0;
   line-height:1.6;
-  font-size:15px;
+  font-size:16px;
   word-break: break-all;
   word-spacing: normal;
+  margin-left: 125px;
+  font-style: normal;
 }
 .posts .post-content .post-content-info > i
 {
   padding-top: 5px;
   transition:.3s;
-  margin-left: 10px;
+  margin-left: 125px;
 }
 .posts .post-content .post-content-info > i:hover
 {
@@ -187,12 +188,13 @@ border: 1.5px solid #42B0EF;
 }
 .posts .post-content .post-content-info > a
 {
-  padding-top: 10px;
-  letter-spacing: 1px;
+  padding-top:10px;
+  letter-spacing:1.4px;
   color: #000;
   margin-left: 10px;
   text-decoration: none;
   cursor: pointer;
+  font-weight:550;
 }
 .posts .post-content .post-content-info  a:hover
 {
@@ -207,15 +209,32 @@ border: 1.5px solid #42B0EF;
   border-radius: 100px;
   border: solid 2px rgba(0,0,0,.46);
   box-shadow:2px 2px rgba(0, 0, 0,.2);
-  margin: 15px auto auto auto;
+  margin: 15px auto 10px 122px;
+}
+
+@media screen and (min-width:768px) and (max-width:1200px)
+{
+  .posts .post-content .post-content-info >img{
+    margin-left: 125px;
+  }
+}
+
+.posts .hideComment{
+  display: none;
+}
+.posts .addComment{
+  margin-left:75px;
+}
+.posts .hideComment{
+    display: none;
 }
 
 .posts .addComment .form-content textarea{
   width: 60%;
-  height: 60px;
+  height: 50px;
   outline: none;
   border: 2px solid #68A9CD;
-  padding: 18px 36px;
+  padding: 12px 24px;
   color: #000;
   font-style: normal;
   font-size: 14px;
@@ -238,14 +257,13 @@ border: 1.5px solid #42B0EF;
   border: none;
   outline: none;
   border-radius: 50px;
-  padding: 20px 40px;
-  font-size:13px;
+  padding: 10px 20px;
+  font-size:12px;
   font-style:normal;
   letter-spacing:1px;
   overflow:hidden;
   text-transform:uppercase;
   font-weight:bold;
-  margin-bottom: 20px;
 }
 .posts .addComment .form-content button:hover,
 .posts .addComment .form-content button:focus{
@@ -255,17 +273,24 @@ border: 1.5px solid #42B0EF;
 @media screen and (max-width:768px){
   .posts .addComment .form-content {
     display: flex;
+    flex-direction: row;
+    justify-content:left;
     flex-wrap: wrap;
-    margin-top: -30px;
+    width: 100%;
   }
   .posts .addComment .form-content textarea{
     width: 100%;
-    padding:15px 30px;
+    padding:12px 30px;
+  }
+  ::placeholder{
+    font-size:12px;
+    letter-spacing: 1px;
   }
   .posts .addComment .form-content button {
       margin-top:10px;
       margin-left:5px;
-      padding:12px 24px;
+      padding:12px 15px;
+      font-size: 11px;
     }
 }
 

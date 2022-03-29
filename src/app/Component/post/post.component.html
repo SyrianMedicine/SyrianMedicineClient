@@ -10,21 +10,23 @@
               <img src="../../../assets/images/US_22641_SOCIAL MEDIA IMAGE_Coronavirus Force Majeure_Masthead_1920x1080px.jpg" alt="img-post" class="rounded-3"/>
                 <i class="fa fa-heart"></i>
                 <label>19</label>
-             </div>
+                <a (click)="displayComment()">comment</a>
+                <a (click)="cancelComment()" [ngClass]="{'posts hideComment':displayCancel}">cancel</a>
+                <!-- add comments -->
+                <div class="addComment" [ngClass]="{'posts hideComment':displayCom}">
+                  <form>
+                  <div class="form-content d-flex mx-5">
+                    <textarea name="commentInput" id="comment"
+                    placeholder="leave a comment here..." maxlength="1000"></textarea>
+                    <button type="button">comment</button>
+                  </div>
+                </form>
+                </div>
+            <!-- end edd comments -->
+              </div>
           </div>
 
-          <!-- add comments -->
-          <div class="addComment">
-            <form>
-            <div class="form-content d-flex mx-5">
-              <textarea name="commentInput" id="comment"
-              placeholder="leave a comment here..." maxlength="1000"></textarea>
-              <button type="button">comment</button>
-            </div>
-           </form>
-          </div>
           <!-- All comments-->
-
             <ul *ngIf="this.node.child">
             <app-comment  *ngFor="let com of this.node.child" [node]="com"></app-comment >
             </ul>

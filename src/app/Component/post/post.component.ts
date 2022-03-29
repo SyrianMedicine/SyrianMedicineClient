@@ -15,17 +15,28 @@ export class PostComponent implements OnInit {
   Commnets!:Array<CommentOutput>;
   user:usercard=new usercard();
   @Input() node:any;
-  constructor( private postservce: PostService) { 
+  displayCom:boolean=true;
+  displayCancel:Boolean=true;
+  constructor( private postservce: PostService) {
    this.user.displayName="sarya Tulimat";
   }
 
   ngOnInit(): void {
-   // this.loadcomment(); 
-  }  
+   // this.loadcomment();
+  }
  async loadcomment(): Promise<void> {
   (await this.postservce.GetComments(this.post.id,1,3)).subscribe(data => {
-    this.Commnets=data.items; 
+    this.Commnets=data.items;
   }, err => {});
   }
 
+
+  displayComment(){
+    this.displayCom=false;
+    this.displayCancel=false;
+  }
+  cancelComment(){
+    this.displayCancel=true;
+    this.displayCom=true;
+  }
 }

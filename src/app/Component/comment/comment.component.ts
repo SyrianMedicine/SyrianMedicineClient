@@ -11,25 +11,32 @@ import { PostService } from 'src/app/Services/post/post.service';
 })
 export class CommentComponent implements OnInit,OnChanges {
   @Input() Commnet!:CommentOutput;
-  @Input() node:any; 
+  @Input() node:any;
   user:usercard=new usercard();
   SubCommnets!:Array<CommentOutput>;
-  form:FormGroup;
-  constructor(private postservce: PostService, private fb:FormBuilder) {
-    this.form =this.fb.group({
-      replay:['',[Validators.required]]
-    })
-   }
+  displayRep:boolean=true;
+  displayCancel:boolean=true;
+  constructor(private postservce: PostService) { }
   ngOnInit(): void {
 
    this.user.displayName="sarya Tulimar";
   }
 ngOnChanges(changes: SimpleChanges): void {
-    // this.loadSubcomment();
+    this.loadSubcomment();
 }
   async loadSubcomment(): Promise<void> {
     (await this.postservce.GetSubComments(this.Commnet.id,1,3)).subscribe(da => {
       this.SubCommnets=da.items;
     }, err => {});
-    } 
+    }
+
+
+    displayReplay(){
+      this.displayRep=false;
+      this.displayCancel=false
+    }
+    cancelReplay(){
+      this.displayRep=true;
+      this.displayCancel=true;
+    }
 }
