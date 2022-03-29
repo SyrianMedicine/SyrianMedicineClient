@@ -1,6 +1,8 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router'; 
+import { CommentOutput } from 'src/app/Models/Comment/CommentOutput';
 import { PostOutput } from 'src/app/Models/Post/PostOutput';
+import { usercard } from 'src/app/Models/usercard/usercard';
 import { PostService } from 'src/app/Services/post/post.service'; 
 
 @Component({
@@ -11,17 +13,20 @@ import { PostService } from 'src/app/Services/post/post.service';
 export class PostsPageComponent implements OnInit,OnChanges {
 
   constructor(private route:Router,private postservce: PostService) { }
-  post!:PostOutput; 
+  post!:PostOutput;
+  root={text:"hello this is post",
+  child:[{text:"hello this is comment",child:[{text:"hello this is SubComment",child:[]},{text:"hello this is SubComment",child:[]}]},
+  {text:"hello this is comment",child:[{text:"hello this is SubComment",child:[]},{text:"hello this is Subcomment",child:[]}]}]}
   ngOnInit(): void {
-    this.loadpost();
+    //this.loadpost();
   }
   ngOnChanges(changes: SimpleChanges): void {
     
   }
  async loadpost():Promise<void>{
-    (await this.postservce.GetPost(1)).subscribe(data => {
+   /* (await this.postservce.GetPost(1)).subscribe(data => {
       this.post=data.data; 
-    }, err => {});
+    }, err => {});*/
   }
   moveOn(){
     
