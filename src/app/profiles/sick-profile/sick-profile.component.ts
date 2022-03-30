@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { SickInfo } from 'src/app/Models/Sick/SickInfo';
-import { SickService } from 'src/app/Services/sick.service';
+import { SickService } from 'src/app/Services/sick/sick.service';
 
 @Component({
   selector: 'app-sick-profile',

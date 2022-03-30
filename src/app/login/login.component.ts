@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
       else if (this.typeAccount == 5) {
         localStorage.setItem('userType', "Hospital");
       }
-      
+
       if (this.typeAccount > 2)
         localStorage.setItem('id', data.data.id);
       this.snackBar.open(data.message, 'close', {

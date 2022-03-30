@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,24 @@ export class RatingService {
 
   async getRateUser(userName: string): Promise<Observable<any>> {
     return this.http.get<any>(this.baseUrl + userName).pipe();
+  }
+
+  async rateUser(username: string, star: number): Promise<Observable<any>> {
+    var headersObject = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem('token'));
+    const httpOptions = {
+      headers: headersObject
+    };
+
+    var body:any = {
+      "username": username,
+      "starsNumber": +star
+    };
+    console.log("sss:" +star);
+    return this.http.post<any>(this.baseUrl + "Rate", body, httpOptions).pipe(catchError(this.errorHandler));
+  }
+
+  errorHandler(error: HttpErrorResponse) {
+    return throwError(error.error.message);
   }
 
 }

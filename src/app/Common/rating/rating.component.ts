@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { UserRate } from 'src/app/Models/Rating/UserRate';
 import { RatingService } from 'src/app/Services/rating/rating.service';
@@ -19,9 +20,28 @@ export class RatingComponent implements OnInit {
   count4 = 0;
   count5 = 0;
 
-  constructor(private route: ActivatedRoute, private ratingService: RatingService) { }
+  constructor(private route: ActivatedRoute, private ratingService: RatingService, private snackBar: MatSnackBar) { }
   async ngOnInit(): Promise<void> {
     this.userName = this.route.snapshot.paramMap.get("userName");
+    await this.userRatng();
+  }
+
+  async onRatingChange(starsNumber: any) {
+    let star :number=starsNumber.target.value;
+    (await this.ratingService.rateUser(this.userName, star)).subscribe(async () => {
+      await this.userRatng();
+    }, err => {
+      this.snackBar.open(err, 'close', {
+        duration: 3000,
+        horizontalPosition: 'start',
+        verticalPosition: 'bottom',
+      });
+    }
+    );
+  }
+
+  async userRatng() {
+    this.count1 =this.count2 =this.count3 =this.count4 =this.count5 =0;
     (await this.ratingService.getRateUser(this.userName)).subscribe(data => {
       this.userRateData = data;
       this.userRateData.data.ratingData.forEach(element => {
@@ -42,6 +62,10 @@ export class RatingComponent implements OnInit {
         }
       });
     });
+  }
+
+  isMyOwnProfile(){
+    return localStorage.getItem("username") ==this.userName;
   }
 
 }
