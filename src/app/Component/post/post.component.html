@@ -2,10 +2,11 @@
 <div class="row hidden">
     <div class="col">
       <div class="container">
+        <div class="post-card">
         <app-user-card [user]="post.user"></app-user-card>
           <div class="post-content">
-             <div class="post-content-info">
-              <span>{{ post.date}}</span>
+            <div class="post-content-info">
+              <span>{{ post.date | date :'medium'}}</span>
               <p>{{post.postText}}</p>
               <img *ngIf="post.mediaUrl" [src]="post.mediaUrl" alt="img-post" class="rounded-3"/>
                 <i class="fa fa-heart"></i>
@@ -16,22 +17,21 @@
                 <div class="addComment" [ngClass]="{'posts hideComment':displayCom}">
                    <form>
                   <div class="form-content d-flex mx-5 " >
-                    <textarea  name="commentInput" id="comment" [(ngModel)]="this.newComment" 
+                    <textarea  name="commentInput" id="comment" [(ngModel)]="this.newComment"
                     placeholder="leave a comment here..." maxlength="1000"></textarea>
                     <button name="sendComment"  (click)="this.CreateComment()" type="button">comment</button>
-                  </div> 
+                  </div>
                 </form>
                 </div>
             <!-- end edd comments -->
               </div>
           </div>
-
-          <!-- All comments-->
-            <div *ngIf="this.Commnets" class="commentsArea">
-            <app-comment  *ngFor="let com of this.Commnets" [Commnet]="com"></app-comment >
-            </div>
-
+        <!-- All comments-->
+        <div *ngIf="this.Commnets" class="commentsArea">
+          <app-comment  *ngFor="let com of this.Commnets" [Commnet]="com"></app-comment >
+          </div>
         </div>
+      </div>
       </div>
     </div>
   </section>

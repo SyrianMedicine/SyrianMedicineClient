@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { async } from '@angular/core/testing';
+import { HospitalInfo } from 'src/app/Models/Hospital/HospitalInfo';
+import { HospitalService } from 'src/app/Services/hospital/hospital.service';
 @Component({
   selector: 'app-hospitals',
   templateUrl: './hospitals.component.html',
@@ -7,11 +9,29 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HospitalsComponent implements OnInit {
 
-  constructor(private http:HttpClient) {
+  PageNumber:number=1;
+  pageSize:number=3;
+  totalItems!:number;
+  hospitalItems!:Array<HospitalInfo>;
 
+  constructor(private hospitalService:HospitalService) {
    }
 
   ngOnInit(): void {
+    this.getPageHospital()
   }
+
+  async getPageHospital(){
+    (await this.hospitalService.getHospitalsPagination(this.PageNumber,this.pageSize)).subscribe(response =>{
+      this.hospitalItems = response.items;
+      this.totalItems=response.totalItems;
+      console.log(response)
+ },err=>{ console.log("error")});
+}
+onMovePage(page:any){
+    this.PageNumber=page;
+    this.getPageHospital();
+    console.log(this.PageNumber)
+}
 
 }

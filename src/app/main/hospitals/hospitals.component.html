@@ -24,16 +24,16 @@
     <hr/>
     </div>
         <!-- start post -->
-      <div class="row hidden">
+      <div class="row hidden" *ngFor="let hosptial of this.hospitalItems |paginate:{currentPage:PageNumber,itemsPerPage:pageSize,totalItems:totalItems}">
         <div class="col">
           <div class="container">
             <div class="hospital-content">
-              <img src="../../../assets/images/hamaHospital.jpg" alt="Hospital" class="img-fluid" />
+              <img [src]="hosptial.pictureUrl" alt="Hospital" class="img-fluid" />
               <div class="hospital-content-info">
-                <h4>Homs Unevirsity Hospital</h4>
+                <h4>{{hosptial.name}}</h4>
                 <img src="../../../assets/images/areaIcon.png"/>
-                <span>Hamah</span>
-                <p>Abilities forfeited situation extremely my to he resembled. Old had conviction discretion understood put principles you. Match means keeps round one her quick. She forming two comfort invited. Yet she income effect edward. Entire desire way design few. Mrs sentiments led solicitude estimating friendship fat. Meant those event is weeks state it to or. Boy but has folly charm there its. Its fact ten spot drew.</p>
+                <span>{{hosptial.location}}</span>
+                <p>{{hosptial.aboutHospital}}</p>
               </div>
             </div>
           </div>
@@ -41,53 +41,16 @@
     </div>
 <!-- end hospitals -->
 
-<!-- start hospitals -->
-<div class="row hidden">
-  <div class="col">
-    <div class="container">
-      <div class="hospital-content">
-        <img src="../../../assets/images/hamaHospital.jpg" alt="Hospital" class="img-fluid" />
-        <div class="hospital-content-info">
-          <h4>Hamah Nationa Hospital</h4>
-          <img src="../../../assets/images/areaIcon.png"/>
-          <span>Homs</span>
-          <p>Abilities forfeited situation extremely my to he resembled. Old had conviction discretion understood put principles you. Match means keeps round one her quick. She forming two comfort invited. Yet she income effect edward. Entire desire way design few. Mrs sentiments led solicitude estimating friendship fat. Meant those event is weeks state it to or. Boy but has folly charm there its. Its fact ten spot drew.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end hospitals -->
 
-<!-- start hospitals -->
-<div class="row hidden">
-  <div class="col">
-    <div class="container">
-      <div class="hospital-content">
-        <img src="../../../assets/images/hamaHospital.jpg" alt="Hospital" class="img-fluid" />
-        <div class="hospital-content-info">
-          <h4>Al-Fayahaa Hosptial </h4>
-          <img src="../../../assets/images/areaIcon.png"/>
-          <span>Nutrition</span>
-          <p>Abilities forfeited situation extremely my to he resembled. Old had conviction discretion understood put principles you. Match means keeps round one her quick. She forming two comfort invited. Yet she income effect edward. Entire desire way design few. Mrs sentiments led solicitude estimating friendship fat. Meant those event is weeks state it to or. Boy but has folly charm there its. Its fact ten spot drew.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end hospitals -->
 </section>
 <!-- end hospitals -->
 
 
+
 <!-- start pageination -->
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-  </ul>
-</nav>
+<div class="d-flex justify-content-center">
+  <pagination-controls (pageChange)="this.onMovePage($event)" [maxSize]="7" [autoHide]="true" [directionLinks]="true"></pagination-controls>
+</div>
 <!-- end pageination -->
 
 <!-- footer start  -->

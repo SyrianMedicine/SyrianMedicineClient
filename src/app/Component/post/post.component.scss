@@ -52,7 +52,11 @@ border: 1.5px solid #42B0EF;
 {
   margin: 40px 0;
 }
-
+.posts .post-card  {
+  background-color: #FFF;
+  box-shadow: 2px 2px 20px rgba(133, 124, 124, 0.5) ;
+  padding-bottom: 20px;
+}
 .posts .post-deploy
 {
   font-weight: 600;
@@ -121,14 +125,14 @@ border: 1.5px solid #42B0EF;
 }
 
 
-.posts .post-content
+.posts  .post-content
 {
   display: flex;
   margin:auto;
   padding:20px;
 }
 
-.posts .post-content >img
+.posts  .post-content >img
 {
   width:80px;
   height:80px;
@@ -136,7 +140,7 @@ border: 1.5px solid #42B0EF;
   box-sizing: border-box;
 }
 
-.posts .post-content  .post-content-info
+.posts   .post-content  .post-content-info
 {
   margin-left:-15px;
   margin-top:-50px;
@@ -145,11 +149,11 @@ border: 1.5px solid #42B0EF;
 }
 
 @media screen and(max-width:768px){
-  .posts .post-content  .post-content-info{
+  .posts  .post-content  .post-content-info{
     margin-left:-33px;
   }
 }
-.posts .post-content .post-content-info > span
+.posts  .post-content .post-content-info > span
 {
   font-size: 18px;
   color:rgba(0, 0, 0, 0.46);
@@ -158,7 +162,7 @@ border: 1.5px solid #42B0EF;
   margin-left:125px
 }
 
-.posts .post-content .post-content-info > p
+.posts  .post-content .post-content-info > p
 {
   margin:5px 0;
   line-height:1.6;
@@ -168,25 +172,25 @@ border: 1.5px solid #42B0EF;
   margin-left: 125px;
   font-style: normal;
 }
-.posts .post-content .post-content-info > i
+.posts  .post-content .post-content-info > i
 {
   padding-top: 5px;
   transition:.3s;
   margin-left: 125px;
 }
-.posts .post-content .post-content-info > i:hover
+.posts  .post-content .post-content-info > i:hover
 {
   color: rgb(252, 0, 0);
   cursor: pointer;
 }
-.posts .post-content .post-content-info > label
+.posts  .post-content .post-content-info > label
 {
   padding-top: 5px;
   margin-left: 4px;
   color: #000;
   font-weight: 500;
 }
-.posts .post-content .post-content-info > a
+.posts  .post-content .post-content-info > a
 {
   padding-top:10px;
   letter-spacing:1.4px;
@@ -318,7 +322,6 @@ border: 1.5px solid #42B0EF;
   border-radius: 20px;
 }
  .commentsArea{
-  margin:0 0 0 50px;
+  margin:0 0 0 100px;
 }
-// end pageniation
 

@@ -1,24 +1,25 @@
 .comments {
   padding-top: 10px;
-  // margin-left: 20px;
+  padding-left: 10px;
+  overflow-x: hidden;
 }
-
 .comments .comments-content-info {
   margin-left: 111px;
-   margin-top: -30px;
+  margin-top:-30px;
 }
+@media screen and (max-width:768px){
+  .comments .comments-content-info {
+    margin-left: 90px;
+    margin-top:-25px;
+  }
+}
+
 .comments  .comments-content-info p{
-  margin: 5px 0;
+  margin:2px 0;
   line-height: 1.6;
   font-size: 15px;
   word-break: break-all;
   word-spacing: normal;
-}
-
-@media screen and (max-width:768px){
-  .comments  .comments-content-info p{
-    font-size: 13px;
-  }
 }
 
 .comments  .comments-content-info i {
@@ -47,6 +48,15 @@
 .comments .comments-content-info  a:hover {
   padding-top: 5px;
   text-decoration: none;
+}
+
+@media screen and (max-width:768px){
+  .comments  .comments-content-info p{
+    font-size: 13px;
+  }
+  .comments .comments-content-info a{
+    font-size: 0.78em;
+  }
 }
 
 .comments .addComment{
@@ -101,17 +111,17 @@
 @media screen and (max-width:768px){
   .comments .addComment .form-content {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
   }
   .comments .addComment .form-content textarea{
-    width: 100%;
-    padding:12px 30px;
+    height: 40px;
+    padding:10px 20px;
+    font-size: 12px;
   }
   .comments .addComment .form-content button {
-    margin-top:10px;
-    margin-left:5px;
-    padding:12px 15px;
+    margin-top:5px;
+    margin-left:2px;
+    padding:10px;
     font-size: 11px;
   }
     ::placeholder{
@@ -128,8 +138,23 @@
 }
 
 .comments .commentsArea{
-  margin:0 0 0 90px;
+  margin:0 0 0 45px;
+  padding: 0 0 0 30px;
   border-left: 1px solid #305a72;
 }
+@media screen and (max-width:768px){
+  .comments .commentsArea{
+    margin: 0;
+    padding:0;
+    border:none;
+  }
 
+}
 
+@media screen and (min-width:768px) and (max-width:992px){
+  .comments .commentsArea{
+    margin:0;
+    padding: 0;
+    border:none
+  }
+}

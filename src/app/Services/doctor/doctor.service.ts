@@ -16,8 +16,8 @@ export class DoctorService {
   }
 
   // return doctors Pagination ...
-  async getDoctorsPagination(pageNumber: Number, pageSize: Number): Promise<Observable<any>> {
-    return await this.http.post(this.baseUrl + "PaginationDoctors", { 'pageNummber': pageNumber, 'pageSize': pageSize });
+   getDoctorsPagination(pageNumber: Number, pageSize: Number):Observable<any>{
+    return  this.http.post(this.baseUrl + "PaginationDoctors", { 'pageNumber': pageNumber, 'pageSize': pageSize });
   }
 
   async getDoctorInfo(userName: string): Promise<Observable<any>> {
