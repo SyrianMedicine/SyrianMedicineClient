@@ -2,24 +2,24 @@
 <div class="row hidden">
     <div class="col">
       <div class="container">
-        <app-user-card [user]="user"></app-user-card>
+        <app-user-card [user]="post.user"></app-user-card>
           <div class="post-content">
              <div class="post-content-info">
-              <span>Dec 16,2020</span>
-              <p>{{node.text}}</p>
-              <img src="../../../assets/images/US_22641_SOCIAL MEDIA IMAGE_Coronavirus Force Majeure_Masthead_1920x1080px.jpg" alt="img-post" class="rounded-3"/>
+              <span>{{ post.date}}</span>
+              <p>{{post.postText}}</p>
+              <img *ngIf="post.mediaUrl" [src]="post.mediaUrl" alt="img-post" class="rounded-3"/>
                 <i class="fa fa-heart"></i>
                 <label>19</label>
                 <a (click)="displayComment()">comment</a>
                 <a (click)="cancelComment()" [ngClass]="{'posts hideComment':displayCancel}">cancel</a>
                 <!-- add comments -->
                 <div class="addComment" [ngClass]="{'posts hideComment':displayCom}">
-                  <form>
-                  <div class="form-content d-flex mx-5">
-                    <textarea name="commentInput" id="comment"
+                   <form>
+                  <div class="form-content d-flex mx-5 " >
+                    <textarea  name="commentInput" id="comment" [(ngModel)]="this.newComment" 
                     placeholder="leave a comment here..." maxlength="1000"></textarea>
-                    <button type="button">comment</button>
-                  </div>
+                    <button name="sendComment"  (click)="this.CreateComment()" type="button">comment</button>
+                  </div> 
                 </form>
                 </div>
             <!-- end edd comments -->
@@ -27,9 +27,9 @@
           </div>
 
           <!-- All comments-->
-            <ul *ngIf="this.node.child">
-            <app-comment  *ngFor="let com of this.node.child" [node]="com"></app-comment >
-            </ul>
+            <div *ngIf="this.Commnets" class="commentsArea">
+            <app-comment  *ngFor="let com of this.Commnets" [Commnet]="com"></app-comment >
+            </div>
 
         </div>
       </div>

@@ -4,7 +4,7 @@
           <div class="userInfo d-flex align-items-center mt-3">
             <img src="../../../assets/images/person1.jpg"
             alt="person1" class="rounded-circle"/>
-            <h4 class="mx-4">{{user.displayName}}</h4>
+             <h4 style="cursor: pointer;" class="mx-4" [routerLink]=this.getLink()>{{user.displayName}}</h4>
           </div>
       </div>
     </div>

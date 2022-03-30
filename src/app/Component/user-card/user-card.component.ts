@@ -8,10 +8,12 @@ import { usercard } from 'src/app/Models/usercard/usercard';
 })
 export class UserCardComponent implements OnInit {
   @Input() user!:usercard;
+  static Route=["Sick","Doctor", "Nurse", "Secretary", "Hospital", "Sick"]
   constructor() { }
-  
   ngOnInit(): void {
-    
+  }
+  getLink():string{
+    return "/"+UserCardComponent.Route[this.user.userType-1]+"/"+this.user.userName;
   }
 
 }

@@ -14,19 +14,23 @@ export class PostsPageComponent implements OnInit,OnChanges {
 
   constructor(private route:Router,private postservce: PostService) { }
   post!:PostOutput;
-  root={text:"hello this is post",
-  child:[{text:"hello this is comment",child:[{text:"hello this is SubComment",child:[]},{text:"hello this is SubComment",child:[]}]},
-  {text:"hello this is comment",child:[{text:"hello this is SubComment",child:[]},{text:"hello this is Subcomment",child:[]}]}]}
+  post2!:PostOutput;
+ // root={text:"hello this is post",
+  //child:[{text:"hello this is comment",child:[{text:"hello this is SubComment",child:[{text:"hello this is SubComment",child:[]},{text:"hello this is SubComment",child:[]}]},{text:"hello this is SubComment",child:[]}]},
+  //{text:"hello this is comment",child:[{text:"hello this is SubComment",child:[]},{text:"hello this is Subcomment",child:[]}]}]}
   ngOnInit(): void {
-    //this.loadpost();
+    this.loadpost();
   }
   ngOnChanges(changes: SimpleChanges): void {
     
   }
  async loadpost():Promise<void>{
-   /* (await this.postservce.GetPost(1)).subscribe(data => {
+    (await this.postservce.GetPost(1)).subscribe(data => {
       this.post=data.data; 
-    }, err => {});*/
+    }, err => {});
+    (await this.postservce.GetPost(2)).subscribe(data => {
+      this.post2=data.data; 
+    }, err => {});
   }
   moveOn(){
     

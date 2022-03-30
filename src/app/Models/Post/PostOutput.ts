@@ -6,7 +6,7 @@ export class PostOutput {
     postTitle: string | any;
     mediaUrl:string|any;
     postText: string | any; 
-    medialUrl: string | any;
+    date!: Date ;
     type:number|any;
     isEdited:boolean|any;
     user!:usercard;

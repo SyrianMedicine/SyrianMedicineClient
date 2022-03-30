@@ -20,8 +20,6 @@ export class PostService {
   async GetComments(id:number, pageNumber: number, pageSize: number): Promise<Observable<any>> {
     return await this.http.post(this.baseUrl + "Post/"+id+"/Comments", { "pageNumber": pageNumber, "pageSize": pageSize });
   }
-  async GetSubComments(id:number, pageNumber: number, pageSize: number): Promise<Observable<any>> {
-    return await this.http.post(this.baseUrl + "Comment/"+id+"/SubComments", { "pageNumber": pageNumber, "pageSize": pageSize });
-  } 
+ 
 
 }

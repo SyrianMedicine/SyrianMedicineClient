@@ -1,8 +1,7 @@
-import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { async } from '@angular/core/testing';
+import { Component, Input, OnInit } from '@angular/core'; 
 import { CommentOutput } from 'src/app/Models/Comment/CommentOutput';
-import { PostOutput } from 'src/app/Models/Post/PostOutput';
-import { usercard } from 'src/app/Models/usercard/usercard';
+import { PostOutput } from 'src/app/Models/Post/PostOutput'; 
+import { CommentService } from 'src/app/Services/Comment/comment.service';
 import { PostService } from 'src/app/Services/post/post.service';
 
 @Component({
@@ -13,23 +12,35 @@ import { PostService } from 'src/app/Services/post/post.service';
 export class PostComponent implements OnInit {
   @Input() post!:PostOutput;
   Commnets!:Array<CommentOutput>;
-  user:usercard=new usercard();
-  @Input() node:any;
   displayCom:boolean=true;
-  displayCancel:Boolean=true;
-  constructor( private postservce: PostService) {
-   this.user.displayName="sarya Tulimat";
+  displayCancel:Boolean=true; 
+  newComment!:string; 
+  //user:usercard=new usercard();
+  //@Input() node:any;
+  constructor( private postservce: PostService,private Commentservice:CommentService) {
+   //this.user.displayName="sarya Tulimat";
+ 
   }
 
   ngOnInit(): void {
-   // this.loadcomment();
+    this.loadcomment();
   }
  async loadcomment(): Promise<void> {
   (await this.postservce.GetComments(this.post.id,1,3)).subscribe(data => {
     this.Commnets=data.items;
   }, err => {});
   }
+  async CreateComment(){ 
 
+    (await this.Commentservice.CreatePostComment(this.post.id,this.newComment)).subscribe(data => {
+      this.Commnets.unshift(data.data);
+      this.Commnets=this.Commnets;
+      console.log(data);
+    }, err => {
+      console.log(err);
+    });
+    this.newComment="";  
+  }
 
   displayComment(){
     this.displayCom=false;
@@ -39,4 +50,5 @@ export class PostComponent implements OnInit {
     this.displayCancel=true;
     this.displayCom=true;
   }
+ 
 }
