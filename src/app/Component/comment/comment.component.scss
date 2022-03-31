@@ -142,6 +142,9 @@
   padding: 0 0 0 30px;
   border-left: 1px solid #305a72;
 }
+.comments .Liked{
+  color: red;
+}
 @media screen and (max-width:768px){
   .comments .commentsArea{
     margin: 0;
@@ -157,4 +160,12 @@
     padding: 0;
     border:none
   }
+}
+::ng-deep .green-snackbar {
+  background-color: #4BB543; 
+  color: white;
+}
+::ng-deep .red-snackbar {
+  background: red;
+  color: white;
 }

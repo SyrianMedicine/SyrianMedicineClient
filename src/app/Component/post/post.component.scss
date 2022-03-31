@@ -324,4 +324,15 @@ border: 1.5px solid #42B0EF;
  .commentsArea{
   margin:0 0 0 100px;
 }
+ .Liked{
+  color: red;
+}
 
+::ng-deep .green-snackbar {
+  background-color: #4BB543; 
+  color: white;
+}
+::ng-deep .red-snackbar {
+  background: red;
+  color: white;
+}

@@ -9,8 +9,8 @@
               <span>{{ post.date | date :'medium'}}</span>
               <p>{{post.postText}}</p>
               <img *ngIf="post.mediaUrl" [src]="post.mediaUrl" alt="img-post" class="rounded-3"/>
-                <i class="fa fa-heart"></i>
-                <label>19</label>
+                <i *ngIf="this.LikeEnablebutton"  (click)="this.onLikelicked();"  class="fa fa-heart" [ngClass]="{'Liked':this.liked}"></i>
+                <label>{{this.numberofLike}}</label>
                 <a (click)="displayComment()">comment</a>
                 <a (click)="cancelComment()" [ngClass]="{'posts hideComment':displayCancel}">cancel</a>
                 <!-- add comments -->
@@ -28,7 +28,7 @@
           </div>
         <!-- All comments-->
         <div *ngIf="this.Commnets" class="commentsArea">
-          <app-comment  *ngFor="let com of this.Commnets" [Commnet]="com"></app-comment >
+          <app-comment  *ngFor="let com of this.Commnets" [depth]="0" [Commnet]="com"></app-comment >
           </div>
         </div>
       </div>

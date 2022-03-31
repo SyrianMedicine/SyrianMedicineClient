@@ -6,12 +6,11 @@
               <app-user-coment [user]="this.Commnet.user" ></app-user-coment>
                   <div class="comments-content-info">
                       <p>{{this.Commnet.text}}</p>
-                      <i class="fa fa-heart"></i>
-                      <label>19</label>
+                      <i *ngIf="LikeEnablebutton"  (click)="this.onLikelicked();" class="fa fa-heart" [ngClass]="{'Liked':this.liked}" ></i>
+                      <label>{{this.numberofLike}}</label>
                       <a (click)="displayReplay()">Reply</a>
                       <a (click)="cancelReplay()" [ngClass]="{'comments hideComment':displayCancel}">Cancel</a>
                     </div>
-
                     <!-- add replay -->
                       <div class="addComment" [ngClass]="{'comments hideComment':displayRep}">
                         <form>
@@ -27,7 +26,7 @@
                  </div>
                  <!-- sub comments -->
                  <div  *ngIf="this.SubCommnets"  class="commentsArea ">
-                <app-comment *ngFor="let come of this.SubCommnets" [Commnet]="come"></app-comment>
+                <app-comment *ngFor="let come of this.SubCommnets" [depth]="this.depth+1" [Commnet]="come"></app-comment>
               </div>
             </div>
           <!-- </div> -->
