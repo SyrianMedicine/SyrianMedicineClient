@@ -10,13 +10,16 @@
       <table class="text-left mx-auto">
         <tr>
           <td class="rating-label">
-            <input type="radio" value=5 name="rateUserInput" (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile()" /> Excellent
+            <input type="radio" value=5 name="rateUserInput"
+              [defaultChecked]="currentRating ==5"
+              (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile()" />
+            Excellent
           </td>
           <td class="rating-bar">
             <div class="bar-container rating-progress-bars">
               <div class="progress-1 align-items-center">
                 <div class="progress-bar bar-1" role="progressbar"
-                  [ngStyle]="{ 'width': this.count5+'%' }" 
+                  [ngStyle]="{ 'width': this.count5+'%' }"
                   aria-valuemin="0" aria-valuemax="100">{{this.count5}}</div>
               </div>
             </div>
@@ -25,13 +28,15 @@
         </tr>
         <tr>
           <td class="rating-label">
-            <input type="radio" value=4 name="rateUserInput" (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile()" /> Good
+            <input type="radio" value=4 name="rateUserInput"
+              [defaultChecked]="currentRating ==4"
+              (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile()" /> Good
           </td>
           <td class="rating-bar">
             <div class="bar-container rating-progress-bars">
               <div class="progress-1 align-items-center">
                 <div class="progress-bar bar-1" role="progressbar"
-                  [ngStyle]="{ 'width': this.count4+'%' }" 
+                  [ngStyle]="{ 'width': this.count4+'%' }"
                   aria-valuemin="0" aria-valuemax="100">{{this.count4}}</div>
               </div>
             </div>
@@ -40,14 +45,16 @@
         </tr>
         <tr>
           <td class="rating-label">
-            <input type="radio" value=3 name="rateUserInput" (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile()"/>
+            <input type="radio" value=3 name="rateUserInput"
+              [defaultChecked]="currentRating ==3"
+              (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile()" />
             Average
           </td>
           <td class="rating-bar">
             <div class="bar-container rating-progress-bars">
               <div class="progress-1 align-items-center">
                 <div class="progress-bar bar-1" role="progressbar"
-                  [ngStyle]="{ 'width': this.count3+'%' }" 
+                  [ngStyle]="{ 'width': this.count3+'%' }"
                   aria-valuemin="0" aria-valuemax="100">{{this.count3}}</div>
               </div>
             </div>
@@ -56,13 +63,15 @@
         </tr>
         <tr>
           <td class="rating-label">
-            <input type="radio" value=2 name="rateUserInput" (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile()"/> Poor
+            <input type="radio" value=2 name="rateUserInput"
+              [defaultChecked]="currentRating ==2"
+              (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile()" /> Poor
           </td>
           <td class="rating-bar">
             <div class="bar-container rating-progress-bars">
               <div class="progress-1 align-items-center">
                 <div class="progress-bar bar-1" role="progressbar"
-                  [ngStyle]="{ 'width': this.count2+'%' }" 
+                  [ngStyle]="{ 'width': this.count2+'%' }"
                   aria-valuemin="0" aria-valuemax="100">{{this.count2}}</div>
               </div>
             </div>
@@ -71,14 +80,16 @@
         </tr>
         <tr>
           <td class="rating-label">
-            <input type="radio" value=1 name="rateUserInput" (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile()"/>
+            <input type="radio" value=1 name="rateUserInput"
+              [defaultChecked]="currentRating ==1"
+              (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile()" />
             Terrible
           </td>
           <td class="rating-bar">
             <div class="bar-container rating-progress-bars">
               <div class="progress-1 align-items-center">
                 <div class="progress-bar bar-1" role="progressbar"
-                  [ngStyle]="{ 'width': this.count1+'%' }" 
+                  [ngStyle]="{ 'width': this.count1+'%' }"
                   aria-valuemin="0" aria-valuemax="100">{{this.count1}}</div>
               </div>
             </div>

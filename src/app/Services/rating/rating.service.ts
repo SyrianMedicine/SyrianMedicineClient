@@ -21,13 +21,23 @@ export class RatingService {
       headers: headersObject
     };
 
-    var body:any = {
+    var body: any = {
       "username": username,
       "starsNumber": +star
     };
-    console.log("sss:" +star);
+    console.log("sss:" + star);
     return this.http.post<any>(this.baseUrl + "Rate", body, httpOptions).pipe(catchError(this.errorHandler));
   }
+
+  async myRatingForUser(username: string): Promise<Observable<any>> {
+    var headersObject = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem('token'));
+    const httpOptions = {
+      headers: headersObject
+    };
+    return this.http.get<any>(this.baseUrl + username + "/MyRating",httpOptions).pipe();
+  }
+
+
 
   errorHandler(error: HttpErrorResponse) {
     return throwError(error.error.message);

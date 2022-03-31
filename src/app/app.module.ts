@@ -61,6 +61,7 @@ import { PostComponent } from './Component/post/post.component';
 import { PostsPageComponent } from './main/posts-page/posts-page.component';
 import { RatingComponent } from './Common/rating/rating.component';
 import { UserComentComponent } from './Component/user-coment/user-coment.component'; 
+import { ReserveDateWithDoctorOrNurseComponent } from './Common/reservesDate/reserve-date-with-doctor-or-nurse/reserve-date-with-doctor-or-nurse.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { UserComentComponent } from './Component/user-coment/user-coment.compone
     PostsPageComponent,
     RatingComponent,
     UserComentComponent, 
+    ReserveDateWithDoctorOrNurseComponent, 
   ],
   imports: [
     BrowserModule,

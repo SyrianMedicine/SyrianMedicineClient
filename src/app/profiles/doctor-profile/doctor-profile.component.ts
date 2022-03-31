@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { ReserveDateWithDoctorOrNurseComponent } from 'src/app/Common/reservesDate/reserve-date-with-doctor-or-nurse/reserve-date-with-doctor-or-nurse.component';
 import { DoctorInfo } from 'src/app/Models/Doctor/DoctorInfo';
 import { DoctorService } from 'src/app/Services/doctor/doctor.service';
 
@@ -31,6 +32,15 @@ export class DoctorProfileComponent implements OnInit {
   openTemplete(templete: any) {
     this.dialog.open(templete, {
       width: '300px'
+    });
+  }
+
+  openReserveDialog() {
+    let dialogRef = this.dialog.open(ReserveDateWithDoctorOrNurseComponent, {
+      width: '250px',
+      data: {
+        type: 1,
+      }
     });
   }
 
