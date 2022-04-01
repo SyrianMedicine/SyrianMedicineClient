@@ -52,7 +52,7 @@ border: 1.5px solid #42B0EF;
 {
   margin: 40px 0;
 }
-.posts .post-card  {
+.posts .post-card {
   position: relative;
   background-color: #FFF;
   box-shadow: 2px 2px 20px rgba(133, 124, 124, 0.5) ;
@@ -60,7 +60,6 @@ border: 1.5px solid #42B0EF;
 }
 .posts .post-card .showComments  > a{
   background-color: #ddd;
-  margin: 5px 0 0 120px;
   padding: 7px;
   color: #222;
   font-size: .78rem;
@@ -84,7 +83,6 @@ border: 1.5px solid #42B0EF;
 }
 .posts .showPosts > a{
   background-color: #ddd;
-  margin: 5px 0 0 120px;
   padding: 7px;
   color: #222;
   font-size: .78rem;
@@ -373,7 +371,7 @@ border: 1.5px solid #42B0EF;
   color: #FFFFFF;
   border-radius: 20px;
 }
- .posts .posts-cardArea{
+ .posts .commentsArea{
   margin:0 0 0 100px;
 }
  .Liked{
