@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { ReserveDateWithDoctorOrNurseComponent } from 'src/app/Common/reservesDate/reserve-date-with-doctor-or-nurse/reserve-date-with-doctor-or-nurse.component';
 import { NurseInfo } from 'src/app/Models/Nurse/NurseInfo';
 import { NurseService } from 'src/app/Services/nurse/nurse.service';
 
@@ -31,6 +32,20 @@ export class NurseProfileComponent implements OnInit {
     this.dialog.open(templete, {
       width: '300px'
     });
+  }
+
+  openReserveDialog() {
+    let username = this.userName;
+    let dialogRef = this.dialog.open(ReserveDateWithDoctorOrNurseComponent, {
+      width: '250px',
+      data: {
+        username
+      }
+    });
+  }
+
+  isMyOwnProfile() {
+    return localStorage.getItem("username") == this.userName;
   }
 
 }

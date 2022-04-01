@@ -45,4 +45,8 @@ export class DoctorProfileComponent implements OnInit {
     });
   }
 
+  isMyOwnProfile() {
+    return localStorage.getItem("username") == this.userName;
+  }
+
 }

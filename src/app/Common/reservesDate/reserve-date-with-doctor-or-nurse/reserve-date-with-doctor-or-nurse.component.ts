@@ -3,7 +3,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
-import { ReserveDoctorOrNurse } from 'src/app/Models/Reserve/ReserveDoctorOrNurse/ReserveDoctorOrNurse';
 import { DoctorService } from 'src/app/Services/doctor/doctor.service';
 import { NurseService } from 'src/app/Services/nurse/nurse.service';
 import { ReserveDoctorOrNurseService } from 'src/app/Services/Reserve/reserve-doctor-or-nurse.service';
@@ -34,7 +33,6 @@ export class ReserveDateWithDoctorOrNurseComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   async ngOnInit(): Promise<void> {
-    console.log("ee: " + this.data.username);
     (await this.doctorService.getDoctorInfo(this.data.username)).subscribe(data => {
       if (data != null) {
         this.id = data.id;
@@ -53,24 +51,44 @@ export class ReserveDateWithDoctorOrNurseComponent implements OnInit {
   }
 
   async onSubmitReserve(ev: any) {
-    console.log("type:" + this.type)
+
     if (this.type == 1) {
-      var data: ReserveDoctorOrNurse = new ReserveDoctorOrNurse();
-
-      data.title = ev.target.titleInput.value;
-      data.description = ev.target.descriptionInput.value;
-      data.timeReverse = ev.target.datetimeInput.value;
-      data.doctorId = +this.id;
-
-      (await this.reserveDateWithDoctorOrNurseService.ReserveDate(data)).subscribe(data => {
+      let data = {
+        title: ev.target.titleInput.value,
+        description: ev.target.descriptionInput.value,
+        timeReverse: ev.target.datetimeInput.value,
+        doctorId: +this.id,
+      };
+      (await this.reserveDateWithDoctorOrNurseService.ReserveDate(data, this.type)).subscribe(data => {
         this.snackBar.open(data.message, 'close', {
-          duration: 3000,
+          duration: 5000,
           horizontalPosition: 'start',
           verticalPosition: 'bottom',
         });
       }, err => {
         this.snackBar.open(err, 'close', {
-          duration: 3000,
+          duration: 5000,
+          horizontalPosition: 'start',
+          verticalPosition: 'bottom',
+        });
+      })
+    }
+    else if (this.type == 2) {
+      let data = {
+        title: ev.target.titleInput.value,
+        description: ev.target.descriptionInput.value,
+        timeReverse: ev.target.datetimeInput.value,
+        nurseId: +this.id,
+      };
+      (await this.reserveDateWithDoctorOrNurseService.ReserveDate(data, this.type)).subscribe(data => {
+        this.snackBar.open(data.message, 'close', {
+          duration: 5000,
+          horizontalPosition: 'start',
+          verticalPosition: 'bottom',
+        });
+      }, err => {
+        this.snackBar.open(err, 'close', {
+          duration: 5000,
           horizontalPosition: 'start',
           verticalPosition: 'bottom',
         });
