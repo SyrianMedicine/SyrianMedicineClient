@@ -28,14 +28,11 @@
           </div>
                   <!-- All comments-->
           <div *ngIf="this.Commnets" class="commentsArea">
-          <app-comment  *ngFor="let com of this.Commnets" [depth]="0" [Commnet]="com"></app-comment >
+          <app-comment  *ngFor="let com of this.Commnets" (Ondeleted)="this.ChildeDeleted($event);" [depth]="0" [Commnet]="com"></app-comment >
           </div>
           <div class="text-center showComments">
             <a>show more</a>
           </div>
-        </div>
-        <div class="text-center showPosts">
-          <a >show more</a>
         </div>
       </div>
     </div>

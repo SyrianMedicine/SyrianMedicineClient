@@ -1,9 +1,9 @@
-import { Component, Input, OnInit,  } from '@angular/core';
+import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CommentOutput } from 'src/app/Models/Comment/CommentOutput';
 import { CommentService } from 'src/app/Services/Comment/comment.service';
-import { LikeService } from 'src/app/Services/Like/like.service';
+import { LikeService } from 'src/app/Services/Like/like.service'; 
 
 @Component({
   selector: 'app-comment',
@@ -16,7 +16,8 @@ export class CommentComponent implements OnInit {
   SubCommnets!:Array<CommentOutput>;
   liked:boolean=false;
   numberofLike:number=0; 
-
+  editeCliked:boolean=false;
+  @Output() Ondeleted: EventEmitter<CommentOutput> = new EventEmitter();
 ///////////////////////////////////////
   
   displayRep:boolean=true;
@@ -25,8 +26,23 @@ export class CommentComponent implements OnInit {
   LikeEnablebutton:boolean=false;
   constructor(private router: Router,private likeService:LikeService,private commentService: CommentService,private snackBar: MatSnackBar) {
   }
+   ChildeDeleted(ChildeCommnet:CommentOutput){
+    for (let index = 0; index < this.SubCommnets.length; index++) {
+     if(this.SubCommnets[index].id==ChildeCommnet.id) { 
+      this.SubCommnets.splice(index, 1);
+      this.SubCommnets=this.SubCommnets;
+      break;
+     }
+  }
+   }
   isAuthrized():Boolean{
     return localStorage.getItem('token')!=null;
+  }
+  isOwnedbyMe():Boolean{
+    let username=localStorage.getItem("username");
+    if(username==null)
+    return false
+    return username.toLowerCase()==this.Commnet.user.userName.toLowerCase();
   }
   ngOnInit(): void {
     this.loadSubcomment(); 
@@ -53,21 +69,57 @@ export class CommentComponent implements OnInit {
     }
     async CreateSubComment(){
       if(!this.isAuthrized())
+      {
+        this.snackBarError("please login");
         this.router.navigate(['/Login']);
+      }
       (await this.commentService.CreateSubComment(this.Commnet.id,this.commentText)).subscribe(data => {
         this.SubCommnets.unshift(data.data);
         this.SubCommnets=this.SubCommnets;
-        this.snackBar.open(data.message, 'close', {
-          duration: 2000,
-          panelClass:['green-snackbar'],
-          horizontalPosition: 'start',
-          verticalPosition: 'bottom',
-        });
-      }, err => {  
+        this.snackBarSuccess(data.message);
+      }, err => { 
+        this.snackBarError(err.error.message);
       });
       this.commentText="";
     }
-    displayReplay(){
+    async deleteComment(){
+      if(!this.isAuthrized())
+      {
+        this.snackBarError("please login");
+        this.router.navigate(['/Login']);
+      }
+      (await this.commentService.Delete(this.Commnet.id)).subscribe(data => {
+        this.snackBarSuccess(data.message);
+        this.Ondeleted.emit(this.Commnet);
+      }, err => { 
+        this.snackBarError(err.error.message);
+      });
+    }
+    async EditeSubComment(){
+      if(this.commentText==this.Commnet.text){
+        this.snackBarError("its same the old ");
+        return;
+      }
+      if(!this.isAuthrized())
+      {
+        this.snackBarError("please login");
+        this.router.navigate(['/Login']);
+      }
+      (await this.commentService.Update(this.Commnet.id,this.commentText)).subscribe(data => {
+        this.Commnet=data.data; 
+        this.snackBarSuccess(data.message);
+      }, err => { 
+        this.snackBarError(err.error.message);
+      });
+    }
+    displayReplay(num:boolean){
+      if(this.editeCliked!=num){
+        if(num==true)
+        this.commentText=this.Commnet.text;
+        if(num==false)
+        this.commentText="";
+      }
+      this.editeCliked=num; 
       this.displayRep=false;
       this.displayCancel=false
     }
@@ -87,33 +139,47 @@ export class CommentComponent implements OnInit {
       {
         this.Like();
       }     
-    }else this.router.navigate(['Login']);
+    }else {
+      this.snackBarError("please login");
+      this.router.navigate(['Login']);
+    }
   }
   async Like(){
     (await this.likeService.LikeComment(this.Commnet.id)).subscribe(data => {
       this.liked=data.data;
     this.gettotalikes(); 
-    this.snackBar.open(data.message, 'close', {
-          duration: 2000,
-          panelClass:['green-snackbar'],
-          horizontalPosition: 'start',
-          verticalPosition: 'bottom',
-        });
-    }, err => {});
+    this.snackBarSuccess(data.message);
+    }, err => {
+      this.snackBarError(err.error.message);
+    });
     this.LikeEnablebutton=true;
   }
   
  async  unLike(){
     (await this.likeService.UnLikeComment(this.Commnet.id)).subscribe(data => {
       this.liked=!data.data; 
-      this.snackBar.open(data.message, 'close', {
-          duration: 2000,
-          panelClass:['green-snackbar'],
-          horizontalPosition: 'start',
-          verticalPosition: 'bottom',
-        });
+      this.snackBarSuccess(data.message);
       this.gettotalikes();
-    }, err => {});
+    }, err => { 
+      this.snackBarError(err.error.message);
+    });
     this.LikeEnablebutton=true;
+  }
+
+  snackBarError(message:string){
+    this.snackBar.open(message, 'close', {
+      duration: 2000,
+      panelClass:['red-snackbar'],
+      horizontalPosition: 'start',
+      verticalPosition: 'bottom',
+    });
+  }
+  snackBarSuccess(message:string){
+    this.snackBar.open(message, 'close', {
+      duration: 2000,
+      panelClass:['green-snackbar'],
+      horizontalPosition: 'start',
+      verticalPosition: 'bottom',
+    });
   }
 }

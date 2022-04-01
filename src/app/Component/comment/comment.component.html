@@ -6,20 +6,21 @@
               <app-user-coment [user]="this.Commnet.user" ></app-user-coment>
                   <div class="comments-content-info">
                       <p>{{this.Commnet.text}}</p>
+                      <h5 style="color:rgb(114, 114, 114);margin: 0;">{{(Commnet.datetime | date :'medium')+(this.Commnet.isEdited?"  (edited)":"")}} </h5>
                       <i *ngIf="LikeEnablebutton"  (click)="this.onLikelicked();" class="fa fa-heart" [ngClass]="{'Liked':this.liked}" ></i>
                       <label>{{this.numberofLike}}</label>
-                      <a (click)="displayReplay()">Reply</a>
+                      <a (click)="displayReplay(false)">Reply</a>
+                      <a *ngIf="this.isOwnedbyMe();" (click)="deleteComment()">Delete</a>
+                      <a *ngIf="this.isOwnedbyMe();" (click)="displayReplay(true)">Edit</a>
                       <a (click)="cancelReplay()" [ngClass]="{'comments hideComment':displayCancel}">Cancel</a>
-                      <a>Delete</a>
-                      <a>Edit</a>
                     </div>
                     <!-- add replay -->
                       <div class="addComment" [ngClass]="{'comments hideComment':displayRep}">
                         <form>
                         <div class="form-content d-flex">
                           <textarea [(ngModel)]="commentText" name="commentInput" id="comment"
-                          placeholder="leave a comment here..." maxlength="1000"   ></textarea>
-                          <button  name="sendComment" (click)="this.CreateSubComment()" type="button">Replay</button>
+                          [placeholder]="this.editeCliked?'edite comment.....':'leave a comment here...'" maxlength="1000" ></textarea>
+                          <button  name="sendComment" (click)="editeCliked?this.EditeSubComment():this.CreateSubComment();" type="button">{{editeCliked?'Edite':"Replay"}}</button>
                         </div>
                       </form>
                       </div>
@@ -28,6 +29,6 @@
                  </div>
                  <!-- sub comments -->
                  <div  *ngIf="this.SubCommnets"  class="commentsArea ">
-                <app-comment *ngFor="let come of this.SubCommnets" [depth]="this.depth+1" [Commnet]="come"></app-comment>
+                <app-comment *ngFor="let come of this.SubCommnets" (Ondeleted)="this.ChildeDeleted($event)" [depth]="this.depth+1" [Commnet]="come"></app-comment>
               </div>
             </div>

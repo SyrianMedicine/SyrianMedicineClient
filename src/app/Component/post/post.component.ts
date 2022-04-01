@@ -57,19 +57,33 @@ export class PostComponent implements OnInit {
   isAuthrized():Boolean{
     return localStorage.getItem('token')!=null;
   }
+  ChildeDeleted(ChildeCommnet:CommentOutput){
+    for (let index = 0; index < this.Commnets.length; index++) {
+     if(this.Commnets[index].id==ChildeCommnet.id) { 
+      this.Commnets.splice(index, 1);
+      this.Commnets=this.Commnets;
+      break;
+     }
+  }
+   }
+  isOwnedbyMe():Boolean{
+    let username=localStorage.getItem("username");
+    if(username==null)
+    return false
+    return username.toLowerCase()==this.post.user.userName.toLowerCase();
+  }
   async CreateComment(){ 
     if(!this.isAuthrized())
-    this.router.navigate(['/Login']);
+    {
+      this.snackBarError("please login"); 
+      this.router.navigate(['/Login']);
+    }
     (await this.Commentservice.CreatePostComment(this.post.id,this.newComment)).subscribe(data => {
       this.Commnets.unshift(data.data);
       this.Commnets=this.Commnets;
-      this.snackBar.open(data.message, 'close', {
-        duration: 2000,
-        panelClass:['green-snackbar'],
-        horizontalPosition: 'start',
-        verticalPosition: 'bottom',
-      });
+      this.snackBarSuccess(data.message);
     }, err => { 
+    this.snackBarError(err.error.message);
     });
     this.newComment="";  
   }
@@ -97,33 +111,45 @@ export class PostComponent implements OnInit {
       { 
         this.Like();
       }     
-    }else this.router.navigate(['Login']);
+    }else {
+      this.snackBarError("please login"); 
+      this.router.navigate(['Login']);
+    }
+  }
+  snackBarError(message:string){
+    this.snackBar.open(message, 'close', {
+      duration: 2000,
+      panelClass:['red-snackbar'],
+      horizontalPosition: 'start',
+      verticalPosition: 'bottom',
+    });
+  }
+  snackBarSuccess(message:string){
+    this.snackBar.open(message, 'close', {
+      duration: 2000,
+      panelClass:['green-snackbar'],
+      horizontalPosition: 'start',
+      verticalPosition: 'bottom',
+    });
   }
   async Like(){
     (await this.likeService.Likepost(this.post.id)).subscribe(data => {
       this.liked=data.data;
-    this.gettotalikes(); 
-
-    this.snackBar.open(data.message, 'close', {
-          duration: 2000,
-          panelClass:['green-snackbar'],
-          horizontalPosition: 'start',
-          verticalPosition: 'bottom',
-        });
-    }, err => {});
+    this.gettotalikes();  
+    this.snackBarSuccess(data.message);
+    }, err => {
+      this.snackBarError(err.error.message);
+  });
     this.LikeEnablebutton=true;
   }
  async  unLike(){
     (await this.likeService.UnLikepost(this.post.id)).subscribe(data => {
       this.liked=!data.data; 
-      this.snackBar.open(data.message, 'close', {
-          duration: 2000,
-          panelClass:['green-snackbar'],
-          horizontalPosition: 'start',
-          verticalPosition: 'bottom',
-        });
+      this.snackBarSuccess(data.message);
       this.gettotalikes();
-    }, err => {});
+    }, err => {
+      this.snackBarError(err.error.message);
+    });
     this.LikeEnablebutton=true;
   }
 }

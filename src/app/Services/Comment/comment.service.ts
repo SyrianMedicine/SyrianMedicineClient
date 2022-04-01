@@ -42,4 +42,15 @@ export class CommentService {
     };
     return await this.http.post(this.baseUrl + "CreateAccountComment", body,this.getoption());
   }
+  async Update(commentId:number,Text:String):Promise<Observable<any>>{
+    var body:any = {
+      "id": commentId,
+      "commentText": Text
+    };
+    return await this.http.post(this.baseUrl + "Update",body,this.getoption());
+  }
+  async Delete(id:number):Promise<Observable<any>>{
+    return await this.http.delete(this.baseUrl + "Delete?id="+id,this.getoption());
+  }
+  
 }
