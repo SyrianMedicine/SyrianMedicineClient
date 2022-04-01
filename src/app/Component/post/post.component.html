@@ -16,10 +16,10 @@
                 <!-- add comments -->
                 <div class="addComment" [ngClass]="{'posts hideComment':displayCom}">
                    <form>
-                  <div class="form-content d-flex mx-5 " >
+                  <div class="form-content d-flex mx-2 " >
                     <textarea  name="commentInput" id="comment" [(ngModel)]="this.newComment"
                     placeholder="leave a comment here..." maxlength="1000"></textarea>
-                    <button name="sendComment"  (click)="this.CreateComment()" type="button">comment</button>
+                    <button name="sendComment"   (click)="this.CreateComment()" type="button">comment</button>
                   </div>
                 </form>
                 </div>

@@ -30,5 +30,8 @@
                  <!-- sub comments -->
                  <div  *ngIf="this.SubCommnets"  class="commentsArea ">
                 <app-comment *ngFor="let come of this.SubCommnets" (Ondeleted)="this.ChildeDeleted($event)" [depth]="this.depth+1" [Commnet]="come"></app-comment>
+              </div> 
+              <div *ngIf="this.SubCommnets.length>=3" class=" showComments">
+                <a>show more</a>
               </div>
             </div>

@@ -198,11 +198,6 @@ border: 1.5px solid #42B0EF;
   padding:10px;
 }
 
-@media screen and(max-width:768px){
-  .posts  .post-content  .post-content-info{
-    margin-left:-33px;
-  }
-}
 .posts  .post-content .post-content-info > span
 {
   font-size: 18px;
@@ -210,6 +205,16 @@ border: 1.5px solid #42B0EF;
   letter-spacing:.5px;
   font-weight: 600;
   margin-left:125px
+}
+
+@media screen and(max-width:768px){
+  .posts  .post-content  .post-content-info{
+    margin-left:-33px;
+  }
+  .posts  .post-content .post-content-info > span{
+    margin-left: 125px;
+    font-size: 14px;
+  }
 }
 
 .posts  .post-content .post-content-info > p
@@ -328,7 +333,7 @@ border: 1.5px solid #42B0EF;
   .posts .addComment .form-content {
     display: flex;
     flex-direction: row;
-    justify-content:left;
+    justify-content:center;
     flex-wrap: wrap;
     width: 100%;
   }
@@ -342,7 +347,7 @@ border: 1.5px solid #42B0EF;
   }
   .posts .addComment .form-content button {
       margin-top:10px;
-      margin-left:5px;
+      // margin-left:5px;
       padding:12px 15px;
       font-size: 11px;
     }
