@@ -25,7 +25,6 @@ export class RatingService {
       "username": username,
       "starsNumber": +star
     };
-    console.log("sss:" + star);
     return this.http.post<any>(this.baseUrl + "Rate", body, httpOptions).pipe(catchError(this.errorHandler));
   }
 
@@ -34,7 +33,7 @@ export class RatingService {
     const httpOptions = {
       headers: headersObject
     };
-    return this.http.get<any>(this.baseUrl + username + "/MyRating",httpOptions).pipe();
+    return await this.http.get<any>(this.baseUrl + username + "/MyRating", httpOptions).pipe();
   }
 
 
