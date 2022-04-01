@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MostHospitalsRatedData } from 'src/app/Models/Hospital/MostHospitalsRated';
+import { department } from 'src/app/Models/Hospital/Department/department';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,10 @@ export class HospitalService {
 
   async getHospitalsPagination(pageNumber: number, pageSize: number): Promise<Observable<any>> {
     return await this.http.post(this.baseUrl + "PaginationHospitals", { "pageNumber": pageNumber, "pageSize": pageSize });
+  }
+
+  async getDepartmentForHospital(username: string): Promise<Observable<department[]>> {
+    return await this.http.get<department[]>(this.baseUrl + "DepartmentsFor/" + username);
   }
 
 }

@@ -36,12 +36,17 @@ export class DoctorProfileComponent implements OnInit {
   }
 
   openReserveDialog() {
+    let username = this.userName;
     let dialogRef = this.dialog.open(ReserveDateWithDoctorOrNurseComponent, {
       width: '250px',
       data: {
-        type: 1,
+        username
       }
     });
+  }
+
+  isMyOwnProfile() {
+    return localStorage.getItem("username") == this.userName;
   }
 
 }

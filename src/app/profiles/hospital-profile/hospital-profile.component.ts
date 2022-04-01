@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { HospitalreserveComponent } from 'src/app/Common/reservesDate/HospitalReserve/hospitalreserve/hospitalreserve.component';
 import { HospitalInfo } from 'src/app/Models/Hospital/HospitalInfo';
 import { HospitalService } from 'src/app/Services/hospital/hospital.service';
 
@@ -28,6 +29,20 @@ export class HospitalProfileComponent implements OnInit {
     this.dialog.open(templete, {
       width: '300px'
     });
+  }
+
+  openReserveDialog() {
+    let username = this.userName;
+    let dialogRef = this.dialog.open(HospitalreserveComponent, {
+      width: '250px',
+      data: {
+        username
+      }
+    });
+  }
+
+  isMyOwnProfile() {
+    return localStorage.getItem("username") == this.userName;
   }
 
 }

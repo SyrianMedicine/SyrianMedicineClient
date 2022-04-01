@@ -23,7 +23,7 @@
                             {{doctorInfoData.displayName}}</a>
                     </p>
                 </div>
-                <div class="rightItems">
+                <div class="rightItems" *ngIf="!isMyOwnProfile()">
                     <button class="followBtn mx-2" type="submit" (click) ="openReserveDialog()">Reserve</button>
                     <button class="mx-1 followBtn" type="submit"> Follow</button>
                 </div>
