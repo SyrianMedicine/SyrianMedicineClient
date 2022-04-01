@@ -1,8 +1,8 @@
-<div class="comments p-0">
+<div class="comments p-0 mb-2">
     <div class="row hidden">
         <div class="col p-0">
           <!-- <div class="container"> -->
-            <div class="comments-conent pt-0 mt-0">
+            <div class="comments-content">
               <app-user-coment [user]="this.Commnet.user" ></app-user-coment>
                   <div class="comments-content-info">
                       <p>{{this.Commnet.text}}</p>
@@ -10,6 +10,8 @@
                       <label>{{this.numberofLike}}</label>
                       <a (click)="displayReplay()">Reply</a>
                       <a (click)="cancelReplay()" [ngClass]="{'comments hideComment':displayCancel}">Cancel</a>
+                      <a>Delete</a>
+                      <a>Edit</a>
                     </div>
                     <!-- add replay -->
                       <div class="addComment" [ngClass]="{'comments hideComment':displayRep}">
@@ -29,6 +31,3 @@
                 <app-comment *ngFor="let come of this.SubCommnets" [depth]="this.depth+1" [Commnet]="come"></app-comment>
               </div>
             </div>
-          <!-- </div> -->
-        <!-- </div> -->
-
