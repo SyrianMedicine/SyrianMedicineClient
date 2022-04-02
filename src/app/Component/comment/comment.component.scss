@@ -67,13 +67,16 @@
 .comments .hideComment{
   display: none;
 }
-
+.comments .addComment .form-content {
+  display: flex;
+  justify-content: start;
+}
 .comments .addComment .form-content textarea{
   width: 60%;
-  height: 50px;
+  height: 40px;
   outline: none;
   border: 2px solid #68A9CD;
-  padding: 14px 28px;
+  padding: 9px 18px;
   color: #000;
   font-style: normal;
   font-size: 14px;
@@ -89,14 +92,16 @@
   border: 2px solid #305A72;
   background-color: #e3e3e3;
 }
-
+::placeholder{
+  text-align: center;
+}
 .comments .addComment .form-content button {
   background-color: #305A72;
   color: #FFFFFF;
   border: none;
   outline: none;
   border-radius: 50px;
-  padding: 7px 14px;
+  padding: 10px;
   font-size:12px;
   font-style:normal;
   letter-spacing:1px;
@@ -110,23 +115,17 @@
 }
 
 @media screen and (max-width:768px){
-  .comments .addComment .form-content {
-    display: flex;
-    flex-wrap: wrap;
-  }
   .comments .addComment .form-content textarea{
-    height: 40px;
-    padding:10px 20px;
+    height:35px;
+    padding:7px;
     font-size: 12px;
   }
   .comments .addComment .form-content button {
-    margin-top:5px;
-    margin-left:2px;
-    padding:10px;
+    padding:5px;
     font-size: 11px;
   }
     ::placeholder{
-      font-size:10px;
+      font-size:9px;
       letter-spacing: 1px;
     }
 }
@@ -165,21 +164,21 @@
 ::ng-deep .green-snackbar {
   background-color: #4BB543;
   position: absolute;
-  bottom: 0px; 
-  color: white; 
+  bottom: 0px;
+  color: white;
   animation:0.4s onsnackbarstart;
   -moz-animation: 0.4s onsnackbarstart;
-  -webkit-animation: 0.4s onsnackbarstart;   
+  -webkit-animation: 0.4s onsnackbarstart;
   -o-animation: 0.4s onsnackbarstart;
 }
 ::ng-deep .red-snackbar {
   background: red;
   color: white;
   position: absolute;
-  bottom: 5px; 
+  bottom: 5px;
   animation:0.4s onsnackbarstart;
   -moz-animation: 0.4s onsnackbarstart;
-  -webkit-animation: 0.4s onsnackbarstart;   
+  -webkit-animation: 0.4s onsnackbarstart;
   -o-animation: 0.4s onsnackbarstart;
 }
 @keyframes onsnackbarstart{
@@ -187,6 +186,9 @@
   to{left:0px;}
 }
 
+.comments .showComments{
+  margin-left: 100px;
+}
 
 .comments  .showComments  > a{
   background-color: #ddd;
@@ -200,11 +202,14 @@
   letter-spacing: .9px;
 }
 .comments   .showComments> a:hover{
-  background-color: #444444;
-  color: #ddd;
+  background-color: #888899;
+  color: #d4d4d4;
   text-decoration: none;
   cursor: progress;
 }
-.comments   .showComments> a :visited{
-  text-decoration: none;
+
+@media screen and (max-width:768px){
+  .comments .showComments{
+    margin-left: 80px;
+  }
 }

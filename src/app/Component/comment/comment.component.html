@@ -17,12 +17,15 @@
                     <!-- add replay -->
                       <div class="addComment" [ngClass]="{'comments hideComment':displayRep}">
                         <form>
-                        <div class="form-content d-flex">
+                        <div class="form-content">
                           <textarea [(ngModel)]="commentText" name="commentInput" id="comment"
                           [placeholder]="this.editeCliked?'edite comment.....':'leave a comment here...'" maxlength="1000" ></textarea>
                           <button  name="sendComment" (click)="editeCliked?this.EditeSubComment():this.CreateSubComment();" type="button">{{editeCliked?'Edite':"Replay"}}</button>
                         </div>
                       </form>
+                      </div>
+                      <div class="showComments p-2">
+                        <a>show replies</a>
                       </div>
                     </div>
                   </div>
@@ -30,8 +33,5 @@
                  <!-- sub comments -->
                  <div  *ngIf="this.SubCommnets"  class="commentsArea ">
                 <app-comment *ngFor="let come of this.SubCommnets" (Ondeleted)="this.ChildeDeleted($event)" [depth]="this.depth+1" [Commnet]="come"></app-comment>
-              </div> 
-              <div *ngIf="this.SubCommnets.length>=3" class=" showComments">
-                <a>show more</a>
               </div>
             </div>

@@ -16,7 +16,7 @@
                 <!-- add comments -->
                 <div class="addComment" [ngClass]="{'posts hideComment':displayCom}">
                    <form>
-                  <div class="form-content d-flex mx-2 " >
+                  <div class="form-content d-flex ">
                     <textarea  name="commentInput" id="comment" [(ngModel)]="this.newComment"
                     placeholder="leave a comment here..." maxlength="1000"></textarea>
                     <button name="sendComment"   (click)="this.CreateComment()" type="button">comment</button>
@@ -29,9 +29,9 @@
                   <!-- All comments-->
           <div *ngIf="this.Commnets" class="commentsArea">
           <app-comment  *ngFor="let com of this.Commnets" (Ondeleted)="this.ChildeDeleted($event);" [depth]="0" [Commnet]="com"></app-comment >
-          </div>
-          <div class="text-center showComments">
-            <a>show more</a>
+            <div class="mx-4 showComments text-center">
+              <a>show more</a>
+            </div>
           </div>
         </div>
       </div>

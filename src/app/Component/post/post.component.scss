@@ -70,8 +70,8 @@ border: 1.5px solid #42B0EF;
   letter-spacing: .9px;
 }
 .posts .post-card  .showComments> a:hover{
-  background-color: #444444;
-  color: #ddd;
+  background-color: #888899;
+  color: #d4d4d4;
   text-decoration: none;
   cursor: progress;
 }
@@ -290,10 +290,10 @@ border: 1.5px solid #42B0EF;
 
 .posts .addComment .form-content textarea{
   width: 60%;
-  height: 50px;
+  height: 45px;
   outline: none;
   border: 2px solid #68A9CD;
-  padding: 12px 24px;
+  padding: 9px 18px;
   color: #000;
   font-style: normal;
   font-size: 14px;
@@ -316,7 +316,7 @@ border: 1.5px solid #42B0EF;
   border: none;
   outline: none;
   border-radius: 50px;
-  padding: 10px 20px;
+  padding: 10px;
   font-size:12px;
   font-style:normal;
   letter-spacing:1px;
@@ -328,7 +328,9 @@ border: 1.5px solid #42B0EF;
 .posts .addComment .form-content button:focus{
   background-color: rgba(92, 138, 165, 0.87);
 }
-
+::placeholder{
+  text-align: center;
+}
 @media screen and (max-width:768px){
   .posts .addComment .form-content {
     display: flex;
@@ -336,10 +338,11 @@ border: 1.5px solid #42B0EF;
     justify-content:center;
     flex-wrap: wrap;
     width: 100%;
+    margin-left: 10px;
   }
   .posts .addComment .form-content textarea{
     width: 100%;
-    padding:12px 30px;
+    padding:9px 18px;
   }
   ::placeholder{
     font-size:12px;
@@ -347,8 +350,7 @@ border: 1.5px solid #42B0EF;
   }
   .posts .addComment .form-content button {
       margin-top:10px;
-      // margin-left:5px;
-      padding:12px 15px;
+      padding:8px;
       font-size: 11px;
     }
 }
@@ -379,6 +381,11 @@ border: 1.5px solid #42B0EF;
  .posts .commentsArea{
   margin:0 0 0 100px;
 }
+@media screen and (max-width:768px){
+  .posts .commentsArea{
+    margin:0 0 0 60px;
+  }
+}
  .Liked{
   color: red;
 }
@@ -386,24 +393,24 @@ border: 1.5px solid #42B0EF;
 ::ng-deep .green-snackbar {
   background-color: #4BB543;
   position: absolute;
-  bottom: 0px; 
-  color: white; 
+  bottom: 0px;
+  color: white;
   animation:0.4s onsnackbarstart;
   -moz-animation: 0.4s onsnackbarstart;
-  -webkit-animation: 0.4s onsnackbarstart;   
+  -webkit-animation: 0.4s onsnackbarstart;
   -o-animation: 0.4s onsnackbarstart;
 }
 ::ng-deep .red-snackbar {
   background: red;
   color: white;
   position: absolute;
-  bottom: 5px; 
+  bottom: 5px;
   animation:0.4s onsnackbarstart;
   -moz-animation: 0.4s onsnackbarstart;
-  -webkit-animation: 0.4s onsnackbarstart;   
+  -webkit-animation: 0.4s onsnackbarstart;
   -o-animation: 0.4s onsnackbarstart;
 }
- 
+
 @keyframes onsnackbarstart{
   from{left: -350px;}
   to{left:0px;}
