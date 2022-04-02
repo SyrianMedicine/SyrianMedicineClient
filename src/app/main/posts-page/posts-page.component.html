@@ -23,23 +23,19 @@
     <h2>POSTS</h2>
     <hr/>
     </div>
-    <!-- start  posts List -->
-    <app-post *ngIf="this.post"  [post]="this.post"></app-post> 
-     <!-- end  posts List -->
-
-
+    <app-post *ngFor="let post of this.posts"  [post]="post"></app-post> 
+ 
+  <div  *ngIf="this.isLoding" class="d-flex justify-content-center">
+    <mat-spinner   [color]="spinnercolor" > </mat-spinner>
+  </div>
 
 </section>
 <!-- end posts -->
 
 <!-- start pageination -->
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-  </ul>
-</nav>
+ <div *ngIf="this.postended" class="d-flex justify-content-center mb-2">
+    Post ended
+ </div  >
 <!-- end pageination -->
 
 <!-- footer start  -->

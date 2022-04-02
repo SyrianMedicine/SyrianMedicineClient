@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'; 
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core'; 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CommentOutput } from 'src/app/Models/Comment/CommentOutput';
@@ -26,7 +26,7 @@ export class PostComponent implements OnInit {
   LikeEnablebutton:boolean=false;
 
 ///////////////////////////////////////
-  constructor(private router: Router,private likeService:LikeService, private postservce: PostService,private Commentservice:CommentService,private snackBar: MatSnackBar) {
+  constructor(private changeDetectorRef: ChangeDetectorRef,private router: Router,private likeService:LikeService, private postservce: PostService,private Commentservice:CommentService,private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -60,8 +60,8 @@ export class PostComponent implements OnInit {
   ChildeDeleted(ChildeCommnet:CommentOutput){
     for (let index = 0; index < this.Commnets.length; index++) {
      if(this.Commnets[index].id==ChildeCommnet.id) { 
-      this.Commnets.splice(index, 1);
-      this.Commnets=this.Commnets;
+      this.Commnets.splice(index, 1); 
+      this.changeDetectorRef.detectChanges();
       break;
      }
   }
@@ -79,9 +79,9 @@ export class PostComponent implements OnInit {
       this.router.navigate(['/Login']);
     }
     (await this.Commentservice.CreatePostComment(this.post.id,this.newComment)).subscribe(data => {
-      this.Commnets.unshift(data.data);
-      this.Commnets=this.Commnets;
+      this.Commnets.unshift(data.data); 
       this.snackBarSuccess(data.message);
+      this.changeDetectorRef.detectChanges();
     }, err => { 
     this.snackBarError(err.error.message);
     });

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output,EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CommentOutput } from 'src/app/Models/Comment/CommentOutput';
@@ -24,13 +24,13 @@ export class CommentComponent implements OnInit {
   displayCancel:boolean=true;
   commentText!:string;
   LikeEnablebutton:boolean=false;
-  constructor(private router: Router,private likeService:LikeService,private commentService: CommentService,private snackBar: MatSnackBar) {
+  constructor(private changeDetectorRef: ChangeDetectorRef,private router: Router,private likeService:LikeService,private commentService: CommentService,private snackBar: MatSnackBar) {
   }
    ChildeDeleted(ChildeCommnet:CommentOutput){
     for (let index = 0; index < this.SubCommnets.length; index++) {
      if(this.SubCommnets[index].id==ChildeCommnet.id) { 
       this.SubCommnets.splice(index, 1);
-      this.SubCommnets=this.SubCommnets;
+      this.changeDetectorRef.detectChanges();
       break;
      }
   }
@@ -75,8 +75,8 @@ export class CommentComponent implements OnInit {
       }
       (await this.commentService.CreateSubComment(this.Commnet.id,this.commentText)).subscribe(data => {
         this.SubCommnets.unshift(data.data);
-        this.SubCommnets=this.SubCommnets;
         this.snackBarSuccess(data.message);
+        this.changeDetectorRef.detectChanges();
       }, err => { 
         this.snackBarError(err.error.message);
       });
