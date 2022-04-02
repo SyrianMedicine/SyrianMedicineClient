@@ -31,7 +31,10 @@
                   </div>
                  </div>
                  <!-- sub comments -->
-                 <div  *ngIf="this.SubCommnets"  class="commentsArea ">
+                 <div    class="commentsArea ">
+                  <div *ngIf="this.isLoding" style="margin-top: 10px;margin-bottom: 10px;" class="d-flex justify-content-center" >
+                    <mat-spinner  [color]="spinnercolor" > </mat-spinner>
+                  </div>
                 <app-comment *ngFor="let come of this.SubCommnets" (Ondeleted)="this.ChildeDeleted($event)" [depth]="this.depth+1" [Commnet]="come"></app-comment>
               </div>
             </div>

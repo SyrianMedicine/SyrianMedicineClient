@@ -25,8 +25,8 @@
     </div>
     <app-post *ngFor="let post of this.posts"  [post]="post"></app-post> 
  
-  <div  *ngIf="this.isLoding" class="d-flex justify-content-center">
-    <mat-spinner   [color]="spinnercolor" > </mat-spinner>
+  <div *ngIf="this.isLoding"  class="d-flex justify-content-center" >
+    <mat-spinner    [color]="spinnercolor" > </mat-spinner>
   </div>
 
 </section>
