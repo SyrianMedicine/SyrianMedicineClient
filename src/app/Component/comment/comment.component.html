@@ -24,17 +24,17 @@
                         </div>
                       </form>
                       </div>
-                      <div *ngIf="this.SubCommnets.length>=3" class="showComments p-2">
-                        <a>show replies</a>
+                      <div *ngIf="!this.CommentsEnded&&!this.isLoding" class="showComments p-2">
+                        <a (click)="this.loadSubcomment()">show replies</a>
                       </div>
                     </div>
                   </div>
                  </div>
                  <!-- sub comments -->
                  <div    class="commentsArea ">
-                  <div *ngIf="this.isLoding" style="margin-top: 10px;margin-bottom: 10px;" class="d-flex justify-content-center" >
-                    <mat-spinner  [color]="spinnercolor" > </mat-spinner>
+                  <div  *ngIf="this.isLoding" class="ml-3 mt-2" >
+                    <mat-spinner diameter="60"  class="custom-spinner"> </mat-spinner>
                   </div>
-                <app-comment *ngFor="let come of this.SubCommnets" (Ondeleted)="this.ChildeDeleted($event)" [depth]="this.depth+1" [Commnet]="come"></app-comment>
+                  <app-comment *ngFor="let come of this.SubCommnets" (Ondeleted)="this.ChildeDeleted($event)" [depth]="this.depth+1" [Commnet]="come"></app-comment>
               </div>
             </div>

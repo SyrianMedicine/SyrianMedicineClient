@@ -17,17 +17,18 @@ export class CommentComponent implements OnInit {
   SubCommnets:Array<CommentOutput>=new Array<CommentOutput>();;
   liked:boolean=false;
   numberofLike:number=0; 
-  editeCliked:boolean=false;
-
-  spinnercolor: ThemePalette = 'accent';
+  editeCliked:boolean=false; 
   isLoding:boolean=false;
   @Output() Ondeleted: EventEmitter<CommentOutput> = new EventEmitter();
-///////////////////////////////////////
-  
   displayRep:boolean=true;
   displayCancel:boolean=true;
   commentText!:string;
   LikeEnablebutton:boolean=false;
+///////////////////////////////////////
+  pageSize:number=3;
+  pageNumber:number=1;
+  totalPages:number=-1;
+  CommentsEnded:boolean=false;
   constructor(private changeDetectorRef: ChangeDetectorRef,private router: Router,private likeService:LikeService,private commentService: CommentService,private snackBar: MatSnackBar) {
   }
    ChildeDeleted(ChildeCommnet:CommentOutput){
@@ -68,11 +69,16 @@ export class CommentComponent implements OnInit {
   }
   async loadSubcomment(): Promise<void> {
     this.isLoding=true;
-    (await this.commentService.GetSubComments(this.Commnet.id,1,3)).subscribe(data => {
+    (await this.commentService.GetSubComments(this.Commnet.id,this.pageNumber,this.pageSize)).subscribe(data => {
       for (let index = 0; index < data.items.length; index++) {
         this.SubCommnets.push(data.items[index]);
       } 
+      this.pageNumber=data.currentPage+1;
+      this.totalPages=data.totalPages;
       this.isLoding=false;
+      if(!(this.totalPages!=(this.pageNumber-1)&&this.totalPages!=0)){
+        this.CommentsEnded=true;
+      } 
       this.changeDetectorRef.detectChanges(); 
     }, err => {
       this.isLoding=false;

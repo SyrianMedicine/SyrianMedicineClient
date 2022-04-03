@@ -14,9 +14,8 @@ export class PostsPageComponent implements OnInit {
   
   pageSize:number=3;
   pageNumber:number=1;
-  totalPages:number=0;
-  isLoding:boolean=false;  
-  spinnercolor: ThemePalette = 'accent';
+  totalPages:number=-1;
+  isLoding:boolean=false;   
   posts:Array<PostOutput>=new Array<PostOutput>(); 
   postended:boolean=false;
   
@@ -78,8 +77,7 @@ let max = document.documentElement.scrollHeight;
 // pos/max will give you the distance between scroll bottom and and bottom of screen in percentage.
  let distance= max-pos; 
 if(distance<=260 )   {
-  if(this.totalPages!=(this.pageNumber-1)&&!this.isLoding){
-     this.postended=false;
+  if(this.totalPages!=(this.pageNumber-1)&&this.totalPages!=0&&!this.isLoding){
     this.loadpost();
    }else this.postended=true;
 

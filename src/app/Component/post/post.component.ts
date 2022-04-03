@@ -19,15 +19,15 @@ export class PostComponent implements OnInit {
   liked:boolean=false;
   numberofLike:number=0;
   isLoding:boolean=false;
-
-///////////////////////////////////////
-
-spinnercolor: ThemePalette = 'accent';
   displayCom:boolean=true;
   displayCancel:Boolean=true; 
   newComment!:string;
   LikeEnablebutton:boolean=false;
-
+///////////////////////////////////////
+pageSize:number=3;
+pageNumber:number=1;
+totalPages:number=-1;
+CommentsEnded:Boolean=false;
 ///////////////////////////////////////
   constructor(private changeDetectorRef: ChangeDetectorRef,private router: Router,private likeService:LikeService, private postservce: PostService,private Commentservice:CommentService,private snackBar: MatSnackBar) {
   }
@@ -53,12 +53,24 @@ spinnercolor: ThemePalette = 'accent';
   }
 
  async loadcomment(): Promise<void> {
-  (await this.postservce.GetComments(this.post.id,1,3)).subscribe(data => {
-    for (let index = 0; index < data.items.length; index++) {
-      this.Commnets.push(data.items[index]);
-    } 
-    this.changeDetectorRef.detectChanges();
-  }, err => {});
+  if(!this.CommentsEnded&&!this.isLoding)
+  {
+    this.isLoding=true;
+    (await this.postservce.GetComments(this.post.id,this.pageNumber,this.pageSize)).subscribe(data => {
+      for (let index = 0; index < data.items.length; index++) {
+        this.Commnets.push(data.items[index]);
+      } 
+      this.pageNumber=data.currentPage+1;
+      this.totalPages=data.totalPages;
+      this.isLoding=false;
+      if(!(this.totalPages!=(this.pageNumber-1)&&this.totalPages!=0)){
+        this.CommentsEnded=true;
+      }
+      this.changeDetectorRef.detectChanges();
+    }, err => {
+      this.isLoding=false;
+    });
+  } 
   }
   isAuthrized():Boolean{
     return localStorage.getItem('token')!=null;
@@ -84,11 +96,14 @@ spinnercolor: ThemePalette = 'accent';
       this.snackBarError("please login"); 
       this.router.navigate(['/Login']);
     }
+    this.isLoding=true;
     (await this.Commentservice.CreatePostComment(this.post.id,this.newComment)).subscribe(data => {
       this.Commnets.unshift(data.data); 
       this.snackBarSuccess(data.message);
       this.changeDetectorRef.detectChanges();
+      this.isLoding=false;
     }, err => { 
+      this.isLoding=false;
     this.snackBarError(err.error.message);
     });
     this.newComment="";  

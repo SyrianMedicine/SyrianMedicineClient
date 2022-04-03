@@ -265,3 +265,6 @@ border: 1.5px solid #42B0EF;
 }
 // end pageniation
 
+:host ::ng-deep .custom-spinner circle{   
+  stroke:rgb(173, 173, 173);
+}

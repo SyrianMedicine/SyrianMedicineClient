@@ -213,3 +213,7 @@
     margin-left: 80px;
   }
 }
+
+:host ::ng-deep .custom-spinner circle{   
+  stroke: rgb(173, 173, 173);
+}
