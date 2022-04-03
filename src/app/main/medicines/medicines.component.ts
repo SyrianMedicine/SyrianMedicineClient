@@ -14,25 +14,26 @@ export class MedicinesComponent implements OnInit {
   PageNumber:number=1;
   pageSize:number=3;
   totalItems!:number;
-  doctorsItems!:Array<DoctorInfo>;
+  doctorsInfo!:Array<DoctorInfo>;
 
   constructor(private docotrService:DoctorService) {}
 
    ngOnInit():void {
-      this.getPageDoctors(this.PageNumber);
+      this.getPageDoctors();
 }
 
-  getPageDoctors(PageNumebr:Number){
+  getPageDoctors(){
         this.docotrService.getDoctorsPagination(this.PageNumber,this.pageSize).subscribe(response =>{
-          this.doctorsItems = response.items;
-
-  console.log(response.items)
+          this.doctorsInfo = response.items;
           this.totalItems=response.totalItems;
-     },err=>{ console.log("error")});
-}
-onMovePage(page:any){
-  this.PageNumber=page;
-  this.getPageDoctors(this.PageNumber);
-  console.log(this.PageNumber)
-}
+          for(let i=0 ;i <this.doctorsInfo.length ;i++){
+            if(this.doctorsInfo[i].pictureUrl == null){
+              this.doctorsInfo[i].pictureUrl="assets/images/no-image.png"
+            }}});
+      }
+  onMovePage(page:any){
+    this.PageNumber=page;
+    this.getPageDoctors();
+    }
+
 }

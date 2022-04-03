@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { department } from 'src/app/Models/Hospital/Department/department';
 import { HospitalService } from 'src/app/Services/hospital/hospital.service';
+import { ReserveHospitalService } from 'src/app/Services/Reserve/reserve-hospital.service';
 
 @Component({
   selector: 'app-hospitalreserve',
@@ -16,10 +17,10 @@ export class HospitalreserveComponent implements OnInit {
   reserveForm = this.formBuilder.group({
     titleInput: ['', Validators.required],
     descriptionInput: ['', Validators.required],
-    datetimeInput: ['', Validators.required],
   });
 
   departments: department[] = [];
+  id: number = 0;
 
 
   constructor(
@@ -28,18 +29,42 @@ export class HospitalreserveComponent implements OnInit {
     public dialogRef: MatDialogRef<HospitalreserveComponent>,
     private snackBar: MatSnackBar,
     private hospitalService: HospitalService,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+    private reserveHospital: ReserveHospitalService,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   async ngOnInit(): Promise<void> {
     (await this.hospitalService.getDepartmentForHospital(this.data.username)).subscribe(data => {
-      console.log("dd:"+data)
       this.departments = data;
     });
   }
 
-  onSubmitReserve(ev: any) {
+  selectOption(id: any) {
+    this.id = id;
+    console.log("x:"+this.id);
+  }
 
+  async onSubmitReserve(ev: any) {
+    let body = {
+      title: ev.target.titleInput.value,
+      description: ev.target.descriptionInput.value,
+      departmentId: +this.id
+    };
+
+    console.log("id::   " + body.departmentId);
+
+    (await this.reserveHospital.reserveHospital(body)).subscribe(data => {
+      this.snackBar.open(data.message, 'close', {
+        duration: 5000,
+        horizontalPosition: 'start',
+        verticalPosition: 'bottom',
+      });
+    }, err => {
+      this.snackBar.open(err, 'close', {
+        duration: 5000,
+        horizontalPosition: 'start',
+        verticalPosition: 'bottom',
+      });
+    });
   }
 
 }

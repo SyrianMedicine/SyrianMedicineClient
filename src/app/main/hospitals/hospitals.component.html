@@ -24,7 +24,7 @@
     <hr/>
     </div>
         <!-- start post -->
-      <div class="row hidden" *ngFor="let hosptial of this.hospitalItems |paginate:{currentPage:PageNumber,itemsPerPage:pageSize,totalItems:totalItems}">
+      <div class="row hidden" *ngFor="let hosptial of hospitalInfo |paginate:{currentPage:PageNumber,itemsPerPage:pageSize,totalItems:totalItems}">
         <div class="col">
           <div class="container">
             <div class="hospital-content">
@@ -40,16 +40,13 @@
         </div>
     </div>
 <!-- end hospitals -->
-
-
 </section>
 <!-- end hospitals -->
 
 
-
 <!-- start pageination -->
-<div class="d-flex justify-content-center">
-  <pagination-controls (pageChange)="this.onMovePage($event)" [maxSize]="7" [autoHide]="true" [directionLinks]="true"></pagination-controls>
+<div class=" d-flex justify-content-center">
+  <pagination-controls class="page-controls"  (pageChange)="this.movePage($event)" [maxSize]="7" [autoHide]="true" [directionLinks]="false"></pagination-controls>
 </div>
 <!-- end pageination -->
 

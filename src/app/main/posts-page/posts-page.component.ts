@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';  
-import { PostOutput } from 'src/app/Models/Post/PostOutput'; 
-import { PostService } from 'src/app/Services/post/post.service'; 
+import { Router } from '@angular/router';
+import { PostOutput } from 'src/app/Models/Post/PostOutput';
+import { PostService } from 'src/app/Services/post/post.service';
 
 @Component({
   selector: 'app-posts-page',
@@ -11,14 +11,15 @@ import { PostService } from 'src/app/Services/post/post.service';
   styleUrls: ['./posts-page.component.scss']
 })
 export class PostsPageComponent implements OnInit {
-  
+
   pageSize:number=3;
-  pageNumber:number=1;
+  pageNumber:number=1; 
   totalPages:number=-1;
   isLoding:boolean=false;   
   posts:Array<PostOutput>=new Array<PostOutput>(); 
+ 
   postended:boolean=false;
-  
+
   constructor(private changeDetectorRef: ChangeDetectorRef,private route:Router,private postservce: PostService,private snackBar:MatSnackBar) {
    }
    isAuthrized():Boolean{
@@ -31,7 +32,7 @@ export class PostsPageComponent implements OnInit {
       this.route.navigate(['/Login']);
     }
     this.loadpost();
-  } 
+  }
  async loadpost():Promise<void>{
     this.isLoding=true;
     (await this.postservce.getHomePost(this.pageNumber,this.pageSize)).subscribe(data => {
@@ -39,17 +40,17 @@ export class PostsPageComponent implements OnInit {
         this.posts.push(data.items[index]);
       }
       this.pageNumber=data.currentPage+1;
-      this.totalPages=data.totalPages; 
-      this.isLoding=false; 
+      this.totalPages=data.totalPages;
+      this.isLoding=false;
       this.changeDetectorRef.detectChanges();
-      
+
     }, err => {this.isLoding=false;
-    
+
       console.log(this.isLoding);
     });
   }
   moveOn(){
-    
+
   }
 
   snackBarError(message:string){
@@ -68,20 +69,20 @@ export class PostsPageComponent implements OnInit {
       verticalPosition: 'bottom',
     });
   }
- 
+
 @HostListener("window:scroll", ["$event"])
 onWindowScroll() {
 //In chrome and some browser scroll is given to body tag
 let pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
 let max = document.documentElement.scrollHeight;
-// pos/max will give you the distance between scroll bottom and and bottom of screen in percentage.
+ 
+ 
  let distance= max-pos; 
-if(distance<=260 )   {
-  if(this.totalPages!=(this.pageNumber-1)&&this.totalPages!=0&&!this.isLoding){
+if(distance<=260 )   { 
+  if(this.totalPages!=(this.pageNumber-1)&&this.totalPages!=0&&!this.isLoding){  
     this.loadpost();
    }else this.postended=true;
 
  }
 }
-
 }

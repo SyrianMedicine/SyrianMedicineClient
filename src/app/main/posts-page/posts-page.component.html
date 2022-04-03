@@ -22,13 +22,11 @@
   <div class="post-deploy text-center">
     <h2>POSTS</h2>
     <hr/>
-    </div>
+    </div> 
     <app-post *ngFor="let post of this.posts"  [post]="post"></app-post> 
- 
-  <div *ngIf="this.isLoding"  class="d-flex justify-content-center" >
+  <div *ngIf="this.isLoding"  class="d-flex justify-content-center" > 
     <mat-spinner  diameter="90"  class="custom-spinner"> </mat-spinner>
   </div>
-
 </section>
 <!-- end posts -->
 
