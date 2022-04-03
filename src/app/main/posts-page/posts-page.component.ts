@@ -76,8 +76,13 @@ onWindowScroll() {
 let pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
 let max = document.documentElement.scrollHeight;
 // pos/max will give you the distance between scroll bottom and and bottom of screen in percentage.
+<<<<<<< HEAD
 console.log("hhhhh");
 if(pos == max )   {
+=======
+ let distance= max-pos; 
+if(distance<=260 )   {
+>>>>>>> 27cdd443bce44399d7af45f3183e711db630fa03
   if(this.totalPages!=(this.pageNumber-1)&&!this.isLoding){
      this.postended=false;
     this.loadpost();

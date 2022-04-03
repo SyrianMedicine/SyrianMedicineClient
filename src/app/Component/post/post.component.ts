@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core'; 
+import { ThemePalette } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CommentOutput } from 'src/app/Models/Comment/CommentOutput';
@@ -14,12 +15,14 @@ import { PostService } from 'src/app/Services/post/post.service';
 })
 export class PostComponent implements OnInit {
   @Input() post!:PostOutput;
-  Commnets!:Array<CommentOutput>;
+  Commnets:Array<CommentOutput>=new Array<CommentOutput>();
   liked:boolean=false;
   numberofLike:number=0;
-  
+  isLoding:boolean=false;
+
 ///////////////////////////////////////
 
+spinnercolor: ThemePalette = 'accent';
   displayCom:boolean=true;
   displayCancel:Boolean=true; 
   newComment!:string;
@@ -51,7 +54,10 @@ export class PostComponent implements OnInit {
 
  async loadcomment(): Promise<void> {
   (await this.postservce.GetComments(this.post.id,1,3)).subscribe(data => {
-    this.Commnets=data.items;
+    for (let index = 0; index < data.items.length; index++) {
+      this.Commnets.push(data.items[index]);
+    } 
+    this.changeDetectorRef.detectChanges();
   }, err => {});
   }
   isAuthrized():Boolean{

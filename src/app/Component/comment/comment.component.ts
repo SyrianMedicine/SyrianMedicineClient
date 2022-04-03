@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output,EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CommentOutput } from 'src/app/Models/Comment/CommentOutput';
@@ -13,10 +14,13 @@ import { LikeService } from 'src/app/Services/Like/like.service';
 export class CommentComponent implements OnInit {
   @Input() Commnet!:CommentOutput;
   @Input() depth:number=0;
-  SubCommnets!:Array<CommentOutput>;
+  SubCommnets:Array<CommentOutput>=new Array<CommentOutput>();;
   liked:boolean=false;
   numberofLike:number=0; 
   editeCliked:boolean=false;
+
+  spinnercolor: ThemePalette = 'accent';
+  isLoding:boolean=false;
   @Output() Ondeleted: EventEmitter<CommentOutput> = new EventEmitter();
 ///////////////////////////////////////
   
@@ -63,11 +67,19 @@ export class CommentComponent implements OnInit {
     this.LikeEnablebutton=true;
   }
   async loadSubcomment(): Promise<void> {
-    (await this.commentService.GetSubComments(this.Commnet.id,1,3)).subscribe(da => {
-      this.SubCommnets=da.items;
-    }, err => {});
+    this.isLoding=true;
+    (await this.commentService.GetSubComments(this.Commnet.id,1,3)).subscribe(data => {
+      for (let index = 0; index < data.items.length; index++) {
+        this.SubCommnets.push(data.items[index]);
+      } 
+      this.isLoding=false;
+      this.changeDetectorRef.detectChanges(); 
+    }, err => {
+      this.isLoding=false;
+    });
     }
     async CreateSubComment(){
+      this.isLoding=true;
       if(!this.isAuthrized())
       {
         this.snackBarError("please login");
@@ -75,9 +87,11 @@ export class CommentComponent implements OnInit {
       }
       (await this.commentService.CreateSubComment(this.Commnet.id,this.commentText)).subscribe(data => {
         this.SubCommnets.unshift(data.data);
-        this.snackBarSuccess(data.message);
+        this.snackBarSuccess(data.message); 
+        this.isLoding=false;
         this.changeDetectorRef.detectChanges();
       }, err => { 
+        this.isLoding=false;
         this.snackBarError(err.error.message);
       });
       this.commentText="";
