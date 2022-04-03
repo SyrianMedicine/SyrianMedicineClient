@@ -187,28 +187,28 @@ border: 1.5px solid #42B0EF;
   line-height: 1.6;
   font-size: 15px;
 }
+
 // start pageination
 
-.pagination .page-item .page-link
-{
-  color: rgb(2, 0, 94);
-  font-size: 15px;
-  font-weight: 600;
-  margin:3px;
-}
-.pagination .page-item.active .page-link
-{
+.page-controls ::ng-deep .ngx-pagination .current{
+  padding: 5px 10px;
+  cursor: pointer;
   border-radius: 50px;
   color: #ffffff;
   background-color: rgb(2, 0, 94);
   font-size: 18px;
 }
-
-.pagination .page-item .page-link:hover
-{
-  background-color: #42B0EF;
-  color: #FFFFFF;
-  border-radius: 20px;
+.page-controls ::ng-deep .ngx-pagination li.ng-star-inserted a.ng-star-inserted{
+  margin: 4px;
+  color:  rgb(2, 0, 94);
 }
-
+.page-controls ::ng-deep .ngx-pagination li.ng-star-inserted a.ng-star-inserted > span{
+  font-size: 16px;
+  font-weight: 500;
+}
+.page-controls ::ng-deep .ngx-pagination li.ng-star-inserted :hover {
+  background-color: #42B0EF;
+  border-radius: 25px;
+  color: #FFF;
+}
 // end pageniation

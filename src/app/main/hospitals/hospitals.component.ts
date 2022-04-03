@@ -12,7 +12,7 @@ export class HospitalsComponent implements OnInit {
   PageNumber:number=1;
   pageSize:number=3;
   totalItems!:number;
-  hospitalItems!:Array<HospitalInfo>;
+  hospitalInfo!:Array<HospitalInfo>;
 
   constructor(private hospitalService:HospitalService) {
    }
@@ -23,15 +23,16 @@ export class HospitalsComponent implements OnInit {
 
   async getPageHospital(){
     (await this.hospitalService.getHospitalsPagination(this.PageNumber,this.pageSize)).subscribe(response =>{
-      this.hospitalItems = response.items;
+      this.hospitalInfo = response.items;
       this.totalItems=response.totalItems;
-      console.log(response)
- },err=>{ console.log("error")});
-}
-onMovePage(page:any){
+      for(let i=0 ;i <this.hospitalInfo.length ;i++){
+        if(this.hospitalInfo[i].pictureUrl == null){
+          this.hospitalInfo[i].pictureUrl="assets/images/no-image.png"
+        }}});
+      }
+  movePage(page:number){
     this.PageNumber=page;
     this.getPageHospital();
-    console.log(this.PageNumber)
-}
+      }
 
 }

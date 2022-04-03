@@ -23,10 +23,10 @@
     <h2>POSTS</h2>
     <hr/>
     </div>
-    <app-post *ngFor="let post of this.posts"  [post]="post"></app-post> 
- 
+    <app-post *ngFor="let post of this.posts"  [post]="post"></app-post>
+
   <div  *ngIf="this.isLoding" class="d-flex justify-content-center">
-    <mat-spinner   [color]="spinnercolor" > </mat-spinner>
+    <mat-spinner  [color]="spinnercolor"> </mat-spinner>
   </div>
 
 </section>

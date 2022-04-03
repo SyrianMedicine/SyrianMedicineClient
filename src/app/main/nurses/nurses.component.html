@@ -24,76 +24,32 @@
     <hr/>
     </div>
         <!-- start post -->
-      <div class="row hidden">
+      <div class="row hidden" *ngFor="let nurse of nursesInfo | paginate :{currentPage:this.pageNumber , itemsPerPage:this.pageSize,totalItems:this.totalItems}">
         <div class="col">
           <div class="container">
             <div class="nurses-content">
-              <img src="../../../assets/images/nurseSaraSmith.jpg" alt="Nurse" class="img-fluid" />
+              <img [src]="nurse.pictureUrl" alt="Nurse" class="img-fluid" />
               <div class="nurses-content-info">
-                <h4>Dr. Ahmed Nour Al-Sabaggh</h4>
+                <h4>Dr.{{nurse.displayName}}</h4>
                 <img src="../../../assets/images/areaIcon.png"/>
-                <span>Hamah</span>
+                <span>{{nurse.location}}</span>
                 <img src="../../../assets/images/specalist.png"/>
-                <span>Nutrition</span>
-                <p>Abilities forfeited situation extremely my to he resembled. Old had conviction discretion understood put principles you. Match means keeps round one her quick. She forming two comfort invited. Yet she income effect edward. Entire desire way design few. Mrs sentiments led solicitude estimating friendship fat. Meant those event is weeks state it to or. Boy but has folly charm there its. Its fact ten spot drew.</p>
+                <span>{{nurse.specialization}}</span>
+                <p>{{nurse.aboutMe}}</p>
               </div>
             </div>
           </div>
         </div>
     </div>
-<!-- end post -->
-
-<!-- start post -->
-<div class="row hidden">
-  <div class="col">
-    <div class="container">
-      <div class="nurses-content">
-        <img src="../../../assets/images/nurse2.png" alt="Nurse" class="img-fluid" />
-        <div class="nurses-content-info">
-          <h4>Dr. Muhammed Al-Manfy</h4>
-          <img src="../../../assets/images/areaIcon.png"/>
-          <span>Homs</span>
-          <img src="../../../assets/images/specalist.png"/>
-          <span>Nutrition</span>
-          <p>Abilities forfeited situation extremely my to he resembled. Old had conviction discretion understood put principles you. Match means keeps round one her quick. She forming two comfort invited. Yet she income effect edward. Entire desire way design few. Mrs sentiments led solicitude estimating friendship fat. Meant those event is weeks state it to or. Boy but has folly charm there its. Its fact ten spot drew.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end post -->
-
-<!-- start post -->
-<div class="row hidden">
-  <div class="col">
-    <div class="container">
-      <div class="nurses-content">
-        <img src="../../../assets/images/nurse1.png" alt="Nurse" class="img-fluid" />
-        <div class="nurses-content-info">
-          <h4>Dr. Reema Al-Salama </h4>
-          <img src="../../../assets/images/areaIcon.png"/>
-          <span> Lattakia </span>
-          <img src="../../../assets/images/specalist.png"/>
-          <span>Nutrition</span>
-          <p>Abilities forfeited situation extremely my to he resembled. Old had conviction discretion understood put principles you. Match means keeps round one her quick. She forming two comfort invited. Yet she income effect edward. Entire desire way design few. Mrs sentiments led solicitude estimating friendship fat. Meant those event is weeks state it to or. Boy but has folly charm there its. Its fact ten spot drew.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end post -->
+<!-- end nurse -->
 </section>
 <!-- end nursess -->
 
 
 <!-- start pageination -->
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-  </ul>
-</nav>
+<div class="d-flex justify-content-center">
+  <pagination-controls class="page-controls" (pageChange)="movePage($event)" [autoHide]="true" [directionLinks]="false" [maxSize]="7"></pagination-controls>
+</div>
 <!-- end pageination -->
 
 <!-- footer start  -->

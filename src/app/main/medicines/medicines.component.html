@@ -24,11 +24,11 @@
     <hr/>
     </div>
         <!-- start post -->
-      <div class="row hidden" *ngFor="let doctor of this.doctorsItems | paginate : {currentPage:PageNumber,itemsPerPage:pageSize,totalItems:totalItems}">
+      <div class="row hidden" *ngFor="let doctor of doctorsInfo | paginate : {currentPage:PageNumber,itemsPerPage:pageSize,totalItems:totalItems}">
         <div class="col">
           <div class="container">
             <div class="medicine-content">
-              <img (src)="doctor.pictureUrl" alt="Doctor" class="img-fluid" />
+              <img [src]="doctor.pictureUrl" alt="Doctor" class="img-fluid" />
               <div class="medicine-content-info">
                 <h4>Dr.{{doctor.displayName}}</h4>
                 <img src="../../../assets/images/areaIcon.png"/>
@@ -49,7 +49,7 @@
 
 <!-- start pageination -->
 <div class="d-flex justify-content-center">
-  <pagination-controls (pageChange)="this.onMovePage($event)" [maxSize]="7" [autoHide]="true" [directionLinks]="true"></pagination-controls>
+  <pagination-controls class="page-controls" (pageChange)="this.onMovePage($event)" [maxSize]="7" [autoHide]="true" [directionLinks]="false"></pagination-controls>
 </div>
 <!-- end pageination -->
 

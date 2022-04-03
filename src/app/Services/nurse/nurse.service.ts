@@ -18,5 +18,8 @@ export class NurseService {
   async getNurseInfo(userName: string): Promise<Observable<any>> {
     return await this.http.get(this.baseUrl + userName);
   }
+  async  getNursePagination(pageNumber:Number,pageSize:Number):Promise <Observable<any>>{
+    return await this.http.post(this.baseUrl + "PaginationNurses",{'pageNumber':pageNumber,'pageSize':pageSize});
+  }
 
 }
