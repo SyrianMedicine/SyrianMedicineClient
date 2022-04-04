@@ -40,17 +40,16 @@ export class HospitalreserveComponent implements OnInit {
 
   selectOption(id: any) {
     this.id = id;
-    console.log("x:"+this.id);
   }
 
   async onSubmitReserve(ev: any) {
     let body = {
       title: ev.target.titleInput.value,
       description: ev.target.descriptionInput.value,
-      departmentId: +this.id
+      departmentId: +this.id,
+      hospitalId: +this.data.hospitalIdentifier
     };
 
-    console.log("id::   " + body.departmentId);
 
     (await this.reserveHospital.reserveHospital(body)).subscribe(data => {
       this.snackBar.open(data.message, 'close', {

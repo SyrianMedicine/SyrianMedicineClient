@@ -16,7 +16,6 @@ export class RegisterServiceService {
   constructor(private http: HttpClient, private snackBar: MatSnackBar) { }
 
   registerUser(input: any, type: number): Observable<any> {
-    console.log(input);
     if (type == 1) { // sick
       return this.http.post<any>(this.baseUrl + "Sick/RegisterSick", input).pipe();
     }
