@@ -15,9 +15,11 @@ export class FollowService {
     return await this.http.post(this.baseUrl + username + "/Follow", {}, this.getoption()).pipe(catchError(this.errorHandler));
   }
   async unFollowUser(username: string): Promise<Observable<any>> {
-    return await this.http.post(this.baseUrl + username + "/UnFollow", {}, this.getoption()).pipe(catchError(this.errorHandler));
+    return await this.http.delete(this.baseUrl + username + "/UnFollow", this.getoption()).pipe(catchError(this.errorHandler));
   }
-
+  async isFollowedByMe(username:string):Promise<Observable<any>>{
+    return await this.http.get(this.baseUrl+username+"/IsFollowedByMe",this.getoption()).pipe();
+  }
 
   getoption(): any {
     var headersObject = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem('token'));

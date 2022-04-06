@@ -23,8 +23,8 @@ export class HospitalProfileComponent implements OnInit {
   constructor(
     private hospitalService: HospitalService,
     private followService: FollowService,
-    private dialog: MatDialog,
     private snackBar: MatSnackBar,
+    private dialog: MatDialog,
     private route: ActivatedRoute) { }
 
   async ngOnInit(): Promise<void> {
@@ -33,6 +33,12 @@ export class HospitalProfileComponent implements OnInit {
       this.hospitalInfoData = data;
       this.hospitalId = data.id;
     })
+
+    await (await this.followService.isFollowedByMe(this.userName)).subscribe(data =>{
+      this.iFollowedThisUser =data.data;
+      console.log("asd: " +data.data);
+    })
+
   }
 
   openTemplete(templete: any) {

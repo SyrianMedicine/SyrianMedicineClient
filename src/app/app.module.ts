@@ -1,3 +1,4 @@
+//#region Import libs
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +19,7 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavbarComponent } from './Common/navbar/navbar.component';
-import { FooterComponent } from './Common/footer/footer.component'; 
+import { FooterComponent } from './Common/footer/footer.component';
 import { MedicinesComponent } from './main/medicines/medicines.component';
 import { HospitalsComponent } from './main/hospitals/hospitals.component';
 import { NursesComponent } from './main/nurses/nurses.component';
@@ -49,27 +50,33 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
 import { MatListModule } from '@angular/material/list'
 import { MatMenuModule } from '@angular/material/menu'
+import { MatTabsModule } from '@angular/material/tabs'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatRadioModule } from '@angular/material/radio'
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { NgxPaginationModule } from 'ngx-pagination'; 
+import { MatTableModule } from '@angular/material/table';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { CommentComponent } from './Component/comment/comment.component';
 import { UserCardComponent } from './Component/user-card/user-card.component';
 import { PostComponent } from './Component/post/post.component';
 import { PostsPageComponent } from './main/posts-page/posts-page.component';
 import { RatingComponent } from './Common/rating/rating.component';
-import { UserComentComponent } from './Component/user-coment/user-coment.component'; 
+import { UserComentComponent } from './Component/user-coment/user-coment.component';
 import { ReserveDateWithDoctorOrNurseComponent } from './Common/reservesDate/reserve-date-with-doctor-or-nurse/reserve-date-with-doctor-or-nurse.component';
 import { HospitalreserveComponent } from './Common/reservesDate/HospitalReserve/hospitalreserve/hospitalreserve.component';
+//#endregion
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     NavbarComponent,
-    FooterComponent, 
+    FooterComponent,
     MedicinesComponent,
     HospitalsComponent,
     RegisterComponent,
@@ -79,14 +86,15 @@ import { HospitalreserveComponent } from './Common/reservesDate/HospitalReserve/
     HospitalProfileComponent,
     DoctorProfileComponent,
     NurseProfileComponent,
-    RegisterDialogComponent, 
+    RegisterDialogComponent,
     CommentComponent,
     UserCardComponent,
     PostComponent,
     PostsPageComponent,
     RatingComponent,
-    UserComentComponent, 
-    ReserveDateWithDoctorOrNurseComponent, HospitalreserveComponent, 
+    UserComentComponent,
+    ReserveDateWithDoctorOrNurseComponent,
+     HospitalreserveComponent
   ],
   imports: [
     BrowserModule,
@@ -130,16 +138,16 @@ import { HospitalreserveComponent } from './Common/reservesDate/HospitalReserve/
     MatRadioModule,
     MatSelectModule,
     MatSnackBarModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatTabsModule,
+    MatTableModule,
+    MatSidenavModule,
+    MatToolbarModule,
     // MatRippleModule,
-    // MatSidenavModule,
     // MatSliderModule,
     // MatSlideToggleModule,
     // MatSnackBarModule,
     // MatSortModule,
-    // MatTableModule,
-    // MatTabsModule,
-    // MatToolbarModule,
     // MatTooltipModule,
   ],
   providers: [],

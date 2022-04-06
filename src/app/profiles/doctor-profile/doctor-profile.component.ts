@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { ReserveDateWithDoctorOrNurseComponent } from 'src/app/Common/reservesDate/reserve-date-with-doctor-or-nurse/reserve-date-with-doctor-or-nurse.component';
 import { DoctorInfo } from 'src/app/Models/Doctor/DoctorInfo';
 import { DoctorService } from 'src/app/Services/doctor/doctor.service';
+import { FollowService } from 'src/app/Services/Follow/follow.service';
 
 @Component({
   selector: 'app-doctor-profile',
@@ -16,8 +18,14 @@ export class DoctorProfileComponent implements OnInit {
   userName: string | any;
   startWorkTime: string | any;
   endWorkTime: string | any;
+  iFollowedThisUser: boolean = false;
 
-  constructor(private doctorService: DoctorService, private dialog: MatDialog, private route: ActivatedRoute) {
+  constructor(
+    private doctorService: DoctorService,
+    private dialog: MatDialog,
+    private followService: FollowService,
+    private snackBar: MatSnackBar,
+    private route: ActivatedRoute) {
   }
 
   async ngOnInit(): Promise<void> {
@@ -47,6 +55,40 @@ export class DoctorProfileComponent implements OnInit {
 
   isMyOwnProfile() {
     return localStorage.getItem("username") == this.userName;
+  }
+
+  async followUser() {
+    (await this.followService.followUser(this.userName)).subscribe(data => {
+      this.iFollowedThisUser = true;
+      this.snackBar.open(data.message, 'close', {
+        duration: 5000,
+        horizontalPosition: 'start',
+        verticalPosition: 'bottom',
+      });
+    }, err => {
+      this.snackBar.open(err, 'close', {
+        duration: 5000,
+        horizontalPosition: 'start',
+        verticalPosition: 'bottom',
+      });
+    });
+
+  }
+  async unFollowUser() {
+    (await this.followService.unFollowUser(this.userName)).subscribe(data => {
+      this.iFollowedThisUser = false;
+      this.snackBar.open(data.message, 'close', {
+        duration: 5000,
+        horizontalPosition: 'start',
+        verticalPosition: 'bottom',
+      });
+    }, err => {
+      this.snackBar.open(err.message, 'close', {
+        duration: 5000,
+        horizontalPosition: 'start',
+        verticalPosition: 'bottom',
+      });
+    });
   }
 
 }
