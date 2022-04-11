@@ -1,0 +1,149 @@
+.example-container {
+  height:100%;
+}
+.example-container .example-toolbar{
+  background-color: #2a9d8f;
+  box-sizing: border-box;
+  box-shadow: 1px 1px 4px #000;
+}
+
+.example-container .example-toolbar h1{
+  font-size: 25px;
+  font-style: normal;
+  font-weight: bolder;
+  text-transform: capitalize;
+  letter-spacing: .5px;
+  color:#FFF;
+  margin-left: 20px;
+}
+@media screen and (max-width:992px){
+  .example-container .example-toolbar h1{
+    font-size: 20px;
+  }
+}
+
+.example-container mat-drawer-container{
+  height:100%;
+  width: 100%;
+  margin: 2px 0 0 0;
+  background-color: #FFF;
+  overflow: hidden;
+}
+
+.example-container mat-drawer{
+  background-color: #264653;
+  box-shadow: 1.5px 1px 3px #457b9d;
+  box-shadow: 1px 1px 3px #457b9d;
+  border-radius: 10px;
+}
+
+@media screen and (min-width:500px) and (max-width:600px){
+  .example-container .sidnav{
+    min-width: 200px;
+  }
+}
+@media screen and (min-width:600px) and (max-width:992px){
+  .example-container .sidnav{
+    min-width: 250px;
+  }
+}
+
+@media screen and (min-width:992px){
+  .example-container .sidnav{
+    min-width: 260px;
+  }
+}
+.example-container .sidnav .admin {
+  text-align: center;
+}
+
+.example-container .sidnav .admin > h2{
+  font-size: 20px;
+  font-style: normal;
+  font-weight: lighter;
+  color: #f2f2f2;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+@media screen and (max-width:992px){
+  .example-container .sidnav .admin > h2{
+    font-size: 16px;
+  }
+}
+
+.example-container .sidnav .admin-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-container .sidnav .admin-info > img{
+  max-width: 70px;
+  max-height: 70px;
+  border: 2px solid #eceaea;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow:0 0 10px #2a9d8f;
+}
+
+
+.example-container .sidnav .admin-info > h4{
+  font-size: 18px;
+  font-style: normal;
+  font-weight: bold;
+  color: #f2f2f2;
+  text-transform:uppercase;
+  letter-spacing: 1px;
+}
+
+@media screen and (max-width:992px){
+  .example-container .sidnav .admin-info > h4{
+    font-size: 15px;
+  }
+}
+
+.example-container .sidnav mat-divider{
+  background-color: #D8D8D8;
+}
+
+.example-container .sidnav .links{
+  padding: 0px 20px;
+  margin-top: 40px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.example-container .sidnav .links ul > li {
+  padding: 12px;
+  font-style: normal;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.example-container .sidnav .links ul > li:hover {
+  background-color: #fff;
+  color: #264653;
+}
+
+
+.example-container .sidnav .links .links-group mat-icon{
+  font-style: normal;
+  font-size: 22px;
+}
+.example-container .sidnav .links .links-group span{
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  cursor: pointer;
+}
+
+
+.example-container mat-drawer-content{
+  min-width:100%;
+  border: 2px solid #D8D8D8;
+  border-radius: 10px;
+  color: #000;
+}
