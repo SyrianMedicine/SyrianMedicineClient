@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'; 
 import { Observable } from 'rxjs';
+import { DynamicPagination } from 'src/app/Models/Helper/DynamicPagination';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class CommentService {
     };
     return httpOptions;
   }
-  async GetSubComments(id:number, pageNumber: number, pageSize: number): Promise<Observable<any>> {
-    return await this.http.post(this.baseUrl + id+"/SubComments", { "pageNumber": pageNumber, "pageSize": pageSize });
+  async GetSubComments(id:number,Pagination:DynamicPagination): Promise<Observable<any>> {
+    return await this.http.post(this.baseUrl + id+"/SubComments", Pagination);
   }
   async GettotalLike(id:number): Promise<Observable<any>> {
     return await this.http.get(this.baseUrl + id+"/NumberOfLiks");

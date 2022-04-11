@@ -3,6 +3,7 @@ import { ThemePalette } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CommentOutput } from 'src/app/Models/Comment/CommentOutput';
+import { PaginationOutput } from 'src/app/Models/Helper/PaginationOutput';
 import { CommentService } from 'src/app/Services/Comment/comment.service';
 import { LikeService } from 'src/app/Services/Like/like.service'; 
 
@@ -25,9 +26,8 @@ export class CommentComponent implements OnInit {
   commentText!:string;
   LikeEnablebutton:boolean=false;
 ///////////////////////////////////////
-  pageSize:number=3;
-  pageNumber:number=1;
-  totalPages:number=-1;
+
+pagination:PaginationOutput=new PaginationOutput(3);
   CommentsEnded:boolean=false;
   constructor(private changeDetectorRef: ChangeDetectorRef,private router: Router,private likeService:LikeService,private commentService: CommentService,private snackBar: MatSnackBar) {
   }
@@ -69,31 +69,29 @@ export class CommentComponent implements OnInit {
   }
   async loadSubcomment(): Promise<void> {
     this.isLoding=true;
-    (await this.commentService.GetSubComments(this.Commnet.id,this.pageNumber,this.pageSize)).subscribe(data => {
+    (await this.commentService.GetSubComments(this.Commnet.id,this.pagination.getNextDynamicPaginationObject())).subscribe(data => {
       for (let index = 0; index < data.items.length; index++) {
         this.SubCommnets.push(data.items[index]);
       } 
-      this.pageNumber=data.currentPage+1;
-      this.totalPages=data.totalPages;
+      this.pagination.update(data);  
+      this.CommentsEnded=this.pagination.isEnded(); 
       this.isLoding=false;
-      if(!(this.totalPages!=(this.pageNumber-1)&&this.totalPages!=0)){
-        this.CommentsEnded=true;
-      } 
       this.changeDetectorRef.detectChanges(); 
-    }, err => {
-      this.isLoding=false;
+    }, err => { 
+      this.isLoding=false; 
     });
     }
     async CreateSubComment(){
-      this.isLoding=true;
       if(!this.isAuthrized())
       {
         this.snackBarError("please login");
         this.router.navigate(['/Login']);
       }
+      this.isLoding=true;
       (await this.commentService.CreateSubComment(this.Commnet.id,this.commentText)).subscribe(data => {
         this.SubCommnets.unshift(data.data);
-        this.snackBarSuccess(data.message); 
+        this.snackBarSuccess(data.message);  
+
         this.isLoding=false;
         this.changeDetectorRef.detectChanges();
       }, err => { 

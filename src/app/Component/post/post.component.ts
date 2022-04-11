@@ -2,7 +2,8 @@ import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { CommentOutput } from 'src/app/Models/Comment/CommentOutput';
+import { CommentOutput } from 'src/app/Models/Comment/CommentOutput'; 
+import { PaginationOutput } from 'src/app/Models/Helper/PaginationOutput';
 import { PostOutput } from 'src/app/Models/Post/PostOutput'; 
 import { CommentService } from 'src/app/Services/Comment/comment.service';
 import { LikeService } from 'src/app/Services/Like/like.service';
@@ -23,11 +24,9 @@ export class PostComponent implements OnInit {
   displayCancel:Boolean=true; 
   newComment!:string;
   LikeEnablebutton:boolean=false;
+  CommentsEnded:Boolean=false;
 ///////////////////////////////////////
-pageSize:number=3;
-pageNumber:number=1;
-totalPages:number=-1;
-CommentsEnded:Boolean=false;
+pagination:PaginationOutput=new PaginationOutput(3);
 ///////////////////////////////////////
   constructor(private changeDetectorRef: ChangeDetectorRef,private router: Router,private likeService:LikeService, private postservce: PostService,private Commentservice:CommentService,private snackBar: MatSnackBar) {
   }
@@ -56,19 +55,16 @@ CommentsEnded:Boolean=false;
   if(!this.CommentsEnded&&!this.isLoding)
   {
     this.isLoding=true;
-    (await this.postservce.GetComments(this.post.id,this.pageNumber,this.pageSize)).subscribe(data => {
+    (await this.postservce.GetComments(this.post.id,this.pagination.getNextDynamicPaginationObject())).subscribe(data => {
       for (let index = 0; index < data.items.length; index++) {
         this.Commnets.push(data.items[index]);
-      } 
-      this.pageNumber=data.currentPage+1;
-      this.totalPages=data.totalPages;
-      this.isLoding=false;
-      if(!(this.totalPages!=(this.pageNumber-1)&&this.totalPages!=0)){
-        this.CommentsEnded=true;
       }
-      this.changeDetectorRef.detectChanges();
-    }, err => {
+      this.pagination.update(data);  
+      this.CommentsEnded=this.pagination.isEnded(); 
       this.isLoding=false;
+      this.changeDetectorRef.detectChanges();
+    }, err => { 
+      this.isLoding=false; 
     });
   } 
   }

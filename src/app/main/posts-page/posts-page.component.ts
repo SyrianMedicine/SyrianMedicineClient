@@ -2,6 +2,8 @@ import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/cor
 import { ThemePalette } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { DynamicPagination } from 'src/app/Models/Helper/DynamicPagination';
+import { PaginationOutput } from 'src/app/Models/Helper/PaginationOutput';
 import { PostOutput } from 'src/app/Models/Post/PostOutput';
 import { PostService } from 'src/app/Services/post/post.service';
 
@@ -11,21 +13,18 @@ import { PostService } from 'src/app/Services/post/post.service';
   styleUrls: ['./posts-page.component.scss']
 })
 export class PostsPageComponent implements OnInit {
-
-  pageSize:number=3;
-  pageNumber:number=1; 
-  totalPages:number=-1;
-  isLoding:boolean=false;   
-  posts:Array<PostOutput>=new Array<PostOutput>(); 
- 
+  Paginationout:PaginationOutput=new PaginationOutput(3);
+  isLoding:boolean=false; 
   postended:boolean=false;
-
+  posts:Array<PostOutput>=new Array<PostOutput>(); 
   constructor(private changeDetectorRef: ChangeDetectorRef,private route:Router,private postservce: PostService,private snackBar:MatSnackBar) {
    }
    isAuthrized():Boolean{
     return localStorage.getItem('token')!=null;
   }
   ngOnInit(): void {
+
+    this.isLoding=true;
     if(!this.isAuthrized())
     {
       this.snackBarError("please login");
@@ -33,20 +32,20 @@ export class PostsPageComponent implements OnInit {
     }
     this.loadpost();
   }
+
  async loadpost():Promise<void>{
     this.isLoding=true;
-    (await this.postservce.getHomePost(this.pageNumber,this.pageSize)).subscribe(data => {
+    (await this.postservce.getHomePost(this.Paginationout.getNextDynamicPaginationObject())).subscribe(data => {
       for (let index = 0; index < data.items.length; index++) {
         this.posts.push(data.items[index]);
       }
-      this.pageNumber=data.currentPage+1;
-      this.totalPages=data.totalPages;
+      this.Paginationout.update(data); 
       this.isLoding=false;
+      this.postended=this.Paginationout.isEnded();
       this.changeDetectorRef.detectChanges();
-
-    }, err => {this.isLoding=false;
-
-      console.log(this.isLoding);
+    },err=>{
+      this.isLoding=false;
+      
     });
   }
   moveOn(){
@@ -75,14 +74,11 @@ onWindowScroll() {
 //In chrome and some browser scroll is given to body tag
 let pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
 let max = document.documentElement.scrollHeight;
- 
- 
- let distance= max-pos; 
-if(distance<=260 )   { 
-  if(this.totalPages!=(this.pageNumber-1)&&this.totalPages!=0&&!this.isLoding){  
+let distance= max-pos; 
+if(distance<=220 )   {  
+  if(!this.postended&&!this.isLoding&&!this.Paginationout.isEnded()){  
     this.loadpost();
-   }else this.postended=true;
-
+   }
  }
 }
 }
