@@ -1,8 +1,7 @@
 import { Routes } from "@angular/router";
 import { DashboardComponent } from "./Admin/dashboard/dashboard.component";
 import { OthersComponent } from "./Admin/others/others.component";
-import { SettingsComponent } from "./Admin/settings/settings.component";
-import { SideNavComponent } from "./Admin/side-nav/side-nav.component";
+import { SideNavComponent } from "./Common/side-nav/side-nav.component";
 import { UserProfileComponent } from "./Admin/user-profile/user-profile.component";
 import { LoginComponent } from "./login/login.component";
 import { HospitalsComponent } from "./main/hospitals/hospitals.component";
@@ -28,10 +27,9 @@ export const routes: Routes = [
     { path: "Hospital/:userName", component: HospitalProfileComponent },
     { path: "Nurse/:userName", component: NurseProfileComponent },
     { path: "Sick/:userName", component: SickProfileComponent },
-    { path: "**", component: MainComponent },
-    { path:"SideNav" ,component:SideNavComponent},
+    { path:"Settings" ,component:SideNavComponent},
     {path:"Userprofile",component:UserProfileComponent},
-    {path:"Settings",component:SettingsComponent},
     {path:"Others",component:OthersComponent},
-    {path:"Dashboard",component:DashboardComponent}
+    {path:"Dashboard",component:DashboardComponent},
+    { path: "**", component: MainComponent },
 ];

@@ -1,10 +1,22 @@
+
+
+
 .example-container {
   height:100%;
 }
 .example-container .example-toolbar{
-  background-color: #2a9d8f;
+  background-color: #fff;
   box-sizing: border-box;
-  box-shadow: 1px 1px 4px #000;
+  color:black;
+}
+
+.mat-icon {
+  vertical-align: middle;
+}
+
+.icon-text {
+  display: flex;
+  align-items: center;
 }
 
 .example-container .example-toolbar h1{
@@ -13,8 +25,8 @@
   font-weight: bolder;
   text-transform: capitalize;
   letter-spacing: .5px;
-  color:#FFF;
-  margin-left: 20px;
+  color:#264653;
+  margin-left: 10px;
 }
 @media screen and (max-width:992px){
   .example-container .example-toolbar h1{
@@ -31,10 +43,7 @@
 }
 
 .example-container mat-drawer{
-  background-color: #264653;
-  box-shadow: 1.5px 1px 3px #457b9d;
-  box-shadow: 1px 1px 3px #457b9d;
-  border-radius: 10px;
+  background-color: #264653 ;
 }
 
 @media screen and (min-width:500px) and (max-width:600px){
@@ -44,13 +53,13 @@
 }
 @media screen and (min-width:600px) and (max-width:992px){
   .example-container .sidnav{
-    min-width: 250px;
+    min-width: 200px;
   }
 }
 
 @media screen and (min-width:992px){
   .example-container .sidnav{
-    min-width: 260px;
+    min-width: 200px;
   }
 }
 .example-container .sidnav .admin {
@@ -109,12 +118,11 @@
 }
 
 .example-container .sidnav .links{
-  padding: 0px 20px;
-  margin-top: 40px;
+  padding: 15px;
+  margin-top: 20px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 .example-container .sidnav .links ul > li {
   padding: 12px;

@@ -68,11 +68,14 @@ import { RatingComponent } from './Common/rating/rating.component';
 import { UserComentComponent } from './Component/user-coment/user-coment.component';
 import { ReserveDateWithDoctorOrNurseComponent } from './Common/reservesDate/reserve-date-with-doctor-or-nurse/reserve-date-with-doctor-or-nurse.component';
 import { HospitalreserveComponent } from './Common/reservesDate/HospitalReserve/hospitalreserve/hospitalreserve.component';
-import { SideNavComponent } from './Admin/side-nav/side-nav.component';
+import { SideNavComponent } from './Common/side-nav/side-nav.component';
 import { DashboardComponent } from './Admin/dashboard/dashboard.component';
-import { SettingsComponent } from './Admin/settings/settings.component';
 import { UserProfileComponent } from './Admin/user-profile/user-profile.component';
 import { OthersComponent } from './Admin/others/others.component';
+import { UpdateDoctorComponent } from './UpdateAccounts/update-doctor/update-doctor.component';
+import { UpdateNurseComponent } from './UpdateAccounts/update-nurse/update-nurse.component';
+import { UpdateHospitalComponent } from './UpdateAccounts/update-hospital/update-hospital.component';
+import { UpdateSickComponent } from './UpdateAccounts/update-sick/update-sick.component';
 //#endregion
 
 
@@ -102,9 +105,12 @@ import { OthersComponent } from './Admin/others/others.component';
      HospitalreserveComponent,
      SideNavComponent,
      DashboardComponent,
-     SettingsComponent,
      UserProfileComponent,
-     OthersComponent
+     OthersComponent,
+     UpdateDoctorComponent,
+     UpdateNurseComponent,
+     UpdateHospitalComponent,
+     UpdateSickComponent
   ],
   imports: [
     BrowserModule,
