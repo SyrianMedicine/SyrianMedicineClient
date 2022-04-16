@@ -13,14 +13,11 @@ export class ReserveDoctorOrNurseService extends BaseServices {
   constructor(private http: HttpClient) {super(); }
 
   async ReserveDate(data: any, type: number): Promise<Observable<any>> {
-    var headersObject = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem('token'));
-    const httpOptions = {
-      headers: headersObject
-    };
+    
     if (type == 1)
-      return await this.http.post(this.baseUrl + "ReserveDateWithDoctor", data, httpOptions).pipe(catchError(this.errorHandler));
+      return await this.http.post(this.baseUrl + "ReserveDateWithDoctor", data, this.getoption()).pipe(catchError(this.errorHandler));
     else
-      return await this.http.post(this.baseUrl + "ReserveDateWithNurse", data, httpOptions).pipe(catchError(this.errorHandler));
+      return await this.http.post(this.baseUrl + "ReserveDateWithNurse", data, this.getoption()).pipe(catchError(this.errorHandler));
   }
 
  

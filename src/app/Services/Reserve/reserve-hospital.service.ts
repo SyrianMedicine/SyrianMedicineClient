@@ -13,11 +13,8 @@ export class ReserveHospitalService extends BaseServices {
   constructor(private http: HttpClient) { super();}
 
   async reserveHospital(body: any): Promise<Observable<any>> {
-    var headersObject = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem('token'));
-    const httpOptions = {
-      headers: headersObject
-    };
-    return this.http.post(this.baseUrl + "ReserveBedInHospital", body, httpOptions).pipe(catchError(this.errorHandler));
+   
+    return this.http.post(this.baseUrl + "ReserveBedInHospital", body, this.getoption()).pipe(catchError(this.errorHandler));
   }
  
 }
