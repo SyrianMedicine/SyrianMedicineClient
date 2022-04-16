@@ -8,6 +8,7 @@
                       <p>{{this.Commnet.text}}</p>
                       <h5 style="color:rgb(114, 114, 114);margin: 0;">{{(Commnet.datetime | date :'medium')+(this.Commnet.isEdited?"  (edited)":"")}} </h5>
                       <i *ngIf="LikeEnablebutton"  (click)="this.onLikelicked();" class="fa fa-heart" [ngClass]="{'Liked':this.liked}" ></i>
+                      <i *ngIf="!this.LikeEnablebutton"> <mat-spinner  diameter="16"  class="d-inline-block custom-spinner"> </mat-spinner></i>
                       <label>{{this.numberofLike}}</label>
                       <a (click)="displayReplay(false)">Reply</a>
                       <a *ngIf="this.isOwnedbyMe();" (click)="deleteComment()">Delete</a>
@@ -25,16 +26,20 @@
                       </form>
                       </div>
                       <div *ngIf="!this.CommentsEnded&&!this.isLoding" class="showComments p-2">
-                        <a (click)="this.loadSubcomment()">show replies</a>
+                        <a (click)="Subvisible?this.loadSubcomment():this.showSubComment()">{{Subvisible?'show More': 'show replies'}}</a>
                       </div>
                     </div>
                   </div>
                  </div>
                  <!-- sub comments -->
-                 <div    class="commentsArea ">
-                  <div  *ngIf="this.isLoding" class="ml-3 mt-2" >
+                <div  *ngIf="Subvisible"  class="commentsArea ">
+                  
+                  <div  *ngIf="this.isNewCommentCreateing" class="ml-3 mt-2" >
                     <mat-spinner diameter="60"  class="custom-spinner"> </mat-spinner>
                   </div>
                   <app-comment *ngFor="let come of this.SubCommnets" (Ondeleted)="this.ChildeDeleted($event)" [depth]="this.depth+1" [Commnet]="come"></app-comment>
+                  <div  *ngIf="this.isLoding" class="ml-3 mt-2" >
+                    <mat-spinner diameter="60"  class="custom-spinner"> </mat-spinner>
+                  </div>
               </div>
             </div>

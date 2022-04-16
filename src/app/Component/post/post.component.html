@@ -9,7 +9,9 @@
               <span>{{ post.date | date :'medium'}}</span>
               <p>{{post.postText}}</p>
               <img *ngIf="post.mediaUrl" [src]="post.mediaUrl" alt="img-post" class="rounded-3"/>
-                <i *ngIf="this.LikeEnablebutton"  (click)="this.onLikelicked();"  class="fa fa-heart" [ngClass]="{'Liked':this.liked}"></i>
+               
+              <i *ngIf="this.LikeEnablebutton"  (click)="this.onLikelicked();"  class="fa fa-heart" [ngClass]="{'Liked':this.liked}"></i>
+              <i *ngIf="!this.LikeEnablebutton"> <mat-spinner  diameter="16"  class="d-inline-block custom-spinner"> </mat-spinner></i>
                 <label>{{this.numberofLike}}</label>
                 <a (click)="displayComment()">comment</a>
                 <a (click)="cancelComment()" [ngClass]="{'posts hideComment':displayCancel}">cancel</a>
@@ -27,11 +29,14 @@
               </div>
           </div>
                   <!-- All comments-->
-          <div  class="commentsArea">  
-            <div *ngIf="this.isLoding" class="d-flex justify-content-center mb-3" >
-              <mat-spinner diameter="60"  class="custom-spinner"> </mat-spinner>
-            </div>
+          <div  class="commentsArea">
+            <div *ngIf="this.isNewCommentCreateing" class=" ml-3" >
+              <mat-spinner diameter="60"  class="custom-spinner mb-2"> </mat-spinner>
+            </div>  
             <app-comment  *ngFor="let com of this.Commnets" (Ondeleted)="this.ChildeDeleted($event);" [depth]="0" [Commnet]="com"></app-comment >
+              <div *ngIf="this.isLoding" class="d-flex justify-content-center mb-3" >
+                <mat-spinner diameter="60"  class="custom-spinner"> </mat-spinner>
+              </div>
             <div *ngIf="!this.CommentsEnded&&!this.isLoding"  class="mx-4 showComments text-center">
               <a (click)="this.loadcomment()" >show more</a>
             </div>
