@@ -1,15 +1,15 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { BaseServices } from '../Common/BaseService.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FollowService {
+export class FollowService extends BaseServices {
+  baseUrl = this.HostUrl+"/Follow/";   
 
-  baseUrl = "https://localhost:7017/api/Follow/";
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {super(); }
 
   async followUser(username: string): Promise<Observable<any>> {
     return await this.http.post(this.baseUrl + username + "/Follow", {}, this.getoption()).pipe(catchError(this.errorHandler));
@@ -21,15 +21,7 @@ export class FollowService {
     return await this.http.get(this.baseUrl+username+"/IsFollowedByMe",this.getoption()).pipe();
   }
 
-  getoption(): any {
-    var headersObject = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem('token'));
-    const httpOptions = {
-      headers: headersObject
-    };
-    return httpOptions;
-  }
-  errorHandler(error: HttpErrorResponse) {
-    return throwError(error.error.message);
-  }
+  
+ 
 
 }

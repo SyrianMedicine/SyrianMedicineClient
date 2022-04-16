@@ -6,14 +6,16 @@ import { city } from 'src/app/Models/city';
 import { doctorOrNurseRegister } from 'src/app/Models/Register/doctorOrNurseRegister';
 import { doctorOrNurseRegisterOutput } from 'src/app/Models/Register/doctorOrNurseRegisterOutput';
 import { state } from 'src/app/Models/states';
+import { BaseServices } from '../Common/BaseService.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class RegisterServiceService {
-  baseUrl = "https://localhost:7017/api/";
-  constructor(private http: HttpClient, private snackBar: MatSnackBar) { }
+export class RegisterServiceService extends BaseServices {
+  baseUrl = this.HostUrl+"/"; 
+ 
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {super(); }
 
   registerUser(input: any, type: number): Observable<any> {
     if (type == 1) { // sick
@@ -76,10 +78,6 @@ export class RegisterServiceService {
   getStates(): Observable<state[]> {
     return this.http.get<state[]>(this.baseUrl + "Account/GetPersonStates");
   }
-
-
-  errorHandler(error: HttpErrorResponse) {
-    return throwError(error.error.message);
-  }
+ 
 
 }

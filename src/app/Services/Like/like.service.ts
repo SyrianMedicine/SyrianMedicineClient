@@ -1,21 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { BaseServices } from '../Common/BaseService.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LikeService {
-
-  baseUrl = "https://localhost:7017/api/Like/";
-  getoption():any{
-    var headersObject = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem('token'));
-    const httpOptions = {
-      headers: headersObject
-    };
-    return httpOptions;
-  }
-  constructor(private http: HttpClient) { }
+export class LikeService extends BaseServices {
+  baseUrl = this.HostUrl+"/Like/"; 
+  
+  constructor(private http: HttpClient) {super() }
 
   async LikeComment(id: number): Promise<Observable<any>> {
     return await this.http.post(this.baseUrl+"LikeComment?CommentId="+id,null,this.getoption());

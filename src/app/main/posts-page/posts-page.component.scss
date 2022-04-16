@@ -235,37 +235,7 @@ border: 1.5px solid #42B0EF;
   color: #FFFFFF;
   border-radius: 20px;
 }
-
-
-
-::ng-deep .green-snackbar {
-  background-color: #4BB543;
-  position: absolute;
-  bottom: 0px;
-  color: white;
-  animation:0.4s onsnackbarstart;
-  -moz-animation: 0.4s onsnackbarstart;
-  -webkit-animation: 0.4s onsnackbarstart;
-  -o-animation: 0.4s onsnackbarstart;
-}
-::ng-deep .red-snackbar {
-  background: red;
-  color: white;
-  position: absolute;
-  bottom: 5px;
-  animation:0.4s onsnackbarstart;
-  -moz-animation: 0.4s onsnackbarstart;
-  -webkit-animation: 0.4s onsnackbarstart;
-  -o-animation: 0.4s onsnackbarstart;
-}
-
-@keyframes onsnackbarstart{
-  from{left: -416px;}
-  to{left:0px;}
-}
-
+ 
 // end pageniation
 
-:host ::ng-deep .custom-spinner circle{   
-  stroke:rgb(173, 173, 173);
-}
+ 

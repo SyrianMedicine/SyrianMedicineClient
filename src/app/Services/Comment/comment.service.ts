@@ -2,20 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'; 
 import { Observable } from 'rxjs';
 import { DynamicPagination } from 'src/app/Models/Helper/DynamicPagination';
-
+import { BaseServices } from '../Common/BaseService.service'; 
+ 
 @Injectable({
   providedIn: 'root'
 })
-export class CommentService {
-  baseUrl = "https://localhost:7017/api/Comment/";
-  constructor(private http: HttpClient) { }
-  getoption():any{
-    var headersObject = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem('token'));
-    const httpOptions = {
-      headers: headersObject
-    };
-    return httpOptions;
-  }
+export class CommentService extends BaseServices {
+  baseUrl = this.HostUrl+"/Comment/";
+  constructor(private http: HttpClient) {super(); }
+ 
   async GetSubComments(id:number,Pagination:DynamicPagination): Promise<Observable<any>> {
     return await this.http.post(this.baseUrl + id+"/SubComments", Pagination);
   }

@@ -1,15 +1,16 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { BaseServices } from '../Common/BaseService.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ReserveDoctorOrNurseService {
+export class ReserveDoctorOrNurseService extends BaseServices {
+  baseUrl = this.HostUrl+"/Sick/"; 
+ 
 
-  baseUrl = "https://localhost:7017/api/Sick/";
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {super(); }
 
   async ReserveDate(data: any, type: number): Promise<Observable<any>> {
     var headersObject = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem('token'));
@@ -22,7 +23,5 @@ export class ReserveDoctorOrNurseService {
       return await this.http.post(this.baseUrl + "ReserveDateWithNurse", data, httpOptions).pipe(catchError(this.errorHandler));
   }
 
-  errorHandler(error: HttpErrorResponse) {
-    return throwError(error.error.message);
-  }
+ 
 }

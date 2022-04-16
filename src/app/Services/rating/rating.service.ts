@@ -1,15 +1,15 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { BaseServices } from '../Common/BaseService.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RatingService {
+export class RatingService extends BaseServices {
+  baseUrl = this.HostUrl+"/Rating/"; 
 
-  baseUrl = "https://localhost:7017/api/Rating/";
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {super(); }
 
   async getRateUser(userName: string): Promise<Observable<any>> {
     return this.http.get<any>(this.baseUrl + userName).pipe();
@@ -34,12 +34,6 @@ export class RatingService {
       headers: headersObject
     };
     return await this.http.get<any>(this.baseUrl + username + "/MyRating", httpOptions).pipe();
-  }
-
-
-
-  errorHandler(error: HttpErrorResponse) {
-    return throwError(error.error.message);
   }
 
 }

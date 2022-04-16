@@ -30,7 +30,7 @@
             <div class="medicine-content">
               <img [src]="doctor.pictureUrl" alt="Doctor" class="img-fluid" />
               <div class="medicine-content-info">
-                <h4>Dr.{{doctor.displayName}}</h4>
+                <h4 style="cursor: pointer;" [routerLink]="'/Doctor/'+doctor.userName">Dr.{{doctor.displayName}}</h4>
                 <img src="../../../assets/images/areaIcon.png"/>
                 <span>{{doctor.location}}</span>
                 <img src="../../../assets/images/specalist.png"/>

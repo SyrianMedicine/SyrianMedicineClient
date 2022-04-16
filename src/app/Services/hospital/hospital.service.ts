@@ -2,14 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { department } from 'src/app/Models/Hospital/Department/department';
+import { BaseServices } from '../Common/BaseService.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HospitalService {
-  baseUrl = "https://localhost:7017/api/Hospital/";
+export class HospitalService extends BaseServices {
+  baseUrl = this.HostUrl+"/Hospital/";   
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {super(); }
 
   async getMostHospitalsRated(pageNumber: number, pageSize: number): Promise<Observable<any>> {
     return await this.http.post(this.baseUrl + "MostHospitalsRated", { "pageNumber": pageNumber, "pageSize": pageSize });

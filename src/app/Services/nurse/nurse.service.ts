@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MostNursesRatedData } from 'src/app/Models/Nurse/MostNursesRated';
+import { BaseServices } from '../Common/BaseService.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NurseService {
-
-  baseUrl = "https://localhost:7017/api/Nurse/";
-  constructor(private http: HttpClient) { }
+export class NurseService extends BaseServices {
+  baseUrl = this.HostUrl+"/Nurse/"; 
+  constructor(private http: HttpClient) { super();}
 
   async getMostNursesRated(pageNumber: number, pageSize: number): Promise<Observable<any>> {
     return await this.http.post(this.baseUrl + "MostNursesRated", { "pageNumber": pageNumber, "pageSize": pageSize });

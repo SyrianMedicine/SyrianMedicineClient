@@ -4,14 +4,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, Observable, throwError } from 'rxjs';
 import { login } from 'src/app/Models/Login/login';
 import { loginAdminOutput } from 'src/app/Models/Login/LoginAdminOutput';
+import { BaseServices } from '../Common/BaseService.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginServiceService {
-
-  baseUrl = "https://localhost:7017/api/";
-  constructor(private http: HttpClient, private snackBar: MatSnackBar) { }
+export class LoginServiceService extends BaseServices {
+  baseUrl = this.HostUrl+"/";
+ 
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {super(); }
 
   loginUser(input: login, type: number): Observable<any> {
     switch (type) {
@@ -32,9 +33,4 @@ export class LoginServiceService {
       }
     }
   }
-
-  errorHandler(error: HttpErrorResponse) {
-    return throwError(error.error.message);
-  }
-
 }
