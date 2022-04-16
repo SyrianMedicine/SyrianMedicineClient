@@ -1,55 +1,49 @@
 import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-import { DynamicPagination } from 'src/app/Models/Helper/DynamicPagination';
+import { ActivatedRoute } from '@angular/router';
 import { PaginationOutput } from 'src/app/Models/Helper/PaginationOutput';
 import { PostOutput } from 'src/app/Models/Post/PostOutput';
-import { PostService } from 'src/app/Services/post/post.service';
+import { AccountService } from 'src/app/Services/Account/account.service'; 
 
 @Component({
-  selector: 'app-posts-page',
-  templateUrl: './posts-page.component.html',
-  styleUrls: ['./posts-page.component.scss']
+  selector: 'app-profile-post-section',
+  templateUrl: './profile-post-section.component.html',
+  styleUrls: ['./profile-post-section.component.scss']
 })
-export class PostsPageComponent implements OnInit {
+export class ProfilePostSectionComponent implements OnInit {
+  username:string|any;
   Paginationout:PaginationOutput=new PaginationOutput(3);
   isLoding:boolean=false; 
   postended:boolean=false;
   posts:Array<PostOutput>=new Array<PostOutput>(); 
-  constructor(private changeDetectorRef: ChangeDetectorRef,private route:Router,private postservce: PostService,private snackBar:MatSnackBar) {
-   }
-   isAuthrized():Boolean{
-    return localStorage.getItem('token')!=null;
+  
+  constructor(private changeDetectorRef: ChangeDetectorRef,private accountServce:AccountService,private route: ActivatedRoute,private snackBar:MatSnackBar) {
+    this.username = this.route.snapshot.paramMap.get("userName")?.toString();
+    console.log(this.username);
+    
   }
-  ngOnInit(): void {
 
-    this.isLoding=true;
-    if(!this.isAuthrized())
-    {
-      this.snackBarError("please login");
-      this.route.navigate(['/Login']);
-    }
+  ngOnInit(): void {
+    this.isLoding=true; 
     this.loadpost();
   }
-
- async loadpost():Promise<void>{
+  async loadpost():Promise<void>{
     this.isLoding=true;
-    (await this.postservce.getHomePost(this.Paginationout.getNextDynamicPaginationObject())).subscribe(data => {
+    (await this.accountServce.getProfilePost(this.username,this.Paginationout.getNextDynamicPaginationObject())).subscribe(data => {
       for (let index = 0; index < data.items.length; index++) {
         this.posts.push(data.items[index]);
       }
+      console.log(data);
       this.Paginationout.update(data); 
       this.isLoding=false;
       this.postended=this.Paginationout.isEnded();
       this.changeDetectorRef.detectChanges();
     },err=>{
+
+      console.log(err);
       this.isLoding=false;
-      
     });
   }
-   
-
   snackBarError(message:string){
     this.snackBar.open(message, 'close', {
       duration: 2000,
