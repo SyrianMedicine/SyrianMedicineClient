@@ -76,6 +76,7 @@ import { UpdateDoctorComponent } from './UpdateAccounts/update-doctor/update-doc
 import { UpdateNurseComponent } from './UpdateAccounts/update-nurse/update-nurse.component';
 import { UpdateHospitalComponent } from './UpdateAccounts/update-hospital/update-hospital.component';
 import { UpdateSickComponent } from './UpdateAccounts/update-sick/update-sick.component';
+import { UpdatePassowrdComponent } from './update-passowrd/update-passowrd.component';
 //#endregion
 
 
@@ -110,7 +111,8 @@ import { UpdateSickComponent } from './UpdateAccounts/update-sick/update-sick.co
      UpdateDoctorComponent,
      UpdateNurseComponent,
      UpdateHospitalComponent,
-     UpdateSickComponent
+     UpdateSickComponent,
+     UpdatePassowrdComponent
   ],
   imports: [
     BrowserModule,
