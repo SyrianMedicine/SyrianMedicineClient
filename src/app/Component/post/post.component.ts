@@ -80,10 +80,9 @@ export class PostComponent implements OnInit {
     for (let index = 0; index < this.Commnets.length; index++) {
       if (this.Commnets[index].id == ChildeCommnet.id) {
         this.Commnets.splice(index, 1);
-        this.changeDetectorRef.detectChanges();
-        break;
       }
     }
+    this.changeDetectorRef.detectChanges(); 
   }
   isOwnedbyMe(): Boolean {
     let username = localStorage.getItem("username");
