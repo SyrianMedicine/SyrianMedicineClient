@@ -2,10 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { HospitalreserveComponent } from 'src/app/Common/reservesDate/HospitalReserve/hospitalreserve/hospitalreserve.component';
+import { DynamicPagination } from 'src/app/Models/Helper/DynamicPagination';
 import { HospitalInfo } from 'src/app/Models/Hospital/HospitalInfo';
+import { AccountService } from 'src/app/Services/Account/account.service';
 import { FollowService } from 'src/app/Services/Follow/follow.service';
 import { HospitalService } from 'src/app/Services/hospital/hospital.service';
+import { postsLoadeFactory } from 'src/app/Services/post/postsLoadeFactory';
 
 @Component({
   selector: 'app-hospital-profile',
@@ -18,14 +22,19 @@ export class HospitalProfileComponent implements OnInit {
   userName: string | any;
   hospitalId: number = 0;
   iFollowedThisUser: boolean = false;
-
+  profilepostLoadfunc!:(page:DynamicPagination)=> Promise<Observable<any>>;
+  
 
   constructor(
     private hospitalService: HospitalService,
     private followService: FollowService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private accountService:AccountService) { 
+      this.profilepostLoadfunc=postsLoadeFactory.getProfileLoadMethod(accountService,this.route.snapshot.paramMap.get("userName"));
+ 
+    }
 
   async ngOnInit(): Promise<void> {
     this.userName = this.route.snapshot.paramMap.get("userName");

@@ -5,7 +5,8 @@
             <div class="comments-content">
               <app-user-coment [user]="this.Commnet.user" ></app-user-coment>
                   <div class="comments-content-info">
-                      <p>{{this.Commnet.text}}</p>
+                      <p *ngIf="!this.isediting">{{this.Commnet.text}}  </p>
+                      <p *ngIf="this.isediting"><mat-spinner  diameter="19"  class="d-inline-block custom-spinner"> </mat-spinner></p>
                       <h5 style="color:rgb(114, 114, 114);margin: 0;">{{(Commnet.datetime | date :'medium')+(this.Commnet.isEdited?"  (edited)":"")}} </h5>
                       <i *ngIf="LikeEnablebutton"  (click)="this.onLikelicked();" class="fa fa-heart" [ngClass]="{'Liked':this.liked}" ></i>
                       <i *ngIf="!this.LikeEnablebutton"> <mat-spinner  diameter="16"  class="d-inline-block custom-spinner"> </mat-spinner></i>

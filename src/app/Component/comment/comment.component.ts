@@ -15,6 +15,7 @@ import { LikeService } from 'src/app/Services/Like/like.service';
 export class CommentComponent implements OnInit {
   @Input() Commnet!: CommentOutput;
   @Input() depth: number = 0;
+  isediting: boolean = false;
   SubCommnets: Array<CommentOutput> = new Array<CommentOutput>();;
   liked: boolean = false;
   numberofLike: number = 0;
@@ -132,10 +133,13 @@ export class CommentComponent implements OnInit {
       this.snackBarError("please login");
       this.router.navigate(['/Login']);
     }
+    this.isediting=true;
     (await this.commentService.Update(this.Commnet.id, this.commentText)).subscribe(data => {
       this.Commnet = data.data;
+      this.isediting=false;
       this.snackBarSuccess(data.message);
     }, err => {
+      this.isediting=false;
       this.snackBarError(err.error.message);
     });
   }

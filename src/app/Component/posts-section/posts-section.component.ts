@@ -1,26 +1,23 @@
-import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { DynamicPagination } from 'src/app/Models/Helper/DynamicPagination';
 import { PaginationOutput } from 'src/app/Models/Helper/PaginationOutput';
 import { PostOutput } from 'src/app/Models/Post/PostOutput';
-import { AccountService } from 'src/app/Services/Account/account.service';
 
 @Component({
-  selector: 'app-profile-post-section',
-  templateUrl: './profile-post-section.component.html',
-  styleUrls: ['./profile-post-section.component.scss']
+  selector: 'app-posts-section',
+  templateUrl: './posts-section.component.html',
+  styleUrls: ['./posts-section.component.scss']
 })
-export class ProfilePostSectionComponent implements OnInit {
-  username: string | any;
+export class PostsSectionComponent implements OnInit {
+
+  @Input() loadefunc!:(page: DynamicPagination) => Promise<Observable<any>>;
   Paginationout: PaginationOutput = new PaginationOutput(3);
   isLoding: boolean = false;
   postended: boolean = false;
   posts: Array<PostOutput> = new Array<PostOutput>();
-
-  constructor(private changeDetectorRef: ChangeDetectorRef, private accountServce: AccountService, private route: ActivatedRoute, private snackBar: MatSnackBar) {
-    this.username = this.route.snapshot.paramMap.get("userName")?.toString();
-    console.log(this.username);
-
+  constructor(private changeDetectorRef: ChangeDetectorRef, private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -29,7 +26,7 @@ export class ProfilePostSectionComponent implements OnInit {
   }
   async loadpost(): Promise<void> {
     this.isLoding = true;
-    (await this.accountServce.getProfilePost(this.username, this.Paginationout.getNextDynamicPaginationObject())).subscribe(data => {
+    (await this.loadefunc(this.Paginationout.getNextDynamicPaginationObject())).subscribe(data => {
       for (let index = 0; index < data.items.length; index++) {
         this.posts.push(data.items[index]);
       }

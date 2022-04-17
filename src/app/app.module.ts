@@ -75,9 +75,9 @@ import { OthersComponent } from './Admin/others/others.component';
 import { UpdateDoctorComponent } from './UpdateAccounts/update-doctor/update-doctor.component';
 import { UpdateNurseComponent } from './UpdateAccounts/update-nurse/update-nurse.component';
 import { UpdateHospitalComponent } from './UpdateAccounts/update-hospital/update-hospital.component';
-import { UpdateSickComponent } from './UpdateAccounts/update-sick/update-sick.component';
-import { ProfilePostSectionComponent } from './Component/profile-post-section/profile-post-section.component';
+import { UpdateSickComponent } from './UpdateAccounts/update-sick/update-sick.component'; 
 import { ProfileCommentSectionComponent } from './Component/profile-comment-section/profile-comment-section.component';
+import { PostsSectionComponent } from './Component/posts-section/posts-section.component';
 //#endregion
 
 
@@ -112,9 +112,9 @@ import { ProfileCommentSectionComponent } from './Component/profile-comment-sect
      UpdateDoctorComponent,
      UpdateNurseComponent,
      UpdateHospitalComponent,
-     UpdateSickComponent,
-     ProfilePostSectionComponent,
-     ProfileCommentSectionComponent
+     UpdateSickComponent, 
+     ProfileCommentSectionComponent,
+     PostsSectionComponent
   ],
   imports: [
     BrowserModule,
