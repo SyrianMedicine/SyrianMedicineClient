@@ -23,17 +23,12 @@
     <h2>POSTS</h2>
     <hr/>
     </div> 
-    <app-post *ngFor="let post of this.posts"  [post]="post"></app-post> 
-  <div *ngIf="this.isLoding"  class="d-flex justify-content-center" > 
-    <mat-spinner  diameter="90"  class="custom-spinner"> </mat-spinner>
-  </div>
+    <app-posts-section [loadefunc]="postLoadfunc"></app-posts-section>
 </section>
 <!-- end posts -->
 
 <!-- start pageination -->
- <div *ngIf="this.postended" class="d-flex justify-content-center mb-2">
-    Post ended
- </div  >
+ 
 <!-- end pageination -->
 
 <!-- footer start  -->

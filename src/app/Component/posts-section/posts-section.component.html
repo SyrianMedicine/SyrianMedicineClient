@@ -1,0 +1,4 @@
+<app-post *ngFor="let post of this.posts"  [post]="post"></app-post> 
+<div *ngIf="this.isLoding"  class="d-flex justify-content-center" > 
+  <mat-spinner  diameter="90"  class="custom-spinner"> </mat-spinner>
+</div>

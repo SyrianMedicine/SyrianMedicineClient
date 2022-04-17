@@ -1,0 +1,25 @@
+
+
+
+
+<section class="comments">
+    <div class="row">
+        <div class="comment-header">
+            <p style="font-weight: bold;">{{"Comments [ "+this.Paginationout.totalItem+" ]"}}</p>
+        </div>
+    </div>
+    <div class="row hidden">
+        <div class="col">
+            <div class="container">
+
+                <app-comment *ngFor="let comment of this.Comments" class="card mt-3 p-2 rounded-8" (Ondeleted)="this.ChildeDeleted($event)" [Commnet]="comment"></app-comment> 
+                <div *ngIf="this.isLoding"  class="d-flex justify-content-center" > 
+                  <mat-spinner  diameter="90"  class="custom-spinner mt-5 "> </mat-spinner>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!this.CommentEnded&&!this.isLoding" class="container  mt-5 centerBtn justify-content-center">
+        <button (click)="this.showMore()" class="ShowMore" type="button">Show more</button>
+    </div>
+</section>
