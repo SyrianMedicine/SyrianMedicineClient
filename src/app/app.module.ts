@@ -75,14 +75,10 @@ import { OthersComponent } from './Admin/others/others.component';
 import { UpdateDoctorComponent } from './UpdateAccounts/update-doctor/update-doctor.component';
 import { UpdateNurseComponent } from './UpdateAccounts/update-nurse/update-nurse.component';
 import { UpdateHospitalComponent } from './UpdateAccounts/update-hospital/update-hospital.component';
-<<<<<<< HEAD
 import { UpdateSickComponent } from './UpdateAccounts/update-sick/update-sick.component';
 import { UpdatePassowrdComponent } from './update-passowrd/update-passowrd.component';
-=======
-import { UpdateSickComponent } from './UpdateAccounts/update-sick/update-sick.component'; 
+import { PostsSectionComponent } from './Component/posts-section/posts-section.component'; 
 import { ProfileCommentSectionComponent } from './Component/profile-comment-section/profile-comment-section.component';
-import { PostsSectionComponent } from './Component/posts-section/posts-section.component';
->>>>>>> 7dcebffd948a96a4d593deb64a8fa70c14e335ae
 //#endregion
 
 
@@ -116,15 +112,11 @@ import { PostsSectionComponent } from './Component/posts-section/posts-section.c
      OthersComponent,
      UpdateDoctorComponent,
      UpdateNurseComponent,
-     UpdateHospitalComponent,
-<<<<<<< HEAD
-     UpdateSickComponent,
-     UpdatePassowrdComponent
-=======
+     UpdateHospitalComponent, 
+     UpdatePassowrdComponent,
      UpdateSickComponent, 
      ProfileCommentSectionComponent,
-     PostsSectionComponent
->>>>>>> 7dcebffd948a96a4d593deb64a8fa70c14e335ae
+     PostsSectionComponent 
   ],
   imports: [
     BrowserModule,
