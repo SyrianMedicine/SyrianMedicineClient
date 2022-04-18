@@ -1,90 +1,100 @@
-<div class="container grid-container">
+<div class="doctor-info">
+  <div class="row">
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          <h1> A Doctor Information update </h1>
+        </div>
+        <div class="card-body">
+            <div class="grid-container text-center">
+              <form autocomplete="off">
+                <input type="text" placeholder="FirstName"
+                    class="input_group mt-3"
+                    name="firstNameInput" id="firstNameInput"
+                    required
+                    formControlName="firstNameInput" />
+                <input type="text" placeholder="LastName"
+                    class="input_group mt-3"
+                    name="lastNameInput" id="lastNameInput"
+                    required
+                    formControlName="lastNameInput" />
+                <br />
+                <input type="text" placeholder="Phone Number"
+                    class="input_group"
+                    name="phoneNumberInput" id="phoneNumberInput"
+                    required
+                    formControlName="phoneNumberInput" />
+                <input type="text" placeholder="Home Number"
+                    class="input_group"
+                    name="homeNumberInput" id="homeNumberInput"
+                    required
+                    formControlName="homeNumberInput" />
+                <br />
 
-    <form>
-        <input type="text" placeholder="FirstName"
-            class="input_group mt-3"
-            name="firstNameInput" id="firstNameInput"
-            required
-            formControlName="firstNameInput" />
-        <input type="text" placeholder="LastName"
-            class="input_group mt-3"
-            name="lastNameInput" id="lastNameInput"
-            required
-            formControlName="lastNameInput" />
-        <br />
-        <input type="text" placeholder="Phone Number"
-            class="input_group"
-            name="phoneNumberInput" id="phoneNumberInput"
-            required
-            formControlName="phoneNumberInput" />
-        <input type="text" placeholder="Home Number"
-            class="input_group"
-            name="homeNumberInput" id="homeNumberInput"
-            required
-            formControlName="homeNumberInput" />
-        <br />
+                <input type="text" placeholder="Specialization"
+                    class="input_group"
+                    name="specializationInput" id="specializationInput"
+                    required
+                    formControlName="specializationInput" />
+                <input type="text" placeholder="Location"
+                    class="input_group"
+                    name="locationInput" id="locationInput"
+                    required
+                    formControlName="locationInput" />
+                <br />
+                <textarea
+                    placeholder="About Me"
+                    style="width:62%; height:30%"
+                    name="aboutMeInput" id="aboutMeInput"
+                    required
+                    formControlName="aboutMeInput">About Me..</textarea>
 
-        <input type="text" placeholder="Specialization"
-            class="input_group"
-            name="specializationInput" id="specializationInput"
-            required
-            formControlName="specializationInput" />
-        <input type="text" placeholder="Location"
-            class="input_group"
-            name="locationInput" id="locationInput"
-            required
-            formControlName="locationInput" />
-        <br />
-        <textarea
-            placeholder="About Me"
-            style="width:62%; height:30%"
-            name="aboutMeInput" id="aboutMeInput"
-            required
-            formControlName="aboutMeInput">About Me..</textarea>
+                <br />
 
-        <br />
+                <select class="select_group"
+                    name="selectCityInput">
+                    <option>
+                        asdasas
+                    </option>
+                </select>
+                <select class="select_group"
+                    name="selectCityInput">
+                    <option>
+                        asdasas
+                    </option>
+                </select>
+                <select class="select_group"
+                    name="selectCityInput">
+                    <option>
+                        asdasas
+                    </option>
+                </select>
+                <br />
 
-        <select class="select_group"
-            name="selectCityInput">
-            <option>
-                asdasas
-            </option>
-        </select>
-        <select class="select_group"
-            name="selectCityInput">
-            <option>
-                asdasas
-            </option>
-        </select>
-        <select class="select_group"
-            name="selectCityInput">
-            <option>
-                asdasas
-            </option>
-        </select>
-        <br />
-
-        <mat-form-field>
-            <label class="ml-1">Start Time:</label>
-            <input matInput name="datetimeInput"
-                formControlName="datetimeInput"
-                id="datetimeInput" required type="datetime-local"
-                placeholder="start
-                date">
-        </mat-form-field>
-        <mat-form-field>
-            <label class="ml-5">End Time:</label>
-            <input matInput name="datetimeInput" class="ml-5"
-                formControlName="datetimeInput"
-                id="datetimeInput" required type="datetime-local"
-                placeholder="start
-                date">
-        </mat-form-field>
-        <br />
-
-        <button class="register_btn"type="submit">
-            Apply
-        </button>
-
-    </form>
+                <mat-form-field>
+                    <label class="ml-1">Start Time:</label>
+                    <input matInput name="datetimeInput"
+                        formControlName="datetimeInput"
+                        id="datetimeInput" required type="datetime-local"
+                        placeholder="start
+                        date">
+                </mat-form-field>
+                <mat-form-field>
+                    <label class="ml-5">End Time:</label>
+                    <input matInput name="datetimeInput" class="ml-5"
+                        formControlName="datetimeInput"
+                        id="datetimeInput" required type="datetime-local"
+                        placeholder="start
+                        date">
+                </mat-form-field>
+                <br />
+                <button class="register_btn" type="submit">
+                    Apply
+                </button>
+            </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

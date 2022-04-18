@@ -1,10 +1,24 @@
-* {
-    overflow-x: hidden;
-    overflow-y: auto;
-    display: flexbox;
-    justify-content: center;
-  }
-  
+.hospital-info{
+  width: 700px;
+  transform: translate(40%,3%);
+}
+
+.card-header{
+  background-color: #42B0EF;
+  color: #FFF;
+  text-transform: capitalize;
+  height: 60px;
+  text-align: center;
+}
+
+.hospital-info .card-header h1 {
+  margin-top: 4px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  word-spacing: normal;
+}
+
   /* Border */
   .mat-form-field-appearance-fill .mat-form-field-fill {
     color: rgb(41, 12, 94);
@@ -42,23 +56,23 @@
     margin-left: 6px;
   }
   .register_btn {
-    background: #305a72;
+    background: #FFF;
     border-radius: 50px;
     font-style: 25px;
     font-weight: 600;
     font-style: normal;
-    color: #ffffff;
-    border: none;
+    color: #42B0EF;
+    border:2px solid #42B0EF;
     padding: 10px 40px;
     margin-left: 560px;
-    display: flex;
   }
-  
+
   .register_btn:hover:enabled,
   .register_btn:focus:enabled {
-    background: rgba(48, 90, 114, 0.64);
+    background-color: #42B0EF;
+    color: #FFF;
   }
-  
+
   textarea {
     width: 100%;
     height: 150px;
@@ -75,4 +89,3 @@
   input:focus {
     outline: none;
   }
-  

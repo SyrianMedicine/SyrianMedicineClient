@@ -1,56 +1,67 @@
-<div class="container grid-container">
+<div class="hospital-info">
+  <div class="row">
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          <h1> A Hospital Information update </h1>
+        </div>
+        <div class="card-body">
+            <div class="grid-container text-center">
+              <form autocomplete="off">
+                <input type="text" placeholder="Name"
+                    class="input_group mt-5"
+                    name="nameInput" id="nameInput"
+                    required
+                    formControlName="nameInput" />
+                <input type="text" placeholder="WebSite"
+                    class="input_group mt-5"
+                    name="webSiteInput" id="webSiteInput"
+                    required
+                    formControlName="webSiteInput" />
+                <br />
+                <input type="text" placeholder="Phone Number"
+                    class="input_group"
+                    name="phoneNumberInput" id="phoneNumberInput"
+                    required
+                    formControlName="phoneNumberInput" />
+                <input type="text" placeholder="Home Number"
+                    class="input_group"
+                    name="homeNumberInput" id="homeNumberInput"
+                    required
+                    formControlName="homeNumberInput" />
+                <br />
 
-    <form>
-        <input type="text" placeholder="Name"
-            class="input_group mt-5"
-            name="nameInput" id="nameInput"
-            required
-            formControlName="nameInput" />
-        <input type="text" placeholder="WebSite"
-            class="input_group mt-5"
-            name="webSiteInput" id="webSiteInput"
-            required
-            formControlName="webSiteInput" />
-        <br />
-        <input type="text" placeholder="Phone Number"
-            class="input_group"
-            name="phoneNumberInput" id="phoneNumberInput"
-            required
-            formControlName="phoneNumberInput" />
-        <input type="text" placeholder="Home Number"
-            class="input_group"
-            name="homeNumberInput" id="homeNumberInput"
-            required
-            formControlName="homeNumberInput" />
-        <br />
+                <input type="text" placeholder="Location"
+                    class="input_group"
+                    name="locationInput" id="locationInput"
+                    required
+                    formControlName="locationInput" />
 
-        <input type="text" placeholder="Location"
-            class="input_group"
-            name="locationInput" id="locationInput"
-            required
-            formControlName="locationInput" />
-        <br />
-        <textarea
-            placeholder="About Hospital"
-            style="width:62%; height:30%"
-            name="aboutHospitalInput" id="aboutHospitalInput"
-            required
-            formControlName="aboutHospitalInput">About Me..</textarea>
+                <select class="select_group "
+                    name="selectCityInput">
+                    <option>
+                        choose a city
+                    </option>
+                </select>
 
-        <br />
+                    <br />
 
-        <select class="select_group "
-            name="selectCityInput">
-            <option>
-                asdasas
-            </option>
-        </select>
-        <br />
+                <textarea
+                    placeholder="About Hospital"
+                    style="width:62%; height:30%"
+                    name="aboutHospitalInput" id="aboutHospitalInput"
+                    required
+                    formControlName="aboutHospitalInput">About Me..</textarea>
 
-        <button class="register_btn mt-5" type="submit">
-            Apply
-        </button>
+                <br />
 
-
-    </form>
+                <button class="register_btn mt-5" type="submit">
+                    Apply
+                </button>
+          </form>
+        </div>
+       </div>
+      </div>
+    </div>
+  </div>
 </div>
