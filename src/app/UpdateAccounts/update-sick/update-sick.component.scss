@@ -1,6 +1,47 @@
 .sick-info{
   width: 700px;
-  transform: translate(40%,10%);
+}
+
+
+@media screen and (max-width:600px){
+  .sick-info{
+    width: 400px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 100px;
+  }
+}
+
+@media screen and(min-width:600px)and(max-width:768px){
+  .sick-info{
+    width: 550px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 100px;
+  }
+}
+
+@media screen and(min-width:768px)and(max-width:992px){
+  .sick-info{
+      margin: auto;
+      margin-top: 50px;
+      margin-bottom: 100px;
+  }
+}
+
+@media screen and(min-width:992px)and(max-width:1200px){
+  .sick-info{
+    width: 600px;
+      margin: 140px;
+      margin-top: 50px;
+  }
+}
+
+@media screen and(min-width:1200px){
+  .sick-info{
+      margin: 200px;
+      margin-top: 50px;
+  }
 }
 
 .card-header{
@@ -41,7 +82,7 @@
     padding: 25px;
     margin: 10px 0;
     margin-left: 6px;
-    width: 30%;
+    width:200px;
   }
   .select_group {
     background: #ffffff;
@@ -49,7 +90,7 @@
     box-sizing: border-box;
     outline: 0px;
     border-radius: 50px;
-    width: 30%;
+    width: 200px;
     padding: 17px;
     margin: 10px 0;
     margin-left: 6px;
@@ -70,6 +111,23 @@
   .register_btn:focus:enabled {
     background-color: #42B0EF;
     color: #FFF;
+  }
+  @media screen and(min-width:992px)and(max-width:1200px){
+    .register_btn{
+        margin-left: 400px;
+    }
+  }
+
+  @media screen and(min-width:600px)and(max-width:768px){
+    .register_btn{
+      margin-left: 400px;
+    }
+  }
+
+  @media screen and (max-width:600px){
+    .register_btn{
+      margin-left: 200px;
+    }
   }
 
   textarea {

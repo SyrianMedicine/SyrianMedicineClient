@@ -1,7 +1,48 @@
 .doctor-info{
   width: 700px;
-  transform: translate(40%,3%);
 }
+
+@media screen and (max-width:600px){
+  .doctor-info{
+    width: 400px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 100px;
+  }
+}
+
+@media screen and(min-width:600px)and(max-width:768px){
+  .doctor-info{
+    width: 550px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 100px;
+  }
+}
+
+@media screen and(min-width:768px)and(max-width:992px){
+  .doctor-info{
+      margin: auto;
+      margin-top: 50px;
+      margin-bottom: 100px;
+  }
+}
+
+@media screen and(min-width:992px)and(max-width:1200px){
+  .doctor-info{
+    width: 600px;
+      margin: 140px;
+      margin-top: 50px;
+  }
+}
+
+@media screen and(min-width:1200px){
+  .doctor-info{
+      margin: 200px;
+      margin-top: 50px;
+  }
+}
+
 
 .card-header{
   background-color: #42B0EF;
@@ -24,6 +65,12 @@
 .mat-form-field-appearance-fill .mat-form-field-fill {
   color: rgb(41, 12, 94);
 }
+
+@media screen and (max-width:600px){
+  .mat-form-field{
+      width: 120px;
+  }
+}
 /* Font color */
 input.mat-input-element {
   color: rgb(12, 1, 1);
@@ -43,7 +90,7 @@ input.mat-input-element {
   padding: 25px;
   margin: 10px 0;
   margin-left: 6px;
-  width: 30%;
+  width: 200px;
 }
 .select_group {
   background: #ffffff;
@@ -51,7 +98,7 @@ input.mat-input-element {
   box-sizing: border-box;
   outline: 0px;
   border-radius: 50px;
-  width: 20%;
+  width: 200px;
   padding: 17px;
   margin: 10px 0;
   margin-left: 6px;
@@ -65,7 +112,7 @@ input.mat-input-element {
   color: #42B0EF;
   border:2px solid #42B0EF;
   padding: 10px 40px;
-  margin-left: 560px;
+  margin-left: 550px;
 }
 
 .register_btn:hover:enabled,
@@ -73,11 +120,28 @@ input.mat-input-element {
   background-color: #42B0EF;
   color: #FFF;
 }
+@media screen and(min-width:992px)and(max-width:1200px){
+  .register_btn{
+      margin-left: 400px;
+  }
+}
+
+@media screen and(min-width:600px)and(max-width:768px){
+  .register_btn{
+    margin-left: 400px;
+  }
+}
+
+@media screen and (max-width:600px){
+  .register_btn{
+    margin-left: 200px;
+  }
+}
 
 textarea {
-  width: 100%;
-  height: 150px;
-  padding: 12px 20px;
+  width:100%;
+  height: 120px;
+  padding: 10px 20px;
   border: 0.5px solid #305a72;
   box-sizing: border-box;
   border-radius: 50px;
