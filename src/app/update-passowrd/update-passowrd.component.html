@@ -6,13 +6,13 @@
                 <h1>  refresh passwords </h1>
           </div>
           <div class="card-body">
-          <form>
+          <form autocomplete="off" [formGroup]="passwordForm">
             <div class="grid-container">
                 <div class="password-input">
                   <span> Old passowrd : </span>
                     <mat-form-field appearance="outline">
                       <mat-label>Enter Here please</mat-label>
-                      <input matInput [type]="hide ? 'password' : 'text'">
+                      <input matInput [type]="hide ? 'password' : 'text'" formControlName="oldPassword"/>
                       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
@@ -21,15 +21,15 @@
 
                  <div class="password-input">
                    <span> New passowrd : </span>
-                      <mat-form-field appearance="fill">
+                      <mat-form-field appearance="outline">
                         <mat-label>Enter Here please</mat-label>
-                        <input matInput [type]="hide ? 'password' : 'text'">
+                        <input matInput [type]="hide ? 'password' : 'text'" formControlName="newPassword">
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
                       </mat-form-field>
                   </div>
-                  <button id="button"> OK </button>
+                  <button id="button" type="submit"> OK </button>
                 </div>
               </form>
             </div>

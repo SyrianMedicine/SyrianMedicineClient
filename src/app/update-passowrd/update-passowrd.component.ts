@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-update-passowrd',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdatePassowrdComponent implements OnInit {
   hide = true;
-  constructor() { }
+  passwordForm!:FormGroup
+  constructor(private fb:FormBuilder) {
+    this.passwordForm=this.fb.group({
+      'oldPassword':['',[Validators.required]],
+      'newPassword':['',[Validators.required]]
+    })
+   }
 
   ngOnInit(): void {
   }

@@ -1,0 +1,43 @@
+.reverse-table{
+  width:100%;
+  margin-top: 40px;
+}
+
+.reverse-table .card-header{
+  background-color: #42B0EF;
+  color: #FFF;
+  text-transform: capitalize;
+  height: 60px;
+  text-align: center;
+}
+
+.reverse-table .card-header h1{
+  margin-top: 4px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  word-spacing: normal;
+}
+.reverse-table .card-body .example-container #table{
+  background-color: #F9F9F9;
+}
+.reverse-table .card-body .example-container #table mat-header-cell{
+  color: #000;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+}
+.reverse-table .card-body .example-container #table mat-cell{
+  flex: 1;
+  display: block;
+  align-items: center;
+  overflow: hidden;
+  word-wrap: break-word;
+  padding-top:10px;
+  padding-bottom: 10px;
+  color: #000;
+}
+
+.reverse-table .card-body .example-container #table .email{
+  padding-right: 20px;
+}

@@ -1,0 +1,88 @@
+<div class="reverse-table">
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h1> Reservation Times</h1>
+      </div>
+      <div class="card-body">
+        <div class="example-container mat-elevation-z8">
+          <mat-table #table [dataSource]="dataSource" id="table">
+
+            <!-- id Column -->
+            <ng-container matColumnDef="id" id="id">
+              <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+              <mat-cell  id="id" *matCellDef="let sick"> {{sick.id}} </mat-cell>
+            </ng-container>
+
+            <!-- name Column -->
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+              <mat-cell *matCellDef="let sick"> {{sick.name}} </mat-cell>
+            </ng-container>
+
+            <!-- email Column -->
+            <ng-container matColumnDef="email">
+              <mat-header-cell class="email" *matHeaderCellDef> Email </mat-header-cell>
+              <mat-cell class="email" *matCellDef="let sick"> {{sick.email}} </mat-cell>
+            </ng-container>
+
+            <!-- phone Column -->
+            <ng-container matColumnDef="phone">
+              <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
+              <mat-cell *matCellDef="let sick"> {{sick.phone}} </mat-cell>
+            </ng-container>
+
+            <!-- date Column -->
+            <ng-container matColumnDef="date">
+              <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+              <mat-cell *matCellDef="let sick"> {{sick.date}} </mat-cell>
+            </ng-container>
+
+            <!-- title Column -->
+            <ng-container matColumnDef="title">
+              <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+              <mat-cell *matCellDef="let sick"> {{sick.title}} </mat-cell>
+            </ng-container>
+
+            <!-- details Column -->
+            <ng-container matColumnDef="details">
+              <mat-header-cell *matHeaderCellDef> Descrption </mat-header-cell>
+              <mat-cell *matCellDef="let sick"> {{sick.details}} </mat-cell>
+            </ng-container>
+
+            <!-- status Column -->
+            <ng-container matColumnDef="status">
+              <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+              <mat-cell *matCellDef="let sick"> {{sick.status}} </mat-cell>
+            </ng-container>
+
+            <!-- accept Column -->
+            <ng-container matColumnDef="accept">
+              <mat-header-cell *matHeaderCellDef> Accept </mat-header-cell>
+              <mat-cell *matCellDef="let sick">
+                <button mat-icon-button><mat-icon>check</mat-icon></button>
+              </mat-cell>
+            </ng-container>
+
+            <!-- reject Column -->
+            <ng-container matColumnDef="reject">
+              <mat-header-cell *matHeaderCellDef> Reject </mat-header-cell>
+              <mat-cell *matCellDef="let sick">
+                <button mat-icon-button><mat-icon>close</mat-icon></button>
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

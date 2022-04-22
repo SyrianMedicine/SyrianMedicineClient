@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-update-hospital',
@@ -6,8 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./update-hospital.component.scss']
 })
 export class UpdateHospitalComponent implements OnInit {
-
-  constructor() { }
+  hospitsalForm!:FormGroup
+  constructor( private fb:FormBuilder) {
+    this.hospitsalForm=this.fb.group({
+      'nameInput':['',Validators.required],
+      'webSiteInput':['',[Validators.required]],
+      'phoneNumberInput':['',[Validators.required]],
+      'homeNumberInput':['',[Validators.required]],
+      'locationInput':['',[Validators.required]],
+      'aboutHospitalInput':['',[Validators.required]],
+    })
+   }
 
   ngOnInit(): void {
   }

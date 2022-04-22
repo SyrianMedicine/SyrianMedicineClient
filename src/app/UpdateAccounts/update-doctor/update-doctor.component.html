@@ -7,7 +7,7 @@
         </div>
         <div class="card-body">
             <div class="grid-container text-center">
-              <form autocomplete="off">
+              <form autocomplete="off" [formGroup]="Doctorform">
                 <input type="text" placeholder="FirstName"
                     class="input_group "
                     name="firstNameInput" id="firstNameInput"
@@ -75,7 +75,7 @@
 
                 <mat-form-field>
                     <label >Start Time:</label>
-                    <input matInput name="datetimeInput"
+                    <input matInput name="startDatetimeInput"
                         formControlName="datetimeInput"
                         id="datetimeInput" required type="datetime-local"
                         placeholder="start
@@ -84,7 +84,7 @@
 
                 <mat-form-field>
                     <label class="ml-5">End Time:</label>
-                    <input matInput name="datetimeInput" class="ml-5"
+                    <input matInput name="endDatetimeInput" class="ml-5"
                         formControlName="datetimeInput"
                         id="datetimeInput" required type="datetime-local"
                         placeholder="start

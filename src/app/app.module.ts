@@ -79,6 +79,7 @@ import { UpdateSickComponent } from './UpdateAccounts/update-sick/update-sick.co
 import { UpdatePassowrdComponent } from './update-passowrd/update-passowrd.component';
 import { PostsSectionComponent } from './Component/posts-section/posts-section.component'; 
 import { ProfileCommentSectionComponent } from './Component/profile-comment-section/profile-comment-section.component';
+import { DoctorReverseComponent } from './doctor-reverse/doctor-reverse.component';
 //#endregion
 
 
@@ -116,7 +117,8 @@ import { ProfileCommentSectionComponent } from './Component/profile-comment-sect
      UpdatePassowrdComponent,
      UpdateSickComponent, 
      ProfileCommentSectionComponent,
-     PostsSectionComponent 
+     PostsSectionComponent,
+     DoctorReverseComponent 
   ],
   imports: [
     BrowserModule,
