@@ -1,8 +1,8 @@
-<div class="reverse-table-doctor">
+<div class="reverse-table-nurse">
   <div class="container">
     <div class="card">
       <div class="card-header">
-        <h1> Doctor Reservations</h1>
+        <h1> Nurse Reservations</h1>
       </div>
       <div class="card-body">
         <div class="example-container mat-elevation-z8">
@@ -50,12 +50,6 @@
               <mat-cell  class="details" *matCellDef="let sick"> {{sick.details}} </mat-cell>
             </ng-container>
 
-            <!-- status Column -->
-            <ng-container matColumnDef="status">
-              <mat-header-cell class="status" *matHeaderCellDef> Status </mat-header-cell>
-              <mat-cell class="status" *matCellDef="let sick"> {{sick.status}} </mat-cell>
-            </ng-container>
-
             <!-- accept Column -->
             <ng-container matColumnDef="accept">
               <mat-header-cell class="accept" *matHeaderCellDef> Accept </mat-header-cell>
@@ -81,8 +75,5 @@
   </div>
  </div>
 </div>
-
-
-
 
 

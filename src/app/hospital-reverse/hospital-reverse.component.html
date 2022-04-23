@@ -1,8 +1,8 @@
-<div class="reverse-table-doctor">
+<div class="reverse-table-hospital">
   <div class="container">
     <div class="card">
       <div class="card-header">
-        <h1> Doctor Reservations</h1>
+        <h1> hospital Reservations</h1>
       </div>
       <div class="card-body">
         <div class="example-container mat-elevation-z8">
@@ -36,6 +36,12 @@
             <ng-container matColumnDef="date">
               <mat-header-cell class="date" *matHeaderCellDef> Date </mat-header-cell>
               <mat-cell  class="date" *matCellDef="let sick"> {{sick.date}} </mat-cell>
+            </ng-container>
+
+            <!-- department Column -->
+            <ng-container matColumnDef="department">
+              <mat-header-cell class="department" *matHeaderCellDef> Department </mat-header-cell>
+              <mat-cell  class="department" *matCellDef="let sick"> {{sick.department}} </mat-cell>
             </ng-container>
 
             <!-- title Column -->
@@ -81,6 +87,7 @@
   </div>
  </div>
 </div>
+
 
 
 

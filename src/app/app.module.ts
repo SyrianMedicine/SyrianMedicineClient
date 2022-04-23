@@ -83,6 +83,8 @@ import { ProfileCommentSectionComponent } from './Component/profile-comment-sect
 import { DoctorReverseComponent } from './doctor-reverse/doctor-reverse.component';
 import { DialogMessageComponent } from './doctor-reverse/dialog-message/dialog-message.component';
 import { RejectDialogComponent } from './doctor-reverse/reject-dialog/reject-dialog.component';
+import { NurseReverseComponent } from './nurse-reverse/nurse-reverse.component';
+import { HospitalReverseComponent } from './hospital-reverse/hospital-reverse.component';
 //#endregion
 
 
@@ -123,7 +125,9 @@ import { RejectDialogComponent } from './doctor-reverse/reject-dialog/reject-dia
      PostsSectionComponent,
      DoctorReverseComponent,
      DialogMessageComponent,
-     RejectDialogComponent
+     RejectDialogComponent,
+     NurseReverseComponent,
+     HospitalReverseComponent
   ],
   imports: [
     BrowserModule,

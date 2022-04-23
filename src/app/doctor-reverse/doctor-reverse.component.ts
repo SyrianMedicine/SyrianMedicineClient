@@ -1,4 +1,4 @@
-import { AfterViewInit, Component,  OnInit, ViewChild } from '@angular/core';
+import {  Component,  OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogMessageComponent } from './dialog-message/dialog-message.component';
 import { RejectDialogComponent } from './reject-dialog/reject-dialog.component';
@@ -10,22 +10,15 @@ import { RejectDialogComponent } from './reject-dialog/reject-dialog.component';
 })
 export class DoctorReverseComponent implements  OnInit{
 
-  accept!:boolean
-  reject!:boolean
   constructor(public dialog:MatDialog){
 
   }
-
   openAccept() {
     this.dialog.open(DialogMessageComponent);
-    this.accept=true;
-    this.reject=false;
   }
 
   openReject() {
     this.dialog.open(RejectDialogComponent)
-    this.reject=true;
-    this.accept=false;
   }
 
    ngOnInit():void {
