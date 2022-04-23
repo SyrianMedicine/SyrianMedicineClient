@@ -16,6 +16,7 @@ import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
 import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavbarComponent } from './Common/navbar/navbar.component';
@@ -77,7 +78,7 @@ import { UpdateNurseComponent } from './UpdateAccounts/update-nurse/update-nurse
 import { UpdateHospitalComponent } from './UpdateAccounts/update-hospital/update-hospital.component';
 import { UpdateSickComponent } from './UpdateAccounts/update-sick/update-sick.component';
 import { UpdatePassowrdComponent } from './update-passowrd/update-passowrd.component';
-import { PostsSectionComponent } from './Component/posts-section/posts-section.component'; 
+import { PostsSectionComponent } from './Component/posts-section/posts-section.component';
 import { ProfileCommentSectionComponent } from './Component/profile-comment-section/profile-comment-section.component';
 import { DoctorReverseComponent } from './doctor-reverse/doctor-reverse.component';
 import { DialogMessageComponent } from './doctor-reverse/dialog-message/dialog-message.component';
@@ -115,14 +116,14 @@ import { RejectDialogComponent } from './doctor-reverse/reject-dialog/reject-dia
      OthersComponent,
      UpdateDoctorComponent,
      UpdateNurseComponent,
-     UpdateHospitalComponent, 
+     UpdateHospitalComponent,
      UpdatePassowrdComponent,
-     UpdateSickComponent, 
+     UpdateSickComponent,
      ProfileCommentSectionComponent,
      PostsSectionComponent,
      DoctorReverseComponent,
      DialogMessageComponent,
-     RejectDialogComponent 
+     RejectDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -171,6 +172,7 @@ import { RejectDialogComponent } from './doctor-reverse/reject-dialog/reject-dia
     MatTableModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatPaginatorModule
     // MatRippleModule,
     // MatSliderModule,
     // MatSlideToggleModule,
