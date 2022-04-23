@@ -19,25 +19,61 @@
   word-spacing: normal;
 }
 .reverse-table .card-body .example-container #table{
-  background-color: #F9F9F9;
+  background-color: inherit;
 }
 .reverse-table .card-body .example-container #table mat-header-cell{
   color: #000;
   font-weight: 600;
   font-style: normal;
   font-size: 14px;
+  flex: inherit;
+  border-bottom: 1px solid #000;
 }
 .reverse-table .card-body .example-container #table mat-cell{
-  flex: 1;
-  display: block;
+  flex: inherit;
   align-items: center;
   overflow: hidden;
   word-wrap: break-word;
-  padding-top:10px;
-  padding-bottom: 10px;
   color: #000;
+  border-bottom: 1px solid #D2D2D2;
+  font-size: 13px;
+}
+.reverse-table .card-body .example-container #table .id{
+  min-width: 60px;
+}
+
+.reverse-table .card-body .example-container #table .name{
+  min-width: 80px;
 }
 
 .reverse-table .card-body .example-container #table .email{
-  padding-right: 20px;
+  min-width: 200px;
 }
+
+.reverse-table .card-body .example-container #table .phone{
+  min-width: 100px;
+}
+
+.reverse-table .card-body .example-container #table .date{
+  min-width: 140px;
+}
+.reverse-table .card-body .example-container #table .title{
+  min-width: 120px;
+}
+
+.reverse-table .card-body .example-container #table .details{
+  min-width: 180px;
+}
+
+.reverse-table .card-body .example-container #table .status{
+  min-width: 60px;
+}
+
+.reverse-table .card-body .example-container #table .accept{
+  min-width: 60px;
+}
+
+.reverse-table .card-body .example-container #table .reject{
+  min-width: 60px;
+}
+

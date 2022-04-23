@@ -80,6 +80,8 @@ import { UpdatePassowrdComponent } from './update-passowrd/update-passowrd.compo
 import { PostsSectionComponent } from './Component/posts-section/posts-section.component'; 
 import { ProfileCommentSectionComponent } from './Component/profile-comment-section/profile-comment-section.component';
 import { DoctorReverseComponent } from './doctor-reverse/doctor-reverse.component';
+import { DialogMessageComponent } from './doctor-reverse/dialog-message/dialog-message.component';
+import { RejectDialogComponent } from './doctor-reverse/reject-dialog/reject-dialog.component';
 //#endregion
 
 
@@ -118,7 +120,9 @@ import { DoctorReverseComponent } from './doctor-reverse/doctor-reverse.componen
      UpdateSickComponent, 
      ProfileCommentSectionComponent,
      PostsSectionComponent,
-     DoctorReverseComponent 
+     DoctorReverseComponent,
+     DialogMessageComponent,
+     RejectDialogComponent 
   ],
   imports: [
     BrowserModule,
