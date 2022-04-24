@@ -1,6 +1,6 @@
 .reverse-table-doctor{
-  width:100%;
-  margin-top: 40px;
+  width:1100px;
+  margin:20px auto 80px 80px;
 }
 
 .reverse-table-doctor .card-header{
@@ -27,63 +27,32 @@
   font-weight: 600;
   font-style: normal;
   font-size: 14px;
-  flex: inherit;
+  flex: 1;
   border-bottom: 1px solid #000;
+  padding-right: 5px;
 }
 .reverse-table-doctor .card-body .example-container #table mat-cell{
-  flex: inherit;
+  flex: 1;
   align-items: center;
   overflow: hidden;
   word-wrap: break-word;
   color: #000;
   border-bottom: 1px solid #D2D2D2;
-  font-size: 13px;
-}
-.reverse-table-doctor .card-body .example-container #table .id{
-  min-width: 60px;
-}
-
-.reverse-table-doctor .card-body .example-container #table .name{
-  min-width: 80px;
+  font-size: 14px;
+  display: block;
+  flex-wrap: wrap;
+  padding-right: 5px;
 }
 
-.reverse-table-doctor .card-body .example-container #table .email{
-  min-width: 200px;
-}
-
-.reverse-table-doctor .card-body .example-container #table .phone{
-  min-width: 100px;
-}
-
-.reverse-table-doctor .card-body .example-container #table .date{
-  min-width: 140px;
-}
-.reverse-table-doctor .card-body .example-container #table .title{
-  min-width: 120px;
-}
-
-.reverse-table-doctor .card-body .example-container #table .details{
-  min-width: 180px;
-}
-
-.reverse-table-doctor .card-body .example-container #table .status{
-  min-width: 60px;
-}
-
-.reverse-table-doctor .card-body .example-container #table .accept{
-  min-width: 60px;
-}
-
-.reverse-table-doctor .card-body .example-container #table .reject{
-  min-width: 60px;
-}
 .reverse-table-doctor .card-body .example-container #table #iconAccept{
   color: rgb(5, 138, 11);
   box-shadow: 1px 1px 3px #344;
+  margin-left: 2px;
 }
 .reverse-table-doctor .card-body .example-container #table #iconReject{
   color: rgb(250, 15, 15);
   box-shadow: 1px 1px 3px #344;
+  margin-left: 2px;
 }
 
 mat-paginator{
@@ -91,4 +60,215 @@ mat-paginator{
   font-size: 14px;
   font-weight: normal;
   color: #FFF;
+}
+
+@media screen and (min-width:992px) and (max-width:1200px) {
+  .reverse-table-doctor{
+    width: 800px;
+  }
+}
+
+@media screen  and (max-width:600px) {
+  .reverse-table-doctor{
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 80px;
+  }
+  .reverse-table-doctor .card-body .example-container #table mat-header-cell{
+    font-size: 12px;
+  }
+  .reverse-table-doctor .card-body .example-container #table mat-cell{
+    font-size: 12px;
+    height: 120px;
+    padding-top: 20px;
+  }
+  .reverse-table-doctor .card-body .example-container #table .id{
+    min-width: 30px;
+    flex: inherit;
+    padding-left: 10px;
+  }
+  .reverse-table-doctor .card-body .example-container #table #iconAccept{
+    box-shadow: none;
+    margin-left: 0;
+  }
+  .reverse-table-doctor .card-body .example-container #table #iconReject{
+    box-shadow: none;
+    margin-left: 0;
+  }
+
+}
+
+@media screen and (min-width:600px) and (max-width:768px) {
+  .reverse-table-doctor{
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 80px;
+  }
+  .reverse-table-doctor .card-body .example-container #table mat-header-cell{
+    font-size: 12px;
+  }
+  .reverse-table-doctor .card-body .example-container #table mat-cell{
+    font-size: 12px;
+    height: 120px;
+    padding-top: 10px;
+  }
+  .reverse-table-doctor .card-body .example-container #table .id{
+    min-width: 30px;
+    flex: inherit;
+    padding-left: 10px;
+  }
+
+}
+
+@media screen and (min-width:768px) and (max-width:992px) {
+  .reverse-table-doctor{
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 80px;
+  }
+  .reverse-table-doctor .card-body .example-container #table mat-header-cell{
+    font-size: 14px;
+  }
+  .reverse-table-doctor .card-body .example-container #table mat-cell{
+    font-size: 13px;
+    height: 90px;
+    padding-top: 10px;
+  }
+  .reverse-table-doctor .card-body .example-container #table .id{
+    min-width: 40px;
+    flex: inherit;
+    padding-left: 10px;
+  }
+  .reverse-table-doctor .card-body .example-container #table .email{
+    padding-left: 10px;
+  }
+}
+
+@media screen and (min-width:992px) and (max-width:1200px) {
+  .reverse-table-doctor{
+    width:750px;
+    margin-right: 280px;
+    margin-left: auto;
+    margin-top: 20px;
+    margin-bottom: 80px;
+  }
+  .reverse-table-doctor .card-body .example-container #table mat-header-cell{
+    font-size: 14px;
+  }
+  .reverse-table-doctor .card-body .example-container #table mat-cell{
+    font-size: 13px;
+    height: 90px;
+    padding-top: 10px;
+  }
+  .reverse-table-doctor .card-body .example-container #table .id{
+    min-width: 40px;
+    flex: inherit;
+    padding-left: 10px;
+  }
+  .reverse-table-doctor .card-body .example-container #table .email{
+    padding-left: 10px;
+  }
+}
+
+@media screen and (min-width:1200px) and (max-width:1400px) {
+  .reverse-table-doctor{
+    width:970px;
+    margin-right: 300px;
+    margin-left: auto;
+    margin-top: 20px;
+    margin-bottom: 80px;
+  }
+  .reverse-table-doctor .card-body .example-container #table mat-header-cell{
+    font-size: 14px;
+  }
+  .reverse-table-doctor .card-body .example-container #table mat-cell{
+    font-size: 14px;
+    height: 90px;
+    padding-top: 10px;
+  }
+  .reverse-table-doctor .card-body .example-container #table .id{
+    min-width: 40px;
+    flex: inherit;
+    padding-left: 10px;
+  }
+
+  .reverse-table-doctor .card-body .example-container #table .name{
+    padding-left:2px;
+    min-width: 10%;
+  }
+
+  .reverse-table-doctor .card-body .example-container #table .email{
+    padding-left:2px;
+    min-width: 22%;
+  }
+  .reverse-table-doctor .card-body .example-container #table .details{
+    min-width: 15%;
+  }
+  .reverse-table-doctor .card-body .example-container #table .phone{
+    padding-left: 2px;
+    min-width: 10%;
+  }
+  .reverse-table-doctor .card-body .example-container #table .date{
+    padding-left: 2px;
+    min-width: 10%;
+  }
+  .reverse-table-doctor .card-body .example-container #table .title{
+    min-width: 12%;
+  }
+}
+
+@media screen and (min-width:1400px) {
+  .reverse-table-doctor{
+    width:1100px;
+    margin:20px auto 80px 80px;
+  }
+  .reverse-table-doctor .card-body .example-container #table mat-cell{
+    padding-top: 10px;
+    height: 80px;
+  }
+  .reverse-table-doctor .card-body .example-container #table .id{
+    min-width: 60px;
+    flex: inherit;
+  }
+  .reverse-table-doctor .card-body .example-container #table .name{
+    min-width: 90px;
+    flex: inherit;
+  }
+
+  .reverse-table-doctor .card-body .example-container #table .email{
+    min-width: 200px;
+    flex:inherit;
+  }
+
+  .reverse-table-doctor .card-body .example-container #table .phone{
+    min-width: 100px;
+  }
+
+  .reverse-table-doctor .card-body .example-container #table .date{
+    min-width: 140px;
+  }
+  .reverse-table-doctor .card-body .example-container #table .title{
+    min-width: 120px;
+  }
+
+  .reverse-table-doctor .card-body .example-container #table .details{
+    flex: inherit;
+    min-width: 160px;
+  }
+
+  .reverse-table-doctor .card-body .example-container #table .status{
+    min-width: 60px;
+  }
+
+  .reverse-table-doctor .card-body .example-container #table .accept{
+    min-width: 60px;
+  }
+
+  .reverse-table-doctor .card-body .example-container #table .reject{
+    min-width: 60px;
+  }
+
 }

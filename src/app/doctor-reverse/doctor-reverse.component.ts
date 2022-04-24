@@ -39,9 +39,11 @@ export interface Element {
 }
 
 const ELEMENT_DATA: Element[] = [
-  {id: 1,phone:'0964827090' , name: 'Hydrogen',date:'11-2-2022 10:00AM', email:'Hydrogen@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'review'},
-  {id: 2,phone:'12345566', name: 'Helium',date:'11-2-2022 10:00AM',email:'Helium@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'review' },
-  {id: 3,phone:'12345566', name: 'Lithium',date:'11-2-2022 10:00AM' ,email:'Helium@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'peview'},
-  {id: 4,phone:'12345566', name: 'Beryllium', date:'11-2-2022 10:00AM',email:'Helium@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'review'},
-  {id: 5,phone:'12345566', name: 'Boron', date:'11-2-2022 10:00AM',email:'Helium@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'peview'},
+  {id: 1,phone:'0964827090' , name: 'Hydrogen',date:'11-2-2022 10:00AM', email:'Hydrogen.Helium@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'review'},
+  {id: 2,phone:'12345566', name: 'Helium',date:'11-2-2022 10:00AM',email:'Hydrogen.Helium@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'review' },
+  {id: 3,phone:'12345566', name: 'Lithium',date:'11-2-2022 10:00AM' ,email:'Hydrogen.Helium@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'peview'},
+  {id: 4,phone:'12345566', name: 'Beryllium', date:'11-2-2022 10:00AM',email:'Hydrogen.Helium@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'review'},
+  {id: 5,phone:'12345566', name: 'Boron', date:'11-2-2022 10:00AM',email:'Hydrogen.Helium@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'peview'},
+  {id: 6,phone:'12345566', name: 'Boron', date:'11-2-2022 10:00AM',email:'Hydrogen.Helium@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'peview'},
+  {id: 7,phone:'12345566', name: 'Boron', date:'11-2-2022 10:00AM',email:'Hydrogen.Helium@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'peview'}
 ];
