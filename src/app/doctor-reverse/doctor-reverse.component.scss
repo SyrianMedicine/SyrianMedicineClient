@@ -4,7 +4,7 @@
 }
 
 .reverse-table-doctor .card-header{
-  background-color: #42B0EF;
+  background-color: #305A72;
   color: #FFF;
   text-transform: capitalize;
   height: 60px;
@@ -23,7 +23,7 @@
   background-color: inherit;
 }
 .reverse-table-doctor .card-body .example-container #table mat-header-cell{
-  color: #000;
+  color: #344;
   font-weight: 600;
   font-style: normal;
   font-size: 14px;
@@ -77,9 +77,17 @@
 .reverse-table-doctor .card-body .example-container #table .reject{
   min-width: 60px;
 }
+.reverse-table-doctor .card-body .example-container #table #iconAccept{
+  color: rgb(5, 138, 11);
+  box-shadow: 1px 1px 3px #344;
+}
+.reverse-table-doctor .card-body .example-container #table #iconReject{
+  color: rgb(250, 15, 15);
+  box-shadow: 1px 1px 3px #344;
+}
 
 mat-paginator{
-  background-color: #42B0EF;
+  background-color: #305A72;
   font-size: 14px;
   font-weight: normal;
   color: #FFF;

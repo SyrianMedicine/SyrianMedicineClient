@@ -60,7 +60,7 @@
             <ng-container matColumnDef="accept">
               <mat-header-cell class="accept" *matHeaderCellDef> Accept </mat-header-cell>
               <mat-cell class="accept" *matCellDef="let sick">
-                <button mat-icon-button (click)="openAccept()"><mat-icon>check</mat-icon></button>
+                <button mat-icon-button id="iconAccept" (click)="openAccept()"><mat-icon>check</mat-icon></button>
               </mat-cell>
             </ng-container>
 
@@ -68,7 +68,7 @@
             <ng-container matColumnDef="reject">
               <mat-header-cell class="reject" *matHeaderCellDef> Reject </mat-header-cell>
               <mat-cell class="reject" *matCellDef="let sick">
-                <button mat-icon-button (click)="openReject()"><mat-icon>close</mat-icon></button>
+                <button mat-icon-button id="iconReject" (click)="openReject()"><mat-icon>close</mat-icon></button>
               </mat-cell>
             </ng-container>
 
