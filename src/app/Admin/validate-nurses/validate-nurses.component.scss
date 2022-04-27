@@ -1,0 +1,315 @@
+.validate-table-nurse{
+  width:1100px;
+  margin:20px auto 80px 80px;
+}
+
+.validate-table-nurse .card-header{
+  background-color: #305A72;
+  color: #FFF;
+  text-transform: capitalize;
+  height: 60px;
+  text-align: center;
+}
+
+.validate-table-nurse .card-header h1{
+  margin-top: 4px;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  word-spacing: normal;
+  text-transform: uppercase;
+}
+.validate-table-nurse .card-body .example-container #table{
+  background-color: inherit;
+}
+.validate-table-nurse .card-body .example-container #table mat-header-cell{
+  color: #344;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  flex: 1;
+  border-bottom: 1px solid #000;
+  padding-right: 5px;
+}
+.validate-table-nurse .card-body .example-container #table mat-cell{
+  flex: 1;
+  align-items: center;
+  overflow: hidden;
+  word-wrap: break-word;
+  color: #000;
+  border-bottom: 1px solid #D2D2D2;
+  font-size: 14px;
+  display: block;
+  flex-wrap: wrap;
+  padding-right: 5px;
+}
+
+.validate-table-nurse .card-body .example-container #table #iconAccept{
+  color: rgb(5, 138, 11);
+  box-shadow: 1px 1px 3px #344;
+  margin-left: 2px;
+}
+.validate-table-nurse .card-body .example-container #table #iconReject{
+  color: rgb(250, 15, 15);
+  box-shadow: 1px 1px 3px #344;
+  margin-left: 2px;
+}
+
+.validate-table-nurse .card-body .example-container #table .download button {
+  background-color: #305A72;
+  color: #FFF;
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 7px 14px;
+  font-style: normal;
+  font-weight: lighter;
+  letter-spacing: .1rem;
+  border: 2px solid #DDD;
+  outline: none;
+}
+
+.validate-table-nurse .card-body .example-container #table .download button:hover {
+  background-color: #305a72c2;
+  cursor: pointer;
+}
+
+
+mat-paginator{
+  background-color: #305A72;
+  font-size: 14px;
+  font-weight: normal;
+  color: #FFF;
+}
+
+
+@media screen  and (max-width:600px) {
+  .validate-table-nurse{
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 80px;
+  }
+  .validate-table-nurse .card-body .example-container #table mat-header-cell{
+    font-size: 10px;
+  }
+  .validate-table-nurse .card-body .example-container #table mat-cell{
+    font-size: 10px;
+    height: 120px;
+    padding-top: 20px;
+  }
+  .validate-table-nurse .card-body .example-container #table .id{
+    min-width: 30px;
+    flex: inherit;
+    padding-left: 10px;
+  }
+  .validate-table-nurse .card-body .example-container #table #iconAccept{
+    box-shadow: none;
+    margin-left: 0;
+  }
+  .validate-table-nurse .card-body .example-container #table #iconReject{
+    box-shadow: none;
+    margin-left: 0;
+  }
+  .validate-table-nurse .card-body .example-container #table .download button {
+    font-size: 10px;
+    padding: 2px 4px;
+    letter-spacing: normal;
+    margin-top: 4px;
+  }
+}
+
+@media screen and (min-width:600px) and (max-width:768px) {
+  .validate-table-nurse{
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 80px;
+  }
+  .validate-table-nurse .card-body .example-container #table mat-header-cell{
+    font-size: 12px;
+  }
+  .validate-table-nurse .card-body .example-container #table mat-cell{
+    font-size: 12px;
+    height: 120px;
+    padding-top: 10px;
+  }
+  .validate-table-nurse .card-body .example-container #table .id{
+    min-width: 30px;
+    flex: inherit;
+    padding-left: 10px;
+  }
+  .validate-table-nurse .card-body .example-container #table .download button {
+    font-size: 12px;
+    padding: 4px 4px;
+    letter-spacing: normal;
+    margin-top: 4px;
+  }
+
+}
+
+@media screen and (min-width:768px) and (max-width:992px) {
+  .validate-table-nurse{
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 80px;
+  }
+  .validate-table-nurse .card-body .example-container #table mat-header-cell{
+    font-size: 14px;
+  }
+  .validate-table-nurse .card-body .example-container #table mat-cell{
+    font-size: 13px;
+    height: 90px;
+    padding-top: 10px;
+  }
+  .validate-table-nurse .card-body .example-container #table .id{
+    min-width: 60px;
+    flex:inherit;
+    padding-left: 20px;
+  }
+  .validate-table-nurse .card-body .example-container #table .email{
+    padding-left: 10px;
+  }
+  .validate-table-nurse .card-body .example-container #table .download button {
+    font-size: 13px;
+    padding: 4px 8px;
+    letter-spacing: normal;
+    margin-top: 4px;
+  }
+}
+
+@media screen and (min-width:992px) and (max-width:1200px) {
+  .validate-table-nurse{
+    width:750px;
+    margin-right: 280px;
+    margin-left: auto;
+    margin-top: 20px;
+    margin-bottom: 80px;
+  }
+  .validate-table-nurse .card-body .example-container #table mat-header-cell{
+    font-size: 14px;
+  }
+  .validate-table-nurse .card-body .example-container #table mat-cell{
+    font-size: 13px;
+    height: 90px;
+    padding-top: 10px;
+  }
+  .validate-table-nurse .card-body .example-container #table .id{
+    min-width: 40px;
+    flex: inherit;
+    padding-left: 10px;
+  }
+  .validate-table-nurse .card-body .example-container #table .email{
+    padding-left: 10px;
+    min-width: 16%;
+  }
+
+  .validate-table-nurse .card-body .example-container #table .download {
+    flex: inherit;
+    min-width: 18%;
+  }
+  .validate-table-nurse .card-body .example-container #table .download button{
+    padding: 5px 10px;
+    margin-top: 2px;
+  }
+}
+
+@media screen and (min-width:1200px) and (max-width:1400px) {
+  .validate-table-nurse{
+    width:970px;
+    margin-right: 300px;
+    margin-left: auto;
+    margin-top: 20px;
+    margin-bottom: 80px;
+  }
+  .validate-table-nurse .card-body .example-container #table mat-header-cell{
+    font-size: 14px;
+  }
+  .validate-table-nurse .card-body .example-container #table mat-cell{
+    font-size: 14px;
+    height: 90px;
+    padding-top: 10px;
+  }
+  .validate-table-nurse .card-body .example-container #table .id{
+    min-width: 40px;
+    flex: inherit;
+    padding-left: 10px;
+  }
+
+  .validate-table-nurse .card-body .example-container #table .name{
+    padding-left:2px;
+    min-width: 10%;
+  }
+
+  .validate-table-nurse .card-body .example-container #table .email{
+    padding-left:2px;
+    min-width: 22%;
+  }
+  .validate-table-nurse .card-body .example-container #table .details{
+    min-width: 15%;
+  }
+  .validate-table-nurse .card-body .example-container #table .phone{
+    padding-left: 2px;
+    min-width: 10%;
+  }
+  .validate-table-nurse .card-body .example-container #table .date{
+    padding-left: 2px;
+    min-width: 10%;
+  }
+  .validate-table-nurse .card-body .example-container #table .title{
+    min-width: 12%;
+  }
+}
+
+@media screen and (min-width:1400px) {
+  .validate-table-nurse{
+    width:1100px;
+    margin:20px auto 80px 80px;
+  }
+  .validate-table-nurse .card-body .example-container #table mat-cell{
+    padding-top: 10px;
+    height: 80px;
+  }
+  .validate-table-nurse .card-body .example-container #table .id{
+    min-width: 60px;
+    flex: inherit;
+  }
+  .validate-table-nurse .card-body .example-container #table .name{
+    min-width: 90px;
+    flex: inherit;
+  }
+
+  .validate-table-nurse .card-body .example-container #table .email{
+    min-width: 200px;
+    flex:inherit;
+  }
+
+  .validate-table-nurse .card-body .example-container #table .phone{
+    min-width: 100px;
+  }
+
+  .validate-table-nurse .card-body .example-container #table .date{
+    min-width: 140px;
+  }
+  .validate-table-nurse .card-body .example-container #table .title{
+    min-width: 120px;
+  }
+
+  .validate-table-nurse .card-body .example-container #table .details{
+    flex: inherit;
+    min-width: 160px;
+  }
+
+  .validate-table-nurse .card-body .example-container #table .status{
+    min-width: 60px;
+  }
+
+  .validate-table-nurse .card-body .example-container #table .accept{
+    min-width: 60px;
+  }
+
+  .validate-table-nurse .card-body .example-container #table .reject{
+    min-width: 60px;
+  }
+
+}

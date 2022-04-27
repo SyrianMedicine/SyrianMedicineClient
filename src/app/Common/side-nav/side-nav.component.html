@@ -18,41 +18,67 @@
       <div class="links">
         <ul class="list-unstyled">
 
-          <li  class="icon-text"> <mat-icon
+          <li class="icon-text" *ngIf="userType == 'Admin'"
+              routerLink="/Settings/updateAdmin"> <mat-icon
               class="mr-1"> info </mat-icon> Change Information</li>
-          <li  class="icon-text"><mat-icon
-              class="mr-1"> https
-            </mat-icon>
-            Change Password</li>
 
-          <li *ngIf="userType =='Admin'"
-            class="icon-text"><mat-icon class="mr-1">
+          <li class="icon-text" *ngIf="userType == 'Sick'"
+              routerLink="/Settings/updateSick"> <mat-icon
+              class="mr-1"> info </mat-icon> Change Information</li>
+
+          <li class="icon-text" *ngIf="userType == 'Doctor'"
+              routerLink="/Settings/updateDoctors"> <mat-icon
+              class="mr-1"> info </mat-icon> Change Information</li>
+
+          <li  class="icon-text" *ngIf="userType == 'Nurse'"
+              routerLink="/Settings/updateNurse"> <mat-icon
+              class="mr-1"> info </mat-icon> Change Information</li>
+
+          <li class="icon-text" *ngIf="userType == 'Hospital'"
+              routerLink="/Settings/updateHospital"> <mat-icon
+              class="mr-1"> info </mat-icon> Change Information</li>
+
+
+          <li  class="icon-text" routerLink="/Settings/updatePassword"><mat-icon
+               class="mr-1"> https</mat-icon> Change Password</li>
+
+          <li *ngIf="userType =='Admin'" routerLink="/Settings/validateDoctors"
+              class="icon-text"><mat-icon class="mr-1">
               check_box
             </mat-icon> Validate Doctors</li>
-          <li *ngIf="userType =='Admin'"
-            class="icon-text"><mat-icon class="mr-1">
-              check_box
+
+          <li *ngIf="userType =='Admin'" routerLink="/Settings/validateNurses"
+               class="icon-text"><mat-icon class="mr-1">check_box
             </mat-icon>Validate Nurses</li>
-          <li *ngIf="userType =='Admin'"
-            class="icon-text"><mat-icon class="mr-1">
-              check_box
+
+          <li *ngIf="userType =='Admin'" routerLink="/Settings/validateHospitals"
+              class="icon-text"><mat-icon class="mr-1"> check_box
             </mat-icon>Validate Hospitals</li>
 
-          <li *ngIf="userType =='Doctor' || userType =='Nurse'"
-             class="icon-text"><mat-icon class="mr-1">
-              check_box
+          <li *ngIf="userType =='Doctor'" routerLink="/Settings/doctorReserve"
+              class="icon-text"><mat-icon class="mr-1"> check_box
             </mat-icon>Check Reserves</li>
 
-          <li *ngIf="userType =='Hospital'"
-            class="icon-text"><mat-icon class="mr-1">
-              check_box
+          <li *ngIf="userType =='Nurse'" routerLink="/Settings/nurseReserve"
+                class="icon-text"><mat-icon class="mr-1">check_box
             </mat-icon>Check Reserves</li>
-        </ul>
-      </div>
+
+          <li *ngIf="userType =='Hospital'" routerLink="/Settings/hospitalReserve"
+               class="icon-text"><mat-icon class="mr-1">check_box
+             </mat-icon>Check Reserves</li>
+      </ul>
+    </div>
 
     </mat-drawer>
-    <mat-drawer-content>
-      <app-nurse-reverse></app-nurse-reverse>
-    </mat-drawer-content>
+
+      <mat-drawer-content>
+
+      <app-dashboard *ngIf="this.currentRoute == '/Settings'"></app-dashboard>
+
+      <router-outlet></router-outlet>
+
+      </mat-drawer-content>
+
   </mat-drawer-container>
+
 </div>

@@ -85,6 +85,9 @@ import { DialogMessageComponent } from './doctor-reverse/dialog-message/dialog-m
 import { RejectDialogComponent } from './doctor-reverse/reject-dialog/reject-dialog.component';
 import { NurseReverseComponent } from './nurse-reverse/nurse-reverse.component';
 import { HospitalReverseComponent } from './hospital-reverse/hospital-reverse.component';
+import { ValidateDoctorsComponent } from './Admin/validate-doctors/validate-doctors.component';
+import { ValidateNursesComponent } from './Admin/validate-nurses/validate-nurses.component';
+import { ValidateHospitalsComponent } from './Admin/validate-hospitals/validate-hospitals.component';
 //#endregion
 
 
@@ -127,7 +130,10 @@ import { HospitalReverseComponent } from './hospital-reverse/hospital-reverse.co
      DialogMessageComponent,
      RejectDialogComponent,
      NurseReverseComponent,
-     HospitalReverseComponent
+     HospitalReverseComponent,
+     ValidateDoctorsComponent,
+     ValidateNursesComponent,
+     ValidateHospitalsComponent
   ],
   imports: [
     BrowserModule,

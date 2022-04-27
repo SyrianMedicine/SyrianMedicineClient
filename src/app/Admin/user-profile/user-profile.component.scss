@@ -1,0 +1,27 @@
+.change-info{
+  width: 600px;
+  float: left;
+  margin-left: 200px;
+  margin-top: 80px;
+}
+.change-info .card-header{
+  background-color: #305A72;
+  color: #FFF;
+  text-transform: capitalize;
+  height: 60px;
+  text-align: center;
+}
+
+.change-info .card-header h1 {
+  margin-top: 4px;
+  font-size: 20px;
+}
+
+.change-info .card-body{
+  background-color: #D2D2D2;
+}
+.change-info .card-body .inputsGroup{
+  display: flex;
+  flex-direction:column;
+}
+
