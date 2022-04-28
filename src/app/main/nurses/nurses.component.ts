@@ -17,7 +17,7 @@ export class NursesComponent implements OnInit {
   ngOnInit(): void {
     this.getPagePagination();
   }
-
+  
   async getPagePagination():Promise <void>{
     (await this.nurseService.getNursePagination(this.pageNumber,this.pageSize)).subscribe(response =>{
       this.nursesInfo=response.items;

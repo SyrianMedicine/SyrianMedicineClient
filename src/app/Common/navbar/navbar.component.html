@@ -27,6 +27,11 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/Posts">POSTS</a>
                 </li>
+
+                <li class="nav-item" *ngIf="this.userLogin">
+                    <img src="" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+                </li>
+
                 <li class="nav-item">
                     <a *ngIf="!this.userLogin" class="nav-link"
                         routerLink="/Login">LOGIN</a>

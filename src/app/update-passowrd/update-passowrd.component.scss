@@ -6,7 +6,7 @@ width: 600px;
   .card-password{
     width: 400px;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 50px;
     margin-bottom: 100px;
   }
 }
@@ -15,7 +15,7 @@ width: 600px;
   .card-password{
     width: 550px;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 50px;
     margin-bottom: 100px;
   }
 }
@@ -59,25 +59,41 @@ width: 600px;
   flex-direction: column;
   align-items: center;
 }
+
 .card-password .card-body .grid-container .password-input span {
   padding-right: 10px;
   font-size: 16px;
+  font-style: normal;
+  font-weight: lighter;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  word-spacing: 1px;
 }
 .card-password .card-body .grid-container .password-input mat-label{
   color: #b4b4b4;
 }
-
+@media screen and (max-width:600px){
+  .card-password .card-body .grid-container .password-input {
+    display:flex;
+    align-items:center;
+  }
+  .card-password .card-body .grid-container .password-input span{
+    font-size:13px;
+  }
+}
 .card-password .card-body .grid-container #button{
+  border: 2px solid #305A72;
   outline: none;
-  border: 2px solid #42B0EF;
   background-color: #FFF;
-  color: #42B0EF;
-  padding: 15px 30px;
-  font-style: normal;
-  font-size: 16px;
+  color: #305A72;
+  padding: 10px 40px;
   border-radius: 50px;
+  margin-top: 20px;
+  font-weight: normal;
+  font-size: 16px;
+  box-shadow: 2px 2px 10px #c1c1c1;
 }
 .card-password .card-body .grid-container #button:hover{
-  background-color: #42B0EF;
+  background-color: #305A72;
   color: #FFF;
 }
