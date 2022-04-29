@@ -6,6 +6,9 @@
 :host ::ng-deep .custom-spinner circle{   
     stroke: rgb(173, 173, 173);
   }
+:host ::ng-deep .button-spinner circle{   
+    stroke: #305A72;
+}
   ::ng-deep .green-snackbar {
     background-color: #4BB543;
     position: absolute;

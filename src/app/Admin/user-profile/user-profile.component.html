@@ -24,8 +24,11 @@
                   formControlName="email" />
                 </div>
                 <div class="d-flex justify-content-center">
-                  <button type="submit"> OK </button>
+                  <button *ngIf="!isUpdating" type="button"> OK </button>
+                  <button *ngIf="isUpdating" type="button" > <mat-spinner  diameter="20"  class=" d-inline-block  button-spinner"> </mat-spinner></button> 
+                
                 </div>
+                
 
             </form>
           </div>

@@ -20,4 +20,8 @@ export class AccountService extends BaseServices {
   async getProfileComment(userName: string,paging:DynamicPagination): Promise<Observable<any>> {
     return await this.http.post(this.baseUrl +userName +"/Comments" ,paging);
   }
+  async ChangePassword(oldPassword:string,newPassword:string): Promise<Observable<any>> {
+    return await this.http.post(this.baseUrl +"ChangePassword?oldPassword="+oldPassword+"&newPassword="+newPassword ,null,this.getoption());
+  }
+ 
 }

@@ -43,7 +43,7 @@
             <ng-container matColumnDef="download">
               <mat-header-cell class="download" *matHeaderCellDef="download"> Documents </mat-header-cell>
               <mat-cell class="download" *matCellDef="let doctor">
-                <button> download </button>
+                <button [routerLink]="doctor.Documents"> download </button>
               </mat-cell>
             </ng-container>
 

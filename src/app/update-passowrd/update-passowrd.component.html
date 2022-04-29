@@ -12,7 +12,7 @@
                   <span> Old passowrd : </span>
                     <mat-form-field appearance="outline">
                       <mat-label>Enter Here please</mat-label>
-                      <input matInput [type]="hide ? 'password' : 'text'" formControlName="oldPassword"/>
+                      <input [(ngModel)]="oldPassword" matInput [type]="hide ? 'password' : 'text'" formControlName="oldPassword"/>
                       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
@@ -23,13 +23,14 @@
                    <span> New passowrd : </span>
                       <mat-form-field appearance="outline">
                         <mat-label>Enter Here please</mat-label>
-                        <input matInput [type]="hide ? 'password' : 'text'" formControlName="newPassword">
+                        <input  [(ngModel)]="newPassword" matInput [type]="hide ? 'password' : 'text'" formControlName="newPassword">
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
                       </mat-form-field>
                   </div>
-                  <button id="button" type="submit"> OK </button>
+                  <button *ngIf="!this.isUopdating" id="button" type="button" (click)="ChangePassword()"> OK  </button>
+                  <button  *ngIf="this.isUopdating" id="button" type="button"> <mat-spinner  diameter="17"  class=" d-inline-block  button-spinner"> </mat-spinner></button> 
                 </div>
               </form>
             </div>

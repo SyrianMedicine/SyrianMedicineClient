@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AccountService } from 'src/app/Services/Account/account.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,16 +9,31 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-
-  hide = true;
-  infoForm!:FormGroup
-  constructor(private fb:FormBuilder) {
-    // this.passwordForm=this.fb.group({
-    //   'oldPassword':['',[Validators.required]],
-    //   'newPassword':['',[Validators.required]]
-    // })
+  isUpdating:boolean=false
+  hide = true; 
+  constructor( private accounServices: AccountService,private snackBar: MatSnackBar) {
+    
    }
   ngOnInit(): void {
+  }
+  async update() {
+    
+  }
+  snackBarSuccess(message: string) {
+    this.snackBar.open(message, 'close', {
+      duration: 2000,
+      panelClass: ['green-snackbar'],
+      horizontalPosition: 'start',
+      verticalPosition: 'bottom',
+    });
+  }
+  snackBarError(message: string) { 
+    this.snackBar.open(message, 'close', {
+      duration: 2000,
+      panelClass: ['red-snackbar'],
+      horizontalPosition: 'start',
+      verticalPosition: 'bottom',
+    });
   }
 
 }
