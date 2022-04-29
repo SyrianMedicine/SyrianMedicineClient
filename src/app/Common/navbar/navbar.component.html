@@ -29,7 +29,70 @@
                 </li>
 
                 <li class="nav-item" *ngIf="this.userLogin">
-                    <img src="" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+                    <button mat-button [matMenuTriggerFor]="menu"><mat-icon>notifications</mat-icon>
+                      <span class="iconNumber rounded-circle">4 </span>
+                    </button>
+                    <mat-menu #menu="matMenu" class="menu-panel" xPosition="before" yPosition="below">
+                        <div class="header">
+                            <h4 class="mt-2 mx-2">Notifications</h4>
+                        </div>
+                        <div class="body">
+                          <img src="../../../assets/images/person1.jpg"
+                          id="userImg"  alt="usernameImage"/>
+                          <div class="content">
+                            <p>Harum alias quia dolore accusamus assumenda ut.</p>
+                            <span>17 Seconds ago</span>
+                          </div>
+                        </div>
+                        <div class="body">
+                          <img src="../../../assets/images/person1.jpg"
+                          id="userImg"  alt="usernameImage"/>
+                          <div class="content">
+                            <p>Harum alias quia dolore accusamus assumenda ut.</p>
+                            <span>17 Seconds ago</span>
+                          </div>
+                        </div>
+                        <div class="body">
+                          <img src="../../../assets/images/person1.jpg"
+                          id="userImg"  alt="usernameImage"/>
+                          <div class="content">
+                            <p>Harum alias quia dolore accusamus assumenda ut.</p>
+                            <span>17 Seconds ago</span>
+                          </div>
+                        </div>
+                        <div class="body">
+                          <img src="../../../assets/images/person1.jpg"
+                          id="userImg"  alt="usernameImage"/>
+                          <div class="content">
+                            <p>Harum alias quia dolore accusamus assumenda ut.</p>
+                            <span>17 Seconds ago</span>
+                          </div>
+                        </div>
+                        <div class="body">
+                          <img src="../../../assets/images/person1.jpg"
+                          id="userImg"  alt="usernameImage"/>
+                          <div class="content">
+                            <p>Harum alias quia dolore accusamus assumenda ut.</p>
+                            <span>17 Seconds ago</span>
+                          </div>
+                        </div>
+                        <div class="body">
+                          <img src="../../../assets/images/person1.jpg"
+                          id="userImg"  alt="usernameImage"/>
+                          <div class="content">
+                            <p>Harum alias quia dolore accusamus assumenda ut.</p>
+                            <span>17 Seconds ago</span>
+                          </div>
+                        </div>
+                        <div class="body">
+                          <img src="../../../assets/images/person1.jpg"
+                          id="userImg"  alt="usernameImage"/>
+                          <div class="content">
+                            <p>Harum alias quia dolore accusamus assumenda ut.</p>
+                            <span>17 Seconds ago</span>
+                          </div>
+                        </div>
+                    </mat-menu>
                 </li>
 
                 <li class="nav-item">

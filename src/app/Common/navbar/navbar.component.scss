@@ -4,3 +4,57 @@
 .navbarItem {
     color: #305a72;
 }
+.iconNumber{
+  color: rgba(245, 0, 0, 0.808);
+  margin-left: -5px;
+}
+::ng-deep .menu-panel{
+  background-color:#FFF;
+  max-width: 300px !important;
+  max-height: 500px !important;
+}
+.header{
+ border-bottom: #305a72 1px solid;
+}
+.header h4{
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: normal;
+  color: #305a72;
+  letter-spacing: .8px;
+}
+.body{
+  display: flex;
+  margin: 5px 0;
+  padding:5px 0;
+}
+div.body:hover{
+  background-color: #e6e6e67c;
+}
+ #userImg{
+  width: 62px;
+  height: 62px;
+  border-radius: 50px;
+  margin-left: 5px;
+  border: #c1c1c1 1px solid;
+}
+
+.body .content{
+  line-height: 1px;
+  padding: 13px 10px;
+}
+
+.body .content p{
+  font-size: 12px;
+  font-style: normal;
+  line-height: normal;
+  word-break: break-all;
+}
+
+.body .content span{
+  font-size: 12px;
+  font-style: normal;
+  font-weight: lighter;
+  color: #c1c1c1;
+}
+
