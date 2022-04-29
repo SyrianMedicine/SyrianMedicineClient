@@ -16,7 +16,7 @@ export class ProfileCommentSectionComponent implements OnInit {
   isLoding: boolean = false;
   CommentEnded: boolean = false;
   Comments: Array<CommentOutput> = new Array<CommentOutput>();
-  constructor(private Accoutservices:AccountService,private route: ActivatedRoute,private changeDetectorRef: ChangeDetectorRef, private snackBar: MatSnackBar) {
+  constructor(private Accoutservices:AccountService,private route: ActivatedRoute,private changeDetectorRef: ChangeDetectorRef) {
     this.username=this.route.snapshot.paramMap.get("userName")
   }
 
@@ -39,22 +39,7 @@ export class ProfileCommentSectionComponent implements OnInit {
       this.isLoding = false;
     });
   }
-  snackBarError(message: string) {
-    this.snackBar.open(message, 'close', {
-      duration: 2000,
-      panelClass: ['red-snackbar'],
-      horizontalPosition: 'start',
-      verticalPosition: 'bottom',
-    });
-  }
-  snackBarSuccess(message: string) {
-    this.snackBar.open(message, 'close', {
-      duration: 2000,
-      panelClass: ['green-snackbar'],
-      horizontalPosition: 'start',
-      verticalPosition: 'bottom',
-    });
-  }
+ 
  
   showMore() {
       if(!this.CommentEnded && !this.isLoding && !this.Paginationout.isEnded()) {

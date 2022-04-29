@@ -9,30 +9,37 @@ import { HospitalService } from 'src/app/Services/hospital/hospital.service';
 })
 export class HospitalsComponent implements OnInit {
 
-  PageNumber:number=1;
-  pageSize:number=3;
-  totalItems!:number;
-  hospitalInfo!:Array<HospitalInfo>;
-
-  constructor(private hospitalService:HospitalService) {
-   }
+  PageNumber: number = 1;
+  pageSize: number = 3;
+  totalItems!: number;
+  hospitalInfo!: Array<HospitalInfo>;
+  isLoading: boolean = false;
+  constructor(private hospitalService: HospitalService) {
+  }
 
   ngOnInit(): void {
     this.getPageHospital()
   }
 
-  async getPageHospital(){
-    (await this.hospitalService.getHospitalsPagination(this.PageNumber,this.pageSize)).subscribe(response =>{
+  async getPageHospital() {
+    this.isLoading = true;
+    (await this.hospitalService.getHospitalsPagination(this.PageNumber, this.pageSize)).subscribe(response => {
       this.hospitalInfo = response.items;
-      this.totalItems=response.totalItems;
-      for(let i=0 ;i <this.hospitalInfo.length ;i++){
-        if(this.hospitalInfo[i].pictureUrl == null){
-          this.hospitalInfo[i].pictureUrl="assets/images/no-image.png"
-        }}});
+      this.totalItems = response.totalItems;
+      for (let i = 0; i < this.hospitalInfo.length; i++) {
+        if (this.hospitalInfo[i].pictureUrl == null) {
+          this.hospitalInfo[i].pictureUrl = "assets/images/no-image.png"
+        }
       }
-  movePage(page:number){
-    this.PageNumber=page;
+      this.isLoading=false;
+    },err=>{
+      this.isLoading=true;
+    }
+    );
+  }
+  movePage(page: number) {
+    this.PageNumber = page;
     this.getPageHospital();
-      }
+  }
 
 }

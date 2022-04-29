@@ -24,6 +24,7 @@
     <hr/>
     </div>
         <!-- start post -->
+        <div *ngIf="!this.isLoading">
       <div class="row hidden" *ngFor="let doctor of doctorsInfo | paginate : {currentPage:PageNumber,itemsPerPage:pageSize,totalItems:totalItems}">
         <div class="col">
           <div class="container">
@@ -40,6 +41,10 @@
             </div>
           </div>
         </div>
+    </div>
+  </div>
+    <div *ngIf="this.isLoading"  class="d-flex justify-content-center" > 
+      <mat-spinner  diameter="90"  class="m-2 custom-spinner"> </mat-spinner>
     </div>
 <!-- end post -->
 </section>

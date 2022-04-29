@@ -30,7 +30,7 @@
                       </mat-form-field>
                   </div>
                   <button *ngIf="!this.isUopdating" id="button" type="button" (click)="ChangePassword()"> OK  </button>
-                  <button  *ngIf="this.isUopdating" id="button" type="button"> <mat-spinner  diameter="17"  class=" d-inline-block  button-spinner"> </mat-spinner></button> 
+                  <button  *ngIf="this.isUopdating" id="button" disabled="true"  type="button"> <mat-spinner  diameter="17"  class=" d-inline-block  custom-spinner "> </mat-spinner></button> 
                 </div>
               </form>
             </div>

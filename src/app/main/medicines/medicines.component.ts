@@ -11,29 +11,35 @@ import { DoctorService } from 'src/app/Services/doctor/doctor.service';
 })
 export class MedicinesComponent implements OnInit {
 
-  PageNumber:number=1;
-  pageSize:number=3;
-  totalItems!:number;
-  doctorsInfo!:Array<DoctorInfo>;
+  PageNumber: number = 1;
+  pageSize: number = 3;
+  totalItems!: number;
+  doctorsInfo!: Array<DoctorInfo>;
+  isLoading: boolean = false;
+  constructor(private docotrService: DoctorService) { }
 
-  constructor(private docotrService:DoctorService) {}
-
-   ngOnInit():void {
-      this.getPageDoctors();
-}
-
-  getPageDoctors(){
-        this.docotrService.getDoctorsPagination(this.PageNumber,this.pageSize).subscribe(response =>{
-          this.doctorsInfo = response.items;
-          this.totalItems=response.totalItems;
-          for(let i=0 ;i <this.doctorsInfo.length ;i++){
-            if(this.doctorsInfo[i].pictureUrl == null){
-              this.doctorsInfo[i].pictureUrl="assets/images/no-image.png"
-            }}});
-      }
-  onMovePage(page:any){
-    this.PageNumber=page;
+  ngOnInit(): void {
     this.getPageDoctors();
-    }
+  }
+
+  getPageDoctors() {
+    this.isLoading = true;
+    this.docotrService.getDoctorsPagination(this.PageNumber, this.pageSize).subscribe(response => {
+      this.doctorsInfo = response.items;
+      this.totalItems = response.totalItems;
+      for (let i = 0; i < this.doctorsInfo.length; i++) {
+        if (this.doctorsInfo[i].pictureUrl == null) {
+          this.doctorsInfo[i].pictureUrl = "assets/images/no-image.png"
+        }
+      }
+      this.isLoading = false;
+    },err=>{
+      this.isLoading = false;
+    });
+  }
+  onMovePage(page: any) {
+    this.PageNumber = page;
+    this.getPageDoctors();
+  }
 
 }

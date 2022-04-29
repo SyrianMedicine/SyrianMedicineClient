@@ -6,6 +6,7 @@ import { CommentOutput } from 'src/app/Models/Comment/CommentOutput';
 import { PaginationOutput } from 'src/app/Models/Helper/PaginationOutput';
 import { CommentService } from 'src/app/Services/Comment/comment.service';
 import { LikeService } from 'src/app/Services/Like/like.service';
+import { SyrianMedSnakBarService } from 'src/app/Services/SyrianMedSnakBar/syrian-med-snak-bar.service';
 
 @Component({
   selector: 'app-comment',
@@ -32,7 +33,7 @@ export class CommentComponent implements OnInit {
 
   pagination: PaginationOutput = new PaginationOutput(3);
   CommentsEnded: boolean = false;
-  constructor(private changeDetectorRef: ChangeDetectorRef, private router: Router, private likeService: LikeService, private commentService: CommentService, private snackBar: MatSnackBar) {
+  constructor(private changeDetectorRef: ChangeDetectorRef, private router: Router, private likeService: LikeService, private commentService: CommentService, private snackBar: SyrianMedSnakBarService) {
   }
   ChildeDeleted(ChildeCommnet: CommentOutput) {
     for (let index = 0; index < this.SubCommnets.length; index++) {
@@ -93,32 +94,32 @@ export class CommentComponent implements OnInit {
   }
   async CreateSubComment() {
     if (!this.isAuthrized()) {
-      this.snackBarError("please login");
+      this.snackBar.openError("please login");
       this.router.navigate(['/Login']);
     }
     this.isNewCommentCreateing = true;
     this.Subvisible = true;
     (await this.commentService.CreateSubComment(this.Commnet.id, this.commentText)).subscribe(data => {
       this.SubCommnets.unshift(data.data);
-      this.snackBarSuccess(data.message)
+      this.snackBar.openSuccess(data.message)
       this.isNewCommentCreateing = false;
       this.changeDetectorRef.detectChanges();
     }, err => {
       this.isNewCommentCreateing = false;
-      this.snackBarError(err.error.message);
+      this.snackBar.openError(err.error.message);
     });
     this.commentText = "";
   }
   async deleteComment() {
     if (!this.isAuthrized()) {
-      this.snackBarError("please login");
+      this.snackBar.openError("please login");
       this.router.navigate(['/Login']);
     }
     (await this.commentService.Delete(this.Commnet.id)).subscribe(data => {
-      this.snackBarSuccess(data.message);
+      this.snackBar.openSuccess(data.message);
       this.Ondeleted.emit(this.Commnet);
     }, err => {
-      this.snackBarError(err.error.message);
+      this.snackBar.openError(err.error.message);
     });
   }
   showSubComment() {
@@ -126,21 +127,21 @@ export class CommentComponent implements OnInit {
   }
   async EditeSubComment() {
     if (this.commentText == this.Commnet.text) {
-      this.snackBarError("its same the old ");
+      this.snackBar.openError("its same the old ");
       return;
     }
     if (!this.isAuthrized()) {
-      this.snackBarError("please login");
+      this.snackBar.openError("please login");
       this.router.navigate(['/Login']);
     }
     this.isediting=true;
     (await this.commentService.Update(this.Commnet.id, this.commentText)).subscribe(data => {
       this.Commnet = data.data;
       this.isediting=false;
-      this.snackBarSuccess(data.message);
+      this.snackBar.openSuccess(data.message);
     }, err => {
       this.isediting=false;
-      this.snackBarError(err.error.message);
+      this.snackBar.openError(err.error.message);
     });
   }
   displayReplay(num: boolean) {
@@ -170,7 +171,7 @@ export class CommentComponent implements OnInit {
         this.Like();
       }
     } else {
-      this.snackBarError("please login");
+      this.snackBar.openError("please login");
       this.router.navigate(['Login']);
     }
   }
@@ -179,9 +180,9 @@ export class CommentComponent implements OnInit {
       this.liked = data.data;
       this.gettotalikes();
       this.LikeEnablebutton = true;
-      this.snackBarSuccess(data.message);
+      this.snackBar.openSuccess(data.message);
     }, err => {
-      this.snackBarError(err.error.message);
+      this.snackBar.openError(err.error.message);
       this.LikeEnablebutton = true;
     });
   }
@@ -189,29 +190,14 @@ export class CommentComponent implements OnInit {
   async unLike() {
     (await this.likeService.UnLikeComment(this.Commnet.id)).subscribe(data => {
       this.liked = !data.data;
-      this.snackBarSuccess(data.message);
+      this.snackBar.openSuccess(data.message);
       this.LikeEnablebutton = true;
       this.gettotalikes();
     }, err => {
-      this.snackBarError(err.error.message);
+      this.snackBar.openError(err.error.message);
       this.LikeEnablebutton = true;
     });
   }
 
-  snackBarError(message: string) {
-    this.snackBar.open(message, 'close', {
-      duration: 2000,
-      panelClass: ['red-snackbar'],
-      horizontalPosition: 'start',
-      verticalPosition: 'bottom',
-    });
-  }
-  snackBarSuccess(message: string) {
-    this.snackBar.open(message, 'close', {
-      duration: 2000,
-      panelClass: ['green-snackbar'],
-      horizontalPosition: 'start',
-      verticalPosition: 'bottom',
-    });
-  }
+
 }

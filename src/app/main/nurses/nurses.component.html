@@ -7,48 +7,55 @@
   <div class="row hidden">
     <div class="col">
       <div class="container">
-          <form class="d-flex">
-            <input class="search-form" type="search" placeholder="Search" aria-label="Search">
-            <button class="search-filter" type="submit" > Filter </button>
-          </form>
-        </div>
+        <form class="d-flex">
+          <input class="search-form" type="search" placeholder="Search" aria-label="Search">
+          <button class="search-filter" type="submit"> Filter </button>
+        </form>
       </div>
     </div>
   </div>
+</div>
 <!-- end search -->
 
 <!-- start  nursess -->
 <section class="nurses">
   <div class="nurses-deploy text-center">
     <h2>NURSES</h2>
-    <hr/>
-    </div>
-        <!-- start post -->
-      <div class="row hidden" *ngFor="let nurse of nursesInfo | paginate :{currentPage:this.pageNumber , itemsPerPage:this.pageSize,totalItems:this.totalItems}">
-        <div class="col">
-          <div class="container">
-            <div class="nurses-content">
-              <img [src]="nurse.pictureUrl" alt="Nurse" class="img-fluid" />
-              <div class="nurses-content-info">
-                <h4 style="cursor: pointer;" [routerLink]="'/Nurse/'+nurse.userName">Dr.{{nurse.displayName}}</h4>
-                <img src="../../../assets/images/areaIcon.png"/>
-                <span>{{nurse.location}}</span>
-                <img src="../../../assets/images/specalist.png"/>
-                <span>{{nurse.specialization}}</span>
-                <p>{{nurse.aboutMe}}</p>
-              </div>
+    <hr />
+  </div>
+  <!-- start post -->
+  <div *ngIf="!this.isLoading"> 
+    <div class="row hidden"
+      *ngFor="let nurse of nursesInfo | paginate :{currentPage:this.pageNumber , itemsPerPage:this.pageSize,totalItems:this.totalItems}">
+      <div class="col">
+        <div class="container">
+          <div class="nurses-content">
+            <img [src]="nurse.pictureUrl" alt="Nurse" class="img-fluid" />
+            <div class="nurses-content-info">
+              <h4 style="cursor: pointer;" [routerLink]="'/Nurse/'+nurse.userName">Dr.{{nurse.displayName}}</h4>
+              <img src="../../../assets/images/areaIcon.png" />
+              <span>{{nurse.location}}</span>
+              <img src="../../../assets/images/specalist.png" />
+              <span>{{nurse.specialization}}</span>
+              <p>{{nurse.aboutMe}}</p>
             </div>
           </div>
         </div>
+      </div>
     </div>
-<!-- end nurse -->
+  </div>
+  <div *ngIf="this.isLoading" class="d-flex justify-content-center">
+    <mat-spinner diameter="90" class="m-2 custom-spinner"> </mat-spinner>
+  </div>
+  <!-- end nurse -->
 </section>
 <!-- end nursess -->
 
 
 <!-- start pageination -->
 <div class="d-flex justify-content-center">
-  <pagination-controls class="page-controls" (pageChange)="movePage($event)" [autoHide]="true" [directionLinks]="false" [maxSize]="7"></pagination-controls>
+  <pagination-controls class="page-controls" (pageChange)="movePage($event)" [autoHide]="true" [directionLinks]="false"
+    [maxSize]="7"></pagination-controls>
 </div>
 <!-- end pageination -->
 

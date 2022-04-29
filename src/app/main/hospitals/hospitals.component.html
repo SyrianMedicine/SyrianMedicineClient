@@ -24,20 +24,26 @@
     <hr/>
     </div>
         <!-- start post -->
-      <div class="row hidden" *ngFor="let hosptial of hospitalInfo |paginate:{currentPage:PageNumber,itemsPerPage:pageSize,totalItems:totalItems}">
-        <div class="col">
-          <div class="container">
-            <div class="hospital-content">
-              <img [src]="hosptial.pictureUrl" alt="Hospital" class="img-fluid" />
-              <div class="hospital-content-info">
-                <h4 style="cursor: pointer;" [routerLink]="'/Hospital/'+hosptial.userName">{{hosptial.name}}</h4>
-                <img src="../../../assets/images/areaIcon.png"/>
-                <span>{{hosptial.location}}</span>
-                <p>{{hosptial.aboutHospital}}</p>
+      <div *ngIf="!this.isLoading">
+
+        <div  class="row hidden" *ngFor="let hosptial of hospitalInfo |paginate:{currentPage:PageNumber,itemsPerPage:pageSize,totalItems:totalItems}">
+          <div class="col">
+            <div class="container">
+              <div class="hospital-content">
+                <img [src]="hosptial.pictureUrl" alt="Hospital" class="img-fluid" />
+                <div class="hospital-content-info">
+                  <h4 style="cursor: pointer;" [routerLink]="'/Hospital/'+hosptial.userName">{{hosptial.name}}</h4>
+                  <img src="../../../assets/images/areaIcon.png"/>
+                  <span>{{hosptial.location}}</span>
+                  <p>{{hosptial.aboutHospital}}</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    <div *ngIf="this.isLoading"  class="d-flex justify-content-center" > 
+      <mat-spinner  diameter="90"  class="m-2 custom-spinner"> </mat-spinner>
     </div>
 <!-- end hospitals -->
 </section>

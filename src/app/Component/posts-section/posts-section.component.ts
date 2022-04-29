@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { DynamicPagination } from 'src/app/Models/Helper/DynamicPagination';
 import { PaginationOutput } from 'src/app/Models/Helper/PaginationOutput';
 import { PostOutput } from 'src/app/Models/Post/PostOutput';
+import { SyrianMedSnakBarService } from 'src/app/Services/SyrianMedSnakBar/syrian-med-snak-bar.service';
 
 @Component({
   selector: 'app-posts-section',
@@ -17,7 +18,7 @@ export class PostsSectionComponent implements OnInit {
   isLoding: boolean = false;
   postended: boolean = false;
   posts: Array<PostOutput> = new Array<PostOutput>();
-  constructor(private changeDetectorRef: ChangeDetectorRef, private snackBar: MatSnackBar) {
+  constructor(private changeDetectorRef: ChangeDetectorRef, private snackBar: SyrianMedSnakBarService) {
   }
 
   ngOnInit(): void {
@@ -39,22 +40,7 @@ export class PostsSectionComponent implements OnInit {
       this.isLoding = false;
     });
   }
-  snackBarError(message: string) {
-    this.snackBar.open(message, 'close', {
-      duration: 2000,
-      panelClass: ['red-snackbar'],
-      horizontalPosition: 'start',
-      verticalPosition: 'bottom',
-    });
-  }
-  snackBarSuccess(message: string) {
-    this.snackBar.open(message, 'close', {
-      duration: 2000,
-      panelClass: ['green-snackbar'],
-      horizontalPosition: 'start',
-      verticalPosition: 'bottom',
-    });
-  }
+ 
 
   @HostListener("window:scroll", ["$event"])
   onWindowScroll() {

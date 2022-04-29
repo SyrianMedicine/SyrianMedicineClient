@@ -7,7 +7,7 @@
       </div>
       <div class="card-body">
         <div class="example-container mat-elevation-z8">
-          <mat-table #table [dataSource]="dataSource" id="table">
+          <mat-table *ngIf="!this.isloading"   #table [dataSource]="dataSource" id="table">
 
             <!-- id Column -->
             <ng-container matColumnDef="id">
@@ -48,7 +48,7 @@
             <!-- details Column -->
             <ng-container matColumnDef="details">
               <mat-header-cell class="details" *matHeaderCellDef> Descrption </mat-header-cell>
-              <mat-cell  class="details" *matCellDef="let sick"> {{sick.details}} </mat-cell>
+              <mat-cell  class="details" *matCellDef="let sick"> {{sick.description}} </mat-cell>
             </ng-container>
 
             <!-- status Column -->
@@ -76,9 +76,13 @@
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
           </mat-table>
+          <div *ngIf="this.isloading"  class="d-flex justify-content-center" > 
+            <mat-spinner  diameter="60"  class="m-2 custom-spinner"> </mat-spinner>
+          </div>
         </div>
       </div>
-    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5,10,15]" aria-label="select page"></mat-paginator>
+     
+    <mat-paginator [disabled]="this.isloading" [length]="this.totalItems" (page)="this.onpaginEdit($event)"   [pageSize]="this.pageSize" [pageIndex]="this.PageNumber-1" [pageSizeOptions]="[5,10,15,20]" aria-label="select page"></mat-paginator>
   </div>
  </div>
 </div>

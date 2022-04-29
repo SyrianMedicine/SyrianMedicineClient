@@ -1,5 +1,10 @@
 import {  Component,  OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { Pagination } from '../Models/Helper/Pagination';
+import { Reserve } from '../Models/Reserve/Reserve';
+import { DoctorService } from '../Services/doctor/doctor.service';
+import { SyrianMedSnakBarService } from '../Services/SyrianMedSnakBar/syrian-med-snak-bar.service';
 import { DialogMessageComponent } from './dialog-message/dialog-message.component';
 import { RejectDialogComponent } from './reject-dialog/reject-dialog.component';
 
@@ -10,9 +15,16 @@ import { RejectDialogComponent } from './reject-dialog/reject-dialog.component';
 })
 export class DoctorReverseComponent implements  OnInit{
 
-  constructor(public dialog:MatDialog){
-
+  displayedColumns = ['id', 'name', 'email' ,'phone', 'date','title','details','status','accept','reject'];
+  dataSource!:Array<Reserve>; 
+  PageNumber:number=1;
+  pageSize:number=5;
+  totalItems:number=0; 
+  isloading:boolean=false;
+  constructor(public dialog:MatDialog,private doctorService:DoctorService,private snakBar:SyrianMedSnakBarService){
+     
   }
+  
   openAccept() {
     this.dialog.open(DialogMessageComponent);
   }
@@ -22,28 +34,26 @@ export class DoctorReverseComponent implements  OnInit{
   }
 
    ngOnInit():void {
-
+    this.Load();
    }
-   displayedColumns = ['id', 'name', 'email' ,'phone', 'date','title','details','status','accept','reject'];
-   dataSource = ELEMENT_DATA;
-}
-export interface Element {
-  id:number,
-  name: string;
-  email:string,
-  title:string,
-  details:string,
-  status:string,
-  date:string,
-  phone:string
-}
 
-const ELEMENT_DATA: Element[] = [
-  {id: 1,phone:'0964827090' , name: 'Hydrogen',date:'11-2-2022 10:00AM', email:'Hydrogen.Helium@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'review'},
-  {id: 2,phone:'12345566', name: 'Helium',date:'11-2-2022 10:00AM',email:'Hydrogen.Helium@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'review' },
-  {id: 3,phone:'12345566', name: 'Lithium',date:'11-2-2022 10:00AM' ,email:'Hydrogen.Helium@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'peview'},
-  {id: 4,phone:'12345566', name: 'Beryllium', date:'11-2-2022 10:00AM',email:'Hydrogen.Helium@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'review'},
-  {id: 5,phone:'12345566', name: 'Boron', date:'11-2-2022 10:00AM',email:'Hydrogen.Helium@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'peview'},
-  {id: 6,phone:'12345566', name: 'Boron', date:'11-2-2022 10:00AM',email:'Hydrogen.Helium@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'peview'},
-  {id: 7,phone:'12345566', name: 'Boron', date:'11-2-2022 10:00AM',email:'Hydrogen.Helium@gmail.com' ,title:'title the sicken' , details: 'details the sicken',status:'peview'}
-];
+   onpaginEdit(event:{pageIndex: number, pageSize: number, length: number}|any){
+    this.PageNumber=event.pageIndex+1;
+    this.pageSize  =event.pageSize;
+    this.totalItems=event.length; 
+    this.Load();
+   }
+   async Load(){
+     this.isloading=true;
+    (await this.doctorService.getReserveDoctorData(this.PageNumber,this.pageSize)).subscribe(data=>{
+    this.dataSource=data.items; 
+    this.PageNumber=data.currentPage;
+    this.totalItems=data.totalItems; 
+    this.pageSize  =data.itemsPerPage; 
+    this.isloading=false;
+    },err=>{
+      this.isloading=false;
+    });
+   }
+}
+ 

@@ -8,6 +8,7 @@ import { PostOutput } from 'src/app/Models/Post/PostOutput';
 import { CommentService } from 'src/app/Services/Comment/comment.service';
 import { LikeService } from 'src/app/Services/Like/like.service';
 import { PostService } from 'src/app/Services/post/post.service';
+import { SyrianMedSnakBarService } from 'src/app/Services/SyrianMedSnakBar/syrian-med-snak-bar.service';
 
 @Component({
   selector: 'app-post',
@@ -29,7 +30,7 @@ export class PostComponent implements OnInit {
   ///////////////////////////////////////
   pagination: PaginationOutput = new PaginationOutput(3);
   ///////////////////////////////////////
-  constructor(private changeDetectorRef: ChangeDetectorRef, private router: Router, private likeService: LikeService, private postservce: PostService, private Commentservice: CommentService, private snackBar: MatSnackBar) {
+  constructor(private changeDetectorRef: ChangeDetectorRef, private router: Router, private likeService: LikeService, private postservce: PostService, private Commentservice: CommentService, private snackBar: SyrianMedSnakBarService) {
   }
 
   ngOnInit(): void {
@@ -92,18 +93,18 @@ export class PostComponent implements OnInit {
   }
   async CreateComment() {
     if (!this.isAuthrized()) {
-      this.snackBarError("please login");
+      this.snackBar.openError("please login");
       this.router.navigate(['/Login']);
     }
     this.isNewCommentCreateing = true;
     (await this.Commentservice.CreatePostComment(this.post.id, this.newComment)).subscribe(data => {
       this.Commnets.unshift(data.data);
-      this.snackBarSuccess(data.message);
+      this.snackBar.openSuccess(data.message);
       this.changeDetectorRef.detectChanges();
       this.isNewCommentCreateing = false;
     }, err => {
       this.isNewCommentCreateing = false;
-      this.snackBarError(err.error.message);
+      this.snackBar.openError(err.error.message);
     });
     this.newComment = "";
   }
@@ -129,45 +130,30 @@ export class PostComponent implements OnInit {
         this.Like();
       }
     } else {
-      this.snackBarError("please login");
+      this.snackBar.openError("please login");
       this.router.navigate(['Login']);
     }
   }
-  snackBarError(message: string) {
-    this.snackBar.open(message, 'close', {
-      duration: 2000,
-      panelClass: ['red-snackbar'],
-      horizontalPosition: 'start',
-      verticalPosition: 'bottom',
-    });
-  }
-  snackBarSuccess(message: string) {
-    this.snackBar.open(message, 'close', {
-      duration: 2000,
-      panelClass: ['green-snackbar'],
-      horizontalPosition: 'start',
-      verticalPosition: 'bottom',
-    });
-  }
+ 
   async Like() {
     (await this.likeService.Likepost(this.post.id)).subscribe(data => {
       this.liked = data.data;
       this.gettotalikes();
       this.LikeEnablebutton = true;
-      this.snackBarSuccess(data.message);
+      this.snackBar.openSuccess(data.message);
     }, err => {
-      this.snackBarError(err.error.message);
+      this.snackBar.openError(err.error.message);
       this.LikeEnablebutton = true;
     });
   }
   async unLike() {
     (await this.likeService.UnLikepost(this.post.id)).subscribe(data => {
       this.liked = !data.data;
-      this.snackBarSuccess(data.message); 
+      this.snackBar.openSuccess(data.message); 
       this.LikeEnablebutton = true;
       this.gettotalikes();
     }, err => {
-      this.snackBarError(err.error.message);
+      this.snackBar.openError(err.error.message);
       this.LikeEnablebutton = true;
     });
   }
