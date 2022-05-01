@@ -93,7 +93,9 @@
 </section>
 
 <!-- start comments -->
-<app-profile-comment-section></app-profile-comment-section>
+<div class=" overflow-hidden">
+  <app-profile-comment-section></app-profile-comment-section>
+</div>
 <!-- end comments -->
 
 
@@ -108,15 +110,15 @@
     </div>
 
     <!-- start post -->
-    <div class="row hidden">
-        <div class="col">
+    <div class="row hidden ">
+        <div class="col p-0 m-0">
             <div class="container">
                 <app-posts-section [loadefunc]="profilepostLoadfunc"></app-posts-section>
             </div>
         </div>
     </div>
 
- 
+
 </section>
 
 <app-footer></app-footer>
