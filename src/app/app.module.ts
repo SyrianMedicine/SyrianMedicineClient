@@ -89,6 +89,7 @@ import { ValidateDoctorsComponent } from './Admin/validate-doctors/validate-doct
 import { ValidateNursesComponent } from './Admin/validate-nurses/validate-nurses.component';
 import { ValidateHospitalsComponent } from './Admin/validate-hospitals/validate-hospitals.component';
 import { ContentNotificationComponent } from './Common/content-notification/content-notification.component';
+import { ExternalNotificationComponent } from './Common/external-notification/external-notification.component';
 //#endregion
 
 
@@ -135,7 +136,8 @@ import { ContentNotificationComponent } from './Common/content-notification/cont
      ValidateDoctorsComponent,
      ValidateNursesComponent,
      ValidateHospitalsComponent,
-     ContentNotificationComponent
+     ContentNotificationComponent,
+     ExternalNotificationComponent
   ],
   imports: [
     BrowserModule,
