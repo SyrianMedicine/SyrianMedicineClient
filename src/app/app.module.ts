@@ -88,6 +88,7 @@ import { HospitalReverseComponent } from './hospital-reverse/hospital-reverse.co
 import { ValidateDoctorsComponent } from './Admin/validate-doctors/validate-doctors.component';
 import { ValidateNursesComponent } from './Admin/validate-nurses/validate-nurses.component';
 import { ValidateHospitalsComponent } from './Admin/validate-hospitals/validate-hospitals.component';
+import { ContentNotificationComponent } from './Common/content-notification/content-notification.component';
 //#endregion
 
 
@@ -133,7 +134,8 @@ import { ValidateHospitalsComponent } from './Admin/validate-hospitals/validate-
      HospitalReverseComponent,
      ValidateDoctorsComponent,
      ValidateNursesComponent,
-     ValidateHospitalsComponent
+     ValidateHospitalsComponent,
+     ContentNotificationComponent
   ],
   imports: [
     BrowserModule,

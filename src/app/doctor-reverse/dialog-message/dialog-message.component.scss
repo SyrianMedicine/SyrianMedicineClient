@@ -1,6 +1,5 @@
-ng::deep .Accept-dialog{
+::ng-deep .mat-dialog-container{
   background-image: linear-gradient(360deg,#214052 ,#305A72) !important;
-  min-width: 350px !important;
 }
 h2{
   font-size: 18px;

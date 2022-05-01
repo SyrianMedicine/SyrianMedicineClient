@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { DialogMessageComponent } from 'src/app/doctor-reverse/dialog-message/dialog-message.component';
 import { RejectDialogComponent } from 'src/app/doctor-reverse/reject-dialog/reject-dialog.component';
 
@@ -15,8 +16,11 @@ export class ValidateDoctorsComponent implements OnInit {
   ngOnInit(): void {
   }
   openAccept(){
-    this.dialog.open(DialogMessageComponent) 
-    
+    this.dialog.open(DialogMessageComponent,{
+      width:'300px',
+      height:'300px',
+    });
+
   }
   openReject(){
     this.dialog.open(RejectDialogComponent)
@@ -31,5 +35,5 @@ export interface Element {
   date:string,
   phone:string,
   Documents:string
-  
 }
+

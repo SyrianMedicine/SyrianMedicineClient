@@ -16,15 +16,15 @@ import { RejectDialogComponent } from './reject-dialog/reject-dialog.component';
 export class DoctorReverseComponent implements  OnInit{
 
   displayedColumns = ['id', 'name', 'email' ,'phone', 'date','title','details','status','accept','reject'];
-  dataSource!:Array<Reserve>; 
+  dataSource!:Array<Reserve>;
   PageNumber:number=1;
   pageSize:number=5;
-  totalItems:number=0; 
+  totalItems:number=0;
   isloading:boolean=false;
   constructor(public dialog:MatDialog,private doctorService:DoctorService,private snakBar:SyrianMedSnakBarService){
-     
+
   }
-  
+
   openAccept() {
     this.dialog.open(DialogMessageComponent);
   }
@@ -40,20 +40,19 @@ export class DoctorReverseComponent implements  OnInit{
    onpaginEdit(event:{pageIndex: number, pageSize: number, length: number}|any){
     this.PageNumber=event.pageIndex+1;
     this.pageSize  =event.pageSize;
-    this.totalItems=event.length; 
+    this.totalItems=event.length;
     this.Load();
    }
    async Load(){
      this.isloading=true;
     (await this.doctorService.getReserveDoctorData(this.PageNumber,this.pageSize)).subscribe(data=>{
-    this.dataSource=data.items; 
+    this.dataSource=data.items;
     this.PageNumber=data.currentPage;
-    this.totalItems=data.totalItems; 
-    this.pageSize  =data.itemsPerPage; 
+    this.totalItems=data.totalItems;
+    this.pageSize  =data.itemsPerPage;
     this.isloading=false;
     },err=>{
       this.isloading=false;
     });
    }
 }
- 
