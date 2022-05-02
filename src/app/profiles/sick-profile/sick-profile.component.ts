@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AddPostSectionComponent } from 'src/app/Component/add-post-section/add-post-section.component';
 import { DynamicPagination } from 'src/app/Models/Helper/DynamicPagination';
 import { SickInfo } from 'src/app/Models/Sick/SickInfo';
 import { AccountService } from 'src/app/Services/Account/account.service';
@@ -19,7 +20,7 @@ export class SickProfileComponent implements OnInit {
   sickInfoData: SickInfo = new SickInfo();
   profilepostLoadfunc!:(page:DynamicPagination)=> Promise<Observable<any>>;
 
-  constructor(private sickService: SickService, private dialog: MatDialog, private route: ActivatedRoute ,private accountService:AccountService) { 
+  constructor(private sickService: SickService, private dialog: MatDialog, private route: ActivatedRoute ,private accountService:AccountService) {
     this.profilepostLoadfunc=postsLoadeFactory.getProfileLoadMethod(accountService,this.route.snapshot.paramMap.get("userName"));
   }
 
@@ -37,4 +38,9 @@ export class SickProfileComponent implements OnInit {
     });
   }
 
+  addPostButton(){
+    this.dialog.open(AddPostSectionComponent,{
+      width:'300px'
+    });
+  }
 }

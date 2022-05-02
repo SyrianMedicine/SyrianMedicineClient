@@ -248,3 +248,30 @@ a:hover {
     box-shadow: 2px 2px rgba(0, 0, 0, 0.2);
     margin: 15px auto auto auto;
 }
+.addPost button{
+  background-color: #455a64;
+  color: #FFF;
+  padding: 5px 10px;
+  margin-right: 10px;
+  margin-top: -40px;
+  border-radius: 50px;
+  outline: none;
+  border: none;
+}
+.addPost button:hover,
+.addPost button:focus{
+  background-color: #c3c3c3;
+  color: black;
+}
+
+@media screen and(min-width:576px) and (max-width:703px){
+  .addPost button{
+    margin-top:-20px;
+  }
+}
+@media screen and (max-width:575px){
+  .addPost button{
+    margin-top: -20px;
+  }
+}
+
