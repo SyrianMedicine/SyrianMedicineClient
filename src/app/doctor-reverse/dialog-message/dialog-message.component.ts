@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-dialog-message',
   templateUrl: './dialog-message.component.html',
@@ -7,11 +7,13 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DialogMessageComponent implements  OnInit{
   msege!:string;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,public dialog:MatDialogRef<DialogMessageComponent>) {
   }
   ngOnInit(): void {
 
   }
-
+  close(){
+    this.dialog.close();
+  }
 }
 

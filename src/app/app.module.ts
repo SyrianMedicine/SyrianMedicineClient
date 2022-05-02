@@ -60,6 +60,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CommentComponent } from './Component/comment/comment.component';
 import { UserCardComponent } from './Component/user-card/user-card.component';
@@ -90,6 +91,7 @@ import { ValidateNursesComponent } from './Admin/validate-nurses/validate-nurses
 import { ValidateHospitalsComponent } from './Admin/validate-hospitals/validate-hospitals.component';
 import { ContentNotificationComponent } from './Common/content-notification/content-notification.component';
 import { ExternalNotificationComponent } from './Common/external-notification/external-notification.component';
+import { AddPostSectionComponent } from './Component/add-post-section/add-post-section.component';
 //#endregion
 
 
@@ -137,7 +139,8 @@ import { ExternalNotificationComponent } from './Common/external-notification/ex
      ValidateNursesComponent,
      ValidateHospitalsComponent,
      ContentNotificationComponent,
-     ExternalNotificationComponent
+     ExternalNotificationComponent,
+     AddPostSectionComponent
   ],
   imports: [
     BrowserModule,
@@ -186,7 +189,8 @@ import { ExternalNotificationComponent } from './Common/external-notification/ex
     MatTableModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSlideToggleModule
     // MatRippleModule,
     // MatSliderModule,
     // MatSlideToggleModule,

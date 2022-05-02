@@ -1,0 +1,20 @@
+
+  <h2 mat-dialog-title>Write a Post Content</h2>
+  <div mat-dialog-content>
+    <div class="grid-container">
+      <form>
+          <textarea
+            placeholder="leave a message here .."
+            name="aboutHospitalInput" id="aboutHospitalInput"
+            required ></textarea>
+            <mat-slide-toggle (change)="onChange($event)">add image</mat-slide-toggle>
+            <input class="form-control form-control-sm" id="formFileSm" type="file"
+            [ngClass]="{'hiddenSection': !this.chooseFile}"/>
+          <div class="d-flex justify-content-center">
+            <button mat-button type="submit">Send</button>
+            <button mat-button (click)="close()"> Close</button>
+          </div>
+      </form>
+   </div>
+ </div>
+
