@@ -3,10 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve", 
+    "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
+  }
+  ,"engines": {
+    "node": "16.14.2",
+    "npm":"8.5.0" 
   },
   "private": true,
   "dependencies": {
