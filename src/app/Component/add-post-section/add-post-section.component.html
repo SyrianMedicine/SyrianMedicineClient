@@ -2,16 +2,19 @@
   <h2 mat-dialog-title>Write a Post Content</h2>
   <div mat-dialog-content>
     <div class="grid-container">
-      <form>
+      <form  (ngSubmit)="sendpost($event)">
           <textarea
-            placeholder="leave a message here .."
-            name="aboutHospitalInput" id="aboutHospitalInput"
-            required ></textarea>
+            placeholder="type your post here" 
+            
+            name="text" id="text"
+            required ></textarea> 
             <mat-slide-toggle (change)="onChange($event)">add image</mat-slide-toggle>
-            <input class="form-control form-control-sm" id="formFileSm" type="file"
+            <input class="form-control form-control-sm"    name="media" id="media" type="file" (change)="this.onfilselected($event)"
             [ngClass]="{'hiddenSection': !this.chooseFile}"/>
-          <div class="d-flex justify-content-center">
-            <button mat-button type="submit">Send</button>
+            <div class="d-flex justify-content-center">
+            <button mat-button *ngIf="!this.isCreating"  type="submit">Post</button>
+            <button mat-button *ngIf="this.isCreating" disabled="true" type="button"><mat-spinner  diameter="17"  class=" d-inline-block  custom-spinner "> </mat-spinner></button>
+            
             <button mat-button (click)="close()"> Close</button>
           </div>
       </form>

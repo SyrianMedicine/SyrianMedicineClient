@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HospitalreserveComponent } from 'src/app/Common/reservesDate/HospitalReserve/hospitalreserve/hospitalreserve.component';
+import { AddPostSectionComponent } from 'src/app/Component/add-post-section/add-post-section.component';
 import { DynamicPagination } from 'src/app/Models/Helper/DynamicPagination';
 import { HospitalInfo } from 'src/app/Models/Hospital/HospitalInfo';
 import { AccountService } from 'src/app/Services/Account/account.service';
@@ -35,7 +36,11 @@ export class HospitalProfileComponent implements OnInit {
       this.profilepostLoadfunc=postsLoadeFactory.getProfileLoadMethod(accountService,this.route.snapshot.paramMap.get("userName"));
  
     }
-
+    openAddPost(){
+      let dialogRef= this.dialog.open(AddPostSectionComponent,{
+        width:'280px'
+      })
+    }
   async ngOnInit(): Promise<void> {
     this.userName = this.route.snapshot.paramMap.get("userName");
     (await this.hospitalService.getHospitalInfo(this.userName)).subscribe(data => {

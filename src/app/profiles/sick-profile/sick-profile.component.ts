@@ -31,7 +31,9 @@ export class SickProfileComponent implements OnInit {
       console.log(data);
     });
   }
-
+  isMyOwnProfile() {
+    return localStorage.getItem("username") == this.userName;
+  }
   openTemplete(templete: any) {
     this.dialog.open(templete, {
       width: '300px'

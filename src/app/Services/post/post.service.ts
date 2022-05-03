@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DynamicPagination } from 'src/app/Models/Helper/DynamicPagination';
+import { PostCreateInput } from 'src/app/Models/Post/PostCreateInput';
 import { BaseServices } from '../Common/BaseService.service';
 
 @Injectable({
@@ -28,7 +29,14 @@ export class PostService extends BaseServices {
   async getHomePost(Pagination:DynamicPagination): Promise<Observable<any>> {
     return await this.http.post(this.baseUrl + "HomePost", Pagination,this.getoption());
   }
-  
- 
-
+  async CreatePost(input:PostCreateInput): Promise<Observable<any>>{    
+    const form: FormData = new FormData();
+      form.append("PostText", input.PostText); 
+      form.append("postTitle", input.PostTitle); 
+      if(input.Media!=null) 
+      form.append("Media", input.Media,input.Media.name);
+      if(input.TagsID!=null&&input.TagsID.length>0) 
+      form.append("TagsID",JSON.stringify(input.TagsID)); 
+      return await this.http.post(this.baseUrl + "Create", form,this.getoption());
+  }
 }

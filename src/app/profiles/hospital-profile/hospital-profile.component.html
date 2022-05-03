@@ -22,10 +22,11 @@
                         <a style="color: black;" href="#">{{hospitalInfoData.name}}</a>
                     </p>
                 </div>
-                <div class="rightItems" *ngIf="!isMyOwnProfile()">
+                <div class="rightItems" >
+                    <button *ngIf="isMyOwnProfile()" class="followBtn mx-2" type="submit" (click)="openAddPost()">add Post</button> 
                     <button class="followBtn mx-2" type="submit" (click)="openReserveDialog()">Reserve</button>
-                    <button class="mx-1 followBtn" type="submit" *ngIf="!iFollowedThisUser" (click)="followUser()">Follow</button>
-                    <button class="mx-1 followBtn" type="submit" *ngIf="iFollowedThisUser" (click)="unFollowUser()">UnFollow</button>
+                    <button class="mx-1 followBtn" type="submit" *ngIf="!isMyOwnProfile()&&!iFollowedThisUser" (click)="followUser()">Follow</button>
+                    <button class="mx-1 followBtn" type="submit" *ngIf="!isMyOwnProfile()&&iFollowedThisUser" (click)="unFollowUser()">UnFollow</button>
                 </div>
                 <div class="user-info2">
                     <p>

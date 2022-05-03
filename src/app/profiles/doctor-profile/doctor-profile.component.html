@@ -23,11 +23,12 @@
                             {{doctorInfoData.displayName}}</a>
                     </p>
                 </div>
-                <div class="rightItems" *ngIf="!isMyOwnProfile()">
-                    <button class="followBtn mx-2" type="submit" (click)="openAddPost()">add Post</button>
-                    <button class="followBtn mx-2" type="submit" (click)="openReserveDialog()">Reserve</button>
-                    <button class="mx-1 followBtn" type="submit" *ngIf="!iFollowedThisUser" (click)="followUser()">Follow</button>
-                    <button class="mx-1 followBtn" type="submit" *ngIf="iFollowedThisUser" (click)="unFollowUser()">UnFollow</button>
+
+                 <div class="rightItems" >
+                    <button *ngIf="isMyOwnProfile()" class="followBtn mx-2" type="submit" (click)="openAddPost()">add Post</button>
+                    <button *ngIf="!isMyOwnProfile()" class="followBtn mx-2" type="submit" (click)="openReserveDialog()">Reserve</button>
+                    <button *ngIf="!isMyOwnProfile()&&!iFollowedThisUser" class="mx-1 followBtn" type="submit" (click)="followUser()">Follow</button>
+                    <button *ngIf="!isMyOwnProfile()&&iFollowedThisUser" class="mx-1 followBtn" type="submit" (click)="unFollowUser()">UnFollow</button>
                 </div>
                 <div class="user-info2">
                     <p>

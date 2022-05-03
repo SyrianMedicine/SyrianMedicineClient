@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="d-flex justify-content-end addPost">
-                  <button (click)="addPostButton()">add Post</button>
+                  <button *ngIf="this.isMyOwnProfile()" (click)="addPostButton()">add Post</button>
                 </div>
 
             </div>

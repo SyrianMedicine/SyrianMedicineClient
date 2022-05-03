@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ReserveDateWithDoctorOrNurseComponent } from 'src/app/Common/reservesDate/reserve-date-with-doctor-or-nurse/reserve-date-with-doctor-or-nurse.component';
+import { AddPostSectionComponent } from 'src/app/Component/add-post-section/add-post-section.component';
 import { DynamicPagination } from 'src/app/Models/Helper/DynamicPagination';
 import { NurseInfo } from 'src/app/Models/Nurse/NurseInfo';
 import { AccountService } from 'src/app/Services/Account/account.service';
@@ -34,7 +35,11 @@ export class NurseProfileComponent implements OnInit {
     ,private accountService:AccountService) { 
       this.profilepostLoadfunc=postsLoadeFactory.getProfileLoadMethod(accountService,this.route.snapshot.paramMap.get("userName"));
     }
-
+    openAddPost(){
+      let dialogRef= this.dialog.open(AddPostSectionComponent,{
+        width:'280px'
+      })
+    }
   async ngOnInit(): Promise<void> {
     this.userName = this.route.snapshot.paramMap.get("userName");
     (await this.nurseService.getNurseInfo(this.userName)).subscribe(data => {
