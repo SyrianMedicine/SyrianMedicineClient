@@ -1,5 +1,7 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SickService } from 'src/app/Services/sick/sick.service';
 
 @Component({
   selector: 'app-update-sick',
@@ -8,18 +10,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class UpdateSickComponent implements OnInit {
   sickForm!:FormGroup
+  cities:any;
+  constructor(private fb:FormBuilder,private sickService:SickService) {}
 
-  constructor(private fb:FormBuilder) {
+ async ngOnInit():Promise <void> {
     this.sickForm=this.fb.group({
       'firstNameInput':['',[Validators.required]],
       'lastNameInput':['',[Validators.required]],
       'phoneNumberInput':['',[Validators.required]],
       'homeNumberInput':['',[Validators.required]],
       'locationInput':['',[Validators.required]],
-    })
-   }
+    });
 
-  ngOnInit(): void {
+    this.getCities()
   }
 
+  getCities(){
+    this.sickService.getCities().subscribe(response =>{
+      this.cities= response
+    })
+  }
 }

@@ -39,8 +39,9 @@
 
                 <select class="select_group "
                     name="selectCityInput">
-                    <option>
-                        choose a city
+                    <option *ngFor="let item of this.cities"
+                    [value]="item.name">
+                      {{item.name}}
                     </option>
                 </select>
 
@@ -55,7 +56,7 @@
 
                 <br />
 
-                <button class="register_btn " type="submit">
+                <button class="register_btn " type="submit" [disabled]="this.hospitsalForm.invalid">
                     Apply
                 </button>
           </form>

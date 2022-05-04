@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { city } from 'src/app/Models/city';
+import { HospitalService } from 'src/app/Services/hospital/hospital.service';
 
 @Component({
   selector: 'app-update-hospital',
@@ -8,7 +10,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class UpdateHospitalComponent implements OnInit {
   hospitsalForm!:FormGroup
-  constructor( private fb:FormBuilder) {
+  cities:any;
+  constructor( private fb:FormBuilder ,private hospitalService:HospitalService) {}
+
+ async ngOnInit():Promise <void> {
     this.hospitsalForm=this.fb.group({
       'nameInput':['',Validators.required],
       'webSiteInput':['',[Validators.required]],
@@ -16,10 +21,13 @@ export class UpdateHospitalComponent implements OnInit {
       'homeNumberInput':['',[Validators.required]],
       'locationInput':['',[Validators.required]],
       'aboutHospitalInput':['',[Validators.required]],
-    })
-   }
-
-  ngOnInit(): void {
+    });
+    this.getCities()
   }
-
+    getCities(){
+      this.hospitalService.getCities().subscribe(response =>{
+        this.cities = response;
+        console.log(this.cities)
+      })
+    }
 }

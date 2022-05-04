@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, ObservableNotification } from 'rxjs';
-import { MostDoctorsRatedData } from 'src/app/Models/Doctor/MostDoctorsRated';
-import { Pagination } from 'src/app/Models/Helper/Pagination';
+import { city } from 'src/app/Models/city';
+import { state } from 'src/app/Models/states';
 import { BaseServices } from '../Common/BaseService.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DoctorService extends BaseServices {
-  baseUrl = this.HostUrl+"/Doctor/";  
+  baseUrl = this.HostUrl+"/Doctor/";
   constructor(private http: HttpClient) {super(); }
 
   async getMostDoctorsRated(pageNumber: number, pageSize: number): Promise<Observable<any>> {
@@ -26,5 +26,11 @@ export class DoctorService extends BaseServices {
   }
   async getReserveDoctorData(pageNumber: number, pageSize: number): Promise<Observable<any>> {
     return await this.http.post(this.baseUrl + "GetReserveDoctorData",{ 'pageNumber': pageNumber, 'pageSize': pageSize },this.getoption());
+  }
+  getCities(): Observable<city[]> {
+    return this.http.get<city[]>(this.HostUrl + "/Account/GetCities");
+  }
+  getStates(): Observable<state[]> {
+    return this.http.get<state[]>(this.HostUrl + "/Account/GetPersonStates");
   }
 }
