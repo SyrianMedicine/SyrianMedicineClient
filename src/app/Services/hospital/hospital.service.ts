@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { city } from 'src/app/Models/city';
 import { department } from 'src/app/Models/Hospital/Department/department';
 import { BaseServices } from '../Common/BaseService.service';
 
@@ -8,7 +9,7 @@ import { BaseServices } from '../Common/BaseService.service';
   providedIn: 'root'
 })
 export class HospitalService extends BaseServices {
-  baseUrl = this.HostUrl+"/Hospital/";   
+  baseUrl = this.HostUrl+"/Hospital/";
 
   constructor(private http: HttpClient) {super(); }
 
@@ -27,4 +28,7 @@ export class HospitalService extends BaseServices {
     return await this.http.get<department[]>(this.baseUrl + "DepartmentsFor/" + username);
   }
 
+  getCities(): Observable<city[]> {
+    return this.http.get<city[]>(this.HostUrl + "/Account/GetCities");
+  }
 }
