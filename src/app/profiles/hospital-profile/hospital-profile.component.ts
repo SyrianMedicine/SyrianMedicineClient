@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HospitalreserveComponent } from 'src/app/Common/reservesDate/HospitalReserve/hospitalreserve/hospitalreserve.component';
 import { AddPostSectionComponent } from 'src/app/Component/add-post-section/add-post-section.component';
+import { PostsSectionComponent } from 'src/app/Component/posts-section/posts-section.component';
 import { DynamicPagination } from 'src/app/Models/Helper/DynamicPagination';
 import { HospitalInfo } from 'src/app/Models/Hospital/HospitalInfo';
+import { PostOutput } from 'src/app/Models/Post/PostOutput';
 import { AccountService } from 'src/app/Services/Account/account.service';
 import { FollowService } from 'src/app/Services/Follow/follow.service';
 import { HospitalService } from 'src/app/Services/hospital/hospital.service';
@@ -24,7 +26,7 @@ export class HospitalProfileComponent implements OnInit {
   hospitalId: number = 0;
   iFollowedThisUser: boolean = false;
   profilepostLoadfunc!:(page:DynamicPagination)=> Promise<Observable<any>>;
-  
+  @ViewChild("PostsSection") postSection!:PostsSectionComponent; 
 
   constructor(
     private hospitalService: HospitalService,
@@ -40,6 +42,13 @@ export class HospitalProfileComponent implements OnInit {
       let dialogRef= this.dialog.open(AddPostSectionComponent,{
         width:'280px'
       })
+      dialogRef.componentInstance.onPostAdded.subscribe((data:PostOutput) => {
+        if(this.postSection!=null){
+           console.log(data);
+           
+           this.postSection.addNewPost(data);
+         }
+       });
     }
   async ngOnInit(): Promise<void> {
     this.userName = this.route.snapshot.paramMap.get("userName");

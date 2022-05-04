@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ReserveDateWithDoctorOrNurseComponent } from 'src/app/Common/reservesDate/reserve-date-with-doctor-or-nurse/reserve-date-with-doctor-or-nurse.component';
 import { AddPostSectionComponent } from 'src/app/Component/add-post-section/add-post-section.component';
+import { PostsSectionComponent } from 'src/app/Component/posts-section/posts-section.component';
 import { DynamicPagination } from 'src/app/Models/Helper/DynamicPagination';
 import { NurseInfo } from 'src/app/Models/Nurse/NurseInfo';
+import { PostOutput } from 'src/app/Models/Post/PostOutput';
 import { AccountService } from 'src/app/Services/Account/account.service';
 import { FollowService } from 'src/app/Services/Follow/follow.service';
 import { NurseService } from 'src/app/Services/nurse/nurse.service';
@@ -25,7 +27,7 @@ export class NurseProfileComponent implements OnInit {
   endWorkTime: string | any;
   iFollowedThisUser: boolean = false;
   profilepostLoadfunc!:(page:DynamicPagination)=> Promise<Observable<any>>;
-
+  @ViewChild("PostsSection") postSection!:PostsSectionComponent; 
   constructor(
     private nurseService: NurseService,
     private dialog: MatDialog,
@@ -39,6 +41,13 @@ export class NurseProfileComponent implements OnInit {
       let dialogRef= this.dialog.open(AddPostSectionComponent,{
         width:'280px'
       })
+      dialogRef.componentInstance.onPostAdded.subscribe((data:PostOutput) => {
+        if(this.postSection!=null){
+           console.log(data);
+           
+           this.postSection.addNewPost(data);
+         }
+       });
     }
   async ngOnInit(): Promise<void> {
     this.userName = this.route.snapshot.paramMap.get("userName");

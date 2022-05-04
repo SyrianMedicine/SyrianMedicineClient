@@ -13,7 +13,9 @@ h2{
   text-align: center;
   margin-bottom: 30px;
 }
-
+:host ::ng-deep .custom-spinner circle{   
+  stroke: rgb(173, 173, 173);
+}
 form
 {
   display: flex;

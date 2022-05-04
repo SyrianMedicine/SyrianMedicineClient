@@ -13,7 +13,7 @@
             [ngClass]="{'hiddenSection': !this.chooseFile}"/>
             <div class="d-flex justify-content-center">
             <button mat-button *ngIf="!this.isCreating"  type="submit">Post</button>
-            <button mat-button *ngIf="this.isCreating" disabled="true" type="button"><mat-spinner  diameter="17"  class=" d-inline-block  custom-spinner "> </mat-spinner></button>
+            <button mat-button *ngIf="this.isCreating" disabled="true" type="button"><mat-spinner  diameter="19"  class="d-inline-block custom-spinner"> </mat-spinner></button>
             
             <button mat-button (click)="close()"> Close</button>
           </div>

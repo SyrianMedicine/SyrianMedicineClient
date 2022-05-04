@@ -20,7 +20,12 @@ export class PostsSectionComponent implements OnInit {
   posts: Array<PostOutput> = new Array<PostOutput>();
   constructor(private changeDetectorRef: ChangeDetectorRef, private snackBar: SyrianMedSnakBarService) {
   }
-
+  addNewPost(item:PostOutput){
+    if(item!=null){ 
+      this.posts.unshift(item);
+      this.changeDetectorRef.detectChanges();
+    }
+  }
   ngOnInit(): void {
     this.isLoding = true;
     this.loadpost();

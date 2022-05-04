@@ -40,14 +40,13 @@ export class AddPostSectionComponent implements OnInit {
     (await this.postService.CreatePost(this.postCreateData)).subscribe(data=>{
       this.onPostAdded.emit(data.data)
       this.snackBar.openSuccess(data.message);
-      this.isCreating=false; 
+      this.isCreating=false;  
+      this.close();
     },err=>{
-      console.log(err);
-      
+      console.log(err); 
       this.snackBar.openError(err.error.message);
       this.isCreating=false;
     });
-    this.close();
     
   }
   onChange(ob:MatSlideToggleChange){

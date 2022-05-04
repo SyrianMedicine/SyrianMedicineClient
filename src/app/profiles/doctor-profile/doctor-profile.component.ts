@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
@@ -11,6 +11,8 @@ import { AccountService } from 'src/app/Services/Account/account.service';
 import { DoctorService } from 'src/app/Services/doctor/doctor.service';
 import { FollowService } from 'src/app/Services/Follow/follow.service';
 import { postsLoadeFactory } from 'src/app/Services/post/postsLoadeFactory';
+import { PostsSectionComponent } from 'src/app/Component/posts-section/posts-section.component';
+import { PostOutput } from 'src/app/Models/Post/PostOutput';
 
 @Component({
   selector: 'app-doctor-profile',
@@ -20,6 +22,7 @@ import { postsLoadeFactory } from 'src/app/Services/post/postsLoadeFactory';
 export class DoctorProfileComponent implements OnInit {
 
   doctorInfoData: DoctorInfo = new DoctorInfo();
+  @ViewChild("PostsSection") postSection!:PostsSectionComponent; 
   userName: string | any;
   startWorkTime: string | any;
   endWorkTime: string | any;
@@ -34,7 +37,7 @@ export class DoctorProfileComponent implements OnInit {
     private accountService:AccountService) {
       this.profilepostLoadfunc=postsLoadeFactory.getProfileLoadMethod(accountService,this.route.snapshot.paramMap.get("userName"));
   }
-
+ 
   async ngOnInit(): Promise<void> {
     this.userName = this.route.snapshot.paramMap.get("userName");
     (await this.doctorService.getDoctorInfo(this.userName)).subscribe(data => {
@@ -48,7 +51,7 @@ export class DoctorProfileComponent implements OnInit {
     this.dialog.open(templete, {
       width: '300px'
     });
-  }
+  } 
 
   openReserveDialog() {
     let username = this.userName;
@@ -64,6 +67,13 @@ export class DoctorProfileComponent implements OnInit {
     let dialogRef= this.dialog.open(AddPostSectionComponent,{
       width:'280px'
     })
+    dialogRef.componentInstance.onPostAdded.subscribe((data:PostOutput) => {
+     if(this.postSection!=null){
+        console.log(data);
+        
+        this.postSection.addNewPost(data);
+      }
+    });
   }
   isMyOwnProfile() {
     return localStorage.getItem("username") == this.userName;
