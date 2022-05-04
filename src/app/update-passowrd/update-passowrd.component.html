@@ -6,13 +6,13 @@
                 <h1>  refresh passwords </h1>
           </div>
           <div class="card-body">
-          <form autocomplete="off" [formGroup]="passwordForm">
+          <form  [formGroup]="passwordForm" (ngSubmit)="onSubmit($event)" autocomplete="off">
             <div class="grid-container">
                 <div class="password-input">
                   <span> Old passowrd : </span>
                     <mat-form-field appearance="outline">
                       <mat-label>Enter Here please</mat-label>
-                      <input [(ngModel)]="oldPassword" matInput [type]="hide ? 'password' : 'text'" formControlName="oldPassword"/>
+                      <input  matInput [type]="hide ? 'password' : 'text'" formControlName="oldPassword" />
                       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
@@ -23,14 +23,15 @@
                    <span> New passowrd : </span>
                       <mat-form-field appearance="outline">
                         <mat-label>Enter Here please</mat-label>
-                        <input  [(ngModel)]="newPassword" matInput [type]="hide ? 'password' : 'text'" formControlName="newPassword">
+                        <input  matInput [type]="hide ? 'password' : 'text'" formControlName="newPassword" name="newPassword" />
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
                       </mat-form-field>
                   </div>
-                  <button *ngIf="!this.isUopdating" id="button" type="button" (click)="ChangePassword()"> OK  </button>
-                  <button  *ngIf="this.isUopdating" id="button" disabled="true"  type="button"> <mat-spinner  diameter="17"  class=" d-inline-block  custom-spinner "> </mat-spinner></button> 
+
+                  <button  id="button" type="submit"> OK  </button>
+
                 </div>
               </form>
             </div>
@@ -38,3 +39,8 @@
         </div>
       </div>
     </div>
+
+
+    <!-- <button *ngIf="!this.isUopdating" id="button" type="submit"  (click)="ChangePassword()"> OK  </button>
+
+    <button  *ngIf="this.isUopdating" id="button" disabled="true"  type="button"> <mat-spinner  diameter="17"  class=" d-inline-block  custom-spinner "> </mat-spinner></button> -->

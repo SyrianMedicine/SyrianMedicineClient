@@ -28,7 +28,4 @@ export class HospitalService extends BaseServices {
     return await this.http.get<department[]>(this.baseUrl + "DepartmentsFor/" + username);
   }
 
-  getCities(): Observable<city[]> {
-    return this.http.get<city[]>(this.HostUrl + "/Account/GetCities");
-  }
 }

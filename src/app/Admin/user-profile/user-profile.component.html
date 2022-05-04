@@ -6,30 +6,30 @@
            <h1>Admin Information Refresh</h1>
           </div>
           <div class="card-body">
-            <form>
+
+            <form [formGroup]="adminForm" (ngSubmit)="onSubmit($event)" autocomplete="off">
                 <div class="formGroup">
                   <span>Admin Name :</span>
                   <input type="text" placeholder="Your Name"
                     class="input_group "
-                    name="userName" id="userName"
+                    name="admin_Name" id="admin_Name"
                     required
-                    formControlName="userName" />
+                    formControlName="adminName" />
                   </div>
+
                   <div class="formGroup">
                   <span> Admin Email :</span>
                   <input type="text" placeholder="example@email.com"
                   class="input_group "
-                  name="email" id="email"
+                  name="admin_email" id="email"
                   required
-                  formControlName="email" />
+                  formControlName="adminEmail" />
                 </div>
                 <div class="d-flex justify-content-center">
-                  <button *ngIf="!isUpdating" type="button"> OK </button>
-                  <button *ngIf="isUpdating" type="button" > <mat-spinner  diameter="20"  class=" d-inline-block  button-spinner"> </mat-spinner></button> 
-                
-                </div>
-                
 
+                  <button  type="submit" > OK </button>
+
+                </div>
             </form>
           </div>
         </div>
@@ -37,5 +37,6 @@
     </div>
   </div>
 
-
-
+<!--
+  <button *ngIf="!isUpdating" type="button"> OK </button>
+  <button *ngIf="isUpdating" type="button" > <mat-spinner  diameter="20"  class=" d-inline-block  button-spinner"> </mat-spinner></button> -->

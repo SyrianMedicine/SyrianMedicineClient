@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { city } from 'src/app/Models/city';
+import { AccountService } from 'src/app/Services/Account/account.service';
 import { HospitalService } from 'src/app/Services/hospital/hospital.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { HospitalService } from 'src/app/Services/hospital/hospital.service';
 export class UpdateHospitalComponent implements OnInit {
   hospitsalForm!:FormGroup
   cities:any;
-  constructor( private fb:FormBuilder ,private hospitalService:HospitalService) {}
+  constructor( private fb:FormBuilder ,private accountService:AccountService) {}
 
  async ngOnInit():Promise <void> {
     this.hospitsalForm=this.fb.group({
@@ -25,7 +26,7 @@ export class UpdateHospitalComponent implements OnInit {
     this.getCities()
   }
     getCities(){
-      this.hospitalService.getCities().subscribe(response =>{
+      this.accountService.getCities().subscribe(response =>{
         this.cities = response;
         console.log(this.cities)
       })

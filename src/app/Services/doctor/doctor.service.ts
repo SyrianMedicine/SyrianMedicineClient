@@ -27,10 +27,5 @@ export class DoctorService extends BaseServices {
   async getReserveDoctorData(pageNumber: number, pageSize: number): Promise<Observable<any>> {
     return await this.http.post(this.baseUrl + "GetReserveDoctorData",{ 'pageNumber': pageNumber, 'pageSize': pageSize },this.getoption());
   }
-  getCities(): Observable<city[]> {
-    return this.http.get<city[]>(this.HostUrl + "/Account/GetCities");
-  }
-  getStates(): Observable<state[]> {
-    return this.http.get<state[]>(this.HostUrl + "/Account/GetPersonStates");
-  }
+  
 }

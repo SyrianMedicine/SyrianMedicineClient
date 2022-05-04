@@ -14,7 +14,4 @@ export class SickService extends BaseServices {
     return await this.http.get(this.baseUrl + userName);
   }
 
-  getCities(): Observable<city[]> {
-    return this.http.get<city[]>(this.HostUrl + "/Account/GetCities");
-  }
 }
