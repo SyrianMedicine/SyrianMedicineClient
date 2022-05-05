@@ -43,7 +43,7 @@
             <ng-container matColumnDef="download">
               <mat-header-cell class="download" *matHeaderCellDef="download"> Documents </mat-header-cell>
               <mat-cell class="download" *matCellDef="let hosptial">
-                <button> download </button>
+                <button [routerLink]="hosptial.documents"> download </button>
               </mat-cell>
             </ng-container>
 
@@ -51,7 +51,7 @@
             <ng-container matColumnDef="accept">
               <mat-header-cell class="accept" *matHeaderCellDef> Accept </mat-header-cell>
               <mat-cell class="accept" *matCellDef="let hosptial">
-                <button mat-icon-button id="iconAccept" (click)="openAccept()"><mat-icon>check</mat-icon></button>
+                <button mat-icon-button id="iconAccept" (click)="openAccept(hosptial.id)"><mat-icon>check</mat-icon></button>
               </mat-cell>
             </ng-container>
 
@@ -66,10 +66,13 @@
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
           </mat-table>
+          <div *ngIf="this.isloading"  class="d-flex justify-content-center" > 
+            <mat-spinner  diameter="60"  class="m-2 custom-spinner"> </mat-spinner>
+          </div>
         </div>
       </div>
-    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5,10,15]" aria-label="select page"></mat-paginator>
-  </div>
+      <mat-paginator [disabled]="this.isloading" [length]="this.totalItems" (page)="this.onpaginEdit($event)"   [pageSize]="this.pageSize" [pageIndex]="this.PageNumber-1" [pageSizeOptions]="[5,10,15,20]" aria-label="select page"></mat-paginator>
+    </div>
  </div>
 </div>
 </div>

@@ -41,6 +41,16 @@ export class AccountService extends BaseServices {
   getStates(): Observable<state[]> {
     return this.http.get<state[]>(this.HostUrl + "/Account/GetPersonStates");
   }
+  async GetValidateDoctorsAccount(pageNumber: number, pageSize: number): Promise<Observable<any>> {
+    return await this.http.post(this.baseUrl + "GetValidateDoctorsAccount", { "pageNumber": pageNumber, "pageSize": pageSize },this.getoption());
+  }
+  async GetValidateHospitalsAccount(pageNumber: number, pageSize: number): Promise<Observable<any>> {
+    return await this.http.post(this.baseUrl + "GetValidateHospitalsAccount", { "pageNumber": pageNumber, "pageSize": pageSize },this.getoption());
+  }
+  async GetValidateNursesAccount(pageNumber: number, pageSize: number): Promise<Observable<any>> {
+    return await this.http.post(this.baseUrl + "GetValidateNursesAccount", { "pageNumber": pageNumber, "pageSize": pageSize },this.getoption());
+  }
 
+  
 
 }
