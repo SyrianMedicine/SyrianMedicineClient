@@ -5,7 +5,7 @@ import {  HubConnection, HubConnectionBuilder ,ILogger,MessageHeaders, NullLogge
 import { PostOutput } from 'src/app/Models/Post/PostOutput';
 import { usercard } from 'src/app/Models/usercard/usercard'; 
 import { ExternalNotificationComponent } from '../external-notification/external-notification.component';
-import {SignalRHttpClient}from 'src/app/Services/SignalRHttpClient'
+ 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
