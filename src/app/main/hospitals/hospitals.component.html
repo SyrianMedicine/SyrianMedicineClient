@@ -38,11 +38,14 @@
                   <p>{{hosptial.aboutHospital}}</p>
                 </div>
               </div>
+              <div class="app-rating">
+                <app-rating></app-rating>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    <div *ngIf="this.isLoading"  class="d-flex justify-content-center" > 
+    <div *ngIf="this.isLoading"  class="d-flex justify-content-center" >
       <mat-spinner  diameter="90"  class="m-2 custom-spinner"> </mat-spinner>
     </div>
 <!-- end hospitals -->

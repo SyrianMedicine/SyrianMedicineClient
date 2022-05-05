@@ -24,7 +24,7 @@
     <hr />
   </div>
   <!-- start post -->
-  <div *ngIf="!this.isLoading"> 
+  <div *ngIf="!this.isLoading">
     <div class="row hidden"
       *ngFor="let nurse of nursesInfo | paginate :{currentPage:this.pageNumber , itemsPerPage:this.pageSize,totalItems:this.totalItems}">
       <div class="col">
@@ -39,6 +39,9 @@
               <span>{{nurse.specialization}}</span>
               <p>{{nurse.aboutMe}}</p>
             </div>
+          </div>
+          <div class="app-rating">
+            <app-rating></app-rating>
           </div>
         </div>
       </div>
@@ -59,6 +62,7 @@
 </div>
 <!-- end pageination -->
 
-<!-- footer start  -->
+<!-- footer start  
+-->
 <app-footer></app-footer>
 <!-- footer end -->
