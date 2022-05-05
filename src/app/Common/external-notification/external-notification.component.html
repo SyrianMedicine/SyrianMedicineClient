@@ -1,7 +1,7 @@
-<div class="body">
-  <img src="../../../assets/images/person1.jpg"
+<div [routerLink]="this.data.link" class="body">
+  <img *ngIf="this.data.user.PictureUrl" [src]="this.data.user.PictureUrl"
   id="userImg"  alt="usernameImage"/>
   <div class="content">
-    <p>Harum alias quia dolore accusamus assumenda ut.</p>
-  </div>
+    <p>{{this.data.messege}}</p> 
+   </div>
 </div>

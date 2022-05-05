@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-
+import {  HubConnection, HubConnectionBuilder ,ILogger,MessageHeaders, NullLogger} from '@microsoft/signalr';
+import { PostOutput } from 'src/app/Models/Post/PostOutput';
+import { usercard } from 'src/app/Models/usercard/usercard'; 
+import { ExternalNotificationComponent } from '../external-notification/external-notification.component';
+import {SignalRHttpClient}from 'src/app/Services/SignalRHttpClient'
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -11,14 +16,16 @@ export class NavbarComponent implements OnInit {
   userLogin: boolean = false;
   userName: string | any;
   userType: string | any;
+  private static Linkprefix:Array<string>= ["Sick", "Doctor", "Nurse", "Secretary", "Hospital", "Sick"]
+  private connection!: HubConnection;
 
-
-  constructor(private router: Router) { }
+  constructor(private router: Router,private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.userLogin = localStorage.getItem("username") != null ? true : false;
     this.userName = localStorage.getItem("username");
     this.userType = localStorage.getItem("userType");
+    this.constractconnection();
   }
 
   logout() {
@@ -27,6 +34,43 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem("token");
     localStorage.removeItem("userType");
     window.location.reload();
+  }
+  constractconnection(){
+    if (localStorage.getItem("token") != null) {
+      
+ 
+     this.connection = new HubConnectionBuilder().withUrl("https://syrian-medicine.herokuapp.com/Publichub",
+        { 
+          accessTokenFactory: () => localStorage.getItem("token") as string
+        }
+      ).withAutomaticReconnect().build();
+      this.connection.start();
+      let dialog: MatDialog = this.dialog;
+      this.connection.on("NotfiyUserFollowYou", function (us: usercard, mes: string) {
+ 
+        dialog.open(ExternalNotificationComponent, { 
+          panelClass:["notifcationbody","rounded-pill","card","p-0"],  
+          hasBackdrop:false,  
+          data: { 
+            messege: mes,
+            user: us,
+            link: "/" + NavbarComponent.Linkprefix[us.userType - 1]+"/" + us.userName
+          }
+        })
+      });
+      this.connection.on("NotfiyPostCreated", function (post: PostOutput, mes: string) {
+ 
+        dialog.open(ExternalNotificationComponent, {
+          panelClass:"notifcationbody", 
+          hasBackdrop:false,
+          data: {
+            messege: mes,
+            user: post.user,
+            link: "/" + NavbarComponent.Linkprefix[post.user.userType - 1] +"/"+ post.user.userName
+          }
+        })
+      });
+    }
   }
 
 }

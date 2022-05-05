@@ -45,6 +45,9 @@ export class DoctorProfileComponent implements OnInit {
       this.startWorkTime = this.doctorInfoData.startTimeWork.toString().substring(11);
       this.endWorkTime = this.doctorInfoData.endTimeWork.toString().substring(11);
     });
+    await (await this.followService.isFollowedByMe(this.userName)).subscribe(data => {
+      this.iFollowedThisUser = data.data;
+    })
   }
 
   openTemplete(templete: any) {
