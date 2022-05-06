@@ -20,9 +20,7 @@ import { NurseReverseComponent } from "./nurse-reverse/nurse-reverse.component";
 import { UpdatePassowrdComponent } from "./update-passowrd/update-passowrd.component";
 import { UpdateDoctorComponent } from "./UpdateAccounts/update-doctor/update-doctor.component";
 import { Component } from "@angular/core";
-import { ValidateDoctorsComponent } from "./Admin/validate-doctors/validate-doctors.component";
-import { ValidateNursesComponent } from "./Admin/validate-nurses/validate-nurses.component";
-import { ValidateHospitalsComponent } from "./Admin/validate-hospitals/validate-hospitals.component";
+import { ValidateAccountsComponent } from "./Admin/validate-accounts/validate-accounts.component"; 
 import { UpdateNurseComponent } from "./UpdateAccounts/update-nurse/update-nurse.component";
 import { UpdateSickComponent } from "./UpdateAccounts/update-sick/update-sick.component";
 import { UpdateHospitalComponent } from "./UpdateAccounts/update-hospital/update-hospital.component";
@@ -42,9 +40,9 @@ export const routes: Routes = [
     { path:"Settings" ,component:SideNavComponent,
     children:[
       {path:'updatePassword',component:UpdatePassowrdComponent},
-      {path:'validateDoctors',component:ValidateDoctorsComponent},
-      {path:'validateNurses',component:ValidateNursesComponent},
-      {path:'validateHospitals',component:ValidateHospitalsComponent},
+      {path:'validateDoctors',component:ValidateAccountsComponent,data:{'type':"Dcotors"}},
+      {path:'validateNurses',component:ValidateAccountsComponent,data:{'type':"Nurses"}},
+      {path:'validateHospitals',component:ValidateAccountsComponent,data:{'type':"Hospitals"}},
       {path:'updateDoctors',component:UpdateDoctorComponent},
       {path:'updateNurse',component:UpdateNurseComponent},
       {path:'updateHospital',component:UpdateHospitalComponent},
