@@ -1,8 +1,8 @@
 <div class="body">
-  <img src="../../../assets/images/person1.jpg"
+  <img [src]="this.user.PictureUrl"
   id="userImg"  alt="usernameImage"/>
   <div class="content">
-    <p>Harum alias quia dolore accusamus assumenda ut.</p>
-    <span>17 Seconds ago</span>
+    <p>{{this.messege}}</p>
+    <span>{{this.Date| date :'medium'}}</span>
   </div>
 </div>

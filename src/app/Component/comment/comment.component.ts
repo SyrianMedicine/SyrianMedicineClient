@@ -95,7 +95,7 @@ export class CommentComponent implements OnInit {
   async CreateSubComment() {
     if (!this.isAuthrized()) {
       this.snackBar.openError("please login");
-      this.router.navigate(['/Login']);
+      this.router.navigate(['/Login'],{queryParams:{returnUrl:this.router.url}});
     }
     this.isNewCommentCreateing = true;
     this.Subvisible = true;
@@ -113,7 +113,7 @@ export class CommentComponent implements OnInit {
   async deleteComment() {
     if (!this.isAuthrized()) {
       this.snackBar.openError("please login");
-      this.router.navigate(['/Login']);
+      this.router.navigate(['/Login'],{queryParams:{returnUrl:this.router.url}});
     }
     (await this.commentService.Delete(this.Commnet.id)).subscribe(data => {
       this.snackBar.openSuccess(data.message);
@@ -132,7 +132,7 @@ export class CommentComponent implements OnInit {
     }
     if (!this.isAuthrized()) {
       this.snackBar.openError("please login");
-      this.router.navigate(['/Login']);
+      this.router.navigate(['/Login'],{queryParams:{returnUrl:this.router.url}});
     }
     this.isediting=true;
     (await this.commentService.Update(this.Commnet.id, this.commentText)).subscribe(data => {
@@ -172,7 +172,7 @@ export class CommentComponent implements OnInit {
       }
     } else {
       this.snackBar.openError("please login");
-      this.router.navigate(['Login']);
+      this.router.navigate(['Login'],{queryParams:{returnUrl:this.router.url}});
     }
   }
   async Like() {

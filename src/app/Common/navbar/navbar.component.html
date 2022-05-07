@@ -30,16 +30,13 @@
 
                 <li class="nav-item" *ngIf="this.userLogin">
                     <button mat-button [matMenuTriggerFor]="menu"><mat-icon>notifications</mat-icon>
-                      <span class="iconNumber rounded-circle">4 </span>
+                      <span *ngIf="this.notifcation.length" class="iconNumber rounded-circle">{{this.notifcation.length}} </span>
                     </button>
                     <mat-menu #menu="matMenu" class="menu-panel" xPosition="before" yPosition="below">
                         <div class="header">
                             <h4 class="mt-2 mx-2">Notifications</h4>
                         </div>
-                        <app-content-notification></app-content-notification>
-                        <app-content-notification></app-content-notification>
-                        <app-content-notification></app-content-notification>
-                        <app-content-notification></app-content-notification>
+                        <app-content-notification *ngFor="let not of this.notifcation" [user]="not.usercard" [Date]="not.date" [messege]="not.messege"></app-content-notification> 
                     </mat-menu>
                 </li>
 
@@ -53,7 +50,7 @@
                         </button>
                         <mat-menu #menu="matMenu">
                             <button mat-menu-item
-                                routerLink="/{{userType}}/{{userName}}">
+                                routerLink="/{{userType=='Admin'?'Sick':userType}}/{{userName}}">
                                 <mat-icon>account_box</mat-icon>
                                 <span>Profile</span>
                             </button>

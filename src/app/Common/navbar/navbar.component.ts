@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import {  HubConnection, HubConnectionBuilder ,ILogger,MessageHeaders, NullLogger} from '@microsoft/signalr';
@@ -16,10 +16,11 @@ export class NavbarComponent implements OnInit {
   userLogin: boolean = false;
   userName: string | any;
   userType: string | any;
+  public notifcation:Array<{usercard:usercard,messege:string,date:Date}>=new Array<{usercard:usercard,messege:string,date:Date}>();
   private static Linkprefix:Array<string>= ["Sick", "Doctor", "Nurse", "Secretary", "Hospital", "Sick"]
   private connection!: HubConnection;
 
-  constructor(private router: Router,private dialog: MatDialog) { }
+  constructor(public changeDetectorRef: ChangeDetectorRef,private router: Router,private dialog: MatDialog,) { }
 
   ngOnInit(): void {
     this.userLogin = localStorage.getItem("username") != null ? true : false;
@@ -46,8 +47,11 @@ export class NavbarComponent implements OnInit {
       ).withAutomaticReconnect().build();
       this.connection.start();
       let dialog: MatDialog = this.dialog;
+      let not=this.notifcation; 
+      let x=this;
       this.connection.on("NotfiyUserFollowYou", function (us: usercard, mes: string) {
- 
+       x.notifcation.unshift({messege:mes,usercard:us,date:new Date()});
+       x.changeDetectorRef.detectChanges();
         dialog.open(ExternalNotificationComponent, { 
           panelClass:["notifcationbody","rounded-pill","card","p-0"],  
           hasBackdrop:false,  

@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Router, RouterStateSnapshot } from '@angular/router';
 import { CommentOutput } from 'src/app/Models/Comment/CommentOutput';
 import { PaginationOutput } from 'src/app/Models/Helper/PaginationOutput';
 import { PostOutput } from 'src/app/Models/Post/PostOutput';
@@ -94,7 +94,7 @@ export class PostComponent implements OnInit {
   async CreateComment() {
     if (!this.isAuthrized()) {
       this.snackBar.openError("please login");
-      this.router.navigate(['/Login']);
+      this.router.navigate(['/Login'],{queryParams:{returnUrl:this.router.url}});
     }
     this.isNewCommentCreateing = true;
     (await this.Commentservice.CreatePostComment(this.post.id, this.newComment)).subscribe(data => {
@@ -131,7 +131,7 @@ export class PostComponent implements OnInit {
       }
     } else {
       this.snackBar.openError("please login");
-      this.router.navigate(['Login']);
+      this.router.navigate(['Login'],{queryParams:{returnUrl:this.router.url}});
     }
   }
  

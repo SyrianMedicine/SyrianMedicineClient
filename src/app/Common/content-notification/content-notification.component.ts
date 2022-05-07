@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { usercard } from 'src/app/Models/usercard/usercard';
 
 @Component({
   selector: 'app-content-notification',
@@ -8,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class ContentNotificationComponent implements OnInit {
 
   constructor() { }
-
+  @Input() messege!:string; 
+  @Input() user!:usercard;
+  @Input()Date!:Date;
   ngOnInit(): void {
   }
 
