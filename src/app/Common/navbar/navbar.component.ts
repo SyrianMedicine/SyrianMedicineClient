@@ -50,8 +50,6 @@ export class NavbarComponent implements OnInit,OnDestroy {
   }
   constractconnection(){
     if (localStorage.getItem("token") != null) {
-      
- 
      this.connection = new HubConnectionBuilder().withUrl("https://syrian-medicine.herokuapp.com/Publichub",
         { 
           accessTokenFactory: () => localStorage.getItem("token") as string
@@ -75,22 +73,26 @@ export class NavbarComponent implements OnInit,OnDestroy {
         })
       });
       this.connection.on("NotfiyPostCreated", function (post: PostOutput, mes: string) {
+        x.notifcation.unshift({messege:mes+": \n"+post.postText.substring(0,60)+"...",usercard:post.user,date:new Date()});
+        x.changeDetectorRef.detectChanges();
         dialog.openFromComponent(ExternalNotificationComponent, {
           panelClass:["rounded-6","card","notifcationbody"],
           duration:6000 ,  
           data: {
-            messege: mes,
+            messege: mes+": \n"+post.postText.substring(0,60)+"...",
             user: post.user,
             link: "/" + NavbarComponent.Linkprefix[post.user.userType - 1] +"/"+ post.user.userName
           }
         })
       });
       this.connection.on("NotfiyCommentCreated", function (Comment: CommentOutput, mes: string) {
+        x.notifcation.unshift({messege:mes+": \n"+Comment.text.substring(0,60)+"...",usercard:Comment.user,date:new Date()});
+        x.changeDetectorRef.detectChanges();
         dialog.openFromComponent(ExternalNotificationComponent, {
           panelClass:["rounded-6","card","notifcationbody"],
           duration:6000 ,  
           data: {
-            messege: mes,
+            messege: mes+": \n"+Comment.text.substring(0,60)+"...",
             user: Comment.user,
             link: "/" + NavbarComponent.Linkprefix[Comment.user.userType - 1] +"/"+ Comment.user.userName
           }
