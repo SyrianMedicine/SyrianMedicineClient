@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit,OnDestroy {
   userLogin: boolean = false;
   userName: string | any;
   userType: string | any;
-  public notifcation:Array<{usercard:usercard,messege:string,date:Date}>=new Array<{usercard:usercard,messege:string,date:Date}>();
+  public notifcation:Array<{usercard:usercard,messege:string,link:string,date:Date}>=new Array<{usercard:usercard,messege:string,link:string,date:Date}>();
   private static Linkprefix:Array<string>= ["Sick", "Doctor", "Nurse", "Secretary", "Hospital", "Sick"]
   private connection!: HubConnection;
 
@@ -60,7 +60,8 @@ export class NavbarComponent implements OnInit,OnDestroy {
       let not=this.notifcation; 
       let x=this;
       this.connection.on("NotfiyUserFollowYou", function (us: usercard, mes: string) {
-       x.notifcation.unshift({messege:mes,usercard:us,date:new Date()});
+      let li= "/" + NavbarComponent.Linkprefix[us.userType - 1]+"/" + us.userName;
+        x.notifcation.unshift({messege:mes,usercard:us,link:li,date:new Date()});
        x.changeDetectorRef.detectChanges();
         dialog.openFromComponent(ExternalNotificationComponent, { 
           panelClass:["rounded-6","card","notifcationbody"],
@@ -68,33 +69,39 @@ export class NavbarComponent implements OnInit,OnDestroy {
           data: { 
             messege: mes,
             user: us,
-            link: "/" + NavbarComponent.Linkprefix[us.userType - 1]+"/" + us.userName
+            link:li
           }
         })
       });
       this.connection.on("NotfiyPostCreated", function (post: PostOutput, mes: string) {
-        x.notifcation.unshift({messege:mes+": \n"+post.postText.substring(0,60)+"...",usercard:post.user,date:new Date()});
+        let li="/Posts?id="+ post.id+"#specificpost";
+        let use=post.user;
+        let ms=mes+": \n"+post.postText.substring(0,60)+"...";
+        x.notifcation.unshift({messege:ms,usercard:use,link:li,date:new Date()});
         x.changeDetectorRef.detectChanges();
         dialog.openFromComponent(ExternalNotificationComponent, {
           panelClass:["rounded-6","card","notifcationbody"],
           duration:6000 ,  
           data: {
-            messege: mes+": \n"+post.postText.substring(0,60)+"...",
-            user: post.user,
-            link: "/" + NavbarComponent.Linkprefix[post.user.userType - 1] +"/"+ post.user.userName
+            messege: ms,
+            user:use ,
+            link: li
           }
         })
       });
-      this.connection.on("NotfiyCommentCreated", function (Comment: CommentOutput, mes: string) {
-        x.notifcation.unshift({messege:mes+": \n"+Comment.text.substring(0,60)+"...",usercard:Comment.user,date:new Date()});
+      this.connection.on("NotfiyCommentCreated", function (Comment: CommentOutput, mesege: string) {
+        let li="/" + NavbarComponent.Linkprefix[Comment.user.userType - 1] +"/"+ Comment.user.userName;
+        let use=Comment.user;
+        let ms=mesege+": \n"+Comment.text.substring(0,60)+"...";
+        x.notifcation.unshift({messege:ms,usercard:use,link:li,date:new Date()});
         x.changeDetectorRef.detectChanges();
         dialog.openFromComponent(ExternalNotificationComponent, {
           panelClass:["rounded-6","card","notifcationbody"],
           duration:6000 ,  
           data: {
-            messege: mes+": \n"+Comment.text.substring(0,60)+"...",
-            user: Comment.user,
-            link: "/" + NavbarComponent.Linkprefix[Comment.user.userType - 1] +"/"+ Comment.user.userName
+            messege: ms,
+            user: use,
+            link: li
           }
         })
       });

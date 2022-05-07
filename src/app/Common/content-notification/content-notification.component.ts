@@ -12,6 +12,7 @@ export class ContentNotificationComponent implements OnInit {
   @Input() messege!:string; 
   @Input() user!:usercard;
   @Input()Date!:Date;
+  @Input() link!:string;
   ngOnInit(): void {
   }
 

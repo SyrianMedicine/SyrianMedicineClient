@@ -19,7 +19,9 @@
   <div class="post-deploy text-center">
     <h2>POSTS</h2>
     <hr/>
-    </div> 
+    </div>
+    <a  name="specificpost"></a>
+    <app-post *ngIf="post" [post]="post" ></app-post>
     <app-posts-section [loadefunc]="postLoadfunc"></app-posts-section>
 </section>
 <!-- end posts -->
