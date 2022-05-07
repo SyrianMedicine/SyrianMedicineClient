@@ -32,13 +32,10 @@
     to{left:0px;}
   }
  
- ::ng-deep .notifcationbody .mat-dialog-container{
-    position: fixed;  
-    bottom: 5px;   
-    right: 0;
-    width: 416px; 
-    padding: 0px;
-    height: auto;  
+ ::ng-deep .notifcationbody{ 
+    position: absolute; 
+    bottom: 5px;
+    right: 5px;
     color: #000;
     background-color:white;
     animation:0.4s onopenNotifcation;
@@ -51,7 +48,7 @@
   }
   
   @keyframes onopenNotifcation{
-    from{bottom: -200px;}
-    to{bottom: 5px;}
+    from{right: -400px;}
+    to{right:  5px;}
   }
  

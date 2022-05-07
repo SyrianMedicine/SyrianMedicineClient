@@ -1,7 +1,8 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core'; 
+import { MatSnackBar,MatSnackBarHorizontalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import {  HubConnection, HubConnectionBuilder ,ILogger,MessageHeaders, NullLogger} from '@microsoft/signalr';
+import { CommentOutput } from 'src/app/Models/Comment/CommentOutput';
 import { PostOutput } from 'src/app/Models/Post/PostOutput';
 import { usercard } from 'src/app/Models/usercard/usercard'; 
 import { ExternalNotificationComponent } from '../external-notification/external-notification.component';
@@ -11,7 +12,7 @@ import { ExternalNotificationComponent } from '../external-notification/external
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit,OnDestroy {
   isCollapsed: boolean = true;
   userLogin: boolean = false;
   userName: string | any;
@@ -20,7 +21,13 @@ export class NavbarComponent implements OnInit {
   private static Linkprefix:Array<string>= ["Sick", "Doctor", "Nurse", "Secretary", "Hospital", "Sick"]
   private connection!: HubConnection;
 
-  constructor(public changeDetectorRef: ChangeDetectorRef,private router: Router,private dialog: MatDialog,) { }
+  constructor(public changeDetectorRef: ChangeDetectorRef,private router: Router,private dialog: MatSnackBar) { }
+  ngOnDestroy(): void {
+    if(this.connection!=null)
+    {
+      this.connection.stop(); 
+    }
+  }
 
   ngOnInit(): void {
     this.userLogin = localStorage.getItem("username") != null ? true : false;
@@ -34,7 +41,12 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem("id");
     localStorage.removeItem("token");
     localStorage.removeItem("userType");
+    if(this.connection!=null)
+    {
+      this.connection.stop(); 
+    }
     window.location.reload();
+
   }
   constractconnection(){
     if (localStorage.getItem("token") != null) {
@@ -46,15 +58,15 @@ export class NavbarComponent implements OnInit {
         }
       ).withAutomaticReconnect().build();
       this.connection.start();
-      let dialog: MatDialog = this.dialog;
+      let dialog = this.dialog;
       let not=this.notifcation; 
       let x=this;
       this.connection.on("NotfiyUserFollowYou", function (us: usercard, mes: string) {
        x.notifcation.unshift({messege:mes,usercard:us,date:new Date()});
        x.changeDetectorRef.detectChanges();
-        dialog.open(ExternalNotificationComponent, { 
-          panelClass:["notifcationbody","rounded-pill","card","p-0"],  
-          hasBackdrop:false,  
+        dialog.openFromComponent(ExternalNotificationComponent, { 
+          panelClass:["rounded-6","card","notifcationbody"],
+          duration:6000 , 
           data: { 
             messege: mes,
             user: us,
@@ -63,14 +75,24 @@ export class NavbarComponent implements OnInit {
         })
       });
       this.connection.on("NotfiyPostCreated", function (post: PostOutput, mes: string) {
- 
-        dialog.open(ExternalNotificationComponent, {
-          panelClass:"notifcationbody", 
-          hasBackdrop:false,
+        dialog.openFromComponent(ExternalNotificationComponent, {
+          panelClass:["rounded-6","card","notifcationbody"],
+          duration:6000 ,  
           data: {
             messege: mes,
             user: post.user,
             link: "/" + NavbarComponent.Linkprefix[post.user.userType - 1] +"/"+ post.user.userName
+          }
+        })
+      });
+      this.connection.on("NotfiyCommentCreated", function (Comment: CommentOutput, mes: string) {
+        dialog.openFromComponent(ExternalNotificationComponent, {
+          panelClass:["rounded-6","card","notifcationbody"],
+          duration:6000 ,  
+          data: {
+            messege: mes,
+            user: Comment.user,
+            link: "/" + NavbarComponent.Linkprefix[Comment.user.userType - 1] +"/"+ Comment.user.userName
           }
         })
       });
