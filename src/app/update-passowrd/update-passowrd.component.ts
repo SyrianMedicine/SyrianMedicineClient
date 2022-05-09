@@ -6,6 +6,7 @@ import { async } from 'rxjs';
 import { OthersComponent } from '../Admin/others/others.component';
 import { RegisterDialogComponent } from '../register/dialogs/registerDialog/register-dialog/register-dialog.component';
 import { AccountService } from '../Services/Account/account.service';
+import { SyrianMedSnakBarService } from '../Services/SyrianMedSnakBar/syrian-med-snak-bar.service';
 
 @Component({
   selector: 'app-update-passowrd',
@@ -15,10 +16,8 @@ import { AccountService } from '../Services/Account/account.service';
 export class UpdatePassowrdComponent implements OnInit {
   hide = true;
   passwordForm!: FormGroup
-  isUopdating: Boolean = false
-  oldPassword!: string
-  newPassword!: string
-  constructor(private fb: FormBuilder, private dialog:MatDialog ,private accounServices: AccountService,private snackBar: MatSnackBar) {}
+  isUopdating: Boolean = false 
+  constructor(private fb: FormBuilder, private dialog:MatDialog ,private accounServices: AccountService,private snackBar: SyrianMedSnakBarService) {}
 
   ngOnInit(): void {
     this.passwordForm = this.fb.group({
@@ -28,34 +27,17 @@ export class UpdatePassowrdComponent implements OnInit {
 
   }
 
-  // async ChangePassword() {
-  //   this.isUopdating = true;
-
-  //   (await this.accounServices.ChangePassword(this.oldPassword, this.newPassword)).subscribe(data => {
-  //     this.isUopdating = false;
-  //     this.snackBarSuccess(data);
-  //   }, err => {
-  //     // console.log(err);
-  //     this.snackBarError(err.error.text);
-  //     this.isUopdating = false;
-  //   });
-  // }
-  // snackBarSuccess(message: string) {
-  //   this.snackBar.open(message, 'close', {
-  //     duration: 2000,
-  //     panelClass: ['green-snackbar'],
-  //     horizontalPosition: 'start',
-  //     verticalPosition: 'bottom',
-  //   });
-  // }
-  // snackBarError(message: string) {
-  //   this.snackBar.open(message, 'close', {
-  //     duration: 2000,
-  //     panelClass: ['red-snackbar'],
-  //     horizontalPosition: 'start',
-  //     verticalPosition: 'bottom',
-  //   });
-  // }
+   async ChangePassword(newpass:string,old:string) {
+    this.isUopdating = true; 
+    (await this.accounServices.ChangePassword(old, newpass)).subscribe(data => {
+      this.snackBar.openSuccess(data);
+      this.isUopdating = false;
+    }, err => { 
+      this.snackBar.openError(err.error.text);
+      this.isUopdating = false;
+    });
+   }
+ 
 
   async onSubmit(event:any){
 
@@ -69,6 +51,11 @@ export class UpdatePassowrdComponent implements OnInit {
           || passwordNotHaveValidLength || passwordNotHaveAtLeastOneNumber){
       await this.openDialog(passwordNotHaveUpperCaseCharachter, passwordNotHaveLoweCaseCharachter,
         passwordNotHaveValidLength, passwordNotHaveAtLeastOneNumber, passwordNotHaveAtLeastOneSpeical)
+      }else
+      {
+        console.log("dsa");
+        
+        this.ChangePassword(event.target.newPassword.value as string,event.target.oldPassword.value as string);
       }
   }
 

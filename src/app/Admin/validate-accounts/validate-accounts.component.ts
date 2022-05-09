@@ -1,32 +1,40 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { DialogMessageComponent } from 'src/app/doctor-reverse/dialog-message/dialog-message.component';
-import { RejectDialogComponent } from 'src/app/doctor-reverse/reject-dialog/reject-dialog.component';
+import { ActivatedRoute, RouterLinkActive } from '@angular/router';
+import { Observable } from 'rxjs'; 
 import { AccountService } from 'src/app/Services/Account/account.service';
 import { DashbordService } from 'src/app/Services/Dashbord/dashbord.service';
 import { SyrianMedSnakBarService } from 'src/app/Services/SyrianMedSnakBar/syrian-med-snak-bar.service';
 
 @Component({
-  selector: 'app-validate-doctors',
-  templateUrl: './validate-doctors.component.html',
-  styleUrls: ['./validate-doctors.component.scss']
+  selector: 'app-validate-accounts',
+  templateUrl: './validate-accounts.component.html',
+  styleUrls: ['./validate-accounts.component.scss']
 })
-export class ValidateDoctorsComponent implements OnInit {
-
+export class ValidateAccountsComponent implements OnInit {
+  PageNumber: number = 1;
+  pageSize: number = 5;
+  totalItems: number = 0;
+  isloading: boolean = false;
+  type!:string;
+  loadfunction!:(pageNumber: number, pageSize: number)=>Promise<Observable<any>>;
+  validateFunc!:(id:number)=>Promise<Observable<any>>;
   ngOnInit(): void {
     this.Load();
   }
   openReject() {
     
   }
-  constructor(private snakbar:SyrianMedSnakBarService,public dialog: MatDialog, private accountService: AccountService, private dashbordService: DashbordService,private changeDetectorRef: ChangeDetectorRef) { }
-  PageNumber: number = 1;
-  pageSize: number = 5;
-  totalItems: number = 0;
-  isloading: boolean = false;
+  constructor(Rout:ActivatedRoute,private snakbar:SyrianMedSnakBarService,public dialog: MatDialog, private accountService: AccountService, private dashbordService: DashbordService,private changeDetectorRef: ChangeDetectorRef) { 
+    Rout.data.subscribe(v=>{
+      this.type=v['type'];
+      this.loadfunction=this.accountService.getLoadValidateAccountMethod(this.type);
+      this.validateFunc=this.dashbordService.getValidateMethod(this.type);
+    });
+  }
   async openAccept(id: number) {
-    (await this.dashbordService.ValidateDoctor(id)).subscribe(data => {
+    (await this.validateFunc(id) ).subscribe(data => {
       this.snakbar.openSuccess(data.message);
       for (let index = 0; index < this.dataSource.length; index++) {
         if(this.dataSource[index].id===id){
@@ -47,7 +55,7 @@ export class ValidateDoctorsComponent implements OnInit {
   }
   async Load() {
     this.isloading = true;
-    (await this.accountService.GetValidateDoctorsAccount(this.PageNumber, this.pageSize)).subscribe(data => {
+    (await this.loadfunction(this.PageNumber, this.pageSize) ).subscribe(data => {
       this.dataSource = data.items; 
       this.PageNumber = data.currentPage;
       this.totalItems = data.totalItems;

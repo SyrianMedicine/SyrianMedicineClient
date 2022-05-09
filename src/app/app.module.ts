@@ -86,9 +86,7 @@ import { DialogMessageComponent } from './doctor-reverse/dialog-message/dialog-m
 import { RejectDialogComponent } from './doctor-reverse/reject-dialog/reject-dialog.component';
 import { NurseReverseComponent } from './nurse-reverse/nurse-reverse.component';
 import { HospitalReverseComponent } from './hospital-reverse/hospital-reverse.component';
-import { ValidateDoctorsComponent } from './Admin/validate-doctors/validate-doctors.component';
-import { ValidateNursesComponent } from './Admin/validate-nurses/validate-nurses.component';
-import { ValidateHospitalsComponent } from './Admin/validate-hospitals/validate-hospitals.component';
+import { ValidateAccountsComponent } from './Admin/validate-accounts/validate-accounts.component'; 
 import { ContentNotificationComponent } from './Common/content-notification/content-notification.component';
 import { ExternalNotificationComponent } from './Common/external-notification/external-notification.component';
 import { AddPostSectionComponent } from './Component/add-post-section/add-post-section.component';
@@ -135,9 +133,7 @@ import { AddPostSectionComponent } from './Component/add-post-section/add-post-s
      RejectDialogComponent,
      NurseReverseComponent,
      HospitalReverseComponent,
-     ValidateDoctorsComponent,
-     ValidateNursesComponent,
-     ValidateHospitalsComponent,
+     ValidateAccountsComponent, 
      ContentNotificationComponent,
      ExternalNotificationComponent,
      AddPostSectionComponent

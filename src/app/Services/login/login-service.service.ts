@@ -14,23 +14,7 @@ export class LoginServiceService extends BaseServices {
  
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {super(); }
 
-  loginUser(input: login, type: number): Observable<any> {
-    switch (type) {
-      case 1: {
-        return this.http.post(this.baseUrl + "Account/LoginAdmin", input).pipe(catchError(this.errorHandler));
-      }
-      case 2: {
-        return this.http.post(this.baseUrl + "Sick/LoginSick", input).pipe(catchError(this.errorHandler));
-      }
-      case 3: {
-        return this.http.post(this.baseUrl + "Doctor/LoginDoctor", input).pipe(catchError(this.errorHandler));
-      }
-      case 4: {
-        return this.http.post(this.baseUrl + "Nurse/LoginNurse", input).pipe(catchError(this.errorHandler));
-      }
-      default: {
-        return this.http.post(this.baseUrl + "Hospital/LoginHospital", input).pipe(catchError(this.errorHandler));
-      }
-    }
+  loginUser(input: login): Observable<any> {
+        return this.http.post(this.baseUrl + "Account/Login", input).pipe(catchError(this.errorHandler));
   }
 }
