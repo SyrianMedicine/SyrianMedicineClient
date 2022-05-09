@@ -3,10 +3,15 @@
     <div mat-dialog-content>
       <div class="grid-container">
         <form>
-            <textarea [(ngModel)]="msege"
-              placeholder="leave a message here .."
-              name="aboutHospitalInput" id="aboutHospitalInput"
-              required ></textarea>
+            <mat-form-field>
+            <label >Start Time:</label>
+            <input matInput name="startDatetimeInput"
+                formControlName="startDatetimeInput"
+                id="datetimeInput" required type="datetime-local"
+                placeholder="start
+                date">
+            </mat-form-field>
+
             <div class="d-flex justify-content-center">
               <button mat-button type="submit">Send</button>
               <button mat-button (click)="close()" > Close</button>
