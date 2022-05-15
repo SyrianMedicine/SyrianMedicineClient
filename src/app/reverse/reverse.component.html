@@ -3,7 +3,7 @@
   <div class="container">
     <div class="card">
       <div class="card-header">
-        <h1> Doctor Reservations</h1>
+        <h1> {{type}} Reservations</h1>
       </div>
       <div class="card-body">
         <div class="example-container mat-elevation-z8">
@@ -56,12 +56,14 @@
               <mat-header-cell class="status" *matHeaderCellDef> Status </mat-header-cell>
               <mat-cell class="status" *matCellDef="let sick"> {{sick.status}} </mat-cell>
             </ng-container>
+ 
+
 
             <!-- accept Column -->
             <ng-container matColumnDef="accept">
               <mat-header-cell class="accept" *matHeaderCellDef> Accept </mat-header-cell>
               <mat-cell class="accept" *matCellDef="let sick">
-                <button mat-icon-button id="iconAccept" (click)="openAccept()"><mat-icon>check</mat-icon></button>
+                <button mat-icon-button id="iconAccept" (click)="openAccept(sick.userName)"><mat-icon>check</mat-icon></button>
               </mat-cell>
             </ng-container>
 

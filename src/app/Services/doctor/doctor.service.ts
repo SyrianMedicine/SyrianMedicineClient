@@ -24,8 +24,4 @@ export class DoctorService extends BaseServices {
   async getDoctorInfo(userName: string): Promise<Observable<any>> {
     return await this.http.get(this.baseUrl + userName);
   }
-  async getReserveDoctorData(pageNumber: number, pageSize: number): Promise<Observable<any>> {
-    return await this.http.post(this.baseUrl + "GetReserveDoctorData",{ 'pageNumber': pageNumber, 'pageSize': pageSize },this.getoption());
-  }
-  
 }

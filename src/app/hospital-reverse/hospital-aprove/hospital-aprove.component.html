@@ -5,16 +5,15 @@
         <form>
             <mat-form-field>
             <label >Start Time:</label>
-            <input matInput name="startDatetimeInput"
+            <input [(ngModel)]="time" matInput name="startDatetimeInput"
                 formControlName="startDatetimeInput"
                 id="datetimeInput" required type="datetime-local"
                 placeholder="start
                 date">
             </mat-form-field>
-
             <div class="d-flex justify-content-center">
-              <button mat-button type="submit">Send</button>
-              <button mat-button (click)="close()" > Close</button>
+              <button mat-button type="button"  (click)="send()">Send</button>
+              <button mat-button type="button" (click)="close()" > Close</button>
             </div>
         </form>
      </div>

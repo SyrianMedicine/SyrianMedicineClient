@@ -6,7 +6,7 @@
     <h1 *ngIf="userType !='Admin'" style="margin-right: auto;">Settings</h1>
 
     <div style="float:right;">
-      <mat-icon [routerLink]="'home'" style="color:#264653; margin-top:4px;
+      <mat-icon routerLink="/home" style="color:#264653; margin-top:4px;
         padding-top:4px; cursor: pointer;"> exit_to_app </mat-icon>
     </div>
   </mat-toolbar>
@@ -55,17 +55,15 @@
               class="icon-text"><mat-icon class="mr-1"> check_box
             </mat-icon>Validate Hospitals</li>
 
-          <li *ngIf="userType =='Doctor'" routerLink="/Settings/doctorReserve"
-              class="icon-text"><mat-icon class="mr-1"> check_box
-            </mat-icon>Check Reserves</li>
+ 
 
-          <li *ngIf="userType =='Nurse'" routerLink="/Settings/nurseReserve"
+          <li *ngIf="userType =='Nurse'||userType =='Doctor'" routerLink="/Settings/Reserve"
                 class="icon-text"><mat-icon class="mr-1">check_box
             </mat-icon>Check Reserves</li>
 
-          <li *ngIf="userType =='Hospital'" routerLink="/Settings/hospitalReserve"
+          <li *ngIf="userType=='Hospital'" routerLink="/Settings/hospitalReserve"
                class="icon-text"><mat-icon class="mr-1">check_box
-             </mat-icon>Check Reserves</li>
+             </mat-icon>Check  Reserves</li>
       </ul>
     </div>
 

@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, RouterStateSnapshot } from '@angular/router';
 import { CommentOutput } from 'src/app/Models/Comment/CommentOutput';
@@ -9,6 +10,7 @@ import { CommentService } from 'src/app/Services/Comment/comment.service';
 import { LikeService } from 'src/app/Services/Like/like.service';
 import { PostService } from 'src/app/Services/post/post.service';
 import { SyrianMedSnakBarService } from 'src/app/Services/SyrianMedSnakBar/syrian-med-snak-bar.service';
+import { LikesComponent } from '../Likes/likes/likes.component';
 
 @Component({
   selector: 'app-post',
@@ -30,7 +32,7 @@ export class PostComponent implements OnInit {
   ///////////////////////////////////////
   pagination: PaginationOutput = new PaginationOutput(3);
   ///////////////////////////////////////
-  constructor(private changeDetectorRef: ChangeDetectorRef, private router: Router, private likeService: LikeService, private postservce: PostService, private Commentservice: CommentService, private snackBar: SyrianMedSnakBarService) {
+  constructor(private changeDetectorRef: ChangeDetectorRef,private dialog:MatDialog, private router: Router, private likeService: LikeService, private postservce: PostService, private Commentservice: CommentService, private snackBar: SyrianMedSnakBarService) {
   }
 
   ngOnInit(): void {
@@ -43,6 +45,17 @@ export class PostComponent implements OnInit {
     (await this.postservce.GettotalLike(this.post.id)).subscribe(data => {
       this.numberofLike = data.data;
     }, err => { });
+  }
+  ShowLikes(){
+    let dialogRef = this.dialog.open(LikesComponent, { 
+      width: '450px',  
+      panelClass:['Likesdilog'],
+      
+      data: {
+        "type":"Post",
+        "Id":this.post.id
+      }
+    });
   }
   async getMylikeStatus() {
 

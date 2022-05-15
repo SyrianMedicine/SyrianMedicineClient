@@ -46,7 +46,10 @@
   ::ng-deep .notifcationbody {
     padding: 0px; 
   }
-  
+  ::ng-deep .Likesdilog {
+    border-radius: 20px;
+    background-color: white;
+  }
   @keyframes onopenNotifcation{
     from{right: -400px;}
     to{right:  5px;}

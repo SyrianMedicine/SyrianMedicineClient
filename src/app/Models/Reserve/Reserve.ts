@@ -1,5 +1,6 @@
 export class Reserve {
     id!:number;
+    username!:string;
     title!:string;
     description!:string;
     name!: string;
@@ -7,4 +8,5 @@ export class Reserve {
     status!:string;
     phone!:string;
     date!:string;
+    department!:string;
 }

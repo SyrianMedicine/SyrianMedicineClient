@@ -12,7 +12,7 @@
                
               <i *ngIf="this.LikeEnablebutton"  (click)="this.onLikelicked();"  class="fa fa-heart" [ngClass]="{'Liked':this.liked}"></i>
               <i *ngIf="!this.LikeEnablebutton"> <mat-spinner  diameter="16"  class="d-inline-block custom-spinner"> </mat-spinner></i>
-                <label>{{this.numberofLike}}</label>
+                <label style="cursor: pointer;" (click)="ShowLikes()">{{this.numberofLike}}</label>
                 <a (click)="displayComment()">comment</a>
                 <a (click)="cancelComment()" [ngClass]="{'posts hideComment':displayCancel}">cancel</a>
                 <!-- add comments -->

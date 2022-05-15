@@ -81,15 +81,16 @@ import { UpdateSickComponent } from './UpdateAccounts/update-sick/update-sick.co
 import { UpdatePassowrdComponent } from './update-passowrd/update-passowrd.component';
 import { PostsSectionComponent } from './Component/posts-section/posts-section.component';
 import { ProfileCommentSectionComponent } from './Component/profile-comment-section/profile-comment-section.component';
-import { DoctorReverseComponent } from './doctor-reverse/doctor-reverse.component';
-import { DialogMessageComponent } from './doctor-reverse/dialog-message/dialog-message.component';
-import { RejectDialogComponent } from './doctor-reverse/reject-dialog/reject-dialog.component';
-import { NurseReverseComponent } from './nurse-reverse/nurse-reverse.component';
+import { ReverseComponent } from './reverse/reverse.component';
+import { DialogMessageComponent } from './reverse/dialog-message/dialog-message.component';
+import { RejectDialogComponent } from './reverse/reject-dialog/reject-dialog.component'; 
 import { HospitalReverseComponent } from './hospital-reverse/hospital-reverse.component';
 import { ValidateAccountsComponent } from './Admin/validate-accounts/validate-accounts.component'; 
 import { ContentNotificationComponent } from './Common/content-notification/content-notification.component';
 import { ExternalNotificationComponent } from './Common/external-notification/external-notification.component';
 import { AddPostSectionComponent } from './Component/add-post-section/add-post-section.component';
+import { LikesComponent } from './Component/Likes/likes/likes.component';
+import { HospitalAproveComponent } from './hospital-reverse/hospital-aprove/hospital-aprove.component';
 //#endregion
 
 
@@ -118,6 +119,7 @@ import { AddPostSectionComponent } from './Component/add-post-section/add-post-s
     ReserveDateWithDoctorOrNurseComponent,
      HospitalreserveComponent,
      SideNavComponent,
+     HospitalAproveComponent,
      DashboardComponent,
      UserProfileComponent,
      OthersComponent,
@@ -128,15 +130,15 @@ import { AddPostSectionComponent } from './Component/add-post-section/add-post-s
      UpdateSickComponent,
      ProfileCommentSectionComponent,
      PostsSectionComponent,
-     DoctorReverseComponent,
+     ReverseComponent,
      DialogMessageComponent,
-     RejectDialogComponent,
-     NurseReverseComponent,
+     RejectDialogComponent, 
      HospitalReverseComponent,
      ValidateAccountsComponent, 
      ContentNotificationComponent,
      ExternalNotificationComponent,
-     AddPostSectionComponent
+     AddPostSectionComponent,
+     LikesComponent
   ],
   imports: [
     BrowserModule,

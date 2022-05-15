@@ -14,16 +14,14 @@ import { HospitalProfileComponent } from "./profiles/hospital-profile/hospital-p
 import { NurseProfileComponent } from "./profiles/nurse-profile/nurse-profile.component";
 import { SickProfileComponent } from "./profiles/sick-profile/sick-profile.component";
 import { RegisterComponent } from "./register/register.component";
-import { DoctorReverseComponent } from "./doctor-reverse/doctor-reverse.component";
-import { HospitalreserveComponent } from "./Common/reservesDate/HospitalReserve/hospitalreserve/hospitalreserve.component";
-import { NurseReverseComponent } from "./nurse-reverse/nurse-reverse.component";
+import { ReverseComponent } from "./reverse/reverse.component"; 
 import { UpdatePassowrdComponent } from "./update-passowrd/update-passowrd.component";
-import { UpdateDoctorComponent } from "./UpdateAccounts/update-doctor/update-doctor.component";
-import { Component } from "@angular/core";
+import { UpdateDoctorComponent } from "./UpdateAccounts/update-doctor/update-doctor.component"; 
 import { ValidateAccountsComponent } from "./Admin/validate-accounts/validate-accounts.component"; 
 import { UpdateNurseComponent } from "./UpdateAccounts/update-nurse/update-nurse.component";
 import { UpdateSickComponent } from "./UpdateAccounts/update-sick/update-sick.component";
 import { UpdateHospitalComponent } from "./UpdateAccounts/update-hospital/update-hospital.component";
+import { HospitalReverseComponent } from "./hospital-reverse/hospital-reverse.component";
 
 export const routes: Routes = [
     { path: "home", component: MainComponent },
@@ -47,13 +45,11 @@ export const routes: Routes = [
       {path:'updateNurse',component:UpdateNurseComponent},
       {path:'updateHospital',component:UpdateHospitalComponent},
       {path:'updateSick',component:UpdateSickComponent},
-      {path:'doctorReserve', component:DoctorReverseComponent},
-      {path:'nurseReserve', component:NurseReverseComponent},
-      {path:'hospitalReserve', component:HospitalreserveComponent},
+      {path:'Reserve', component:ReverseComponent}, 
+      {path:'hospitalReserve', component:HospitalReverseComponent},
       {path:'updateAdmin', component:UserProfileComponent},
     ]},
-    { path:"DoctorReverse",component:DoctorReverseComponent},
-    { path:"HospitalReverse",component:HospitalreserveComponent},
-    { path:"NurseReverse",component:NurseReverseComponent},
+    { path:"Reverse",component:ReverseComponent},
+    { path:"HospitalReverse",component:HospitalReverseComponent}, 
     { path: "**", component: MainComponent },
 ];

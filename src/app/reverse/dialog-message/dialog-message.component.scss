@@ -1,0 +1,50 @@
+::ng-deep .mat-dialog-container{
+  background-image: linear-gradient(360deg,#214052 ,#305A72) !important;
+}
+h2{
+  font-size: 18px;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  font-style: normal;
+  color:#DDD;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+form
+{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  color:#DDD;
+}
+
+mat-label{
+  color: #DDD;
+}
+
+textarea {
+  width: 100%;
+  min-height:80px;
+  padding: 10px 5px;
+  border: 1px solid #DDD;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-size: 14px;
+  resize: none;
+  overflow: hidden;
+  color:#DDD;
+}
+textarea:focus,
+input:focus {
+  outline: none;
+}
+textarea::placeholder
+{
+  color: #FFF;
+  font-weight: lighter;
+  font-size: 14px;
+}

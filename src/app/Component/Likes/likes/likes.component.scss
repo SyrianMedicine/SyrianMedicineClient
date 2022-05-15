@@ -1,0 +1,26 @@
+::ng-deep .mat-dialog-container {
+  background-color: white; 
+  border-radius: 20px;
+}  
+h2 {
+  font-size: 16px;
+  font-weight: lighter;
+  letter-spacing: 3px;
+  font-style: normal;
+  color: #444;
+  padding: 5px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+button {
+  color: #000;
+}
+::ng-deep .custom-spinner circle {
+  stroke: rgb(173, 173, 173);
+}
+.likes {
+  height: auto;
+  max-height: 300px;
+  scroll-behavior: auto;
+}

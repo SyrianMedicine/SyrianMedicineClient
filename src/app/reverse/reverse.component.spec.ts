@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NurseReverseComponent } from './nurse-reverse.component';
+import { ReverseComponent } from './reverse.component';
 
-describe('NurseReverseComponent', () => {
-  let component: NurseReverseComponent;
-  let fixture: ComponentFixture<NurseReverseComponent>;
+describe('ReverseComponent', () => {
+  let component: ReverseComponent;
+  let fixture: ComponentFixture<ReverseComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NurseReverseComponent ]
+      declarations: [ ReverseComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NurseReverseComponent);
+    fixture = TestBed.createComponent(ReverseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

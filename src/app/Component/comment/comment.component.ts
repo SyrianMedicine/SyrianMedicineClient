@@ -1,5 +1,7 @@
+import { ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CommentOutput } from 'src/app/Models/Comment/CommentOutput';
@@ -7,6 +9,7 @@ import { PaginationOutput } from 'src/app/Models/Helper/PaginationOutput';
 import { CommentService } from 'src/app/Services/Comment/comment.service';
 import { LikeService } from 'src/app/Services/Like/like.service';
 import { SyrianMedSnakBarService } from 'src/app/Services/SyrianMedSnakBar/syrian-med-snak-bar.service';
+import { LikesComponent } from '../Likes/likes/likes.component';
 
 @Component({
   selector: 'app-comment',
@@ -33,7 +36,7 @@ export class CommentComponent implements OnInit {
 
   pagination: PaginationOutput = new PaginationOutput(3);
   CommentsEnded: boolean = false;
-  constructor(private changeDetectorRef: ChangeDetectorRef, private router: Router, private likeService: LikeService, private commentService: CommentService, private snackBar: SyrianMedSnakBarService) {
+  constructor(private changeDetectorRef: ChangeDetectorRef,private dialog:MatDialog, private router: Router, private likeService: LikeService, private commentService: CommentService, private snackBar: SyrianMedSnakBarService) {
   }
   ChildeDeleted(ChildeCommnet: CommentOutput) {
     for (let index = 0; index < this.SubCommnets.length; index++) {
@@ -43,6 +46,16 @@ export class CommentComponent implements OnInit {
         break;
       }
     }
+  }
+  ShowLikes(){ 
+    let dialogRef = this.dialog.open(LikesComponent, { 
+      width: '450px',  
+      panelClass:['Likesdilog'],
+      data: {
+        "type":"Comment",
+        "Id":this.Commnet.id
+      }
+    });
   }
   isAuthrized(): Boolean {
     return localStorage.getItem('token') != null;

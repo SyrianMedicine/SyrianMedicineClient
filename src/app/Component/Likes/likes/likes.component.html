@@ -1,0 +1,18 @@
+<div mat-dialog-content>
+    
+    <h2 mat-dialog-title class="card" >Liked by</h2>
+    <div mat-dialog-content class="grid-container">
+        <div class="likes">
+            <app-user-coment *ngFor="let user of this.users" [user]="user"></app-user-coment>
+        </div>  
+    </div>
+
+
+<div   mat-dialog-content   *ngIf="isLoding" class="d-flex justify-content-center">
+    <mat-spinner  diameter="25"  class="custom-spinner"> </mat-spinner> 
+</div>
+<div mat-dialog-content  class="d-flex justify-content-center">
+    <button mat-button *ngIf="!isLoding&&!Ended" type="button"  (click)="showMore()">show More</button>
+    <button mat-button type="button"  (click)="close()">close</button>
+</div> 
+</div>

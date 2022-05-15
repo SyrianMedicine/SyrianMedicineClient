@@ -10,7 +10,7 @@
                       <h5 style="color:rgb(114, 114, 114);margin: 0;">{{(Commnet.datetime | date :'medium')+(this.Commnet.isEdited?"  (edited)":"")}} </h5>
                       <i *ngIf="LikeEnablebutton"  (click)="this.onLikelicked();" class="fa fa-heart" [ngClass]="{'Liked':this.liked}" ></i>
                       <i *ngIf="!this.LikeEnablebutton"> <mat-spinner  diameter="16"  class="d-inline-block custom-spinner"> </mat-spinner></i>
-                      <label>{{this.numberofLike}}</label>
+                      <label style="cursor: pointer;" (click)="ShowLikes()">{{this.numberofLike}}</label>
                       <a (click)="displayReplay(false)">Reply</a>
                       <a *ngIf="this.isOwnedbyMe();" (click)="deleteComment()">Delete</a>
                       <a *ngIf="this.isOwnedbyMe();" (click)="displayReplay(true)">Edit</a>
