@@ -20,7 +20,9 @@ export class NurseService extends BaseServices {
   async getNurseInfo(userName: string): Promise<Observable<any>> {
     return await this.http.get(this.baseUrl + userName);
   }
-  async  getNursePagination(pageNumber:Number,pageSize:Number):Promise <Observable<any>>{
-    return await this.http.post(this.baseUrl + "PaginationNurses",{'pageNumber':pageNumber,'pageSize':pageSize});
+  async  getNursePagination(pageNumber:Number,pageSize:Number,workAtHome:boolean,searchString:string,
+    startTimeWork:string,endTimeWork:string,gender:Number):Promise <Observable<any>>{
+    return await this.http.post(this.baseUrl + "PaginationNurses",{'pageNumber':pageNumber,'pageSize':pageSize,'workAtHome':workAtHome,
+  'searchString':searchString,'startTimeWork':startTimeWork,'endTimeWork':endTimeWork,'gender':gender});
   }
 }

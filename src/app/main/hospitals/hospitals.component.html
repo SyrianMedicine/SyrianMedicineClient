@@ -5,8 +5,9 @@
     <div class="col">
       <div class="container">
           <form class="d-flex">
-            <input class="search-form" type="search" placeholder="Search" aria-label="Search">
-            <button class="search-filter" type="submit" > Filter </button>
+            <input class="search-form" type="search" name="search" placeholder="Search" aria-label="Search"
+            ngModel  #search="ngModel">
+            <button class="search-filter" (click)="FilterData(search.value)" > Filter </button>
           </form>
         </div>
       </div>

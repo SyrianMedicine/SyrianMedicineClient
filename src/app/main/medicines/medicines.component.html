@@ -1,4 +1,4 @@
- 
+
 
 <!-- start search -->
 <div class="search">
@@ -6,15 +6,14 @@
     <div class="col">
       <div class="container">
           <form class="d-flex">
-            <input class="search-form" type="search" placeholder="Search" aria-label="Search">
-            <button class="search-filter" type="submit" > Filter </button>
+            <input class="search-form" type="search" name="search" ngModel placeholder="Search" aria-label="Search" #search="ngModel">
+            <button class="search-filter" (click)="filterData(search.value)"> Filter </button>
           </form>
         </div>
       </div>
     </div>
   </div>
 <!-- end search -->
-
 <!-- start  medicines -->
 <section class="medicines">
   <div class="medicine-deploy text-center">
@@ -22,7 +21,7 @@
     <hr/>
     </div>
         <!-- start post -->
-        <div *ngIf="!this.isLoading">
+    <div *ngIf="!this.isLoading && this.searchEmpty === undefined">
       <div class="row hidden" *ngFor="let doctor of doctorsInfo | paginate : {currentPage:PageNumber,itemsPerPage:pageSize,totalItems:totalItems}">
         <div class="col">
           <div class="container">
@@ -41,6 +40,11 @@
         </div>
     </div>
   </div>
+
+  <div *ngIf="this.searchEmpty !== undefined" class="text-center fs-5 fw-bold">
+    <p>{{this.searchEmpty}}</p>
+  </div>
+
     <div *ngIf="this.isLoading"  class="d-flex justify-content-center" >
       <mat-spinner  diameter="90"  class="m-2 custom-spinner"> </mat-spinner>
     </div>

@@ -7,10 +7,13 @@ import { HospitalService } from 'src/app/Services/hospital/hospital.service';
   templateUrl: './hospitals.component.html',
   styleUrls: ['./hospitals.component.scss']
 })
-export class HospitalsComponent implements OnInit {
 
+export class HospitalsComponent implements OnInit {
   PageNumber: number = 1;
-  pageSize: number = 3;
+  pageSize: number = 5;
+  searchString!:string;
+  departmentName!:string
+  hasAvialbaleBed!:boolean
   totalItems!: number;
   hospitalInfo!: Array<HospitalInfo>;
   isLoading: boolean = false;
@@ -23,7 +26,8 @@ export class HospitalsComponent implements OnInit {
 
   async getPageHospital() {
     this.isLoading = true;
-    (await this.hospitalService.getHospitalsPagination(this.PageNumber, this.pageSize)).subscribe(response => {
+    (await this.hospitalService.getHospitalsPagination(this.PageNumber, this.pageSize,this.searchString,
+      this.departmentName,this.hasAvialbaleBed)).subscribe(response => {
       this.hospitalInfo = response.items;
       this.totalItems = response.totalItems;
       for (let i = 0; i < this.hospitalInfo.length; i++) {
@@ -37,9 +41,26 @@ export class HospitalsComponent implements OnInit {
     }
     );
   }
+  FilterData(value:string){
+
+    value = value.toLowerCase();
+    let hasAvailableBedPattern= /(has available bed|has available beds|available bed|available beds|has beds|beds|bed)/i
+    let departmentNamePattern1 =/(department|Urology|Sexual Health|Rheumatology|Renal|Radiotherapy|Radiology|Physiotherapy|Otolaryngology|orthopaedics|Ophthalmology|Oncology)/i
+    let departmentNamePattern2 =/(department|Obstetrics|Gynecology|Nutrition|Dietetics|Neurology|Nephrology|Neonatal|Microbiology|Maternity|Diagnostic|Imaging|Elderly Services)/i
+    if(value.match(hasAvailableBedPattern)){
+     this.hasAvialbaleBed=true;
+    }
+    else if(value.match(departmentNamePattern1)||value.match(departmentNamePattern2)){
+      this.departmentName = value;
+    }
+    else{
+      this.searchString=value;
+    }
+
+    this.getPageHospital();
+  }
   movePage(page: number) {
     this.PageNumber = page;
     this.getPageHospital();
   }
-
 }

@@ -16,9 +16,10 @@ export class DoctorService extends BaseServices {
     return await this.http.post(this.baseUrl + "MostDoctorsRated", { "pageNumber": pageNumber, "pageSize": pageSize });
   }
 
-  // return doctors Pagination ...
-   getDoctorsPagination(pageNumber: Number, pageSize: Number):Observable<any>{
-    return  this.http.post(this.baseUrl + "PaginationDoctors", { 'pageNumber': pageNumber, 'pageSize': pageSize });
+   getDoctorsPagination(pageNumber: Number, pageSize: Number,workAtHome:boolean,searchString:string,
+    startTimeWork:string,endTimeWork:string,gender:Number):Observable<any>{
+    return  this.http.post(this.baseUrl + "PaginationDoctors", { 'pageNumber': pageNumber, 'pageSize': pageSize,'workAtHome':workAtHome,'searchString':searchString,
+    'startTimeWork':startTimeWork,'endTimeWork':endTimeWork,'gender':gender});
   }
 
   async getDoctorInfo(userName: string): Promise<Observable<any>> {

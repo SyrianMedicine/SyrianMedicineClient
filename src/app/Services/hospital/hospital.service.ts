@@ -20,8 +20,9 @@ export class HospitalService extends BaseServices {
     return await this.http.get(this.baseUrl + username);
   }
 
-  async getHospitalsPagination(pageNumber: number, pageSize: number): Promise<Observable<any>> {
-    return await this.http.post(this.baseUrl + "PaginationHospitals", { "pageNumber": pageNumber, "pageSize": pageSize });
+  async getHospitalsPagination(pageNumber: number, pageSize: number,searchString:string,departmentName:string,hasAvialbleBed:boolean): Promise<Observable<any>> {
+    return await this.http.post(this.baseUrl + "PaginationHospitals", { "pageNumber": pageNumber, "pageSize": pageSize ,"searchString":searchString,
+    "departmentName":departmentName,"hasAvialbleBed":hasAvialbleBed});
   }
 
   async getDepartmentForHospital(username: string): Promise<Observable<department[]>> {

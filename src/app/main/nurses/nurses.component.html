@@ -1,12 +1,13 @@
- 
+
 <!-- start search -->
 <div class="search">
   <div class="row hidden">
     <div class="col">
       <div class="container">
         <form class="d-flex">
-          <input class="search-form" type="search" placeholder="Search" aria-label="Search">
-          <button class="search-filter" type="submit"> Filter </button>
+          <input class="search-form" type="search" placeholder="Search" aria-label="Search"
+            ngModel #search="ngModel">
+          <button class="search-filter" (click)="filterData(search.value)"> Filter </button>
         </form>
       </div>
     </div>
