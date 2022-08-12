@@ -29,6 +29,7 @@ export class MainComponent implements OnInit {
 
     await (await this.doctorService.getMostDoctorsRated(1, 3)).subscribe(data => {
       this.mostDoctorsRated = data.items;
+      console.log(data.items)
       for (let i = 0; i < data.items.length; i++) {
         if (this.mostDoctorsRated[i].pictureUrl == null) {
           this.mostDoctorsRated[i].pictureUrl = "assets/images/no-image.png"
@@ -42,8 +43,10 @@ export class MainComponent implements OnInit {
       }
     });
 
+
     await (await this.nurseService.getMostNursesRated(1, 3)).subscribe(data => {
       this.mostNursesRated = data.items;
+      console.log(data.items)
       for (let i = 0; i < data.items.length; i++) {
         if (this.mostNursesRated[i].pictureUrl == null) {
           this.mostNursesRated[i].pictureUrl = "assets/images/no-image.png"
@@ -60,6 +63,7 @@ export class MainComponent implements OnInit {
 
     await (await this.hospitalService.getMostHospitalsRated(1, 3)).subscribe(data => {
       this.mostHospitalsRated = data.items;
+      console.log(data.items)
       for (let i = 0; i < data.items.length; i++) {
         if (this.mostHospitalsRated[i].pictureUrl == null) {
           this.mostHospitalsRated[i].pictureUrl = "assets/images/no-img.jpg"
@@ -76,6 +80,7 @@ export class MainComponent implements OnInit {
 
     await (await this.postService.getMostPostsRated(1, 3)).subscribe(data => {
       this.mostPostsRated = data.items;
+      console.log(data.items)
       for (let i = 0; i < data.items.length; i++) {
         this.mostPostsRated[i].shortPostText = this.mostPostsRated[i].postText;
         if (this.mostPostsRated[i].postText.length > 44) {

@@ -42,12 +42,26 @@ export class NursesComponent implements OnInit {
   filterData(value:string){
 
     value  = value.toLowerCase();
-
+    let date=new Date();
+    let newFormatDate=date.toISOString();
+    let dateWithOutTime=newFormatDate.substring(0,11);
+    let endTime,startTime,postion;
+    if(value.search('to')){
+      postion = value.search('to');
+      endTime = value.substring(postion + 2,value.length);
+      startTime = value.substring(0,postion);
+    }
+    else if(value.search('-')){
+      postion = value.search('-');
+      endTime = value.substring(postion+2,value.length);
+      startTime = value.substring(0,postion);
+    }
     let malePattern = /(male|ma|mal|males)/i
     let femalePattern=/(fe|fem|fema|femal|female|females)/i
     let workAtHomePattern=/(work|at home|external work|work external|external)/i
     let notWorkAtHomePattern=/(not work at home|not external work|not external |internal )/i
-
+    let startTimeWorkPattern=/(\d{2}:\d{2})/gi
+    let endTimeWorkPattern=/(to \d{2}:\d{2}|- \d{2}:\d{2})/gi
     if(value.match(malePattern)){
       this.gender=1;
     }
@@ -60,8 +74,14 @@ export class NursesComponent implements OnInit {
     else if(value.match(notWorkAtHomePattern)){
       this.workAtHome=false;
     }
+    else if(value.toLowerCase().match(endTimeWorkPattern)){
+      this.startTimeWork=dateWithOutTime + startTime;
+      this.endTimeWork=dateWithOutTime + endTime;
+    }
+    else if(value.toLowerCase().match(startTimeWorkPattern)){
+      this.startTimeWork=dateWithOutTime+value;
+    }
     else{
-
       this.searchString=value;
     }
 

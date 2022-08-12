@@ -50,7 +50,7 @@ export class HospitalsComponent implements OnInit {
     if(value.match(hasAvailableBedPattern)){
      this.hasAvialbaleBed=true;
     }
-    else if(value.match(departmentNamePattern1)||value.match(departmentNamePattern2)){
+    else if(value.match(departmentNamePattern1)|| value.match(departmentNamePattern2)){
       this.departmentName = value;
     }
     else{
