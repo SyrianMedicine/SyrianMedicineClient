@@ -16,8 +16,9 @@ export class NursesComponent implements OnInit {
   pageSize: number = 5;
   totalItems!: number;
   nursesInfo!: Array<NurseInfo>
-  constructor(private nurseService: NurseService) { }
   isLoading: boolean = false;
+  searchEmpty:string=''
+  constructor(private nurseService: NurseService) { }
   ngOnInit(): void {
     this.getPagePagination();
   }
@@ -26,8 +27,14 @@ export class NursesComponent implements OnInit {
     this.isLoading = true;
     (await this.nurseService.getNursePagination(this.pageNumber, this.pageSize,this.workAtHome,
       this.searchString,this.startTimeWork,this.endTimeWork,this.gender)).subscribe(response => {
-      this.nursesInfo = response.items;
-      this.totalItems = response.totalItems;
+        this.nursesInfo = response.items;
+        this.totalItems = response.totalItems;
+        if(this.nursesInfo.length==0){
+          this.searchEmpty='Not found Results Please Try Agin....';
+        }
+        else{
+        this.searchEmpty=''
+        }
       for (let i = 0; i < this.nursesInfo.length; i++) {
         if (this.nursesInfo[i].pictureUrl == null) {
           this.nursesInfo[i].pictureUrl = "assets/images/no-image.png";
@@ -41,11 +48,11 @@ export class NursesComponent implements OnInit {
 
   filterData(value:string){
 
-    value  = value.toLowerCase();
     let date=new Date();
     let newFormatDate=date.toISOString();
     let dateWithOutTime=newFormatDate.substring(0,11);
     let endTime,startTime,postion;
+
     if(value.search('to')){
       postion = value.search('to');
       endTime = value.substring(postion + 2,value.length);
@@ -56,23 +63,19 @@ export class NursesComponent implements OnInit {
       endTime = value.substring(postion+2,value.length);
       startTime = value.substring(0,postion);
     }
-    let malePattern = /(male|ma|mal|males)/i
-    let femalePattern=/(fe|fem|fema|femal|female|females)/i
-    let workAtHomePattern=/(work|at home|external work|work external|external)/i
-    let notWorkAtHomePattern=/(not work at home|not external work|not external |internal )/i
-    let startTimeWorkPattern=/(\d{2}:\d{2})/gi
+    let malePattern = /(male|ma|mal|males)/gi
+    let femalePattern=/(fe|fem|fema|femal|female|females)/gi
+    let workAtHomePattern=/(work|at home|external work|work external|external)/gi
+    let startTimeWorkPattern=/(from \d{2}:\d{2})/gi
     let endTimeWorkPattern=/(to \d{2}:\d{2}|- \d{2}:\d{2})/gi
     if(value.match(malePattern)){
       this.gender=1;
     }
-    else if(value.match(femalePattern)){
+    else if(value.toLowerCase().match(femalePattern)){
       this.gender=2;
     }
-    else if(value.match(workAtHomePattern)){
+    else if(value.toLowerCase().match(workAtHomePattern)){
       this.workAtHome=true;
-    }
-    else if(value.match(notWorkAtHomePattern)){
-      this.workAtHome=false;
     }
     else if(value.toLowerCase().match(endTimeWorkPattern)){
       this.startTimeWork=dateWithOutTime + startTime;
@@ -84,7 +87,6 @@ export class NursesComponent implements OnInit {
     else{
       this.searchString=value;
     }
-
     this.getPagePagination()
 }
 

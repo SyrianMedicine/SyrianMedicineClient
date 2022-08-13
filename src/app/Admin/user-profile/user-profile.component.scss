@@ -7,6 +7,7 @@
     width: 400px;
     margin: auto;
     margin-top: 50px;
+    height: 1000px;
   }
 }
 
@@ -72,6 +73,7 @@
   text-transform: capitalize;
   letter-spacing: 1px;
   word-spacing: 1px;
+  width: auto;
 }
 
 .change-info .card-body .formGroup .input_group {
@@ -106,5 +108,22 @@
   color:#FFF;
 }
 
+.select_group {
+  background: #ffffff;
+  border: 0.5px solid #305a72;
+  box-sizing: border-box;
+  outline: 0px;
+  border-radius: 50px;
+  width: 300px;
+  padding: 17px;
+  margin: 10px 0;
+  margin-left: 6px;
+}
+
+@media  screen and (max-width:600px){
+  .select_group {
+    width: 200px;
+  }
+}
 
 

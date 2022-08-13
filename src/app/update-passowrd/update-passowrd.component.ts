@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { async } from 'rxjs';
-import { OthersComponent } from '../Admin/others/others.component';
 import { RegisterDialogComponent } from '../register/dialogs/registerDialog/register-dialog/register-dialog.component';
 import { AccountService } from '../Services/Account/account.service';
 import { SyrianMedSnakBarService } from '../Services/SyrianMedSnakBar/syrian-med-snak-bar.service';
@@ -13,10 +10,11 @@ import { SyrianMedSnakBarService } from '../Services/SyrianMedSnakBar/syrian-med
   templateUrl: './update-passowrd.component.html',
   styleUrls: ['./update-passowrd.component.scss']
 })
+
 export class UpdatePassowrdComponent implements OnInit {
   hide = true;
   passwordForm!: FormGroup
-  isUopdating: Boolean = false 
+  isUopdating: Boolean = false
   constructor(private fb: FormBuilder, private dialog:MatDialog ,private accounServices: AccountService,private snackBar: SyrianMedSnakBarService) {}
 
   ngOnInit(): void {
@@ -28,16 +26,16 @@ export class UpdatePassowrdComponent implements OnInit {
   }
 
    async ChangePassword(newpass:string,old:string) {
-    this.isUopdating = true; 
+    this.isUopdating = true;
     (await this.accounServices.ChangePassword(old, newpass)).subscribe(data => {
       this.snackBar.openSuccess(data);
       this.isUopdating = false;
-    }, err => { 
+    }, err => {
       this.snackBar.openError(err.error.text);
       this.isUopdating = false;
     });
    }
- 
+
 
   async onSubmit(event:any){
 
@@ -53,8 +51,6 @@ export class UpdatePassowrdComponent implements OnInit {
         passwordNotHaveValidLength, passwordNotHaveAtLeastOneNumber, passwordNotHaveAtLeastOneSpeical)
       }else
       {
-        console.log("dsa");
-        
         this.ChangePassword(event.target.newPassword.value as string,event.target.oldPassword.value as string);
       }
   }

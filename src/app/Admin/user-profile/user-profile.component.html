@@ -9,21 +9,71 @@
 
             <form [formGroup]="adminForm" (ngSubmit)="onSubmit($event)" autocomplete="off">
                 <div class="formGroup">
-                  <span>Admin Name :</span>
-                  <input type="text" placeholder="Your Name"
+                  <span>First Name :</span>
+                  <input type="text" placeholder="First Name"
                     class="input_group "
-                    name="admin_Name" id="admin_Name"
+                    name="firstName" id="firstName"
                     required
-                    formControlName="adminName" />
+                    formControlName="firstName" />
                   </div>
 
                   <div class="formGroup">
-                  <span> Admin Email :</span>
-                  <input type="text" placeholder="example@email.com"
+                  <span> Last Name :</span>
+                  <input type="text" placeholder="Last Name ..."
                   class="input_group "
-                  name="admin_email" id="email"
+                  name="lastName" id="lastName"
                   required
-                  formControlName="adminEmail" />
+                  formControlName="lastName" />
+                </div>
+                <div class="formGroup">
+                  <span> Phone :</span>
+                  <input type="text" placeholder="Phone ...."
+                  class="input_group  ml-4"
+                  name="phone" id="phone"
+                  required
+                  formControlName="phone" />
+                </div>
+                <div class="formGroup">
+                  <span> Home Number :</span>
+                  <input type="text" placeholder="Home Number ..."
+                  class="input_group mr-3"
+                  name="homeNumber" id="homeNumber"
+                  required
+                  formControlName="homeNumber" />
+                </div>
+                <div class="formGroup">
+                  <span> Gender :</span>
+                  <input type="text" placeholder="gender ..."
+                  class="input_group ml-4"
+                  name="gender" id="gender"
+                  required
+                  formControlName="gender"/>
+                </div>
+
+                <div class="formGroup">
+                  <span> Location :</span>
+                  <input type="text" placeholder="location ..."
+                  class="input_group ml-3"
+                  name="location" id="location"
+                  required
+                  formControlName="location" />
+                </div>
+
+                <div class="formGroup">
+                  <span> State :</span>
+                  <select name="selectState" class="select_group ml-4">
+                    <option *ngFor="let state of states"
+                    [value]="state.id">{{state.name}}</option>
+                </select>
+
+                </div>
+                <div class="formGroup">
+                  <span> City :</span>
+                  <input type="text" placeholder="city ...."
+                  class="input_group ml-4"
+                  name="city" id="city"
+                  required
+                  formControlName="city" />
                 </div>
                 <div class="d-flex justify-content-center">
 

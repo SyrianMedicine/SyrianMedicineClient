@@ -40,9 +40,15 @@
           </div>
         </div>
       </div>
+
     <div *ngIf="this.isLoading"  class="d-flex justify-content-center" >
       <mat-spinner  diameter="90"  class="m-2 custom-spinner"> </mat-spinner>
     </div>
+
+    <div *ngIf="this.searchEmpty.length!=0" class="text-center fs-5 fw-bold">
+      <p>{{this.searchEmpty}}</p>
+    </div>
+
 <!-- end hospitals -->
 </section>
 <!-- end hospitals -->

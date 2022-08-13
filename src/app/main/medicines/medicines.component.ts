@@ -1,5 +1,3 @@
-import { HttpClient } from '@angular/common/http';
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { DoctorInfo } from 'src/app/Models/Doctor/DoctorInfo';
 
@@ -32,6 +30,13 @@ export class MedicinesComponent implements OnInit {
     this.docotrService.getDoctorsPagination(this.PageNumber, this.pageSize,this.workAtHome,this.searchString,
       this.startTimeWork,this.endTimeWork,this.gender).subscribe(response => {
       this.doctorsInfo = response.items;
+      if(this.doctorsInfo.length==0){
+          this.searchEmpty='Not found Results Please Try Agin....';
+      }
+      else{
+        this.searchEmpty=''
+      }
+
       this.totalItems = response.totalItems;
       for (let i = 0; i < this.doctorsInfo.length; i++) {
         if (this.doctorsInfo[i].pictureUrl == null) {
@@ -77,17 +82,17 @@ export class MedicinesComponent implements OnInit {
     else if(value.toLowerCase().match(endTimeWorkPattern)){
       this.startTimeWork=dateWithOutTime + startTime;
       this.endTimeWork=dateWithOutTime + endTime;
-      console.log(this.startTimeWork,this.endTimeWork)
     }
     else if(value.toLowerCase().match(startTimeWorkPattern)){
       this.startTimeWork=dateWithOutTime+value;
-      console.log(this.startTimeWork)
     }
     else{
+      if(value.length===0){
+        this.searchString!;
+      }
       this.searchString = value;
     }
-
-    this.getPageDoctors()
+    this.getPageDoctors();
 }
   onMovePage(page: any) {
     this.PageNumber = page;

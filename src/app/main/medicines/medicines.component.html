@@ -14,6 +14,7 @@
     </div>
   </div>
 <!-- end search -->
+
 <!-- start  medicines -->
 <section class="medicines">
   <div class="medicine-deploy text-center">
@@ -21,7 +22,7 @@
     <hr/>
     </div>
         <!-- start post -->
-    <div *ngIf="!this.isLoading && this.searchEmpty === undefined">
+    <div *ngIf="!this.isLoading">
       <div class="row hidden" *ngFor="let doctor of doctorsInfo | paginate : {currentPage:PageNumber,itemsPerPage:pageSize,totalItems:totalItems}">
         <div class="col">
           <div class="container">
@@ -40,15 +41,16 @@
         </div>
     </div>
   </div>
-
-  <div *ngIf="this.searchEmpty !== undefined" class="text-center fs-5 fw-bold">
+  <!-- not found Results Dsilay Data -->
+  <div *ngIf="this.searchEmpty.length !=0 " class="text-center fs-5 fw-bold">
     <p>{{this.searchEmpty}}</p>
   </div>
-
+  <!-- spinner for Data Load -->
     <div *ngIf="this.isLoading"  class="d-flex justify-content-center" >
       <mat-spinner  diameter="90"  class="m-2 custom-spinner"> </mat-spinner>
     </div>
 <!-- end post -->
+
 </section>
 <!-- end medicines -->
 

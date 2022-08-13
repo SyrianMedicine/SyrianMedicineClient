@@ -43,22 +43,22 @@ export class AccountService extends BaseServices {
   }
   public  getLoadValidateAccountMethod(type:string):(pageNumber: number, pageSize: number)=>Promise<Observable<any>>{
     if(type==='Dcotors')
-    {   
+    {
       return async (pageNumber: number, pageSize: number): Promise<Observable<any>> => {
         return await this.GetValidateDoctorsAccount(pageNumber, pageSize);
-      }; 
+      };
     }
     if(type==='Nurses')
-    { 
+    {
       return async (pageNumber: number, pageSize: number): Promise<Observable<any>> => {
         return await this.GetValidateNursesAccount(pageNumber, pageSize);
-      }; 
+      };
 
     }
- 
+
     return async (pageNumber: number, pageSize: number): Promise<Observable<any>> => {
       return await this.GetValidateHospitalsAccount(pageNumber, pageSize);
-    }; 
+    };
 
   }
   async GetValidateDoctorsAccount(pageNumber: number, pageSize: number): Promise<Observable<any>> {
@@ -70,7 +70,11 @@ export class AccountService extends BaseServices {
   async GetValidateNursesAccount(pageNumber: number, pageSize: number): Promise<Observable<any>> {
     return await this.http.post(this.baseUrl + "GetValidateNursesAccount", { "pageNumber": pageNumber, "pageSize": pageSize },this.getoption());
   }
+  async updateAdminProfile(firstName:string,lastName:string,phoneNumber:string,homeNumber:string
+    ,gender:Number,location:string,state:Number,city:string): Promise<Observable<any>> {
+    return await this.http.post(this.baseUrl + "UpdateAdminProfile", { "firstName": firstName, "lastName":lastName,"phoneNumber":phoneNumber,"homeNumber":homeNumber
+    ,"gender":gender,"location":location,"state":state,"city":city},this.getoption());
+  }
 
-  
 
 }

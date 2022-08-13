@@ -6,7 +6,7 @@
       <div class="container">
         <form class="d-flex">
           <input class="search-form" type="search" placeholder="Search" aria-label="Search"
-            ngModel #search="ngModel">
+           name="search"  #search="ngModel" ngModel>
           <button class="search-filter" (click)="filterData(search.value)"> Filter </button>
         </form>
       </div>
@@ -42,9 +42,17 @@
       </div>
     </div>
   </div>
+
+  <!-- spinner to load Data -->
   <div *ngIf="this.isLoading" class="d-flex justify-content-center">
     <mat-spinner diameter="90" class="m-2 custom-spinner"> </mat-spinner>
   </div>
+
+   <!-- not found Results display -->
+  <div *ngIf="this.searchEmpty.length!=0" class="text-center fs-5 fw-bold">
+    <p>{{this.searchEmpty}}</p>
+  </div>
+
   <!-- end nurse -->
 </section>
 <!-- end nursess -->

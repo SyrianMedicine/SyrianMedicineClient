@@ -14,58 +14,61 @@ export class UserProfileComponent implements OnInit {
   isUpdating:boolean=false
   hide = true;
   adminForm!:FormGroup;
+  states!:Array<any>
   constructor(private fb:FormBuilder , private accounServices: AccountService,
     private dialog :MatDialog, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-
+    this.getStates()
     this.adminForm=this.fb.group({
 
-      'adminName':['',[Validators.required]],
-      'adminEmail':['',[Validators.required]]
+      'firstName':['',[Validators.required]],
+      'lastName':['',[Validators.required]],
+      'phone':['',[Validators.required]],
+      'homeNumber':['',[Validators.required]],
+      'gender':['',[Validators.required]],
+      'location':['',[Validators.required]],
+      'city':['',[Validators.required]]
     });
   }
 
-  // async update() {
-
-  // }
-  // snackBarSuccess(message: string) {
-  //   this.snackBar.open(message, 'close', {
-  //     duration: 2000,
-  //     panelClass: ['green-snackbar'],
-  //     horizontalPosition: 'start',
-  //     verticalPosition: 'bottom',
-  //   });
-  // }
-  // snackBarError(message: string) {
-  //   this.snackBar.open(message, 'close', {
-  //     duration: 2000,
-  //     panelClass: ['red-snackbar'],
-  //     horizontalPosition: 'start',
-  //     verticalPosition: 'bottom',
-  //   });
-  // }
+  getStates(){
+    this.accounServices.getStates().subscribe(respnose=>{
+      this.states=respnose;
+    })
+  }
 
   async onSubmit(event:any){
 
-    let userNameExist = false;
-    let emailExist  = false;
-    let emailNotValid = this.checkIfStringIsVaildEmail(event.target.admin_email.value) == true ? false : true;
+    let firstName = event.target.firstName.value;
+    let lastName = event.target.lastName.value;
+    let phone =event.target.phone.value;
+    let homeNumber = event.target.homeNumber.value;
+    let gender = event.target.gender.value;
+    let location =event.target.location.value;
+    let selectState = event.target.selectState.value;
+    let city = event.target.city.value;
 
-    var respnseUserNameExist = await (await this.accounServices.isUserNameExist(event.target.admin_Name.value)).toPromise();
-    if (respnseUserNameExist) {
-      userNameExist = respnseUserNameExist.valueOf();
+
+    if(gender === 'male'){
+      gender=1;
+    }
+    else if(gender === 'female'){
+      gender=2;
     }
 
-    var responseEmailExist = await (await (this.accounServices.isEmailExist(event.target.admin_email.value))).toPromise();
-    if (responseEmailExist) {
-      emailExist = responseEmailExist;
-    }
-    if (emailExist || userNameExist ||  emailNotValid)
-      await this.openDialog(userNameExist, emailExist, emailNotValid);
+    let result =await this.submit(firstName,lastName,phone,homeNumber,gender,location,selectState,city)
+      result.subscribe(response=>{
+         alert(response.message)
+      });
 
-      console.log(userNameExist + ' ' +emailExist +' ' + emailNotValid);
+  }
 
+  async submit(firstName:string,lastName:string,phoneNumber:string,homeNumber:string,
+       gender:Number,location:string,selectState:Number,city:string){
+
+       return  this.accounServices.updateAdminProfile(firstName,lastName,phoneNumber,
+        homeNumber,gender,location,selectState,city)
   }
 
   async openDialog(userNameExist: boolean, emailExist: boolean, emailNotValid: boolean) {
@@ -79,10 +82,12 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+
   checkIfStringIsVaildEmail(s: string) {
     const regexToCheck = /(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)/;
     return regexToCheck.test(s);
   }
+
 
 }
 
