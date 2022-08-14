@@ -7,7 +7,7 @@
         </div>
         <div class="card-body">
             <div class="grid-container text-center">
-              <form autocomplete="off" [formGroup]="nurseFrom">
+              <form autocomplete="off" [formGroup]="nurseFrom" (ngSubmit)="onSubmit($event)">
                   <input type="text" placeholder="FirstName"
                       class="input_group "
                       name="firstNameInput" id="firstNameInput"
@@ -58,7 +58,7 @@
                       {{item.name}}
                       </option>
                   </select>
-                  
+
                   <select class="select_group"
                       name="selectPersonStateInput">
                       <option *ngFor="let item of this.psersonStates"
@@ -66,7 +66,13 @@
                       {{item .name}}
                       </option>
                   </select>
+
                   <br />
+                  <select class="select_group" name="selectWorkAthome">
+                    <option value="1" selected> Yes </option>
+                    <option value="2"> No </option>
+                  </select>
+                  <br/>
 
                   <mat-form-field>
                       <label class="ml-1">Start Time:</label>

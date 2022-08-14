@@ -12,7 +12,8 @@ export class UpdateNurseComponent implements OnInit {
   nurseFrom!:FormGroup
   cities:any;
   psersonStates:any;
-  constructor(private fb:FormBuilder,private accountService:AccountService) {}
+  constructor(private fb:FormBuilder,private accountService:AccountService,
+    private nuresService:NurseService) {}
 
  async ngOnInit():Promise <void> {
   this.nurseFrom =this.fb.group({
@@ -42,5 +43,30 @@ export class UpdateNurseComponent implements OnInit {
       this.psersonStates= response
       console.log(this.psersonStates);
     })
+  }
+
+  async onSubmit(event:any){
+    let firstName=event.target.firstNameInput;
+    let lastName=event.target.lastNameInput;
+    let phone = event.target.phoneNumberInput;
+    let aboutMe =event.target.aboutMeInput;
+    let specialization =event.target.specializationInput;
+    let workAtHome =event.target.selectWorkAthome;
+    let startTimeWork = event.target.startDatetimeInput;
+    let endTimeWork =event.target.endDatetimeInput;
+    let location =event.target.locationInput;
+    let state =event.target.selectPersonStates;
+    let homeNumber =event.target.homeNumberInput;
+    let city =event.target.city;
+
+
+  let result = await this.nuresService.updateNurseInfo(firstName,lastName,phone,aboutMe,specialization,workAtHome,
+      startTimeWork,endTimeWork,location,state,homeNumber,city)
+      result.subscribe(response=>{
+        if(response.data===false){
+          alert("Please Try Agin ...")
+        }
+        alert(response.message)
+      })
   }
 }

@@ -14,4 +14,10 @@ export class SickService extends BaseServices {
     return await this.http.get(this.baseUrl + userName);
   }
 
+  async updateSick(firstName:string,lastName:string,phoneNumber:string,homeNumber:string
+    ,gender:Number,location:string,state:Number,city:string): Promise<Observable<any>> {
+    return await this.http.post(this.baseUrl + "UpdateAdminProfile", { "firstName": firstName, "lastName":lastName,"phoneNumber":phoneNumber,"homeNumber":homeNumber
+    ,"gender":gender,"location":location,"state":state,"city":city},this.getoption());
+  }
+
 }

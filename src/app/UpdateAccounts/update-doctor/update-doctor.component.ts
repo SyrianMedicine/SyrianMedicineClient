@@ -1,8 +1,5 @@
-import { validateVerticalPosition } from '@angular/cdk/overlay';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { city } from 'src/app/Models/city';
 import { AccountService } from 'src/app/Services/Account/account.service';
 import { DoctorService } from 'src/app/Services/doctor/doctor.service';
 
@@ -13,9 +10,10 @@ import { DoctorService } from 'src/app/Services/doctor/doctor.service';
 })
 export class UpdateDoctorComponent implements OnInit {
   Doctorform!:FormGroup;
-  cities:any;
-  personStates:any;
-  constructor(private fb :FormBuilder,private accountService:AccountService) {}
+  cities!:Array<any>;
+  personStates!:Array<any>
+  constructor(private fb :FormBuilder,private accountService:AccountService,
+    private doctorService:DoctorService) {}
 
  async ngOnInit():Promise <void> {
     this.Doctorform = this.fb.group({
@@ -34,14 +32,33 @@ export class UpdateDoctorComponent implements OnInit {
   }
   getCities(){
     return  this.accountService.getCities().subscribe (response => {
-      this.cities=response
-      console.log(this.cities);
+      this.cities=response;
     });
   }
   getPesronStates(){
     return  this.accountService.getStates().subscribe (response => {
       this.personStates=response
-      console.log(this.personStates);
     });
+  }
+ async onSubmit(event:any){
+    let firstName=event.target.firstNameInput;
+    let lastName=event.target.lastNameInput;
+    let phone = event.target.phoneNumberInput;
+    let aboutMe =event.target.aboutMeInput;
+    let specialization =event.target.specializationInput;
+    let workAtHome =event.target.selectWorkAthome;
+    let startTimeWork = event.target.startDatetimeInput;
+    let endTimeWork =event.target.endDatetimeInput;
+    let location =event.target.locationInput;
+    let state =event.target.selectPersonStates;
+    let homeNumber =event.target.homeNumberInput;
+    let city =event.target.city;
+
+
+  let result = await this.doctorService.updateDoctorInfo(firstName,lastName,phone,aboutMe,specialization,workAtHome,
+      startTimeWork,endTimeWork,location,state,homeNumber,city)
+      result.subscribe(response=>{
+        alert(response.message)
+      })
   }
 }

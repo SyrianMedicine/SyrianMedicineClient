@@ -7,7 +7,7 @@
         </div>
         <div class="card-body">
             <div class="grid-container text-center">
-              <form autocomplete="off" [formGroup]="Doctorform">
+              <form autocomplete="off" [formGroup]="Doctorform" (ngSubmit)="onSubmit($event)">
                 <input type="text" placeholder="FirstName"
                     class="input_group "
                     name="firstNameInput" id="firstNameInput"
@@ -65,6 +65,12 @@
                     [value]="item.name">
                         {{item.name}}
                     </option>
+                </select>
+              <br/>
+
+              <select class="select_group" name="selectWorkAthome">
+                    <option value="1" selected> Yes </option>
+                    <option value="2"> No </option>
                 </select>
               <br/>
 

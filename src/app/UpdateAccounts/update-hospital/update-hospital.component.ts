@@ -12,7 +12,8 @@ import { HospitalService } from 'src/app/Services/hospital/hospital.service';
 export class UpdateHospitalComponent implements OnInit {
   hospitsalForm!:FormGroup
   cities:any;
-  constructor( private fb:FormBuilder ,private accountService:AccountService) {}
+  constructor( private fb:FormBuilder ,private accountService:AccountService,
+    private hospitalService:HospitalService) {}
 
  async ngOnInit():Promise <void> {
     this.hospitsalForm=this.fb.group({
@@ -31,4 +32,24 @@ export class UpdateHospitalComponent implements OnInit {
         console.log(this.cities)
       })
     }
+
+  async  onSubmit(event:any){
+        let name = event.target.nameInput;
+        let location=event.target.locationInput;
+        let aboutHospital = event.target.aboutHospitalInput;
+        let phoneNumer =event.target.phoneNumberInput;
+        let homeNumber =event.target.homeNumberInput;
+        let webSite =event.target.webSiteInput;
+        let city =event.target.selectCityInput;
+
+    let result = await this.hospitalService.updateHospitalInfo(name,location,aboutHospital,
+      phoneNumer,homeNumber,webSite,city)
+
+      result.subscribe(response =>{
+          if(response.data===false){
+            alert("please Try Agin ....")
+          }
+          alert(response.message)
+      });
+  }
 }

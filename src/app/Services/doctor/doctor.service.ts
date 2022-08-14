@@ -25,4 +25,12 @@ export class DoctorService extends BaseServices {
   async getDoctorInfo(userName: string): Promise<Observable<any>> {
     return await this.http.get(this.baseUrl + userName);
   }
+
+  async updateDoctorInfo(firstName: string, lastName: string,phoneNumber: string,
+    aboutMe: string,specialization: string,workAtHome: boolean,startTimeWork: string,endTimeWork: string,
+    location: string,state: Number,homeNumber:string,city: string): Promise<Observable<any>> {
+    return await this.http.post(this.baseUrl + "UpdateDoctor", { "firstName": firstName, "lastName": lastName,"phoneNumber": phoneNumber,
+    "aboutMe": aboutMe,"specialization": specialization,"workAtHome": workAtHome,"startTimeWork":startTimeWork,"endTimeWork": endTimeWork,
+    "location": location,"state": state,"homeNumber":homeNumber,"city":city});
+  }
 }

@@ -25,6 +25,12 @@ export class HospitalService extends BaseServices {
     "departmentName":departmentName,"hasAvialbleBed":hasAvialbleBed});
   }
 
+  async updateHospitalInfo(name: string,location: string,aboutHospital:string,phoneNumer:string,
+    homeNumber:string,webSite:string,city:string): Promise<Observable<any>> {
+    return await this.http.post(this.baseUrl + "UpdateHospital", { "name":name,"location": location,"aboutHospital":aboutHospital,"phoneNumer":phoneNumer,
+      "homeNumber":homeNumber,"webSite":webSite,"city":city});
+  }
+
   async getDepartmentForHospital(username: string): Promise<Observable<department[]>> {
     return await this.http.get<department[]>(this.baseUrl + "DepartmentsFor/" + username);
   }
