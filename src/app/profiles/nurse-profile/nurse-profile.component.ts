@@ -27,14 +27,14 @@ export class NurseProfileComponent implements OnInit {
   endWorkTime: string | any;
   iFollowedThisUser: boolean = false;
   profilepostLoadfunc!:(page:DynamicPagination)=> Promise<Observable<any>>;
-  @ViewChild("PostsSection") postSection!:PostsSectionComponent; 
+  @ViewChild("PostsSection") postSection!:PostsSectionComponent;
   constructor(
     private nurseService: NurseService,
     private dialog: MatDialog,
     private followService: FollowService,
     private snackBar: MatSnackBar,
     private route: ActivatedRoute
-    ,private accountService:AccountService) { 
+    ,private accountService:AccountService) {
       this.profilepostLoadfunc=postsLoadeFactory.getProfileLoadMethod(accountService,this.route.snapshot.paramMap.get("userName"));
     }
     openAddPost(){
@@ -44,7 +44,7 @@ export class NurseProfileComponent implements OnInit {
       dialogRef.componentInstance.onPostAdded.subscribe((data:PostOutput) => {
         if(this.postSection!=null){
            console.log(data);
-           
+
            this.postSection.addNewPost(data);
          }
        });
@@ -81,6 +81,11 @@ export class NurseProfileComponent implements OnInit {
   isMyOwnProfile() {
     return localStorage.getItem("username") == this.userName;
   }
+
+  isThereUserLogin(){
+    return localStorage.getItem("token") !=null;
+  }
+
   async followUser() {
     (await this.followService.followUser(this.userName)).subscribe(data => {
       this.iFollowedThisUser = true;

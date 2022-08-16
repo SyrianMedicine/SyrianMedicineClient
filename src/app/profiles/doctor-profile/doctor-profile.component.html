@@ -1,4 +1,4 @@
- 
+
 <section>
     <div class="bootstrap">
         <div class="row">
@@ -25,9 +25,9 @@
 
                  <div class="rightItems" >
                     <button *ngIf="isMyOwnProfile()" class="followBtn mx-2" type="submit" (click)="openAddPost()">add Post</button>
-                    <button *ngIf="!isMyOwnProfile()" class="followBtn mx-2" type="submit" (click)="openReserveDialog()">Reserve</button>
-                    <button *ngIf="!isMyOwnProfile()&&!iFollowedThisUser" class="mx-1 followBtn" type="submit" (click)="followUser()">Follow</button>
-                    <button *ngIf="!isMyOwnProfile()&&iFollowedThisUser" class="mx-1 followBtn" type="submit" (click)="unFollowUser()">UnFollow</button>
+                    <button *ngIf="!isMyOwnProfile() && isThereUserLogin()" class="followBtn mx-2" type="submit" (click)="openReserveDialog()">Reserve</button>
+                    <button *ngIf="!isMyOwnProfile()&&!iFollowedThisUser && isThereUserLogin()" class="mx-1 followBtn" type="submit" (click)="followUser()">Follow</button>
+                    <button *ngIf="!isMyOwnProfile()&&iFollowedThisUser && isThereUserLogin()" class="mx-1 followBtn" type="submit" (click)="unFollowUser()">UnFollow</button>
                 </div>
                 <div class="user-info2">
                     <p>

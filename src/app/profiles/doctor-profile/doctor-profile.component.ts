@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ReserveDateWithDoctorOrNurseComponent } from 'src/app/Common/reservesDate/reserve-date-with-doctor-or-nurse/reserve-date-with-doctor-or-nurse.component';
 import { AddPostSectionComponent } from 'src/app/Component/add-post-section/add-post-section.component';
 import { DoctorInfo } from 'src/app/Models/Doctor/DoctorInfo';
@@ -22,11 +22,12 @@ import { PostOutput } from 'src/app/Models/Post/PostOutput';
 export class DoctorProfileComponent implements OnInit {
 
   doctorInfoData: DoctorInfo = new DoctorInfo();
-  @ViewChild("PostsSection") postSection!:PostsSectionComponent; 
+  @ViewChild("PostsSection") postSection!:PostsSectionComponent;
   userName: string | any;
   startWorkTime: string | any;
   endWorkTime: string | any;
   iFollowedThisUser: boolean = false;
+  doctorNameSend:any;
   profilepostLoadfunc!:(page:DynamicPagination)=> Promise<Observable<any>>;
   constructor(
     private doctorService: DoctorService,
@@ -37,7 +38,7 @@ export class DoctorProfileComponent implements OnInit {
     private accountService:AccountService) {
       this.profilepostLoadfunc=postsLoadeFactory.getProfileLoadMethod(accountService,this.route.snapshot.paramMap.get("userName"));
   }
- 
+
   async ngOnInit(): Promise<void> {
     this.userName = this.route.snapshot.paramMap.get("userName");
     (await this.doctorService.getDoctorInfo(this.userName)).subscribe(data => {
@@ -54,7 +55,7 @@ export class DoctorProfileComponent implements OnInit {
     this.dialog.open(templete, {
       width: '300px'
     });
-  } 
+  }
 
   openReserveDialog() {
     let username = this.userName;
@@ -73,13 +74,17 @@ export class DoctorProfileComponent implements OnInit {
     dialogRef.componentInstance.onPostAdded.subscribe((data:PostOutput) => {
      if(this.postSection!=null){
         console.log(data);
-        
+
         this.postSection.addNewPost(data);
       }
     });
   }
   isMyOwnProfile() {
     return localStorage.getItem("username") == this.userName;
+  }
+
+  isThereUserLogin(){
+        return localStorage.getItem("token") !=null;
   }
 
   async followUser() {

@@ -11,7 +11,7 @@ import { AccountService } from 'src/app/Services/Account/account.service';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  isUpdating:boolean=false
+  isUpdating:boolean=false;
   hide = true;
   adminForm!:FormGroup;
   states!:Array<any>
@@ -49,27 +49,32 @@ export class UserProfileComponent implements OnInit {
     let selectState = event.target.selectState.value;
     let city = event.target.city.value;
 
+    let genderResult=1;
 
-    if(gender === 'male'){
-      gender=1;
+    if(gender == 'male'){
+      genderResult=1;
     }
-    else if(gender === 'female'){
-      gender=2;
+    else if(gender == 'female'){
+      genderResult=2;
     }
 
-    let result =await this.submit(firstName,lastName,phone,homeNumber,gender,location,selectState,city)
-      result.subscribe(response=>{
-         alert(response.message)
-      });
-
+    let result =await this.accounServices.updateAdminProfile(firstName,lastName,phone,homeNumber,genderResult,location,selectState,city)
+    result.subscribe(response =>{
+      if(response.data === false){
+        alert("Please Try Agin")
+      }
+      else{
+        alert(response.message)
+      }
+    })
   }
 
-  async submit(firstName:string,lastName:string,phoneNumber:string,homeNumber:string,
-       gender:Number,location:string,selectState:Number,city:string){
+  // async submit(firstName:string,lastName:string,phoneNumber:string,homeNumber:string,
+  //      gender:Number,location:string,selectState:Number,city:string){
 
-       return  this.accounServices.updateAdminProfile(firstName,lastName,phoneNumber,
-        homeNumber,gender,location,selectState,city)
-  }
+  //      return await this.accounServices.updateAdminProfile(firstName,lastName,phoneNumber,
+  //       homeNumber,gender,location,selectState,city)
+  // }
 
   async openDialog(userNameExist: boolean, emailExist: boolean, emailNotValid: boolean) {
     let dialogRef = this.dialog.open(RegisterDialogComponent, {

@@ -75,4 +75,8 @@ export class RatingComponent implements OnInit {
     return localStorage.getItem("username") == this.userName;
   }
 
+  isThereUserLogin(){
+    return localStorage.getItem("token") !=null;
+  }
+
 }

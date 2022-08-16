@@ -26,7 +26,7 @@ export class HospitalProfileComponent implements OnInit {
   hospitalId: number = 0;
   iFollowedThisUser: boolean = false;
   profilepostLoadfunc!:(page:DynamicPagination)=> Promise<Observable<any>>;
-  @ViewChild("PostsSection") postSection!:PostsSectionComponent; 
+  @ViewChild("PostsSection") postSection!:PostsSectionComponent;
 
   constructor(
     private hospitalService: HospitalService,
@@ -34,9 +34,9 @@ export class HospitalProfileComponent implements OnInit {
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
     private route: ActivatedRoute,
-    private accountService:AccountService) { 
+    private accountService:AccountService) {
       this.profilepostLoadfunc=postsLoadeFactory.getProfileLoadMethod(accountService,this.route.snapshot.paramMap.get("userName"));
- 
+
     }
     openAddPost(){
       let dialogRef= this.dialog.open(AddPostSectionComponent,{
@@ -45,7 +45,7 @@ export class HospitalProfileComponent implements OnInit {
       dialogRef.componentInstance.onPostAdded.subscribe((data:PostOutput) => {
         if(this.postSection!=null){
            console.log(data);
-           
+
            this.postSection.addNewPost(data);
          }
        });
@@ -61,7 +61,6 @@ export class HospitalProfileComponent implements OnInit {
       this.iFollowedThisUser =data.data;
       console.log("asd: " +data.data);
     })
-
   }
 
   openTemplete(templete: any) {
@@ -103,6 +102,11 @@ export class HospitalProfileComponent implements OnInit {
     });
 
   }
+
+  isThereUserLogin(){
+    return localStorage.getItem("token") !=null;
+  }
+  
   async unFollowUser() {
     (await this.followService.unFollowUser(this.userName)).subscribe(data => {
       this.iFollowedThisUser = false;

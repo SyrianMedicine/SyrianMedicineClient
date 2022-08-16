@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, ObservableNotification } from 'rxjs';
+import { BehaviorSubject, Observable, ObservableNotification } from 'rxjs';
 import { city } from 'src/app/Models/city';
 import { state } from 'src/app/Models/states';
 import { BaseServices } from '../Common/BaseService.service';
@@ -10,9 +10,19 @@ import { BaseServices } from '../Common/BaseService.service';
 })
 export class DoctorService extends BaseServices {
   baseUrl = this.HostUrl+"/Doctor/";
+  user:string='empty'
   constructor(private http: HttpClient) {super(); }
+  setValue(userName:string){
+    this.user= userName;
+    console.log(this.user)
+  }
 
-  async getMostDoctorsRated(pageNumber: number, pageSize: number): Promise<Observable<any>> {
+  getValue(){
+    console.log(this.user)
+    return this.user;
+  }
+
+   async getMostDoctorsRated(pageNumber: number, pageSize: number): Promise<Observable<any>> {
     return await this.http.post(this.baseUrl + "MostDoctorsRated", { "pageNumber": pageNumber, "pageSize": pageSize });
   }
 
@@ -26,11 +36,12 @@ export class DoctorService extends BaseServices {
     return await this.http.get(this.baseUrl + userName);
   }
 
-  async updateDoctorInfo(firstName: string, lastName: string,phoneNumber: string,
+  async updateDoctorInfo(id:Number,firstName: string, lastName: string,phoneNumber: string,
     aboutMe: string,specialization: string,workAtHome: boolean,startTimeWork: string,endTimeWork: string,
     location: string,state: Number,homeNumber:string,city: string): Promise<Observable<any>> {
-    return await this.http.post(this.baseUrl + "UpdateDoctor", { "firstName": firstName, "lastName": lastName,"phoneNumber": phoneNumber,
+    return await this.http.post(this.baseUrl + "UpdateDoctor", {"id":id,"firstName": firstName, "lastName": lastName,"phoneNumber": phoneNumber,
     "aboutMe": aboutMe,"specialization": specialization,"workAtHome": workAtHome,"startTimeWork":startTimeWork,"endTimeWork": endTimeWork,
     "location": location,"state": state,"homeNumber":homeNumber,"city":city});
   }
+
 }

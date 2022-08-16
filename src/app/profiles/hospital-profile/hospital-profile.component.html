@@ -1,4 +1,4 @@
- 
+
 <section>
     <div class="bootstrap">
         <div class="row">
@@ -22,17 +22,17 @@
                     </p>
                 </div>
                 <div class="rightItems" >
-                    <button *ngIf="isMyOwnProfile()" class="followBtn mx-2" type="submit" (click)="openAddPost()">add Post</button> 
-                    <button class="followBtn mx-2" type="submit" *ngIf="!isMyOwnProfile()" (click)="openReserveDialog()">Reserve</button>
-                    <button class="mx-1 followBtn" type="submit" *ngIf="!isMyOwnProfile()&&!iFollowedThisUser" (click)="followUser()">Follow</button>
-                    <button class="mx-1 followBtn" type="submit" *ngIf="!isMyOwnProfile()&&iFollowedThisUser" (click)="unFollowUser()">UnFollow</button>
+                    <button *ngIf="isMyOwnProfile()" class="followBtn mx-2" type="submit" (click)="openAddPost()">add Post</button>
+                    <button class="followBtn mx-2" type="submit" *ngIf="!isMyOwnProfile() &&isThereUserLogin()" (click)="openReserveDialog()">Reserve</button>
+                    <button class="mx-1 followBtn" type="submit" *ngIf="!isMyOwnProfile()&&!iFollowedThisUser&&isThereUserLogin()" (click)="followUser()">Follow</button>
+                    <button class="mx-1 followBtn" type="submit" *ngIf="!isMyOwnProfile()&&iFollowedThisUser&&isThereUserLogin()" (click)="unFollowUser()">UnFollow</button>
                 </div>
                 <div class="user-info2">
                     <p>
                         <i class="fa fa-map-marker-alt fa-1x"
                             style="color:gray;">
                         </i> {{hospitalInfoData.city}}
-                        
+
                         <img class="mx-1"
                             (click)="openTemplete(homeNumberTemplete)"
                             src="assets/images/rotaryPhone.png"
@@ -83,11 +83,11 @@
     <!-- start post -->
     <div class="row hidden">
         <div class="col">
-            <div class="container"> 
+            <div class="container">
                 <app-posts-section #PostsSection [loadefunc]="profilepostLoadfunc"></app-posts-section>
             </div>
         </div>
-    </div> 
+    </div>
 </section>
 
 <app-footer></app-footer>

@@ -43,7 +43,7 @@
             <ng-container matColumnDef="download">
               <mat-header-cell class="download" *matHeaderCellDef="download"> Documents </mat-header-cell>
               <mat-cell class="download" *matCellDef="let doctor">
-                <button [routerLink]="doctor.documents"> download </button>
+                <button  (click)="downloadMyFile(doctor.documents[0])"> download </button>
               </mat-cell>
             </ng-container>
 
@@ -66,7 +66,7 @@
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
           </mat-table>
-          <div *ngIf="this.isloading"  class="d-flex justify-content-center" > 
+          <div *ngIf="this.isloading"  class="d-flex justify-content-center" >
             <mat-spinner  diameter="60"  class="m-2 custom-spinner"> </mat-spinner>
           </div>
         </div>

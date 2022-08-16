@@ -69,8 +69,8 @@
               <br/>
 
               <select class="select_group" name="selectWorkAthome">
-                    <option value="1" selected> Yes </option>
-                    <option value="2"> No </option>
+                    <option [value]="1"> Yes </option>
+                    <option [value]="2"> No </option>
                 </select>
               <br/>
 
@@ -92,7 +92,7 @@
                         date">
                 </mat-form-field>
                 <br />
-                <button class="register_btn" type="submit"[disabled]="Doctorform.invalid">
+                <button class="register_btn" type="submit">
                     Apply
                 </button>
             </form>

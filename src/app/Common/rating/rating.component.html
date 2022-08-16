@@ -12,7 +12,7 @@
           <td class="rating-label">
             <input type="radio" value=5 name="rateUserInput"
               [defaultChecked]="currentRating ==5"
-              (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile()" />
+              (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile() && isThereUserLogin()" />
             Excellent
           </td>
           <td class="rating-bar">
@@ -30,7 +30,7 @@
           <td class="rating-label">
             <input type="radio" value=4 name="rateUserInput"
               [defaultChecked]="currentRating ==4"
-              (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile()" /> Good
+              (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile() && isThereUserLogin()" /> Good
           </td>
           <td class="rating-bar">
             <div class="bar-container rating-progress-bars">
@@ -47,7 +47,7 @@
           <td class="rating-label">
             <input type="radio" value=3 name="rateUserInput"
               [defaultChecked]="currentRating ==3"
-              (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile()" />
+              (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile() && isThereUserLogin()" />
             Average
           </td>
           <td class="rating-bar">
@@ -65,7 +65,7 @@
           <td class="rating-label">
             <input type="radio" value=2 name="rateUserInput"
               [defaultChecked]="currentRating ==2"
-              (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile()" /> Poor
+              (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile() && isThereUserLogin()" /> Poor
           </td>
           <td class="rating-bar">
             <div class="bar-container rating-progress-bars">
@@ -82,7 +82,7 @@
           <td class="rating-label">
             <input type="radio" value=1 name="rateUserInput"
               [defaultChecked]="currentRating ==1"
-              (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile()" />
+              (input)="onRatingChange($event)" *ngIf="!isMyOwnProfile()&& isThereUserLogin()" />
             Terrible
           </td>
           <td class="rating-bar">

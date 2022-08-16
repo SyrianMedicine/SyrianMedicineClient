@@ -62,7 +62,7 @@
                 <div class="formGroup">
                   <span> State :</span>
                   <select name="selectState" class="select_group ml-4">
-                    <option *ngFor="let state of states"
+                    <option *ngFor="let state of this.states"
                     [value]="state.id">{{state.name}}</option>
                 </select>
 
@@ -76,9 +76,7 @@
                   formControlName="city" />
                 </div>
                 <div class="d-flex justify-content-center">
-
-                  <button  type="submit" > OK </button>
-
+                  <button  type="submit"> OK </button>
                 </div>
             </form>
           </div>

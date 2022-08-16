@@ -10,8 +10,18 @@ import { BaseServices } from '../Common/BaseService.service';
 })
 export class HospitalService extends BaseServices {
   baseUrl = this.HostUrl+"/Hospital/";
-
+  user:string='empty'
   constructor(private http: HttpClient) {super(); }
+
+  setValue(userName:string){
+    this.user= userName;
+    console.log(this.user)
+  }
+
+  getValue(){
+    console.log(this.user)
+    return this.user;
+  }
 
   async getMostHospitalsRated(pageNumber: number, pageSize: number): Promise<Observable<any>> {
     return await this.http.post(this.baseUrl + "MostHospitalsRated", { "pageNumber": pageNumber, "pageSize": pageSize });
@@ -25,7 +35,7 @@ export class HospitalService extends BaseServices {
     "departmentName":departmentName,"hasAvialbleBed":hasAvialbleBed});
   }
 
-  async updateHospitalInfo(name: string,location: string,aboutHospital:string,phoneNumer:string,
+  async updateHospitalInfo(id:Number,name: string,location: string,aboutHospital:string,phoneNumer:string,
     homeNumber:string,webSite:string,city:string): Promise<Observable<any>> {
     return await this.http.post(this.baseUrl + "UpdateHospital", { "name":name,"location": location,"aboutHospital":aboutHospital,"phoneNumer":phoneNumer,
       "homeNumber":homeNumber,"webSite":webSite,"city":city});
