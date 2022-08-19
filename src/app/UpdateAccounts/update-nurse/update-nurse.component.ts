@@ -80,15 +80,17 @@ export class UpdateNurseComponent implements OnInit {
         workAtHomeResult=false
       }
 
-    console.log(id,firstName,lastName,phone,aboutMe,specialization,
-      workAtHomeResult,startTimeWork,endTimeWork,location,state,homeNumber,city)
-  let result = await this.nuresService.updateNurseInfo(id,firstName,lastName,phone,aboutMe,specialization,workAtHomeResult,
+      if(id == undefined){
+        alert ("I'm soory can't update Info ,please return to new Login..")
+      }
+      else {
+          let result = await this.nuresService.updateNurseInfo(id,firstName,lastName,phone,aboutMe,specialization,workAtHomeResult,
           startTimeWork,endTimeWork,location,state,city,homeNumber)
-      result.subscribe(response=>{
-        if(response.data===false){
+          result.subscribe(response=>{
+          if(response.data===false){
           alert("Please Try Agin ...")
         }
-        alert(response.message)
-      })
-  }
+          alert(response.message)
+        })
+  }}
 }

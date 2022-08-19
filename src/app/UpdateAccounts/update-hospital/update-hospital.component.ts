@@ -35,11 +35,9 @@ export class UpdateHospitalComponent implements OnInit {
     });
     this.getCities();
     this.userName=this.doctorService.getValue();
-    console.log(this.userName);
     (await this.hospitalService.getHospitalInfo(this.userName)).subscribe(data => {
       this.hospitalInfoData = data;
       this.hospitalId = data.id;
-      console.log(this.hospitalId)
     })
   }
     getCities(){
@@ -58,7 +56,10 @@ export class UpdateHospitalComponent implements OnInit {
         let city =event.target.selectCityInput.value;
         let id =this.hospitalId
 
-        console.log(id,name,location,aboutHospital,phoneNumer,homeNumber,webSite,city)
+        if(id == undefined){
+          alert ("I'm soory can't update Info ,please return to new Login..")
+        }
+        else {
 
         let result = await this.hospitalService.updateHospitalInfo(id,name,location,aboutHospital,
         phoneNumer,homeNumber,webSite,city)
@@ -71,5 +72,5 @@ export class UpdateHospitalComponent implements OnInit {
             alert(response.message)
           }
       });
-  }
+  }}
 }

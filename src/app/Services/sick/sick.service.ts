@@ -13,10 +13,8 @@ export class SickService extends BaseServices {
   constructor(private http: HttpClient) { super();}
   setValue(userName:string){
     this.user= userName;
-    console.log(this.user)
   }
   getValue(){
-    console.log(this.user)
     return this.user;
   }
 

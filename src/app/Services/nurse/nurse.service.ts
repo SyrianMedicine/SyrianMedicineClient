@@ -15,10 +15,8 @@ export class NurseService extends BaseServices {
   constructor(private http: HttpClient) { super();}
   setValue(userName:string){
     this.user= userName;
-    console.log(this.user)
   }
   getValue(){
-    console.log(this.user)
     return this.user;
   }
   async getMostNursesRated(pageNumber: number, pageSize: number): Promise<Observable<any>> {

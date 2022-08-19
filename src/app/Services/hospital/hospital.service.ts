@@ -14,12 +14,10 @@ export class HospitalService extends BaseServices {
   constructor(private http: HttpClient) {super(); }
   setValue(userName:string){
     this.user= userName;
-    console.log(this.user)
   }
 
   getValue(){
     console.log(this.user)
-    return this.user;
   }
 
   async getMostHospitalsRated(pageNumber: number, pageSize: number): Promise<Observable<any>> {

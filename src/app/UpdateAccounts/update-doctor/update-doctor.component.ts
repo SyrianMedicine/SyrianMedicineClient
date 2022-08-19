@@ -80,16 +80,17 @@ export class UpdateDoctorComponent implements OnInit {
       }
       let id = this.doctorId
 
-      console.log(id,firstName,lastName,phone,specialization,state,location,
-        aboutMe,workAtHome,startTimeWork,endTimeWork,homeNumber,city)
-
+      if(id == undefined){
+        alert ("I'm soory can't update Info ,please return to new Login..")
+      }
+      else {
   let result =await this.doctorService.updateDoctorInfo(id,firstName,lastName,phone,aboutMe,specialization,workAtHomeResult,
       startTimeWork,endTimeWork,location,state,homeNumber,city)
       result.subscribe(response=>{
         console.log(response.message)
-        // alert(response.message)
+        alert(response.message)
       })
-
+    }
 
   }
 }
