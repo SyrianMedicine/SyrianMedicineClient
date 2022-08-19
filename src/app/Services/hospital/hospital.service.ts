@@ -12,7 +12,6 @@ export class HospitalService extends BaseServices {
   baseUrl = this.HostUrl+"/Hospital/";
   user:string='empty'
   constructor(private http: HttpClient) {super(); }
-
   setValue(userName:string){
     this.user= userName;
     console.log(this.user)
@@ -35,10 +34,10 @@ export class HospitalService extends BaseServices {
     "departmentName":departmentName,"hasAvialbleBed":hasAvialbleBed});
   }
 
-  async updateHospitalInfo(id:Number,name: string,location: string,aboutHospital:string,phoneNumer:string,
+  async updateHospitalInfo(hospitalId:Number,name: string,location: string,aboutHospital:string,phoneNumer:string,
     homeNumber:string,webSite:string,city:string): Promise<Observable<any>> {
-    return await this.http.post(this.baseUrl + "UpdateHospital", { "name":name,"location": location,"aboutHospital":aboutHospital,"phoneNumer":phoneNumer,
-      "homeNumber":homeNumber,"webSite":webSite,"city":city});
+    return await this.http.post(this.baseUrl + "UpdateHospital", {"hospitalId":hospitalId,"name":name,"location": location,"aboutHospital":aboutHospital,"phoneNumer":phoneNumer,
+      "homeNumber":homeNumber,"webSite":webSite,"city":city},this.getoption());
   }
 
   async getDepartmentForHospital(username: string): Promise<Observable<department[]>> {

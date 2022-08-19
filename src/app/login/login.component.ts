@@ -6,6 +6,8 @@ import { login } from '../Models/Login/login';
 import { DoctorService } from '../Services/doctor/doctor.service';
 import { HospitalService } from '../Services/hospital/hospital.service';
 import { LoginServiceService } from '../Services/login/login-service.service';
+import { NurseService } from '../Services/nurse/nurse.service';
+import { SickService } from '../Services/sick/sick.service';
 
 @Component({
   selector: 'app-login',
@@ -23,8 +25,8 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(private formBuilder: FormBuilder,private activRoute:ActivatedRoute, private router: Router, private loginService: LoginServiceService,
-    private snackBar: MatSnackBar,private doctorService:DoctorService,
-    private hospitalService:HospitalService) {
+    private snackBar: MatSnackBar,private doctorService:DoctorService,private sickService :SickService,
+    private hospitalService:HospitalService,private nurseService:NurseService) {
     this.loginData = new login();
   }
 
@@ -43,8 +45,10 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', data.data.token);
       localStorage.setItem('userType', data.data.userType);
 
-      this.doctorService.setValue(data.data.userName)
-      this.hospitalService.setValue(data.data.userName)
+      this.doctorService.setValue(data.data.userName);
+      this.hospitalService.setValue(data.data.userName);
+      this.nurseService.setValue(data.data.userName);
+      this.sickService.setValue(data.data.userName);
       this.snackBar.open(data.message, 'close', {
         duration: 3000,
         horizontalPosition: 'start',

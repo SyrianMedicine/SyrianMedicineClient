@@ -69,8 +69,6 @@ export class UpdateDoctorComponent implements OnInit {
     let state =event.target.selectPersonStates.value;
     let homeNumber =event.target.homeNumberInput.value;
     let city =event.target.selectCityInput.value;
-    console.log(firstName,lastName,phone,specialization,state,location,
-      aboutMe,workAtHome,startTimeWork,end,homeNumber,city)
 
       let workAtHomeResult =true;
 
@@ -81,12 +79,16 @@ export class UpdateDoctorComponent implements OnInit {
         workAtHomeResult=false
       }
       let id = this.doctorId
-  // let result =await this.doctorService.updateDoctorInfo(id,firstName.value,lastName.value,phone.value,aboutMe.value,specialization.value,workAtHome,
-  //     startTimeWork.value,endTimeWork.value,location.value,state.value,homeNumber.value,city.value)
-  //     result.subscribe(response=>{
-  //       console.log(response.message)
-  //       // alert(response.message)
-      // })
+
+      console.log(id,firstName,lastName,phone,specialization,state,location,
+        aboutMe,workAtHome,startTimeWork,endTimeWork,homeNumber,city)
+
+  let result =await this.doctorService.updateDoctorInfo(id,firstName,lastName,phone,aboutMe,specialization,workAtHomeResult,
+      startTimeWork,endTimeWork,location,state,homeNumber,city)
+      result.subscribe(response=>{
+        console.log(response.message)
+        // alert(response.message)
+      })
 
 
   }

@@ -54,7 +54,7 @@
                   <select class="select_group"
                       name="selectCityInput">
                       <option *ngFor="let item of cities"
-                      [value]="item.name">
+                      [value]="item.id">
                       {{item.name}}
                       </option>
                   </select>
@@ -62,21 +62,21 @@
                   <select class="select_group"
                       name="selectPersonStateInput">
                       <option *ngFor="let item of this.psersonStates"
-                      [value]="item.name">
+                      [value]="item.id">
                       {{item .name}}
                       </option>
                   </select>
 
                   <br />
                   <select class="select_group" name="selectWorkAthome">
-                    <option value="1" selected> Yes </option>
+                    <option value="1"> Yes </option>
                     <option value="2"> No </option>
                   </select>
                   <br/>
 
                   <mat-form-field>
                       <label class="ml-1">Start Time:</label>
-                      <input matInput name="datetimeInput"
+                      <input matInput name="startDatetimeInput"
                           formControlName="startDatetimeInput"
                           id="startDatetimeInput" required type="datetime-local"
                           placeholder="start

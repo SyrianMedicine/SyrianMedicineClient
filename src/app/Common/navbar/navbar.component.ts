@@ -1,12 +1,12 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core'; 
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar,MatSnackBarHorizontalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import {  HubConnection, HubConnectionBuilder ,ILogger,MessageHeaders, NullLogger} from '@microsoft/signalr';
 import { CommentOutput } from 'src/app/Models/Comment/CommentOutput';
 import { PostOutput } from 'src/app/Models/Post/PostOutput';
-import { usercard } from 'src/app/Models/usercard/usercard'; 
+import { usercard } from 'src/app/Models/usercard/usercard';
 import { ExternalNotificationComponent } from '../external-notification/external-notification.component';
- 
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit,OnDestroy {
   ngOnDestroy(): void {
     if(this.connection!=null)
     {
-      this.connection.stop(); 
+      this.connection.stop();
     }
   }
 
@@ -43,7 +43,7 @@ export class NavbarComponent implements OnInit,OnDestroy {
     localStorage.removeItem("userType");
     if(this.connection!=null)
     {
-      this.connection.stop(); 
+      this.connection.stop();
     }
     window.location.reload();
 
@@ -51,22 +51,22 @@ export class NavbarComponent implements OnInit,OnDestroy {
   constractconnection(){
     if (localStorage.getItem("token") != null) {
      this.connection = new HubConnectionBuilder().withUrl("https://syrian-medicine.herokuapp.com/Publichub",
-        { 
+        {
           accessTokenFactory: () => localStorage.getItem("token") as string
         }
       ).withAutomaticReconnect().build();
       this.connection.start();
       let dialog = this.dialog;
-      let not=this.notifcation; 
+      let not=this.notifcation;
       let x=this;
       this.connection.on("NotfiyUserFollowYou", function (us: usercard, mes: string) {
       let li= "/" + NavbarComponent.Linkprefix[us.userType - 1]+"/" + us.userName;
         x.notifcation.unshift({messege:mes,usercard:us,link:li,date:new Date()});
        x.changeDetectorRef.detectChanges();
-        dialog.openFromComponent(ExternalNotificationComponent, { 
+        dialog.openFromComponent(ExternalNotificationComponent, {
           panelClass:["rounded-6","card","notifcationbody"],
-          duration:6000 , 
-          data: { 
+          duration:6000 ,
+          data: {
             messege: mes,
             user: us,
             link:li
@@ -81,7 +81,7 @@ export class NavbarComponent implements OnInit,OnDestroy {
         x.changeDetectorRef.detectChanges();
         dialog.openFromComponent(ExternalNotificationComponent, {
           panelClass:["rounded-6","card","notifcationbody"],
-          duration:6000 ,  
+          duration:6000 ,
           data: {
             messege: ms,
             user:use ,
@@ -97,7 +97,7 @@ export class NavbarComponent implements OnInit,OnDestroy {
         x.changeDetectorRef.detectChanges();
         dialog.openFromComponent(ExternalNotificationComponent, {
           panelClass:["rounded-6","card","notifcationbody"],
-          duration:6000 ,  
+          duration:6000 ,
           data: {
             messege: ms,
             user: use,

@@ -7,7 +7,7 @@
         </div>
         <div class="card-body">
             <div class="grid-container text-center">
-              <form autocomplete="off" [formGroup]="sickForm">
+              <form autocomplete="off" [formGroup]="sickForm" (ngSubmit)="onSubmit($event)">
                   <input type="text" placeholder="FirstName"
                       class="input_group mt-3"
                       name="firstNameInput" id="firstNameInput"
@@ -46,9 +46,21 @@
                   <select class="select_group"
                       name="selectCityInput">
                       <option *ngFor="let item of this.cities"
-                      [value]="item.name">
+                      [value]="item.id">
                           {{item.name}}
                       </option>
+                  </select>
+
+                  <br/>
+                  <select class="select_group" name="selectGender">
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                  </select>
+
+                  <select class="select_group" name="selectState">
+                    <option value="1">Single</option>
+                    <option value="2">Married</option>
+                    <option value="3">Divorced</option>
                   </select>
 
                   <br/>

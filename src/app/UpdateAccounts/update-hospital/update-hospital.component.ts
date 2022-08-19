@@ -4,6 +4,7 @@ import { city } from 'src/app/Models/city';
 import { HospitalInfo } from 'src/app/Models/Hospital/HospitalInfo';
 import { DoctorProfileComponent } from 'src/app/profiles/doctor-profile/doctor-profile.component';
 import { AccountService } from 'src/app/Services/Account/account.service';
+import { DoctorService } from 'src/app/Services/doctor/doctor.service';
 import { HospitalService } from 'src/app/Services/hospital/hospital.service';
 
 @Component({
@@ -17,9 +18,9 @@ export class UpdateHospitalComponent implements OnInit {
   userName:any
   hospitalId!:Number
   hospitalInfoData!:Array<HospitalInfo>
-  @ViewChild(DoctorProfileComponent) child!:DoctorProfileComponent;
+
   constructor( private fb:FormBuilder ,private accountService:AccountService,
-    private hospitalService:HospitalService) {}
+    private hospitalService:HospitalService,private doctorService:DoctorService) {}
 
 
 
@@ -33,17 +34,17 @@ export class UpdateHospitalComponent implements OnInit {
       'aboutHospitalInput':['',[Validators.required]],
     });
     this.getCities();
-    this.userName=this.hospitalService.getValue();
+    this.userName=this.doctorService.getValue();
     console.log(this.userName);
     (await this.hospitalService.getHospitalInfo(this.userName)).subscribe(data => {
       this.hospitalInfoData = data;
       this.hospitalId = data.id;
+      console.log(this.hospitalId)
     })
   }
     getCities(){
       this.accountService.getCities().subscribe(response =>{
         this.cities = response;
-        console.log(this.cities)
       })
     }
 
@@ -55,14 +56,20 @@ export class UpdateHospitalComponent implements OnInit {
         let homeNumber =event.target.homeNumberInput.value;
         let webSite =event.target.webSiteInput.value;
         let city =event.target.selectCityInput.value;
+        let id =this.hospitalId
 
+        console.log(id,name,location,aboutHospital,phoneNumer,homeNumber,webSite,city)
 
-    // let id =this.hospitalId
-    // let result = await this.hospitalService.updateHospitalInfo(id,name,location,aboutHospital,
-    //   phoneNumer,homeNumber,webSite,city)
-
-      // result.subscribe(response =>{
-      //   console.log(response)
-      // });
+        let result = await this.hospitalService.updateHospitalInfo(id,name,location,aboutHospital,
+        phoneNumer,homeNumber,webSite,city)
+        result.subscribe(response =>{
+          if(response.data ==false)
+          {
+            alert("Please Try Agin ....")
+          }
+          else{
+            alert(response.message)
+          }
+      });
   }
 }

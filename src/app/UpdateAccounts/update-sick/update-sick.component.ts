@@ -12,6 +12,7 @@ import { SickService } from 'src/app/Services/sick/sick.service';
 export class UpdateSickComponent implements OnInit {
   sickForm!:FormGroup
   cities:any;
+  userName:any;
   constructor(private fb:FormBuilder,private accountService:AccountService,
     private sickService:SickService) {}
 
@@ -25,6 +26,8 @@ export class UpdateSickComponent implements OnInit {
     });
 
     this.getCities()
+    this.userName = this.sickService.getValue();
+    console.log(this.userName)
   }
 
   getCities(){
@@ -35,22 +38,14 @@ export class UpdateSickComponent implements OnInit {
 
   async onSubmit(event:any){
 
-    let firstName = event.target.firstName.value;
-    let lastName = event.target.lastName.value;
-    let phone =event.target.phone.value;
-    let homeNumber = event.target.homeNumber.value;
-    let gender = event.target.gender.value;
-    let location =event.target.location.value;
+    let firstName = event.target.firstNameInput.value;
+    let lastName = event.target.lastNameInput.value;
+    let phone =event.target.phoneNumberInput.value;
+    let homeNumber = event.target.homeNumberInput.value;
+    let gender = event.target.selectGender.value;
+    let location =event.target.locationInput.value;
     let selectState = event.target.selectState.value;
-    let city = event.target.city.value;
-
-
-    if(gender === 'male'){
-      gender=1;
-    }
-    else if(gender === 'female'){
-      gender=2;
-    }
+    let city = event.target.selectCityInput.value;
 
     let result =await this.sickService.updateSick(firstName,lastName,phone,homeNumber,gender,location,selectState,city)
       result.subscribe(response=>{
