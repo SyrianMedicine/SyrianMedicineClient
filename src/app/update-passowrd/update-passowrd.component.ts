@@ -4,11 +4,15 @@ import { MatDialog } from '@angular/material/dialog';
 import { RegisterDialogComponent } from '../register/dialogs/registerDialog/register-dialog/register-dialog.component';
 import { AccountService } from '../Services/Account/account.service';
 import { SyrianMedSnakBarService } from '../Services/SyrianMedSnakBar/syrian-med-snak-bar.service';
+import {MatFormFieldModule} from '@angular/material/form-field'; 
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-update-passowrd',
   templateUrl: './update-passowrd.component.html',
-  styleUrls: ['./update-passowrd.component.scss']
+  styleUrls: ['./update-passowrd.component.scss'],
 })
 
 export class UpdatePassowrdComponent implements OnInit {
